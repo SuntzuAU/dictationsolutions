@@ -1,0 +1,24 @@
+---
+import site from "../site.config.json";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About | {site.siteName}</title>
+    <meta name="description" content="About Dictation Solutions Australia - operated by Voice Recognition Australia, Australian specialists in dictation and speech recognition." />
+  </head>
+  <body style="margin:0;font-family:system-ui,sans-serif;background:#fff;color:#0f1a10">
+    <div style="max-width:760px;margin:0 auto;padding:48px 24px">
+      <a href="/" style="color:#2d7a3a;font-weight:600;font-size:14px">&larr; Back to home</a>
+      <h1 style="font-size:32px;margin:24px 0 16px">About Dictation Solutions Australia</h1>
+      <p style="color:#4a5e4d;line-height:1.7">Dictation Solutions Australia is operated by Voice Recognition Australia, one of Australia's longest-serving specialists in dictation and speech recognition technology.</p>
+      <p style="color:#4a5e4d;line-height:1.7">For over 25 years, Voice Recognition Australia has been helping healthcare professionals, legal practitioners, and enterprise teams implement dictation and speech recognition workflows. Our experience spans traditional dictation hardware - including Philips and Olympus recorders, foot pedals, and transcription systems - through to modern desktop software like Dragon Professional and cloud-based AI speech platforms.</p>
+      <p style="color:#4a5e4d;line-height:1.7">We are an authorised Australian reseller for Dragon speech recognition software. We provide local support, onboarding, and deployment guidance across all product categories.</p>
+      <p style="margin-top:32px"><a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Visit Voice Recognition Australia</a></p>
+      <p style="color:#64748b;font-size:13px;margin-top:32px">&copy; {year} {site.siteName}</p>
+    </div>
+  </body>
+</html>
