@@ -1,0 +1,24 @@
+# Dictation Solutions Australia - Cloudflare Pages redirects
+
+/dragon /dragon-software 301
+/dragon-naturally-speaking /dragon-software 301
+/dragon-naturallyspeaking /dragon-software 301
+/dragon-professional /dragon-software 301
+/dragon-medical /dragon-medical-one 301
+/dragon-medical-practice-edition /dragon-medical-one 301
+/medical-transcription-software /medical-transcription 301
+/transcription /medical-transcription 301
+/speech-to-text-software /speech-to-text 301
+/voice-recognition /speech-to-text 301
+/hardware /dictation-equipment 301
+/recorders /dictation-equipment 301
+/digital-recorders /dictation-equipment 301
+/philips /dictation-equipment 301
+/olympus /dictation-equipment 301
+/foot-pedal /foot-pedals 301
+/pedals /foot-pedals 301
+/headsets /headsets-accessories 301
+/microphones /headsets-accessories 301
+/accessories /headsets-accessories 301
+/support-page /support 301
+/technical-support /support 301
