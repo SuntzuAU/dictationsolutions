@@ -1,0 +1,99 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dragon Software Australia | Dictation Solutions Australia</title>
+    <meta name="description" content="Dragon speech recognition software for Australian professionals. Dragon Professional 16, Dragon Medical One, Dragon Anywhere. Authorised Australian reseller - Voice Recognition Australia." />
+    <link rel="canonical" href="https://dictationsolutions.com.au/dragon-software" />
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:#fff;color:#0f1a10}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .page-header{background:#1c2b1e;color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#86a989;margin-bottom:16px}
+      .breadcrumb a{color:#86a989;text-decoration:none}
+      .breadcrumb a:hover{color:white}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.02em}
+      .lead{font-size:17px;color:#b8cbb9;margin:0;max-width:600px}
+      .content{padding:56px 0}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+      .c8{grid-column:span 8}.c4{grid-column:span 4}.c6{grid-column:span 6}
+      h2{font-size:26px;margin:0 0 12px;letter-spacing:-0.01em;color:#1c2b1e}
+      p{color:#4a5e4d;line-height:1.7;margin:0 0 16px}
+      .product-card{background:#f4f6f4;border:1px solid #d4e0d6;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,box-shadow .15s}
+      .product-card:hover{border-color:#2d7a3a;box-shadow:0 4px 20px rgba(45,122,58,.1)}
+      .product-badge{display:inline-block;background:#2d7a3a;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
+      .product-title{font-size:19px;font-weight:700;margin:0;color:#1c2b1e}
+      .product-desc{font-size:15px;color:#4a5e4d;margin:0}
+      .product-cta{display:inline-block;background:#2d7a3a;color:white;padding:9px 18px;border-radius:8px;font-weight:700;font-size:13px;margin-top:auto;align-self:flex-start}
+      .formbox{background:#f4f6f4;border-radius:16px;padding:28px}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      @media(max-width:900px){.c8,.c4,.c6{grid-column:span 12}h1{font-size:28px}}
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="/">Dictation Solutions Australia</a> &rsaquo; Dragon Software</div>
+        <h1>Dragon Software Australia</h1>
+        <p class="lead">Dragon Professional and Dragon Medical One - the gold standard for speech recognition in Australian healthcare, legal, and enterprise environments.</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="wrap">
+        <div class="grid">
+          <div class="c8">
+            <h2>Dragon speech recognition for Australian professionals</h2>
+            <p>Dragon is the market-leading speech recognition software for professional use. Dictate into any Windows application at up to three times the speed of typing, with accuracy that adapts to your voice and vocabulary over time.</p>
+            <p>Voice Recognition Australia is an authorised Australian reseller for Dragon, with over 25 years of deployment experience. For current pricing and purchasing, visit <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a>.</p>
+            <div class="grid" style="margin-top:24px">
+              <div class="c6">
+                <a href="/dragon-medical-one" class="product-card">
+                  <div><span class="product-badge">Healthcare</span></div>
+                  <div class="product-title">Dragon Medical One</div>
+                  <p class="product-desc">Cloud-based medical speech recognition for clinicians. Built-in medical vocabulary for 100+ specialties. Dictate from any device.</p>
+                  <span class="product-cta">Learn more</span>
+                </a>
+              </div>
+              <div class="c6">
+                <a href="https://www.dragonprofessional16.com.au" class="product-card">
+                  <div><span class="product-badge">Professional</span></div>
+                  <div class="product-title">Dragon Professional 16</div>
+                  <p class="product-desc">Locally installed desktop speech recognition for Windows. Works offline. Perpetual licence available. Ideal for legal, government, and enterprise workflows.</p>
+                  <span class="product-cta">View Dragon Professional 16</span>
+                </a>
+              </div>
+              <div class="c6">
+                <a href="https://www.voicerecognition.com.au" class="product-card">
+                  <div><span class="product-badge">Cloud</span></div>
+                  <div class="product-title">Dragon Professional Anywhere</div>
+                  <p class="product-desc">Cloud-based Dragon for enterprise teams. Centralised management, browser-based access. No local installation required.</p>
+                  <span class="product-cta">Enquire at VRA</span>
+                </a>
+              </div>
+              <div class="c6">
+                <a href="https://www.voicerecognition.com.au" class="product-card">
+                  <div><span class="product-badge">Legal</span></div>
+                  <div class="product-title">Dragon Legal</div>
+                  <p class="product-desc">Dragon with built-in legal vocabulary for lawyers, barristers, and legal support staff. Dictate legal documents and correspondence accurately.</p>
+                  <span class="product-cta">Enquire at VRA</span>
+                </a>
+              </div>
+            </div>
+            <p style="margin-top:32px">For teams who need speech recognition without installing software on managed devices, a browser-based platform like <a href="https://www.speechrecognition.cloud" style="color:#2d7a3a;font-weight:600">SpeechRecognition Cloud</a> may be a better fit. For workflows combining dictation hardware with software transcription, see our <a href="/dictation-equipment" style="color:#2d7a3a;font-weight:600">dictation equipment</a> page.</p>
+          </div>
+          <div class="c4"><ACForm /></div>
+        </div>
+      </div>
+    </div>
+    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div style="display:flex;gap:20px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div></div></footer>
+  </body>
+</html>

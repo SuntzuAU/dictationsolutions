@@ -1,0 +1,75 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speech-to-Text Solutions Australia | Dictation Solutions Australia</title>
+    <meta name="description" content="Speech-to-text software for Australian professionals. Compare Dragon Professional, Dragon Medical One, and cloud speech recognition. Find the right fit for your workflow." />
+    <link rel="canonical" href="https://dictationsolutions.com.au/speech-to-text" />
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:#fff;color:#0f1a10}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .page-header{background:#1c2b1e;color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#86a989;margin-bottom:16px}
+      .breadcrumb a{color:#86a989}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.02em}
+      .lead{font-size:17px;color:#b8cbb9;margin:0;max-width:600px}
+      .content{padding:56px 0}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+      .c8{grid-column:span 8}.c4{grid-column:span 4}
+      h2{font-size:26px;margin:0 0 12px;letter-spacing:-0.01em;color:#1c2b1e}
+      p{color:#4a5e4d;line-height:1.7;margin:0 0 16px}
+      .compare-table{width:100%;border-collapse:collapse;margin:16px 0 32px;font-size:14px}
+      .compare-table th{background:#1c2b1e;color:white;padding:12px 16px;text-align:left;font-weight:700}
+      .compare-table td{padding:12px 16px;border-bottom:1px solid #e8ede8;color:#4a5e4d;vertical-align:top}
+      .compare-table tr:nth-child(even) td{background:#f4f6f4}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      @media(max-width:900px){.c8,.c4{grid-column:span 12}h1{font-size:28px}}
+      @media(max-width:600px){.compare-table{font-size:12px}.compare-table th,.compare-table td{padding:8px 10px}}
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="/">Dictation Solutions Australia</a> &rsaquo; Speech-to-Text</div>
+        <h1>Speech-to-Text Solutions Australia</h1>
+        <p class="lead">Compare the main speech-to-text options for Australian professionals and find the right fit for your workflow and budget.</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="wrap">
+        <div class="grid">
+          <div class="c8">
+            <h2>Choosing the right speech-to-text solution</h2>
+            <p>Speech-to-text technology has improved dramatically. The question is no longer whether it works - it is which product suits your specific workflow, data handling requirements, and budget.</p>
+            <table class="compare-table">
+              <thead><tr><th>Product</th><th>Best for</th><th>Key considerations</th></tr></thead>
+              <tbody>
+                <tr><td><a href="/dragon-software" style="color:#2d7a3a;font-weight:600">Dragon Professional 16</a></td><td>Legal, government, enterprise desktop users needing offline capability</td><td>Windows only. Works offline after install. Perpetual licence available.</td></tr>
+                <tr><td><a href="/dragon-medical-one" style="color:#2d7a3a;font-weight:600">Dragon Medical One</a></td><td>Healthcare professionals needing medical vocabulary and clinical integration</td><td>Cloud-based. Medical vocabulary built in. Subscription pricing.</td></tr>
+                <tr><td><a href="https://www.speechrecognition.cloud" style="color:#2d7a3a;font-weight:600">SpeechRecognition Cloud</a></td><td>Teams needing browser-based access, 57-language support, no local install</td><td>Cloud only. Subscription. Modern AI-powered transcription.</td></tr>
+                <tr><td>Built-in OS tools</td><td>Casual personal use</td><td>Free but limited accuracy for professional use. No custom vocabulary.</td></tr>
+              </tbody>
+            </table>
+            <h2>Key questions to help you choose</h2>
+            <p><strong style="color:#1c2b1e">Do you need it to work offline?</strong> Dragon Professional 16 is the main option for offline-capable professional speech recognition.</p>
+            <p><strong style="color:#1c2b1e">Are you in healthcare?</strong> Dragon Medical One is purpose-built for clinical environments. General-purpose tools are not a substitute.</p>
+            <p><strong style="color:#1c2b1e">Do you need to install on managed devices?</strong> If your IT environment restricts local installs, a browser-based platform like SpeechRecognition Cloud may be the only viable option.</p>
+            <p><strong style="color:#1c2b1e">Do you need multiple languages?</strong> Dragon is English-focused. SpeechRecognition Cloud supports 57 languages.</p>
+            <p style="margin-top:24px">Not sure which path is right? Contact <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a> for independent advice.</p>
+          </div>
+          <div class="c4"><ACForm /></div>
+        </div>
+      </div>
+    </div>
+    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div style="display:flex;gap:20px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div></div></footer>
+  </body>
+</html>

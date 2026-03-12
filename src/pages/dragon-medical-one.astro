@@ -1,0 +1,91 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dragon Medical One Australia | Dictation Solutions Australia</title>
+    <meta name="description" content="Dragon Medical One for Australian healthcare professionals. Cloud-based medical speech recognition with vocabulary for 100+ specialties. Contact Voice Recognition Australia for pricing." />
+    <link rel="canonical" href="https://dictationsolutions.com.au/dragon-medical-one" />
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:#fff;color:#0f1a10}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .page-header{background:#1c2b1e;color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#86a989;margin-bottom:16px}
+      .breadcrumb a{color:#86a989}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.02em}
+      .lead{font-size:17px;color:#b8cbb9;margin:0;max-width:600px}
+      .content{padding:56px 0}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+      .c8{grid-column:span 8}.c4{grid-column:span 4}
+      h2{font-size:26px;margin:0 0 12px;letter-spacing:-0.01em;color:#1c2b1e}
+      p{color:#4a5e4d;line-height:1.7;margin:0 0 16px}
+      .feature-list{list-style:none;padding:0;margin:0 0 24px}
+      .feature-list li{padding:8px 0;border-bottom:1px solid #e8ede8;font-size:15px;color:#4a5e4d;display:flex;gap:10px}
+      .feature-list li:last-child{border-bottom:none}
+      .feature-list li::before{content:"\2713";color:#2d7a3a;font-weight:700;flex-shrink:0}
+      .specialty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 24px}
+      .specialty-chip{background:#f4f6f4;border:1px solid #d4e0d6;border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;color:#1c2b1e;text-align:center}
+      .info-box{background:#f4f6f4;border-left:4px solid #2d7a3a;border-radius:0 12px 12px 0;padding:20px 24px;margin:24px 0}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      @media(max-width:900px){.c8,.c4{grid-column:span 12}.specialty-grid{grid-template-columns:repeat(2,1fr)}h1{font-size:28px}}
+    </style>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="/">Dictation Solutions Australia</a> &rsaquo; <a href="/dragon-software">Dragon Software</a> &rsaquo; Dragon Medical One</div>
+        <h1>Dragon Medical One Australia</h1>
+        <p class="lead">Cloud-based medical speech recognition for Australian clinicians. Dictate notes directly into your clinical system from any device.</p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="wrap">
+        <div class="grid">
+          <div class="c8">
+            <h2>What is Dragon Medical One?</h2>
+            <p>Dragon Medical One is Nuance's cloud-based speech recognition platform designed for healthcare professionals. Unlike the legacy Dragon Medical Practice Edition which required local installation and training, Dragon Medical One is cloud-hosted - it works from any device, requires no acoustic training, and updates automatically.</p>
+            <p>It is specifically designed for clinical environments with pre-built medical vocabulary across over 100 specialties, making it accurate from day one for clinical terminology without any setup period.</p>
+            <div class="info-box"><strong>Pricing:</strong> Dragon Medical One pricing is not published publicly and is quoted per organisation. For current Australian pricing, contact <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a> directly.</div>
+            <h2>Key features</h2>
+            <ul class="feature-list">
+              <li>Cloud-based - dictate from PC, tablet, or mobile device</li>
+              <li>Medical vocabulary for 100+ specialties built in</li>
+              <li>No acoustic training required - accurate from first use</li>
+              <li>Integrates with major clinical information systems</li>
+              <li>Centralised management for IT and practice administrators</li>
+              <li>Subscription-based pricing - contact VRA for current rates</li>
+            </ul>
+            <h2>Medical specialties covered</h2>
+            <div class="specialty-grid">
+              <div class="specialty-chip">General Practice</div>
+              <div class="specialty-chip">Cardiology</div>
+              <div class="specialty-chip">Radiology</div>
+              <div class="specialty-chip">Pathology</div>
+              <div class="specialty-chip">Emergency</div>
+              <div class="specialty-chip">Orthopaedics</div>
+              <div class="specialty-chip">Oncology</div>
+              <div class="specialty-chip">Psychiatry</div>
+              <div class="specialty-chip">Paediatrics</div>
+              <div class="specialty-chip">Neurology</div>
+              <div class="specialty-chip">Gastroenterology</div>
+              <div class="specialty-chip">Respiratory</div>
+            </div>
+            <h2>Dragon Medical One vs Dragon Medical Practice Edition</h2>
+            <p>Dragon Medical Practice Edition was the legacy desktop product - locally installed, requiring significant setup and acoustic training. It has reached end-of-life. Dragon Medical One is the current supported product and is cloud-based. For information on transitioning, contact <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a>.</p>
+            <p style="margin-top:24px">For non-clinical professionals who need desktop dictation that works offline, <a href="/dragon-software" style="color:#2d7a3a;font-weight:600">Dragon Professional 16</a> may be more appropriate.</p>
+          </div>
+          <div class="c4"><ACForm /></div>
+        </div>
+      </div>
+    </div>
+    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div style="display:flex;gap:20px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div></div></footer>
+  </body>
+</html>
