@@ -1,0 +1,133 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+const year = new Date().getFullYear();
+const c = site.colours;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dictation Equipment Australia | Dictation Solutions Australia</title>
+    <meta name="description" content="Philips and Olympus digital voice recorders, microphones, foot pedals, headsets and dictation accessories for Australian professionals. Healthcare, legal and enterprise." />
+    <link rel="canonical" href="https://dictationsolutions.com.au/dictation-equipment" />
+    <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
+      .breadcrumb a{color:#9ca3af;text-decoration:underline}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px}
+      .intro{font-size:18px;color:#d1d5db;margin:0}
+      section{padding:56px 0}
+      .neutral-bg{background:var(--neutral)}
+      .dark-bg{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c7{grid-column:span 7}.c5{grid-column:span 5}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
+      .card h3{margin:0 0 8px;font-size:18px}.card p{color:var(--muted);margin:0 0 10px;font-size:15px}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
+      .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
+      .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accentHover)}
+      .formbox{background:#fff;border-radius:16px;padding:28px}
+      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
+      @media(max-width:900px){.c6,.c4,.c5,.c7,.c3{grid-column:span 12}h1{font-size:28px}}
+    </style>
+  </head>
+  <body>
+    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
+      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px">
+        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
+        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
+          <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
+          <a href="/dragon-medical-one">Medical</a>
+          <a href="/dictation-equipment" style="color:#16a34a;font-weight:700">Equipment</a>
+          <a href="/support">Support</a>
+        </nav>
+        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
+      </div>
+    </header>
+
+    <div class="page-header">
+      <div class="wrap">
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Dictation Equipment</div>
+        <h1>Dictation Equipment Australia</h1>
+        <p class="intro">Philips and Olympus voice recorders, microphones, foot pedals and accessories for professional dictation workflows.</p>
+      </div>
+    </div>
+
+    <main>
+      <section>
+        <div class="wrap">
+          <div class="grid">
+            <div class="card c3">
+              <div class="tag">Microphones</div>
+              <h3>SpeechMike and Dictation Mics</h3>
+              <p>Philips SpeechMike and USB dictation microphones for desktop Dragon and voice recognition software. Precision microphones for professional accuracy.</p>
+            </div>
+            <div class="card c3">
+              <div class="tag">Recorders</div>
+              <h3>Digital Voice Recorders</h3>
+              <p>Philips and Olympus portable digital voice recorders for field dictation. Record away from the desk, transcribe back at the office.</p>
+            </div>
+            <div class="card c3">
+              <div class="tag">Accessories</div>
+              <h3>Foot Pedals</h3>
+              <p>Transcription foot pedals for hands-free audio playback control during transcription. Compatible with Philips and Olympus workflows.</p>
+            </div>
+            <div class="card c3">
+              <div class="tag">Accessories</div>
+              <h3>Headsets</h3>
+              <p>Professional dictation headsets and accessories compatible with Dragon software and traditional dictation workflows.</p>
+            </div>
+          </div>
+          <div style="margin-top:24px;padding:20px;background:#f3f4f6;border-radius:12px">
+            <p style="margin:0;color:#4b5563;font-size:15px">For current hardware stock, pricing and availability, visit <a href="https://www.voicerecognition.com.au" style="color:#16a34a;font-weight:600">Voice Recognition Australia</a> - the authorised Australian reseller for Philips and Olympus dictation hardware.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="neutral-bg">
+        <div class="wrap">
+          <div style="max-width:720px">
+            <h2 style="font-size:26px;margin:0 0 16px">Philips vs Olympus - which brand for Australian professionals?</h2>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Both Philips and Olympus produce professional-grade dictation hardware used widely in Australian healthcare and legal environments. Philips SpeechMike devices are particularly popular for desktop-connected Dragon workflows. Olympus devices are widely used for mobile field dictation.</p>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Compatibility with Dragon speech recognition software varies by device model. If you are purchasing hardware specifically to use with Dragon, confirm compatibility with our team before purchasing.</p>
+            <p style="font-size:16px;color:#4b5563">Professionals who use speech recognition software alongside dictation hardware often get the best results by pairing a quality Philips microphone with <a href="/dragon-software" style="color:#16a34a;font-weight:600">Dragon Professional or Dragon Medical One</a> for their desktop workflow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="dark-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              <h2 style="color:white;font-size:26px;margin:0 0 12px">Hardware and software advice</h2>
+              <p style="color:#9ca3af">Not sure which hardware works best with your dictation software setup? Our team can advise on compatible microphones, recorders and accessories for your workflow.</p>
+            </div>
+            <div class="c5"><ACForm /></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
+            <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+  </body>
+</html>

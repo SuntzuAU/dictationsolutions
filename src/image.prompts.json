@@ -1,0 +1,30 @@
+{
+  "_readme": "Image generation prompts for dictationsolutions.com.au. Trigger manually via master-image-generator Worker. SEO slug-first naming convention.",
+  "images": [
+    {
+      "key": "hero",
+      "name": "dictation-solutions-australia-professional-workflow",
+      "prompt": "Professional Australian healthcare and legal worker using a Philips SpeechMike dictation microphone at a modern desk, clean office environment, warm natural light, high quality photography style, photorealistic"
+    },
+    {
+      "key": "about-banner",
+      "name": "voice-recognition-australia-dictation-support-team",
+      "prompt": "Australian professional support team in a clean modern office, technology environment, collaborative, trustworthy, warm lighting, corporate photography style, photorealistic"
+    },
+    {
+      "key": "cta-banner",
+      "name": "dictation-solutions-australia-healthcare-legal",
+      "prompt": "Australian doctor and lawyer side by side in professional settings using voice dictation technology, modern clean environments, photorealistic, professional photography"
+    },
+    {
+      "key": "feature-dragon",
+      "name": "dragon-speech-recognition-software-australia",
+      "prompt": "Close up of professional dictating by voice into a high quality USB microphone connected to a Windows PC, Dragon software interface visible on screen, clean modern desk, photorealistic"
+    },
+    {
+      "key": "feature-hardware",
+      "name": "philips-olympus-dictation-hardware-australia",
+      "prompt": "Professional arrangement of Philips dictation hardware including voice recorder, SpeechMike microphone and foot pedal on a clean modern desk, product photography style, neutral background, photorealistic"
+    }
+  ]
+}

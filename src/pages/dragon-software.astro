@@ -1,7 +1,17 @@
 ---
+import manifest from "../data/image-manifest.json";
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+
 const year = new Date().getFullYear();
+const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+function imgSrc(key) {
+  const entry = manifest[key];
+  if (!entry?.r2Key || !R2_BASE) return "";
+  return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
+}
+function imgAlt(key) { return manifest[key]?.altText || key; }
+const c = site.colours;
 ---
 <!doctype html>
 <html lang="en">
@@ -9,91 +19,159 @@ const year = new Date().getFullYear();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dragon Software Australia | Dictation Solutions Australia</title>
-    <meta name="description" content="Dragon speech recognition software for Australian professionals. Dragon Professional 16, Dragon Medical One, Dragon Anywhere. Authorised Australian reseller - Voice Recognition Australia." />
+    <meta name="description" content="Dragon Professional, Dragon Medical One and Dragon Professional Anywhere for Australian professionals. Desktop and cloud speech recognition. Authorised reseller - Voice Recognition Australia." />
     <link rel="canonical" href="https://dictationsolutions.com.au/dragon-software" />
-    <style is:inline>
+    <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:#fff;color:#0f1a10}
+      body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .page-header{background:#1c2b1e;color:white;padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#86a989;margin-bottom:16px}
-      .breadcrumb a{color:#86a989;text-decoration:none}
-      .breadcrumb a:hover{color:white}
-      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.02em}
-      .lead{font-size:17px;color:#b8cbb9;margin:0;max-width:600px}
-      .content{padding:56px 0}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-      .c8{grid-column:span 8}.c4{grid-column:span 4}.c6{grid-column:span 6}
-      h2{font-size:26px;margin:0 0 12px;letter-spacing:-0.01em;color:#1c2b1e}
-      p{color:#4a5e4d;line-height:1.7;margin:0 0 16px}
-      .product-card{background:#f4f6f4;border:1px solid #d4e0d6;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,box-shadow .15s}
-      .product-card:hover{border-color:#2d7a3a;box-shadow:0 4px 20px rgba(45,122,58,.1)}
-      .product-badge{display:inline-block;background:#2d7a3a;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
-      .product-title{font-size:19px;font-weight:700;margin:0;color:#1c2b1e}
-      .product-desc{font-size:15px;color:#4a5e4d;margin:0}
-      .product-cta{display:inline-block;background:#2d7a3a;color:white;padding:9px 18px;border-radius:8px;font-weight:700;font-size:13px;margin-top:auto;align-self:flex-start}
-      .formbox{background:#f4f6f4;border-radius:16px;padding:28px}
-      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
+      .breadcrumb a{color:#9ca3af;text-decoration:underline}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.025em}
+      .intro{font-size:18px;color:#d1d5db;margin:0;line-height:1.6}
+      section{padding:56px 0}
+      .neutral-bg{background:var(--neutral)}
+      .dark-bg{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .c6{grid-column:span 6}
+      .c4{grid-column:span 4}
+      .c7{grid-column:span 7}
+      .c5{grid-column:span 5}
+      .c12{grid-column:span 12}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
+      .card h2{font-size:22px;margin:0 0 8px}
+      .card p{color:var(--muted);margin:0 0 16px}
+      .card ul{color:var(--muted);padding-left:20px;margin:0 0 20px;line-height:1.9}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+      .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-primary{background:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover)}
+      .btn-outline{border:2px solid var(--accent);color:var(--accent);background:transparent}
+      .btn-outline:hover{background:var(--accent);color:#fff}
+      .formbox{background:#fff;border-radius:16px;padding:28px}
+      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-      @media(max-width:900px){.c8,.c4,.c6{grid-column:span 12}h1{font-size:28px}}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
+      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:28px}}
+      @media(max-width:600px){section{padding:36px 0}.page-header{padding:32px 0 28px}.card{padding:20px}}
     </style>
   </head>
   <body>
+    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
+      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px;gap:16px">
+        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
+        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
+          <a href="/" style="color:#374151">Home</a>
+          <a href="/dragon-software" style="color:#16a34a;font-weight:700">Dragon Software</a>
+          <a href="/dragon-medical-one" style="color:#374151">Medical</a>
+          <a href="/dictation-equipment" style="color:#374151">Equipment</a>
+          <a href="/support" style="color:#374151">Support</a>
+        </nav>
+        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
+      </div>
+    </header>
+
     <div class="page-header">
       <div class="wrap">
-        <div class="breadcrumb"><a href="/">Dictation Solutions Australia</a> &rsaquo; Dragon Software</div>
-        <h1>Dragon Software Australia</h1>
-        <p class="lead">Dragon Professional and Dragon Medical One - the gold standard for speech recognition in Australian healthcare, legal, and enterprise environments.</p>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Dragon Software</div>
+        <h1>Dragon Speech Recognition Software</h1>
+        <p class="intro">Desktop and cloud dictation solutions for Australian professionals. Authorised reseller with local support.</p>
       </div>
     </div>
-    <div class="content">
-      <div class="wrap">
-        <div class="grid">
-          <div class="c8">
-            <h2>Dragon speech recognition for Australian professionals</h2>
-            <p>Dragon is the market-leading speech recognition software for professional use. Dictate into any Windows application at up to three times the speed of typing, with accuracy that adapts to your voice and vocabulary over time.</p>
-            <p>Voice Recognition Australia is an authorised Australian reseller for Dragon, with over 25 years of deployment experience. For current pricing and purchasing, visit <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a>.</p>
-            <div class="grid" style="margin-top:24px">
-              <div class="c6">
-                <a href="/dragon-medical-one" class="product-card">
-                  <div><span class="product-badge">Healthcare</span></div>
-                  <div class="product-title">Dragon Medical One</div>
-                  <p class="product-desc">Cloud-based medical speech recognition for clinicians. Built-in medical vocabulary for 100+ specialties. Dictate from any device.</p>
-                  <span class="product-cta">Learn more</span>
-                </a>
-              </div>
-              <div class="c6">
-                <a href="https://www.dragonprofessional16.com.au" class="product-card">
-                  <div><span class="product-badge">Professional</span></div>
-                  <div class="product-title">Dragon Professional 16</div>
-                  <p class="product-desc">Locally installed desktop speech recognition for Windows. Works offline. Perpetual licence available. Ideal for legal, government, and enterprise workflows.</p>
-                  <span class="product-cta">View Dragon Professional 16</span>
-                </a>
-              </div>
-              <div class="c6">
-                <a href="https://www.voicerecognition.com.au" class="product-card">
-                  <div><span class="product-badge">Cloud</span></div>
-                  <div class="product-title">Dragon Professional Anywhere</div>
-                  <p class="product-desc">Cloud-based Dragon for enterprise teams. Centralised management, browser-based access. No local installation required.</p>
-                  <span class="product-cta">Enquire at VRA</span>
-                </a>
-              </div>
-              <div class="c6">
-                <a href="https://www.voicerecognition.com.au" class="product-card">
-                  <div><span class="product-badge">Legal</span></div>
-                  <div class="product-title">Dragon Legal</div>
-                  <p class="product-desc">Dragon with built-in legal vocabulary for lawyers, barristers, and legal support staff. Dictate legal documents and correspondence accurately.</p>
-                  <span class="product-cta">Enquire at VRA</span>
-                </a>
-              </div>
+
+    <main>
+      <section>
+        <div class="wrap">
+          <div class="grid">
+
+            <div class="card c4">
+              <div class="tag">Desktop</div>
+              <h2>Dragon Professional 16</h2>
+              <p>Locally installed Windows software. Works offline after activation. Perpetual or subscription licensing. Ideal for legal, government and professionals with data handling requirements.</p>
+              <ul>
+                <li>Works completely offline</li>
+                <li>Custom vocabulary and macros</li>
+                <li>Single-speaker audio transcription</li>
+                <li>Windows 10 and 11</li>
+              </ul>
+              <a href="https://www.dragonprofessional16.com.au" class="btn btn-outline">Dragon Professional 16 details &rarr;</a>
             </div>
-            <p style="margin-top:32px">For teams who need speech recognition without installing software on managed devices, a browser-based platform like <a href="https://www.speechrecognition.cloud" style="color:#2d7a3a;font-weight:600">SpeechRecognition Cloud</a> may be a better fit. For workflows combining dictation hardware with software transcription, see our <a href="/dictation-equipment" style="color:#2d7a3a;font-weight:600">dictation equipment</a> page.</p>
+
+            <div class="card c4" style="border-color:#16a34a">
+              <div class="tag">Cloud</div>
+              <h2>Dragon Professional Anywhere</h2>
+              <p>Cloud-based enterprise dictation. Works on any Windows device with internet access. Centralised management, enterprise-grade accuracy, Dragon quality in a cloud-native package.</p>
+              <ul>
+                <li>No local installation required</li>
+                <li>Enterprise management tools</li>
+                <li>Consistent profile across devices</li>
+                <li>Subscription pricing</li>
+              </ul>
+              <a href="https://www.voicerecognition.com.au" class="btn btn-primary">Enquire at VRA &rarr;</a>
+            </div>
+
+            <div class="card c4">
+              <div class="tag">Healthcare</div>
+              <h2>Dragon Medical One</h2>
+              <p>Cloud-based speech recognition built specifically for clinicians. Medical vocabulary, EHR integration, dictate from any device. The leading choice for Australian healthcare documentation.</p>
+              <ul>
+                <li>Built-in medical speciality vocabularies</li>
+                <li>EHR and EMR integration</li>
+                <li>Dictate from desktop, tablet or mobile</li>
+                <li>Cloud - no local installation</li>
+              </ul>
+              <a href="/dragon-medical-one" class="btn btn-outline">Dragon Medical One details &rarr;</a>
+            </div>
+
           </div>
-          <div class="c4"><ACForm /></div>
         </div>
+      </section>
+
+      <section class="neutral-bg">
+        <div class="wrap">
+          <div style="max-width:700px">
+            <h2 style="font-size:28px;margin:0 0 16px">Desktop vs cloud: which Dragon is right for you?</h2>
+            <p style="color:#4b5563;font-size:16px;margin:0 0 16px">The main question is whether you need to work offline. Dragon Professional 16 installs locally and runs without an internet connection after activation - important for legal, government and healthcare environments with strict data requirements.</p>
+            <p style="color:#4b5563;font-size:16px;margin:0 0 24px">Dragon Professional Anywhere and Dragon Medical One are cloud-based and require an internet connection. In return, they offer anywhere access, automatic updates, and enterprise management tools without local IT overhead.</p>
+            <p style="color:#4b5563;font-size:16px;margin:0 0 24px">For purchasing and current Australian pricing, <a href="https://www.voicerecognition.com.au" style="color:#16a34a;font-weight:600">Voice Recognition Australia</a> is the authorised Australian reseller for the full Dragon product range.</p>
+            <a href="/#final-cta" class="btn btn-primary">Talk to our team &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="dark-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              <h2 style="color:white;font-size:26px;margin:0 0 12px">Not sure which Dragon is right for you?</h2>
+              <p style="color:#9ca3af">Our team has been deploying Dragon software in Australian organisations for 25 years. Tell us about your workflow and we will recommend the right option.</p>
+            </div>
+            <div class="c5">
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
       </div>
-    </div>
-    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div style="display:flex;gap:20px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div></div></footer>
+    </footer>
   </body>
 </html>

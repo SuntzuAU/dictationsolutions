@@ -3,164 +3,147 @@
   "domain": "https://dictationsolutions.com.au",
   "googleAnalyticsId": "",
   "colours": {
-    "primary": "#1c2b1e",
+    "primary": "#1f2937",
     "background": "#ffffff",
-    "neutral": "#f4f6f4",
-    "accent": "#2d7a3a",
-    "accentHover": "#235f2c",
-    "text": "#0f1a10",
-    "muted": "#4a5e4d"
+    "neutral": "#f3f4f6",
+    "accent": "#16a34a",
+    "accentHover": "#15803d",
+    "text": "#111827",
+    "muted": "#6b7280"
   },
   "branding": {
-    "metaTitle": "Dictation Solutions Australia | Dictation, Speech Recognition and Transcription",
-    "metaDesc": "Dictation Solutions Australia helps professionals choose the right dictation, speech recognition, transcription and hardware workflow. From traditional digital dictation to modern cloud speech AI.",
-    "industry": "Professional and Healthcare",
+    "metaTitle": "Dictation Solutions Australia | Dictation, Speech Recognition & Transcription",
+    "metaDesc": "Dictation, speech recognition and transcription solutions for Australian professionals. Dragon software, cloud speech, dictation hardware and medical transcription. Trusted by healthcare, legal and enterprise.",
+    "industry": "Dictation & Speech Recognition",
     "region": "Australia",
     "headline": "Dictation, Speech Recognition and Transcription Solutions for Australian Professionals",
-    "subheadline": "From traditional dictation hardware to modern cloud speech workflows, we help you find the right solution for your practice, business or team.",
-    "statsMessage": "Over 20 years of dictation and speech recognition expertise in Australia",
-    "benefitsHeading": "Why Australian professionals come to us",
-    "benefitsSubheading": "Whether you need dictation hardware, desktop speech recognition software, or a modern cloud speech platform, we can point you in the right direction.",
-    "solutionPathsHeading": "Three solution paths for Australian professionals",
-    "solutionPathsSubheading": "Choose the path that matches how you work.",
-    "ctaHeading": "Not sure which solution is right for you?",
-    "ctaBody": "Our team has over 20 years of experience deploying dictation and speech recognition solutions across Australian healthcare, legal, and enterprise environments. Describe your situation and we will help you choose the right path.",
+    "subheadline": "From traditional digital dictation hardware to modern cloud speech workflows, find the right solution for your practice, business or team. 25 years of Australian deployment experience.",
+    "statsMessage": "25 years of Australian dictation and speech recognition expertise",
+    "pathwaysHeading": "Find the right solution for your workflow",
+    "pathwaysSubheading": "Three pathways for Australian professionals. Choose the approach that fits how you work.",
+    "aboutHeading": "Voice Recognition Australia - 25 years of dictation expertise",
+    "aboutBody": "Dictation Solutions Australia is part of the Voice Recognition Australia network - Australia's longest-serving speech recognition and dictation specialist. Our team has deployed Dragon, Philips and Olympus dictation systems across healthcare, legal, government and enterprise environments since the late 1990s. We help organisations choose the right solution, not just sell product.",
+    "ctaHeading": "Not sure which approach is right for you?",
+    "ctaBody": "Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your workflow and we will point you in the right direction.",
     "ctaBullets": [
-      "Are you looking for software, hardware, or both",
-      "Whether you work in healthcare, legal, or general business",
-      "How many users and what type of workflow",
-      "Whether you need cloud-based or locally installed solutions"
+      "What you are trying to dictate and where",
+      "Whether you need hardware, software or both",
+      "Your industry and any compliance requirements",
+      "Number of users and deployment environment"
     ],
-    "aboutHeading": "Voice Recognition Australia - Australia's dictation and speech recognition specialists",
-    "aboutBody": "Voice Recognition Australia has been deploying dictation and speech recognition solutions across Australian healthcare, legal, and enterprise environments for over 25 years. From Philips and Olympus digital recorders through to Dragon Professional software and modern cloud speech platforms, we have the experience to guide you to the right solution.",
-    "footerDisclaimer": "Dictation Solutions Australia is operated by Voice Recognition Australia. Dragon and Dragon Medical One are the property of Nuance Communications (Microsoft). Philips Speech and Olympus are trademarks of their respective owners. Pricing accurate at time of publication - verify current pricing before purchase. All prices AUD including GST."
+    "footerDisclaimer": "Dictation Solutions Australia is part of the Voice Recognition Australia network. Dragon and related marks are the property of Nuance Communications (Microsoft). Philips and Olympus dictation products are trademarks of their respective owners. Voice Recognition Australia is an authorised Australian reseller. All prices AUD including GST where shown."
   },
   "navItems": [
-    { "label": "Solutions", "url": "#solutions" },
+    { "label": "Solutions", "url": "#pathways" },
     { "label": "Dragon Software", "url": "/dragon-software" },
-    { "label": "Equipment", "url": "/dictation-equipment" },
     { "label": "Medical", "url": "/dragon-medical-one" },
+    { "label": "Equipment", "url": "/dictation-equipment" },
+    { "label": "Support", "url": "/support" },
     { "label": "Contact", "url": "#final-cta" }
   ],
-  "navDropdown": {
-    "label": "All Solutions",
-    "items": [
-      { "label": "Dragon Software", "url": "/dragon-software" },
-      { "label": "Dragon Medical One", "url": "/dragon-medical-one" },
-      { "label": "Medical Transcription", "url": "/medical-transcription" },
-      { "label": "Speech-to-Text", "url": "/speech-to-text" },
-      { "label": "Dictation Equipment", "url": "/dictation-equipment" },
-      { "label": "Foot Pedals", "url": "/foot-pedals" },
-      { "label": "Headsets and Accessories", "url": "/headsets-accessories" },
-      { "label": "Support", "url": "/support" }
-    ]
-  },
   "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },
-  "secondaryCTA": { "text": "Explore Solutions", "url": "#solutions" },
-  "form": {
-    "id": "283",
-    "submitText": "Request Information",
-    "hiddenU": "283",
-    "hiddenF": "283",
-    "hiddenOr": "452040ae-e495-4c74-bd95-dc0f67e3edd8"
-  },
+  "secondaryCTA": { "text": "Explore Solutions", "url": "#pathways" },
   "stats": [
-    { "value": "20+ years", "label": "Australian dictation expertise" },
-    { "value": "Hardware and Software", "label": "Complete solutions" },
-    { "value": "Healthcare and Legal", "label": "Specialist sectors" },
-    { "value": "Local support", "label": "Australian team" }
+    { "value": "25 years", "label": "Australian market expertise" },
+    { "value": "Dragon", "label": "Authorised reseller" },
+    { "value": "Philips + Olympus", "label": "Hardware specialists" },
+    { "value": "Healthcare", "label": "Legal and enterprise focus" }
   ],
-  "solutionPaths": [
+  "pathways": [
     {
-      "icon": "voice",
-      "title": "Dragon Software and Speech Recognition",
-      "body": "For professionals who want to dictate into any application on their Windows PC, Dragon Professional and Dragon Medical One remain the gold standard for accuracy and workflow automation.",
-      "primaryCTA": { "text": "Explore Dragon Software", "url": "/dragon-software" },
-      "secondaryCTA": { "text": "Dragon Medical One", "url": "/dragon-medical-one" }
+      "slug": "dragon-software",
+      "icon": "speech",
+      "badge": "Speech Recognition",
+      "title": "Dragon Speech Recognition",
+      "subtitle": "Desktop and cloud software",
+      "description": "Dragon Professional for Windows desktops, Dragon Medical One for healthcare, and Dragon Professional Anywhere for cloud-connected enterprise. Dictate faster than you type, automate repetitive workflows, and keep working offline.",
+      "cta": "Explore Dragon software",
+      "url": "/dragon-software",
+      "destination": "voicerecognition.com.au",
+      "destinationLabel": "Purchase from Voice Recognition Australia",
+      "destinationUrl": "https://www.voicerecognition.com.au"
     },
     {
+      "slug": "cloud-speech",
       "icon": "cloud",
-      "title": "Cloud and Browser Speech Recognition",
-      "body": "For teams who need speech recognition without local installation, modern cloud speech platforms offer 57-language support, browser access, and subscription pricing.",
-      "primaryCTA": { "text": "Explore Cloud Speech", "url": "https://www.speechrecognition.cloud" },
-      "secondaryCTA": { "text": "Speech-to-Text Options", "url": "/speech-to-text" }
+      "badge": "Cloud & AI",
+      "title": "Cloud Speech Solutions",
+      "subtitle": "Browser-based AI transcription",
+      "description": "Modern cloud speech recognition accessible from any device without local software installation. Supports 57 languages, tiered plans for individuals and organisations, and a free tier to get started.",
+      "cta": "Explore cloud speech",
+      "url": "https://www.speechrecognition.cloud",
+      "destination": "speechrecognition.cloud",
+      "destinationLabel": "Visit SpeechRecognition Cloud",
+      "destinationUrl": "https://www.speechrecognition.cloud"
     },
     {
+      "slug": "dictation-equipment",
       "icon": "hardware",
-      "title": "Dictation Hardware and Accessories",
-      "body": "Digital voice recorders, microphones, foot pedals, and headsets from Philips and Olympus. Professional dictation hardware for workflows that require dedicated recording devices.",
-      "primaryCTA": { "text": "Dictation Equipment", "url": "/dictation-equipment" },
-      "secondaryCTA": { "text": "Foot Pedals and Controls", "url": "/foot-pedals" }
+      "badge": "Hardware",
+      "title": "Dictation Hardware",
+      "subtitle": "Recorders, microphones and accessories",
+      "description": "Philips and Olympus digital voice recorders, professional microphones, foot pedals, headsets and accessories for traditional and hybrid dictation workflows.",
+      "cta": "Browse equipment",
+      "url": "/dictation-equipment",
+      "destination": "voicerecognition.com.au",
+      "destinationLabel": "Purchase from Voice Recognition Australia",
+      "destinationUrl": "https://www.voicerecognition.com.au"
     }
   ],
   "benefits": [
     {
-      "title": "Software and hardware expertise",
-      "body": "We cover the full dictation and speech recognition stack - from Philips and Olympus digital recorders through to Dragon Professional desktop software and modern cloud speech platforms."
+      "title": "Hardware and software expertise",
+      "body": "We cover the full dictation workflow - from Philips and Olympus voice recorders and foot pedals through to Dragon speech recognition software and cloud transcription platforms. One contact, complete solution."
     },
     {
-      "title": "Healthcare and legal specialists",
-      "body": "Dictation and speech recognition requirements in healthcare and legal environments are different from general business. We understand clinical vocabulary, legal workflow, and compliance considerations."
+      "title": "Healthcare and legal focus",
+      "body": "Most of our clients work in healthcare, legal or government. Our team understands the specific requirements of medical documentation, legal transcription, and secure enterprise dictation environments."
     },
     {
-      "title": "25 years of Australian deployment",
-      "body": "Voice Recognition Australia has been deploying dictation and speech recognition solutions across Australian practices, chambers, and enterprises since the late 1990s."
+      "title": "Modern and traditional workflows",
+      "body": "Not everyone is ready to move to cloud AI speech tools. We support traditional dictation recorder workflows alongside modern Dragon and cloud speech solutions - whichever works for your team."
     },
     {
-      "title": "Independent guidance",
-      "body": "We cover multiple platforms and product families, so our advice is based on what actually suits your workflow - not which product has the best margin."
+      "title": "Australian support",
+      "body": "Local deployment support from Voice Recognition Australia. Real people who understand your workflow, not a support ticket queue in another timezone."
     }
   ],
   "proofPoints": [
-    "20+ years Australian dictation expertise",
-    "Healthcare, legal, and enterprise deployments",
-    "Hardware and software complete solutions",
-    "Local Australian support team"
-  ],
-  "steps": [
-    {
-      "title": "Describe your workflow",
-      "text": "Tell us whether you need software dictation, hardware recording devices, transcription, or a cloud platform. We will map your needs to the right solution."
-    },
-    {
-      "title": "Get a recommendation",
-      "text": "Our team provides a clear recommendation with options and pricing. No jargon, no unnecessary upsell."
-    },
-    {
-      "title": "Implement with local support",
-      "text": "Purchase, deploy, and get up and running with local Australian support available throughout the process."
-    }
+    "25 years of Australian dictation and speech recognition expertise",
+    "Dragon authorised reseller since product launch in Australia",
+    "Philips and Olympus hardware specialists",
+    "Healthcare, legal and government deployment experience"
   ],
   "faqs": [
     {
-      "q": "What is the difference between dictation software and a digital voice recorder?",
-      "a": "Dictation software like Dragon converts your speech to text in real time as you dictate into your computer. A digital voice recorder captures an audio file that is later transcribed - either manually, or automatically via software like Dragon or a cloud transcription service."
+      "q": "What is the difference between Dragon and a dictation recorder?",
+      "a": "Dragon software converts your speech to text in real time as you dictate into a computer or microphone. A digital dictation recorder captures your voice as an audio file, which is then transcribed later - either manually by a typist or via software. Many professionals use both: a recorder in the field, Dragon at the desk."
     },
     {
-      "q": "Is Dragon NaturallySpeaking still available?",
-      "a": "Dragon NaturallySpeaking is the original brand name. The product is now sold as Dragon Professional (for Windows desktop) and Dragon Medical One (for healthcare). The current desktop version is Dragon Professional 16."
+      "q": "Do I need Dragon software or is cloud speech recognition enough?",
+      "a": "It depends on your workflow. Dragon Professional works offline, has deep Windows application integration, and can automate complex tasks by voice. Cloud speech recognition is accessible from any browser, requires no local installation, and is often more cost-effective for occasional users. We can help you work out which approach suits your situation."
     },
     {
-      "q": "Do Philips and Olympus dictation devices still work with Dragon?",
-      "a": "Yes. Philips and Olympus digital recorders in DSS and DS2 format are compatible with Dragon Professional for audio transcription workflows. Some models also work with Philips SpeechLive for cloud transcription."
+      "q": "What dictation hardware do you recommend for healthcare?",
+      "a": "For healthcare workflows, Philips SpeechMike and SpeechOne devices are widely used with Dragon Medical One. Olympus digital recorders work well for clinicians who prefer to dictate remotely and have audio transcribed. The right choice depends on whether you are dictating directly into an EMR or using a separate transcription workflow."
     },
     {
-      "q": "What is the best speech recognition solution for a medical practice?",
-      "a": "Dragon Medical One is the market-leading cloud speech recognition product for healthcare. It includes built-in medical vocabulary for over 100 specialties and integrates with major clinical applications. Contact Voice Recognition Australia for current pricing."
+      "q": "Is Dragon Medical One available in Australia?",
+      "a": "Yes. Dragon Medical One is available through Voice Recognition Australia, an authorised Nuance/Microsoft reseller. It is a cloud-based subscription product designed specifically for healthcare documentation. Pricing is per user per year - contact Voice Recognition Australia for current Australian pricing."
     },
     {
-      "q": "Can I use speech recognition without installing software on my computer?",
-      "a": "Yes. Modern cloud speech platforms like SpeechRecognition Cloud operate entirely in a browser with no local installation required. They suit teams that cannot install software on managed devices."
+      "q": "What is a foot pedal used for in dictation?",
+      "a": "A foot pedal lets a typist or transcriptionist control audio playback hands-free during transcription - play, pause, rewind and fast-forward using their feet while their hands remain on the keyboard. Philips and Olympus both make foot pedals designed for their respective dictation workflows."
     },
     {
-      "q": "What foot pedal do I need for Dragon dictation?",
-      "a": "The most commonly used foot pedals for Dragon are the Olympus RS-31H and Philips LFH models. Foot pedals allow hands-free control of transcription playback. Contact us for compatibility guidance."
+      "q": "Can Dragon work with Philips or Olympus voice recorders?",
+      "a": "Dragon Professional can transcribe audio files from digital voice recorders, including Philips and Olympus devices, as long as the recording is single-speaker audio in a supported format (DS2, DSS, MP3, WAV, WMA). This is useful for professionals who prefer to dictate away from their desk and transcribe later."
     }
   ],
   "footerLinks": [
     { "label": "About", "url": "/about" },
     { "label": "Privacy Policy", "url": "/privacy" },
     { "label": "Terms", "url": "/terms" },
-    { "label": "Contact", "url": "/contact" }
+    { "label": "Contact", "url": "#final-cta" }
   ]
 }

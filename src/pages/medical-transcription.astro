@@ -2,6 +2,7 @@
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
 const year = new Date().getFullYear();
+const c = site.colours;
 ---
 <!doctype html>
 <html lang="en">
@@ -9,61 +10,118 @@ const year = new Date().getFullYear();
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Medical Transcription Australia | Dictation Solutions Australia</title>
-    <meta name="description" content="Medical transcription options for Australian healthcare. Traditional transcription, Dragon speech recognition, and AI-assisted workflows. Compare approaches for your practice." />
+    <meta name="description" content="Medical transcription solutions for Australian healthcare. Traditional transcription services, Dragon Medical One speech recognition, and AI-assisted documentation workflows." />
     <link rel="canonical" href="https://dictationsolutions.com.au/medical-transcription" />
-    <style is:inline>
+    <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:#fff;color:#0f1a10}
+      body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .page-header{background:#1c2b1e;color:white;padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#86a989;margin-bottom:16px}
-      .breadcrumb a{color:#86a989}
-      h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.02em}
-      .lead{font-size:17px;color:#b8cbb9;margin:0;max-width:600px}
-      .content{padding:56px 0}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-      .c8{grid-column:span 8}.c4{grid-column:span 4}.c6{grid-column:span 6}
-      h2{font-size:26px;margin:0 0 12px;letter-spacing:-0.01em;color:#1c2b1e}
-      p{color:#4a5e4d;line-height:1.7;margin:0 0 16px}
-      .approach-card{background:#f4f6f4;border:1px solid #d4e0d6;border-radius:16px;padding:24px}
-      .approach-card h3{font-size:18px;margin:0 0 8px;color:#1c2b1e}
-      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:12px;text-transform:uppercase}
-      .tag-traditional{background:#e8ede8;color:#1c2b1e}
-      .tag-modern{background:#2d7a3a;color:white}
-      .tag-cloud{background:#1c4b8a;color:white}
-      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
+      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
+      .breadcrumb a{color:#9ca3af;text-decoration:underline}
+      h1{font-size:38px;line-height:1.15;margin:0 0 14px}
+      .intro{font-size:18px;color:#d1d5db;margin:0}
+      section{padding:56px 0}
+      .neutral-bg{background:var(--neutral)}
+      .dark-bg{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
+      .card h3{margin:0 0 10px}.card p{color:var(--muted);margin:0 0 10px}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
+      .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
+      .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accentHover)}
+      .formbox{background:#fff;border-radius:16px;padding:28px}
+      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
-      @media(max-width:900px){.c8,.c4,.c6{grid-column:span 12}h1{font-size:28px}}
+      .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
+      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:28px}}
+      @media(max-width:600px){section{padding:36px 0}.card{padding:20px}}
     </style>
   </head>
   <body>
+    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
+      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px">
+        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
+        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
+          <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
+          <a href="/dragon-medical-one" style="color:#16a34a;font-weight:700">Medical</a>
+          <a href="/dictation-equipment">Equipment</a><a href="/support">Support</a>
+        </nav>
+        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
+      </div>
+    </header>
+
     <div class="page-header">
       <div class="wrap">
-        <div class="breadcrumb"><a href="/">Dictation Solutions Australia</a> &rsaquo; Medical Transcription</div>
+        <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Medical Transcription</div>
         <h1>Medical Transcription Australia</h1>
-        <p class="lead">Traditional transcription, speech recognition, and AI-assisted workflows for Australian healthcare. Understand your options and choose what suits your practice.</p>
+        <p class="intro">From traditional transcription workflows to modern AI speech recognition - choosing the right approach for your practice.</p>
       </div>
     </div>
-    <div class="content">
-      <div class="wrap">
-        <div class="grid">
-          <div class="c8">
-            <h2>How medical transcription has changed</h2>
-            <p>Medical transcription - converting a clinician's dictated notes into structured clinical documentation - has evolved significantly. The traditional model (dictate to a recorder, send to a transcriptionist) is still used but increasingly replaced by speech recognition and AI-assisted documentation tools.</p>
-            <h2 style="margin-top:40px">Four approaches to medical documentation</h2>
-            <div class="grid" style="margin-top:16px">
-              <div class="c6"><div class="approach-card"><span class="tag tag-traditional">Traditional</span><h3>Dictation and manual transcription</h3><p>Clinician dictates to a digital recorder. Audio sent to a human transcriptionist. Accurate but slower and more expensive per document.</p><p style="font-size:14px;color:#4a5e4d">Suits: specialists with complex dictation, practices with existing workflows</p></div></div>
-              <div class="c6"><div class="approach-card"><span class="tag tag-modern">Recommended</span><h3>Dragon Medical One</h3><p>Clinician speaks directly into their clinical system. Speech recognised in real time. Cloud-based with built-in medical vocabulary for 100+ specialties.</p><p style="font-size:14px;color:#4a5e4d">Suits: GPs, specialists wanting to reduce transcription costs and turnaround time</p><a href="/dragon-medical-one" style="color:#2d7a3a;font-weight:600;font-size:14px">Learn about Dragon Medical One</a></div></div>
-              <div class="c6"><div class="approach-card"><span class="tag tag-cloud">AI</span><h3>AI-assisted documentation</h3><p>Ambient AI tools that listen to the clinical conversation and generate structured notes. Emerging category. [VERIFY current Australian availability]</p><p style="font-size:14px;color:#4a5e4d">Suits: high-volume consultation environments open to emerging technology</p></div></div>
-              <div class="c6"><div class="approach-card"><span class="tag tag-traditional">Cloud</span><h3>Cloud transcription services</h3><p>Audio files uploaded to a cloud platform for automated transcription. Lower cost than human transcription. Medical-grade accuracy requires specialist platforms.</p><p style="font-size:14px;color:#4a5e4d">Suits: allied health, administrative documentation, general professional use</p><a href="https://www.speechrecognition.cloud" style="color:#2d7a3a;font-weight:600;font-size:14px">SpeechRecognition Cloud</a></div></div>
-            </div>
-            <p style="margin-top:40px">For current pricing and a demonstration of Dragon Medical One, contact <a href="https://www.voicerecognition.com.au" style="color:#2d7a3a;font-weight:600">Voice Recognition Australia</a>, authorised Australian reseller.</p>
+
+    <main>
+      <section>
+        <div class="wrap">
+          <div style="max-width:720px">
+            <h2 style="font-size:26px;margin:0 0 16px">Traditional transcription vs speech recognition</h2>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Medical transcription has historically meant a clinician dictates into a recorder, a transcriptionist types it up, and the completed document is returned. This workflow still suits many practices - particularly those with complex multi-specialty documentation or where clinicians strongly prefer not to interact with software directly.</p>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Speech recognition software changes this by converting voice to text in real time. Dragon Medical One is the most widely used clinical speech recognition platform in Australia - clinicians dictate directly into their EHR and the text appears immediately, removing the transcription delay entirely.</p>
+            <p style="font-size:16px;color:#4b5563">The right approach depends on your workflow, patient volume, and how your clinical team works. Many practices use both: speech recognition for standard documentation and transcription for complex or high-volume specialist work.</p>
           </div>
-          <div class="c4"><ACForm /></div>
         </div>
+      </section>
+
+      <section class="neutral-bg">
+        <div class="wrap">
+          <h2 style="font-size:24px;margin:0 0 24px">Three approaches to medical documentation</h2>
+          <div class="grid">
+            <div class="card c4">
+              <div class="tag">Traditional</div>
+              <h3>Dictation + Transcription</h3>
+              <p>Dictate using a recorder or phone. Audio sent to a transcriptionist. Completed document returned to EHR. Best for practices where clinicians prefer minimal technology interaction.</p>
+            </div>
+            <div class="card c4" style="border-color:#16a34a">
+              <div class="tag">Recommended</div>
+              <h3>Dragon Medical One</h3>
+              <p>Dictate directly into your EHR in real time. No transcriptionist, no delay. Purpose-built medical vocabulary. Cloud-based - works on any device. Subscription per clinician.</p>
+              <a href="/dragon-medical-one" style="color:#16a34a;font-weight:600;font-size:14px">Learn more &rarr;</a>
+            </div>
+            <div class="card c4">
+              <div class="tag">Modern AI</div>
+              <h3>AI-Assisted Documentation</h3>
+              <p>Emerging AI medical scribes (Heidi, Lyrebird and others) use ambient AI to generate clinical notes from consultation recordings. Different use case to Dragon - worth evaluating depending on workflow.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="dark-bg">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              <h2 style="color:white;font-size:26px;margin:0 0 12px">Not sure which approach suits your practice?</h2>
+              <p style="color:#9ca3af">Our team can walk you through the options based on your specialty, patient volume, EHR system, and how your clinical team currently handles documentation.</p>
+            </div>
+            <div class="c5"><ACForm /></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            <a href="/">Home</a><a href="/dragon-medical-one">Dragon Medical One</a>
+            <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
       </div>
-    </div>
-    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div style="display:flex;gap:20px"><a href="/">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div></div></footer>
+    </footer>
   </body>
 </html>

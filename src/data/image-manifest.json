@@ -1,17 +1,47 @@
 {
   "hero": {
+    "key": "hero",
     "r2Key": "",
-    "altText": "Dictation and speech recognition solutions for Australian professionals",
-    "contentType": "image/webp"
+    "filename": "",
+    "contentType": "image/webp",
+    "altText": "Dictation Solutions Australia - professional dictation and speech recognition for healthcare, legal and enterprise",
+    "manual": false,
+    "site": "dictationsolutions"
   },
   "about-banner": {
+    "key": "about-banner",
     "r2Key": "",
-    "altText": "Voice Recognition Australia dictation specialists",
-    "contentType": "image/webp"
+    "filename": "",
+    "contentType": "image/webp",
+    "altText": "Voice Recognition Australia team - 25 years of Australian dictation and speech recognition expertise",
+    "manual": false,
+    "site": "dictationsolutions"
   },
   "cta-banner": {
+    "key": "cta-banner",
     "r2Key": "",
-    "altText": "Get dictation solution advice from Australian specialists",
-    "contentType": "image/webp"
+    "filename": "",
+    "contentType": "image/webp",
+    "altText": "Australian healthcare and legal professionals using dictation and speech recognition solutions",
+    "manual": false,
+    "site": "dictationsolutions"
+  },
+  "feature-dragon": {
+    "key": "feature-dragon",
+    "r2Key": "",
+    "filename": "",
+    "contentType": "image/webp",
+    "altText": "Dragon speech recognition software - professional dictation into Windows applications",
+    "manual": false,
+    "site": "dictationsolutions"
+  },
+  "feature-hardware": {
+    "key": "feature-hardware",
+    "r2Key": "",
+    "filename": "",
+    "contentType": "image/webp",
+    "altText": "Philips and Olympus dictation hardware - professional voice recorders microphones and foot pedals",
+    "manual": false,
+    "site": "dictationsolutions"
   }
 }
