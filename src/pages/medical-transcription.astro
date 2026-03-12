@@ -10,7 +10,7 @@ const c = site.colours;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Medical Transcription Australia | Dictation Solutions Australia</title>
-    <meta name="description" content="Medical transcription solutions for Australian healthcare. Traditional transcription services, Dragon Medical One speech recognition, and AI-assisted documentation workflows." />
+    <meta name="description" content="Medical transcription solutions for Australian healthcare. Traditional dictation workflows, Dragon Medical One and SRC speech recognition, Dragon Copilot ambient AI, and AI scribes compared." />
     <link rel="canonical" href="https://dictationsolutions.com.au/medical-transcription" />
     <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
@@ -28,11 +28,19 @@ const c = site.colours;
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
-      .card h3{margin:0 0 10px}.card p{color:var(--muted);margin:0 0 10px}
+      .card h3{margin:0 0 10px;font-size:19px}.card p{color:var(--muted);margin:0 0 12px;font-size:15px}
+      .card p:last-of-type{margin-bottom:0}
       .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
+      .tag-blue{background:#2563eb}
+      .tag-purple{background:#7c3aed}
+      .tag-gray{background:#6b7280}
       .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
       .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accentHover)}
-      .formbox{background:#fff;border-radius:16px;padding:28px}
+      .notice{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px 24px;margin-top:16px}
+      .notice p{margin:0;font-size:15px;color:#166534}
+      .warning-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:20px 24px;margin-top:16px}
+      .warning-box p{margin:0;font-size:15px;color:#9a3412}
+      .cite{font-size:13px;color:#6b7280;font-style:italic;margin-top:8px}
       footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
@@ -58,42 +66,74 @@ const c = site.colours;
       <div class="wrap">
         <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Medical Transcription</div>
         <h1>Medical Transcription Australia</h1>
-        <p class="intro">From traditional transcription workflows to modern AI speech recognition - choosing the right approach for your practice.</p>
+        <p class="intro">From traditional dictation workflows to real-time speech recognition and ambient AI documentation -- understanding your options for clinical practice.</p>
       </div>
     </div>
 
     <main>
       <section>
         <div class="wrap">
-          <div style="max-width:720px">
-            <h2 style="font-size:26px;margin:0 0 16px">Traditional transcription vs speech recognition</h2>
-            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Medical transcription has historically meant a clinician dictates into a recorder, a transcriptionist types it up, and the completed document is returned. This workflow still suits many practices - particularly those with complex multi-specialty documentation or where clinicians strongly prefer not to interact with software directly.</p>
-            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Speech recognition software changes this by converting voice to text in real time. Dragon Medical One is the most widely used clinical speech recognition platform in Australia - clinicians dictate directly into their EHR and the text appears immediately, removing the transcription delay entirely.</p>
-            <p style="font-size:16px;color:#4b5563">The right approach depends on your workflow, patient volume, and how your clinical team works. Many practices use both: speech recognition for standard documentation and transcription for complex or high-volume specialist work.</p>
+          <div style="max-width:760px">
+            <h2 style="font-size:26px;margin:0 0 16px">Four approaches to medical documentation</h2>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Medical documentation has always competed with patient care for a clinician's time. The tools available to reduce that burden have shifted considerably -- from traditional dictation and human transcription, through real-time speech recognition, to ambient AI systems that listen to the consultation itself and draft notes automatically.</p>
+            <p style="font-size:16px;color:#4b5563">Each approach suits different workflows, different documentation environments, and different preferences. Understanding how they differ -- particularly around accuracy, verbatim output, and governance -- matters when choosing what is right for your practice.</p>
           </div>
         </div>
       </section>
 
       <section class="neutral-bg">
         <div class="wrap">
-          <h2 style="font-size:24px;margin:0 0 24px">Three approaches to medical documentation</h2>
+          <h2 style="font-size:24px;margin:0 0 28px">Comparing the approaches</h2>
           <div class="grid">
-            <div class="card c4">
-              <div class="tag">Traditional</div>
+
+            <div class="card c6">
+              <div class="tag tag-gray">Traditional</div>
               <h3>Dictation + Transcription</h3>
-              <p>Dictate using a recorder or phone. Audio sent to a transcriptionist. Completed document returned to EHR. Best for practices where clinicians prefer minimal technology interaction.</p>
+              <p>The clinician dictates using a voice recorder or smartphone app. The audio file is routed -- automatically, in cloud-based systems -- to a transcriptionist who reviews and finalises the document. No direct software interaction required during the consultation.</p>
+              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:#16a34a;font-weight:600">Philips SpeechLive</a> is a cloud-based dictation and transcription workflow platform widely used in Australian legal and professional environments. It handles secure routing of dictation files between authors and transcriptionists, hosted on Microsoft Azure with end-to-end encryption and ISO 27001 compliance.</p>
             </div>
-            <div class="card c4" style="border-color:#16a34a">
+
+            <div class="card c6" style="border-color:#16a34a;border-width:2px">
               <div class="tag">Recommended</div>
-              <h3>Dragon Medical One</h3>
-              <p>Dictate directly into your EHR in real time. No transcriptionist, no delay. Purpose-built medical vocabulary. Cloud-based - works on any device. Subscription per clinician.</p>
-              <a href="/dragon-medical-one" style="color:#16a34a;font-weight:600;font-size:14px">Learn more &rarr;</a>
+              <h3>Dragon Medical One + Speech Recognition Cloud</h3>
+              <p>Dragon Medical One and <a href="https://speechrecognition.cloud" style="color:#16a34a;font-weight:600">Speech Recognition Cloud Medical</a> convert your voice to text in real time as you dictate directly into your EHR or document. Both are <strong>verbatim</strong> -- they transcribe exactly what you say, with no generative component and no interpretation.</p>
+              <p>Dragon Medical One includes built-in medical vocabularies covering cardiology, radiology, pathology, emergency medicine, general practice and more. Speech Recognition Cloud Medical adds a dual-use capability: dictate from your phone using the SRC mobile app and have text delivered directly to your PC -- even when you are away from your desk. This makes it practical for clinicians who move between rooms, sites or locations.</p>
+              <a href="/dragon-medical-one" style="color:#16a34a;font-weight:600;font-size:14px">Learn more about Dragon Medical One &rarr;</a>
             </div>
-            <div class="card c4">
-              <div class="tag">Modern AI</div>
-              <h3>AI-Assisted Documentation</h3>
-              <p>Emerging AI medical scribes (Heidi, Lyrebird and others) use ambient AI to generate clinical notes from consultation recordings. Different use case to Dragon - worth evaluating depending on workflow.</p>
+
+            <div class="card c6">
+              <div class="tag tag-blue">Ambient AI</div>
+              <h3>Dragon Copilot</h3>
+              <p>Dragon Copilot extends Dragon Medical One with ambient AI capability. Rather than dictating directly, the clinician allows Dragon Copilot to listen to the consultation itself and generate structured clinical notes from the conversation -- designed to reduce cognitive interruption during the encounter.</p>
+              <p>A 2025 peer-reviewed study published in ScienceDirect assessed ambient clinical intelligence of this type and found significant reductions in daily documentation time and self-reported off-hours documentation burden among participating clinicians.</p>
+              <p class="cite">Source: "Deploying ambient clinical intelligence to improve care: Assessing the impact of Nuance DAX on documentation burden and burnout", ScienceDirect, 2025.<br /><a href="https://www.sciencedirect.com/science/article/pii/S2514664525002292" style="color:#2563eb">sciencedirect.com/science/article/pii/S2514664525002292</a></p>
             </div>
+
+            <div class="card c6">
+              <div class="tag tag-purple">AI Medical Scribes</div>
+              <h3>Heidi and Lyrebird Health</h3>
+              <p>Heidi and Lyrebird Health are Australian-relevant AI scribe tools that also use ambient listening to generate clinical notes from consultations. Both position themselves strongly around Australian privacy compliance.</p>
+              <p>Heidi describes itself as an AI care partner that captures consultation details and generates notes, letters and documents -- their published data indicates solo practitioners save up to two hours per day on documentation. Lyrebird Health describes itself as deeply integrated with Australian EMR systems including Best Practice (Bp Premier), with data processed and stored on Australian soil in accordance with the Australian Privacy Principles.</p>
+              <div class="warning-box">
+                <p><strong>Verbatim vs generative AI -- an important distinction:</strong> AI scribes use generative AI to produce clinical notes. Generative AI does not simply transcribe -- it interprets, summarises and constructs output based on what it heard. This is different to verbatim speech recognition. The inherent risk in any generative system is that output may paraphrase, condense or in rare cases misrepresent what was said. Both Heidi and Lyrebird acknowledge this and require clinician review of all generated notes before they enter the medical record. This review step should be considered non-negotiable regardless of which tool you use.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="notice" style="margin-top:32px">
+            <p><strong>The verbatim question:</strong> Dragon Medical One and Speech Recognition Cloud are verbatim tools -- what you say is what appears. Dragon Copilot and AI scribes are generative -- they interpret and construct. Neither is categorically superior, but understanding which type of output you are working with is a genuine clinical governance consideration.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap">
+          <div style="max-width:760px">
+            <h2 style="font-size:26px;margin:0 0 16px">Privacy and data governance in Australian healthcare</h2>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Australian health information is treated as sensitive information under the Privacy Act, attracting stricter handling requirements than general personal data. The Office of the Australian Information Commissioner explicitly frames health data as subject to heightened obligations -- making data governance a central purchasing decision, not a secondary one.</p>
+            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">For any speech or transcription tool used in clinical practice, the practical questions are: where does audio and transcript data reside, how long is it retained, who has access, and what are the contractual commitments around model training?</p>
+            <p style="font-size:16px;color:#4b5563">Dragon Medical One and Dragon Copilot carry Microsoft/Nuance enterprise-grade security documentation. Speech Recognition Cloud publishes its security posture directly. Philips SpeechLive publishes detailed security documentation including explicit statements that data is not used to train AI models without permission. Heidi and Lyrebird both publish security and privacy documentation -- confirm Australian data residency requirements are met before clinical deployment.</p>
           </div>
         </div>
       </section>
@@ -103,7 +143,7 @@ const c = site.colours;
           <div class="grid">
             <div class="c7">
               <h2 style="color:white;font-size:26px;margin:0 0 12px">Not sure which approach suits your practice?</h2>
-              <p style="color:#9ca3af">Our team can walk you through the options based on your specialty, patient volume, EHR system, and how your clinical team currently handles documentation.</p>
+              <p style="color:#9ca3af">Our team can walk you through the options based on your specialty, patient volume, EHR system and how your clinical team currently handles documentation. We can also advise on Dragon Medical One and Speech Recognition Cloud pricing for Australian practices.</p>
             </div>
             <div class="c5"><ACForm /></div>
           </div>
