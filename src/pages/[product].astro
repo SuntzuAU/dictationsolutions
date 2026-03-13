@@ -20,12 +20,9 @@ function imgSrc(key) {
   if (!entry?.r2Key || !R2_BASE) return "";
   return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
 }
-
 function imgAlt(key) {
   return manifest[key]?.altText || "";
 }
-
-// Prefix anchor-only links with / so they navigate back to homepage
 function homeUrl(url) {
   if (!url) return "/";
   return url.startsWith("#") ? `/${url}` : url;
@@ -54,115 +51,126 @@ const featureKey = product.featureImageKey || "feature-dictation";
       </script>
     )}
 
-    <script define:vars={{ c }}>
-      const css = `
-        body { background: ${c.background}; color: ${c.text}; }
-        .btn-primary { background: ${c.accent}; border-color: ${c.accent}; color: #fff; }
-        .btn-primary:hover { background: ${c.accentHover}; border-color: ${c.accentHover}; }
-        .btn-secondary { color: ${c.primary}; border-color: #cbd5e1; }
-        .btn-secondary:hover { border-color: ${c.primary}; }
-        .neutral-bg { background: ${c.neutral}; }
-        .dark-bg { background: ${c.primary}; color: white; }
-        .stats-bar { background: ${c.primary}; }
-        .nav-links a:hover, .dropdown-toggle:hover { color: ${c.accent}; }
-        .dropdown-menu { border-top: 2px solid ${c.accent}; }
-        .feature-check { color: ${c.accent}; }
-        .price-display { color: ${c.accent}; }
-        .licence-badge { background: ${c.accent}; color: #fff; }
-        .card p { color: ${c.muted}; }
-        .sh p { color: ${c.muted}; }
-        .breadcrumb a { color: ${c.accent}; }
-      `;
-      const el = document.createElement('style');
-      el.textContent = css;
-      document.head.appendChild(el);
-    </script>
-
-    <style is:inline>
+    <style is:inline define:vars={{
+      bg: c.background,
+      text: c.text,
+      primary: c.primary,
+      accent: c.accent,
+      accentHover: c.accentHover,
+      muted: c.muted,
+      neutral: c.neutral,
+    }}>
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+
+      /* ── Header & Nav -- MUST have overflow:visible for dropdown ── */
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
-      .logo img{height:40px;width:auto}
-      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .logo img{height:42px;width:auto}
+      .nav-links{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
+      .nav-links > a{white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+      .nav-links > a:hover{color:var(--accent);border-bottom-color:var(--accent)}
       .dropdown{position:relative}
-      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
-      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+      .dropdown-toggle:hover,.dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
+      .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200}
+      .dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:300}
       .dropdown:hover .dropdown-menu{display:block}
-      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
-      .dropdown-menu a:hover{background:#f0fdf4;color:#16a34a}
+      .dropdown-menu a{display:block;padding:11px 18px;font-size:13px;font-weight:600;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
+      .dropdown-menu a:last-child{border-bottom:none}
+      .dropdown-menu a:hover{background:#f0f9ff;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
-      .btn-secondary{background:white;border-color:#cbd5e1}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover);transform:translateY(-1px)}
+      .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
+      .btn-secondary:hover{background:var(--primary);color:white}
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
+      .btn-dark:hover{background:#374151;border-color:#374151}
+      .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:white}
+      .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:white}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
-      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
-      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
-      section{padding:64px 0}
-      .product-hero{padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#64748b;margin-bottom:20px}
-      .breadcrumb a{font-weight:500}
-      .product-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-      .licence-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
-      .product-hero h1{font-size:36px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em}
-      .product-hero p{font-size:16px;line-height:1.7;margin:0 0 24px;color:#475569}
-      .price-display{font-size:48px;font-weight:800;line-height:1;margin:0 0 4px}
-      .price-note{font-size:14px;color:#64748b;margin:0 0 6px}
-      .licence-note{font-size:13px;color:#64748b;margin:0 0 20px;padding:10px 14px;background:#f8fafc;border-radius:8px;border-left:3px solid #e2e8f0}
-      .buy-actions{display:flex;flex-direction:column;gap:12px}
-      .vra-btn{display:block;text-align:center;padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;background:#1f2937;color:#fff;transition:background .15s;border:2px solid #1f2937}
-      .vra-btn:hover{background:#374151}
-      .sh{margin-bottom:32px}
-      .sh h2{font-size:28px;letter-spacing:-0.02em;margin:0 0 8px}
-      .sh p{font-size:16px;margin:0}
+      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
+      .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
+      .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
+      .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
+
+      section{padding:22px 0}
+      .product-hero{padding:24px 0 18px;background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:white}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      .breadcrumb a:hover{color:white}
+      .breadcrumb-sep{margin:0 6px;color:rgba(255,255,255,.4)}
+      .product-hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:start}
+      .licence-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--accent);color:#fff}
+      .product-hero h1{font-size:32px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.03em;font-weight:800;color:white}
+      .product-hero .subhead{font-size:15px;line-height:1.65;margin:0 0 18px;color:rgba(255,255,255,.75)}
+      .price-display{font-size:44px;font-weight:800;line-height:1;color:white;margin:0 0 2px}
+      .price-note{font-size:13px;color:rgba(255,255,255,.6);margin:0 0 6px}
+      .licence-note{font-size:13px;color:rgba(255,255,255,.7);margin:0 0 18px;padding:10px 14px;background:rgba(255,255,255,.1);border-radius:8px;border-left:3px solid var(--accent)}
+      .buy-actions{display:flex;flex-direction:column;gap:10px}
+      .stat-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px}
+      .stat-box{text-align:center;padding:12px;background:rgba(255,255,255,.1);border-radius:10px;border:1px solid rgba(255,255,255,.15)}
+      .stat-box-val{font-size:16px;font-weight:800;color:white;line-height:1}
+      .stat-box-lbl{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+
+      .sh{margin-bottom:14px}
+      .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-      .c6{grid-column:span 6}
-      .c4{grid-column:span 4}
-      .c5{grid-column:span 5}
-      .c7{grid-column:span 7}
-      .c12{grid-column:span 12}
-      .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}
+
+      .section-white{background:#fff}
+      .section-neutral{background:var(--neutral)}
+      .section-dark{background:var(--primary);color:white}
+
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
       .feature-list{list-style:none;padding:0;margin:0}
-      .feature-list li{padding:9px 0;border-bottom:1px solid #f1f5f9;font-size:15px;display:flex;gap:10px;align-items:flex-start}
+      .feature-list li{padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
       .feature-list li:last-child{border-bottom:none}
-      .feature-check{font-weight:700;flex-shrink:0;font-size:16px}
-      .faq-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px}
-      .faq-card h3{margin:0 0 8px;font-size:16px}
-      .faq-card p{margin:0;font-size:15px;color:#475569}
-      .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-      .other-version-link{padding:8px 16px;border-radius:8px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#334155;transition:all .15s}
-      .other-version-link:hover{border-color:#16a34a;color:#16a34a}
-      .formbox{background:#fff;border-radius:16px;padding:28px}
-      .feature-image{border-radius:14px;overflow:hidden;margin-top:24px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+      .feature-check{color:var(--accent);font-weight:700;flex-shrink:0}
+      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;border-left:4px solid var(--accent)}
+      .faq-card h3{margin:0 0 5px;font-size:14px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55}
+      .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+      .other-version-link{padding:8px 16px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s}
+      .other-version-link:hover{border-color:var(--accent);color:var(--accent)}
+      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+      .feature-image{border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-image img{width:100%;height:auto;display:block}
-      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
 
       @media(max-width:900px){
         .product-hero-inner{grid-template-columns:1fr}
-        .product-hero h1{font-size:28px}
+        .product-hero h1{font-size:26px}
         .c6,.c4,.c5,.c7{grid-column:span 12}
-        .sh h2{font-size:24px}
+        .sh h2{font-size:20px}
+        .stat-trio{grid-template-columns:1fr 1fr 1fr}
       }
       @media(max-width:600px){
         .nav-links{display:none}
         .nav-ctas .btn-secondary{display:none}
         .hamburger{display:flex}
-        section{padding:40px 0}
-        .product-hero{padding:28px 0}
-        .card,.faq-card,.formbox{padding:18px}
-        .price-display{font-size:36px}
+        section{padding:14px 0}
+        .product-hero{padding:16px 0 14px}
+        .card,.faq-card,.formbox{padding:14px}
+        .price-display{font-size:32px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
+        .stat-trio{grid-template-columns:1fr 1fr 1fr;gap:6px}
+        .stat-box{padding:8px 6px}
+        .stat-box-val{font-size:13px}
       }
     </style>
   </head>
@@ -172,7 +180,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <div class="wrap">
         <div class="nav">
           <div class="logo">
-            <a href="/"><img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" /></a>
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
           </div>
           <nav class="nav-links" aria-label="Primary">
             {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
@@ -184,9 +192,11 @@ const featureKey = product.featureImageKey || "feature-dictation";
                 </span>
                 <div class="dropdown-menu">
                   {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                  <a href="/comparison">Compare Solutions</a>
                 </div>
               </div>
             )}
+            <a href="/news">News</a>
           </nav>
           <div class="nav-ctas">
             <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
@@ -197,8 +207,10 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
         <nav class="mobile-nav" aria-label="Mobile navigation">
           <a href="/">Home</a>
-          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
           {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+          <a href="/news">News</a>
+          <a href="/comparison">Compare Solutions</a>
         </nav>
       </div>
     </header>
@@ -208,41 +220,45 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <section class="product-hero">
         <div class="wrap">
           <div class="breadcrumb">
-            <a href="/">Home</a> &rsaquo; <a href="/#products">Products</a> &rsaquo; {product.title}
+            <a href="/">Home</a>
+            <span class="breadcrumb-sep">&rsaquo;</span>
+            <a href="/#products">Products</a>
+            <span class="breadcrumb-sep">&rsaquo;</span>
+            {product.title}
           </div>
           <div class="product-hero-inner">
             <div>
               <div class="licence-badge">{product.badge}</div>
               <h1>{product.headline}</h1>
-              <p>{product.subheadline}</p>
-              <div style="margin-bottom:8px">
+              <p class="subhead">{product.subheadline}</p>
+              <div style="margin-bottom:6px">
                 <div class="price-display">{product.price}</div>
                 <div class="price-note">{product.priceNote}</div>
               </div>
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="vra-btn">Talk to VRA - local support</a>
+                <a href="/#final-cta" class="btn btn-ghost btn-lg">Talk to VRA &mdash; local support</a>
               </div>
             </div>
             <div>
               {imgSrc(heroKey) && (
-                <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 16px 48px rgba(0,0,0,.12)">
+                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.25)">
                   <img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || `${product.title}`} loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px">
-                <div style="text-align:center;padding:14px;background:#f3f4f6;border-radius:10px">
-                  <div style="font-size:18px;font-weight:800;color:#1f2937">{product.price}</div>
-                  <div style="font-size:12px;color:#64748b">Price</div>
+              <div class="stat-trio">
+                <div class="stat-box">
+                  <div class="stat-box-val">{product.price}</div>
+                  <div class="stat-box-lbl">Price</div>
                 </div>
-                <div style="text-align:center;padding:14px;background:#f3f4f6;border-radius:10px">
-                  <div style="font-size:18px;font-weight:800;color:#1f2937">{product.installLimit}</div>
-                  <div style="font-size:12px;color:#64748b">Licence</div>
+                <div class="stat-box">
+                  <div class="stat-box-val">{product.installLimit}</div>
+                  <div class="stat-box-lbl">Licence</div>
                 </div>
-                <div style="text-align:center;padding:14px;background:#f3f4f6;border-radius:10px">
-                  <div style="font-size:18px;font-weight:800;color:#1f2937">{product.bestFor.split(' ').slice(0,2).join(' ')}</div>
-                  <div style="font-size:12px;color:#64748b">Best for</div>
+                <div class="stat-box">
+                  <div class="stat-box-val">{product.bestFor?.split(' ').slice(0,2).join(' ')}</div>
+                  <div class="stat-box-lbl">Best for</div>
                 </div>
               </div>
             </div>
@@ -250,7 +266,9 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
       </section>
 
-      <section class="neutral-bg">
+      <div class="section-divider"></div>
+
+      <section class="section-neutral">
         <div class="wrap">
           <div class="grid">
             <div class="c7">
@@ -261,14 +279,14 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="card">
                 <ul class="feature-list">
                   {product.features?.map((f) => (
-                    <li><span class="feature-check">✓</span>{f}</li>
+                    <li><span class="feature-check">&#10003;</span>{f}</li>
                   ))}
                 </ul>
               </div>
             </div>
             <div class="c5">
               {imgSrc(featureKey) && (
-                <div class="feature-image" style="margin-top:52px">
+                <div class="feature-image" style="margin-top:46px">
                   <img src={imgSrc(featureKey)} alt={imgAlt(featureKey) || `${product.title} feature`} loading="lazy" decoding="async" />
                 </div>
               )}
@@ -277,7 +295,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
       </section>
 
-      <section>
+      <section class="section-white">
         <div class="wrap">
           <div class="sh">
             <h2>Frequently asked questions</h2>
@@ -293,33 +311,35 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
       </section>
 
-      <section class="neutral-bg">
+      <section class="section-neutral">
         <div class="wrap">
           <div class="sh">
             <h2>Other solutions</h2>
-            <p>Compare other dictation and transcription solutions to find what works best for your needs.</p>
+            <p>Compare other dictation and transcription solutions.</p>
           </div>
           <div class="other-versions">
             {site.products?.filter(p => p.slug !== product.slug).map(p => (
-              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel} - {p.price}</a>
+              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>
             ))}
           </div>
-          <div style="margin-top:24px">
-            <a href="/" class="btn btn-primary">Compare all solutions</a>
+          <div style="margin-top:16px">
+            <a href="/" class="btn btn-primary">View all solutions</a>
           </div>
         </div>
       </section>
 
-      <section id="final-cta" class="dark-bg">
+      <section id="final-cta" class="section-dark">
         <div class="wrap">
-          <div class="grid">
-            <div class="c7">
-              <h2 style="color:white;font-size:28px;margin:0 0 12px">Questions about {product.title}?</h2>
-              <p style="color:#94a3b8;margin:0 0 20px">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
-              <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:12px">{product.ctaText} &rarr;</a>
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:20px 0">
+              <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2>
+              <p style="color:rgba(255,255,255,.7);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
+              <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a>
             </div>
-            <div class="c5">
-              <ACForm />
+            <div class="c5" style="padding:20px 0">
+              <div class="formbox">
+                <ACForm />
+              </div>
             </div>
           </div>
         </div>

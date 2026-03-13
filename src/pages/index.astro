@@ -42,12 +42,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": site.domain,
       "name": site.siteName,
-      "url": site.domain,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${site.domain}/?s={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
+      "url": site.domain
     }
   ]
 };
@@ -64,21 +59,17 @@ const products = site.navDropdown?.items || [];
     <meta name="description" content={site.branding.metaDesc} />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
-
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.siteName} />
     <meta property="og:title" content={site.branding.metaTitle} />
     <meta property="og:description" content={site.branding.metaDesc} />
     <meta property="og:url" content={canonicalUrl} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    {ogImage && <meta property="og:image:width" content="1200" />}
-    {ogImage && <meta property="og:image:height" content="630" />}
     <meta property="og:locale" content="en_AU" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={site.branding.metaTitle} />
     <meta name="twitter:description" content={site.branding.metaDesc} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
-
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
@@ -106,111 +97,169 @@ const products = site.navDropdown?.items || [];
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100;overflow:visible}
-      .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
-      .logo img{height:40px;width:auto}
-      .nav-main{display:flex;gap:24px;font-size:14px;font-weight:500;color:#374151;align-items:center}
-      .nav-main a{white-space:nowrap}
-      .nav-main a:hover{color:var(--accent)}
+
+      /* ── Header & Nav ── */
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:42px;width:auto}
+      .nav-main{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
+      .nav-main > a{white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+      .nav-main > a:hover{color:var(--accent);border-bottom-color:var(--accent)}
       .dropdown{position:relative}
-      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
       .dropdown-toggle:hover{color:var(--accent)}
-      .dropdown-toggle svg{transition:transform .15s;width:12px;height:12px}
+      .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200;margin-top:4px}
+      .dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
+      .dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:300}
       .dropdown:hover .dropdown-menu{display:block}
-      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s;border-bottom:1px solid #f3f4f6}
+      .dropdown-menu a{display:block;padding:11px 18px;font-size:13px;font-weight:600;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
       .dropdown-menu a:last-child{border-bottom:none}
-      .dropdown-menu a:hover{background:#f9fafb;color:var(--accent)}
+      .dropdown-menu a:hover{background:#f0f9ff;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+
+      /* ── Buttons ── */
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
-      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover);transform:translateY(-1px)}
       .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
-      .btn-secondary:hover{background:var(--primary);color:white}
+      .btn-secondary:hover{background:var(--primary);color:white;transform:translateY(-1px)}
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:white}
+      .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:white}
+
+      /* ── Mobile nav ── */
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
-      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e5e7eb}
-      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6}
-      section{padding:32px 0}
-      .hero{padding:36px 0}
-      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
-      .hero h1{font-size:36px;line-height:1.15;margin:0 0 12px;letter-spacing:-0.025em}
-      .hero p{font-size:16px;margin:0 0 20px;line-height:1.7;color:var(--muted)}
-      .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 16px 48px rgba(0,0,0,.12)}
-      .hero-img img{width:100%;height:100%;object-fit:cover}
-      .stats-bar{padding:8px 0;background:var(--primary)}
-      .sh{margin-bottom:20px}
-      .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
-      .sh p{font-size:15px;margin:0;max-width:620px;color:var(--muted)}
-      .neutral-bg{background:var(--neutral)}
-      .dark-bg{background:var(--primary);color:white}
+      .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
+      .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
+      .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
+
+      /* ── Layout ── */
+      section{padding:24px 0}
+      .hero{padding:28px 0 20px}
+      .wrap-tight{max-width:1080px;margin:0 auto;padding:0 24px}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}
       .c4{grid-column:span 4}
       .c3{grid-column:span 3}
       .c7{grid-column:span 7}
       .c5{grid-column:span 5}
+      .c8{grid-column:span 8}
       .c12{grid-column:span 12}
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px}
+
+      /* ── Hero ── */
+      .hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:center}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;margin-bottom:14px;letter-spacing:.02em;text-transform:uppercase}
+      .hero h1{font-size:38px;line-height:1.1;margin:0 0 12px;letter-spacing:-0.03em;font-weight:800}
+      .hero p{font-size:16px;margin:0 0 20px;line-height:1.65;color:var(--muted)}
+      .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 20px 60px rgba(0,0,0,.14)}
+      .hero-img img{width:100%;height:100%;object-fit:cover}
+
+      /* ── Stats bar ── */
+      .stats-bar{padding:0;background:var(--primary)}
+      .stats-inner{display:flex;align-items:stretch;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08)}
+      .stat-item{flex:1;min-width:120px;padding:12px 20px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+      .stat-item:last-child{border-right:none}
+      .stat-value{font-size:20px;font-weight:800;color:#fff;line-height:1}
+      .stat-label{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;text-transform:uppercase;letter-spacing:.05em}
+      .stats-msg{background:var(--accent);padding:8px 20px;text-align:center;font-size:13px;font-weight:700;color:#fff;letter-spacing:.01em}
+
+      /* ── Section headers ── */
+      .sh{margin-bottom:16px}
+      .sh h2{font-size:26px;letter-spacing:-0.025em;margin:0 0 6px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .sh-center{text-align:center}
+      .sh-center .sh p{margin:0 auto}
+
+      /* ── Section colours ── */
+      .section-white{background:#fff}
+      .section-neutral{background:var(--neutral)}
+      .section-dark{background:var(--primary);color:white}
+      .section-accent{background:var(--accent);color:white}
+      .section-mid{background:#e8f0fe}
+
+      /* ── Cards ── */
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
       .card p{color:var(--muted);margin:0}
-      .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column}
-      .product-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
-      .product-name{font-size:16px;font-weight:700;margin:0 0 4px}
+
+      .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+      .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+      .product-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.09);transform:translateY(-2px)}
+      .product-card:hover::before{transform:scaleX(1)}
+      .product-name{font-size:15px;font-weight:700;margin:0 0 4px}
       .product-desc{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5;flex:1}
-      .product-price{font-size:14px;font-weight:600;color:var(--accent);margin-top:auto}
-      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px}
-      .benefit-card h3{margin:8px 0 6px;font-size:16px;font-weight:700}
-      .benefit-card p{color:var(--muted);margin:0;font-size:14px}
-      .card-icon{margin-bottom:10px;line-height:1;font-size:32px}
-      .formbox{background:#fff;border-radius:12px;padding:20px}
-      .blog-strip{background:#fff;border-top:1px solid #e5e7eb;padding:32px 0}
+      .product-price{font-size:13px;font-weight:700;color:var(--accent);margin-top:auto;padding-top:8px;border-top:1px solid #f3f4f6}
+
+      .pathway-card{background:#fff;border:2px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:all .15s;display:flex;flex-direction:column}
+      .pathway-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
+      .pathway-icon{width:44px;height:44px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px;flex-shrink:0}
+      .pathway-icon svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-left:4px solid var(--accent)}
+      .benefit-card h3{margin:8px 0 5px;font-size:15px;font-weight:700}
+      .benefit-card p{color:var(--muted);margin:0;font-size:13px;line-height:1.55}
+      .benefit-icon{width:36px;height:36px;border-radius:8px;background:rgba(37,99,235,.08);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+      .benefit-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
+      .faq-card h3{margin:0 0 5px;font-size:14px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55}
+
+      /* ── About strip ── */
+      .proof-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:white;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+      .proof-tag-check{color:var(--accent)}
+
+      /* ── Blog cards ── */
       .blog-card{display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-      .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
-      .blog-date{font-size:12px;color:var(--muted);margin-bottom:4px}
-      .blog-card h3{font-size:15px;margin:0 0 4px;line-height:1.4;font-weight:700}
+      .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+      .blog-date{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+      .blog-card h3{font-size:14px;margin:0 0 4px;line-height:1.4;font-weight:700}
       .blog-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
-      footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
+
+      /* ── Contact section ── */
+      .contact-section{background:var(--primary)}
+      .formbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+
+      /* ── Footer ── */
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1f2937}
-      .compare-table{width:100%;border-collapse:collapse;font-size:14px}
-      .compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #e5e7eb}
-      .compare-table th{background:#f9fafb;font-weight:700;color:#374151}
-      .compare-table tr:last-child td{border-bottom:none}
-      .compare-check{color:var(--accent);font-weight:700}
-      .compare-x{color:#9ca3af}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
 
+      /* ── Divider accent ── */
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+
+      /* ── Responsive ── */
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
         .hero h1{font-size:28px}
-        .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
+        .c6,.c4,.c5,.c7,.c8,.c3{grid-column:span 12}
         .sh h2{font-size:22px}
+        .stat-item{min-width:80px;padding:10px 12px}
+        .stat-value{font-size:16px}
       }
       @media(max-width:600px){
         .nav-main{display:none}
         .nav-ctas .btn-secondary{display:none}
         .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
         .hamburger{display:flex}
-        section{padding:20px 0}
-        .hero{padding:20px 0}
+        section{padding:16px 0}
+        .hero{padding:16px 0 12px}
         .hero h1{font-size:22px}
         .hero p{font-size:14px}
         .sh h2{font-size:18px}
-        .sh p{font-size:14px}
-        .sh{margin-bottom:16px}
+        .sh{margin-bottom:12px}
         .hero-btns{flex-direction:column}
-        .hero-btns .btn-lg{width:100%;text-align:center;padding:12px 20px}
-        .card,.benefit-card,.formbox{padding:14px}
+        .hero-btns .btn-lg{width:100%;padding:12px 20px}
+        .card,.benefit-card,.faq-card{padding:14px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
-        .product-card{padding:14px}
-        .compare-table{font-size:12px}
-        .compare-table th,.compare-table td{padding:10px 12px}
+        .stats-inner{flex-direction:column}
+        .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);flex-direction:row;justify-content:space-between;padding:8px 16px}
+        .hero-img{display:none}
       }
     </style>
   </head>
@@ -248,7 +297,7 @@ const products = site.navDropdown?.items || [];
         </div>
         <nav class="mobile-nav" aria-label="Mobile navigation">
           {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
           <a href="/news">News</a>
           <a href="/comparison">Compare Solutions</a>
         </nav>
@@ -257,7 +306,8 @@ const products = site.navDropdown?.items || [];
 
     <main>
 
-      <section class="hero" aria-label="Hero">
+      <!-- Hero -->
+      <section class="hero section-white" aria-label="Hero">
         <div class="wrap">
           <div class="hero-inner">
             <div>
@@ -272,21 +322,23 @@ const products = site.navDropdown?.items || [];
             <div class="hero-img">
               {heroSrc
                 ? <img src={heroSrc} alt={imgAlt("hero")} width="560" height="315" loading="eager" fetchpriority="high" decoding="sync" />
-                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:14px">Image coming</div>
+                : <div style="width:100%;height:100%;min-height:260px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:14px">Image coming</div>
               }
             </div>
           </div>
         </div>
       </section>
 
-      <div class="stats-bar" role="complementary" aria-label="Key facts">
-        <div class="wrap">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
-            <div style="color:#16a34a;font-size:13px;font-weight:700;text-align:center">{site.branding.statsMessage}</div>
-            <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <!-- Stats -->
+      <div role="complementary" aria-label="Key facts">
+        <div class="stats-msg">{site.branding.statsMessage}</div>
+        <div style="background:var(--primary)">
+          <div class="wrap">
+            <div class="stats-inner">
               {site.stats?.map((s) => (
-                <div style="font-size:12px;color:#9ca3af;display:flex;align-items:center;gap:4px">
-                  <span style="color:white;font-weight:600">{s.value}</span>&nbsp;{s.label}
+                <div class="stat-item">
+                  <div class="stat-value">{s.value}</div>
+                  <div class="stat-label">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -294,53 +346,70 @@ const products = site.navDropdown?.items || [];
         </div>
       </div>
 
-      <section id="products" aria-label="Our products">
+      <!-- Products -->
+      <section id="products" class="section-white" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
-            <h2>Our complete dictation range</h2>
-            <p>Dragon speech recognition, Philips hardware, cloud transcription, and professional services — all in one place.</p>
+            <h2>Complete dictation &amp; speech recognition range</h2>
+            <p>Dragon software, Philips hardware, cloud transcription and professional services — all from one authorised Australian reseller.</p>
           </div>
           <div class="grid">
             {products.map((p) => (
               <a href={p.url} class="product-card c4" aria-label={p.label}>
                 <div class="product-name">{p.label}</div>
                 <div class="product-desc">{p.description || "Professional dictation solution for Australian enterprises"}</div>
-                <div class="product-price">{p.price || "Enquire now"}</div>
+                <div class="product-price">{p.price || "Enquire for pricing"} &rarr;</div>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="pathways" class="neutral-bg" aria-label="Find your solution">
+      <div class="section-divider"></div>
+
+      <!-- Find your solution -->
+      <section id="pathways" class="section-neutral" aria-label="Find your solution">
         <div class="wrap">
-          <div class="sh">
+          <div class="sh sh-center">
             <h2>Find your solution</h2>
-            <p>Three pathways to solve your dictation workflow.</p>
+            <p>Three pathways to solve your dictation workflow — from desktop software to cloud transcription.</p>
           </div>
           <div class="grid">
-            {site.pathways?.map((p) => (
-              <a href={p.url} class="card c4" aria-label={p.title} style="display:flex;flex-direction:column;text-decoration:none;color:inherit;border:2px solid #e5e7eb;transition:all .15s" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='none'">
-                <div style="font-size:24px;margin-bottom:8px">{p.icon === 'speech' ? '🎤' : p.icon === 'cloud' ? '☁️' : '📦'}</div>
-                <div style="font-size:16px;font-weight:700;margin:0 0 2px">{p.title}</div>
-                <div style="font-size:13px;color:var(--muted);margin:0 0 10px;flex:1">{p.description}</div>
-                <div style="color:var(--accent);font-weight:700;font-size:14px">{p.cta} →</div>
-              </a>
-            ))}
+            {site.pathways?.map((p) => {
+              const iconMap = {
+                speech: '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',
+                cloud: '<polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>',
+                package: '<line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>'
+              };
+              const iconSvg = iconMap[p.icon] || iconMap.package;
+              return (
+                <a href={p.url} class="pathway-card c4" aria-label={p.title}>
+                  <div class="pathway-icon">
+                    <svg viewBox="0 0 24 24" set:html={iconSvg} />
+                  </div>
+                  <div style="font-size:16px;font-weight:700;margin:0 0 4px">{p.title}</div>
+                  <div style="font-size:13px;color:var(--muted);margin:0 0 12px;flex:1;line-height:1.55">{p.description}</div>
+                  <div style="color:var(--accent);font-weight:700;font-size:13px">{p.cta} &rarr;</div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="benefits" aria-label="Why choose us">
+      <!-- Benefits -->
+      <section id="benefits" class="section-white" aria-label="Why choose us">
         <div class="wrap">
           <div class="sh">
             <h2>Why professionals choose Dictation Solutions</h2>
-            <p>Everything you need for fast, accurate, secure dictation and transcription.</p>
+            <p>Fast, accurate, secure dictation and transcription — supported by 25 years of Australian expertise.</p>
           </div>
           <div class="grid">
             {site.benefits?.map((b) => (
               <div class="benefit-card c6">
-                <div class="card-icon">{b.icon || "✓"}</div>
+                <div class="benefit-icon">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
+                </div>
                 <h3>{b.title}</h3>
                 <p>{b.body}</p>
               </div>
@@ -349,54 +418,63 @@ const products = site.navDropdown?.items || [];
         </div>
       </section>
 
-      <section id="about" class="neutral-bg" aria-label="About us">
+      <div class="section-divider"></div>
+
+      <!-- About -->
+      <section id="about" class="section-neutral" aria-label="About us">
         <div class="wrap">
           <div class="grid">
-            <div class="card c7">
+            <div class="c7">
               {imgSrc("about-banner") && (
-                <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:12px">
+                <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-bottom:14px">
                   <img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <h3 style="margin:0 0 8px;font-size:18px;font-weight:700">{site.branding.aboutHeading}</h3>
-              <p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.6">{site.branding.aboutBody}</p>
-              <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
+              <h3 style="margin:0 0 8px;font-size:20px;font-weight:800">{site.branding.aboutHeading}</h3>
+              <p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.65">{site.branding.aboutBody}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
                 {site.proofPoints?.map((p) => (
-                  <div style="background:#f3f4f6;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151">✓ {p}</div>
+                  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;color:#374151;display:inline-flex;align-items:center;gap:5px">
+                    <span style="color:var(--accent)">&#10003;</span> {p}
+                  </div>
                 ))}
               </div>
             </div>
-            <div class="formbox" style="background:#f9fafb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 14px;font-size:16px;font-weight:700">Get in touch</h3>
-              <p style="font-size:13px;color:var(--muted);margin:0 0 12px">Tell us about your needs and we'll recommend the right solution.</p>
-              <ACForm />
+            <div class="c5">
+              <div style="background:var(--primary);border-radius:14px;padding:20px">
+                <h3 style="color:white;margin:0 0 4px;font-size:16px;font-weight:700">Get in touch</h3>
+                <p style="font-size:13px;color:rgba(255,255,255,.65);margin:0 0 14px;line-height:1.5">Tell us about your needs and we'll recommend the right solution.</p>
+                <ACForm />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" aria-label="Frequently asked questions">
+      <!-- FAQ -->
+      <section id="faq" class="section-white" aria-label="Frequently asked questions">
         <div class="wrap">
           <div class="sh">
             <h2>Frequently asked questions</h2>
           </div>
           <div class="grid">
             {site.faqs?.map((f) => (
-              <div class="benefit-card c6">
-                <h3 style="font-size:15px">{f.q}</h3>
-                <p style="font-size:13px">{f.a}</p>
+              <div class="faq-card c6">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <!-- Blog -->
       {recentPosts.length > 0 && (
-        <section class="blog-strip" aria-label="Latest news">
+        <section class="section-neutral" aria-label="Latest news">
           <div class="wrap">
             <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
               <h2 style="margin:0">Latest from the blog</h2>
-              <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles →</a>
+              <a href="/news" style="font-size:13px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
             </div>
             <div class="grid">
               {recentPosts.map((post) => (
@@ -411,12 +489,22 @@ const products = site.navDropdown?.items || [];
         </section>
       )}
 
-      <section id="final-cta" class="dark-bg" aria-label="Contact us">
+      <!-- Contact CTA -->
+      <section id="final-cta" class="contact-section" aria-label="Contact us">
         <div class="wrap">
-          <div class="grid">
-            <div class="c12">
-              <h2 style="color:white;font-size:24px;margin:0 0 8px">{site.branding.ctaHeading}</h2>
-              <p style="color:#9ca3af;margin:0 0 12px;max-width:720px;font-size:15px">{site.branding.ctaBody}</p>
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:24px 0">
+              <h2 style="color:white;font-size:26px;margin:0 0 8px;font-weight:800">{site.branding.ctaHeading}</h2>
+              <p style="color:rgba(255,255,255,.7);margin:0 0 16px;max-width:520px;font-size:15px;line-height:1.6">{site.branding.ctaBody}</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+                {site.secondaryCTA?.text && <a class="btn btn-ghost btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+              </div>
+            </div>
+            <div class="c5" style="padding:20px 0">
+              <div class="formbox">
+                <ACForm />
+              </div>
             </div>
           </div>
         </div>
