@@ -2,6 +2,7 @@
 import manifest from "../data/image-manifest.json";
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+import { getCollection } from 'astro:content';
 
 const year = new Date().getFullYear();
 const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
@@ -19,6 +20,10 @@ const c = site.colours;
 const heroSrc = imgSrc("hero");
 const canonicalUrl = site.domain;
 const ogImage = heroSrc || "";
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -69,7 +74,6 @@ const benefitIcons = [
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.siteName} />
     <meta property="og:title" content={site.branding.metaTitle} />
@@ -79,16 +83,12 @@ const benefitIcons = [
     {ogImage && <meta property="og:image:width" content="1200" />}
     {ogImage && <meta property="og:image:height" content="630" />}
     <meta property="og:locale" content="en_AU" />
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={site.branding.metaTitle} />
     <meta name="twitter:description" content={site.branding.metaDesc} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-    <!-- JSON-LD Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
     {site.googleAnalyticsId && (
@@ -131,19 +131,19 @@ const benefitIcons = [
       .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
       .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e5e7eb}
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6}
-      section{padding:64px 0}
-      .hero{padding:72px 0 56px}
+      section{padding:48px 0}
+      .hero{padding:56px 0 44px}
       .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
-      .hero h1{font-size:40px;line-height:1.15;margin:0 0 16px;letter-spacing:-0.025em}
-      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7;color:var(--muted)}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
+      .hero h1{font-size:38px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.025em}
+      .hero p{font-size:16px;margin:0 0 24px;line-height:1.7;color:var(--muted)}
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.12)}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 16px 48px rgba(0,0,0,.12)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-      .stats-bar{padding:13px 0;background:var(--primary)}
-      .sh{margin-bottom:40px}
-      .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px}
-      .sh p{font-size:17px;margin:0;max-width:620px;color:var(--muted)}
+      .stats-bar{padding:12px 0;background:var(--primary)}
+      .sh{margin-bottom:28px}
+      .sh h2{font-size:28px;letter-spacing:-0.02em;margin:0 0 8px}
+      .sh p{font-size:16px;margin:0;max-width:620px;color:var(--muted)}
       .neutral-bg{background:var(--neutral)}
       .dark-bg{background:var(--primary);color:white}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
@@ -153,48 +153,54 @@ const benefitIcons = [
       .c7{grid-column:span 7}
       .c5{grid-column:span 5}
       .c12{grid-column:span 12}
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:22px}
       .card p{color:var(--muted)}
-      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
-      .benefit-card h3{margin:8px 0 10px;font-size:18px}
-      .benefit-card p{color:var(--muted)}
-      .card-icon{margin-bottom:14px;line-height:1}
-      .pathway-card{background:#fff;border:2px solid #e5e7eb;border-radius:20px;padding:28px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
+      .benefit-card h3{margin:8px 0 8px;font-size:17px}
+      .benefit-card p{color:var(--muted);margin:0;font-size:15px}
+      .card-icon{margin-bottom:12px;line-height:1}
+      .pathway-card{background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
       .pathway-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.08)}
-      .pathway-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
-      .pathway-title{font-size:19px;font-weight:800;margin:0 0 4px}
-      .pathway-subtitle{font-size:13px;color:#6b7280;margin:0 0 12px}
-      .pathway-desc{font-size:15px;color:var(--muted);margin:0 0 20px;line-height:1.6;flex:1}
-      .pathway-cta{margin-top:auto;display:block;text-align:center;padding:11px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f3f4f6;color:#1f2937;transition:background .15s}
+      .pathway-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
+      .pathway-title{font-size:18px;font-weight:800;margin:0 0 3px}
+      .pathway-subtitle{font-size:13px;color:#6b7280;margin:0 0 10px}
+      .pathway-desc{font-size:14px;color:var(--muted);margin:0 0 16px;line-height:1.6;flex:1}
+      .pathway-cta{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f3f4f6;color:#1f2937;transition:background .15s}
       .pathway-card:hover .pathway-cta{background:var(--accent);color:#fff}
-      .formbox{background:#fff;border-radius:16px;padding:28px}
-      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .formbox{background:#fff;border-radius:16px;padding:24px}
+      .blog-strip{background:#fff;border-top:1px solid #e5e7eb}
+      .blog-card{display:block;border:1px solid #e5e7eb;border-radius:12px;padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+      .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+      .blog-date{font-size:12px;color:var(--muted);margin-bottom:6px}
+      .blog-card h3{font-size:16px;margin:0 0 6px;line-height:1.4;font-weight:700}
+      .blog-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.5}
+      footer{background:#111827;color:#6b7280;padding:24px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
+      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:10px;padding-top:10px;border-top:1px solid #1f2937}
 
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
-        .hero h1{font-size:32px}
+        .hero h1{font-size:30px}
         .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
-        .sh h2{font-size:26px}
+        .sh h2{font-size:24px}
       }
       @media(max-width:600px){
         .nav-links{display:none}
         .nav-ctas .btn-secondary{display:none}
         .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
         .hamburger{display:flex}
-        section{padding:40px 0}
-        .hero{padding:36px 0 28px}
-        .hero h1{font-size:26px}
+        section{padding:32px 0}
+        .hero{padding:28px 0 24px}
+        .hero h1{font-size:24px}
         .hero p{font-size:15px}
-        .sh h2{font-size:22px}
+        .sh h2{font-size:21px}
         .sh p{font-size:15px}
-        .sh{margin-bottom:24px}
+        .sh{margin-bottom:20px}
         .hero-btns{flex-direction:column}
         .hero-btns .btn-lg{width:100%;text-align:center;padding:13px 20px}
-        .card,.benefit-card,.pathway-card,.formbox{padding:18px}
+        .card,.benefit-card,.pathway-card,.formbox{padding:16px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
       }
@@ -210,6 +216,7 @@ const benefitIcons = [
           </div>
           <nav class="nav-links" aria-label="Primary navigation">
             {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            <a href="/news">News</a>
           </nav>
           <div class="nav-ctas">
             {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
@@ -221,6 +228,7 @@ const benefitIcons = [
         </div>
         <nav class="mobile-nav" aria-label="Mobile navigation">
           {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          <a href="/news">News</a>
         </nav>
       </div>
     </header>
@@ -251,8 +259,8 @@ const benefitIcons = [
 
       <div class="stats-bar" role="complementary" aria-label="Key facts">
         <div class="wrap">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
-            <div style="color:#16a34a;font-size:15px;font-weight:800;text-align:center">{site.branding.statsMessage}</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="color:#16a34a;font-size:14px;font-weight:800;text-align:center">{site.branding.statsMessage}</div>
             <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
               {site.stats?.map((s) => (
                 <div style="font-size:13px;color:#9ca3af;display:flex;align-items:center;gap:4px">
@@ -308,27 +316,27 @@ const benefitIcons = [
           <div class="grid">
             <div class="card c7">
               {imgSrc("about-banner") && (
-                <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px">
+                <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:14px">
                   <img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
               <h3>{site.branding.aboutHeading}</h3>
               <p>{site.branding.aboutBody}</p>
-              <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px">
+              <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
-                  <div style="background:#f3f4f6;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#374151">&#10003; {p}</div>
+                  <div style="background:#f3f4f6;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;color:#374151">&#10003; {p}</div>
                 ))}
               </div>
             </div>
             <div class="card c5" style="background:#1f2937;color:white;border-color:#1f2937">
-              <h3 style="color:white;margin:0 0 20px">Find your solution</h3>
+              <h3 style="color:white;margin:0 0 16px;font-size:18px">Find your solution</h3>
               {site.pathways?.map((p) => (
-                <a href={p.url} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
+                <a href={p.url} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:12px;margin-bottom:8px;text-decoration:none;transition:background .15s">
                   <div style="color:#16a34a;font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
                   <div style="font-size:13px;color:#9ca3af">{p.subtitle}</div>
                 </a>
               ))}
-              <a href="https://www.voicerecognition.com.au" style="display:block;background:#16a34a;border-radius:10px;padding:14px;margin-top:16px;text-decoration:none;text-align:center;font-weight:700;color:white;font-size:14px">Shop at Voice Recognition Australia</a>
+              <a href="https://www.voicerecognition.com.au" style="display:block;background:#16a34a;border-radius:10px;padding:12px;margin-top:14px;text-decoration:none;text-align:center;font-weight:700;color:white;font-size:14px">Shop at Voice Recognition Australia</a>
             </div>
           </div>
         </div>
@@ -342,26 +350,46 @@ const benefitIcons = [
           <div class="grid">
             {site.faqs?.map((f) => (
               <div class="card c6">
-                <h3 style="margin:0 0 8px;font-size:16px">{f.q}</h3>
-                <p style="margin:0;font-size:15px">{f.a}</p>
+                <h3 style="margin:0 0 6px;font-size:15px">{f.q}</h3>
+                <p style="margin:0;font-size:14px">{f.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {recentPosts.length > 0 && (
+        <section class="blog-strip" aria-label="Latest news">
+          <div class="wrap">
+            <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+              <h2 style="margin:0">Latest from the blog</h2>
+              <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
+            </div>
+            <div class="grid">
+              {recentPosts.map((post) => (
+                <a href={`/news/${post.slug}`} class="blog-card c4">
+                  <div class="blog-date">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section id="final-cta" class="dark-bg" aria-label="Contact us">
         <div class="wrap">
           <div class="grid">
             <div class="c7">
               {imgSrc("cta-banner") && (
-                <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:24px">
+                <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:20px">
                   <img src={imgSrc("cta-banner")} alt={imgAlt("cta-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <h2 style="color:white;font-size:28px;margin:0 0 12px">{site.branding.ctaHeading}</h2>
-              <p style="color:#9ca3af;margin:0 0 20px">{site.branding.ctaBody}</p>
-              <ul style="color:#9ca3af;margin:0;padding-left:20px;line-height:2.2;font-size:15px">
+              <h2 style="color:white;font-size:26px;margin:0 0 10px">{site.branding.ctaHeading}</h2>
+              <p style="color:#9ca3af;margin:0 0 16px">{site.branding.ctaBody}</p>
+              <ul style="color:#9ca3af;margin:0;padding-left:20px;line-height:2;font-size:15px">
                 {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
               </ul>
             </div>
