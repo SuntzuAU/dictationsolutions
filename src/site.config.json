@@ -19,6 +19,8 @@
     "headline": "Dictation, Speech Recognition and Transcription Solutions for Australian Professionals",
     "subheadline": "From traditional digital dictation hardware to modern cloud speech workflows, find the right solution for your practice, business or team. 25 years of Australian deployment experience.",
     "statsMessage": "25 years of Australian dictation and speech recognition expertise",
+    "aboutHeading": "Voice Recognition Australia - 25 Years of Deployment Experience",
+    "aboutBody": "Dictation Solutions Australia is the specialist dictation and speech recognition channel of Voice Recognition Australia, an authorised Dragon reseller since the product launched in Australia. We deploy hardware and software solutions across healthcare, legal, and government - and we understand the workflows that matter in each environment.",
     "benefitsHeading": "Why professionals choose dictation and transcription solutions",
     "benefitsSubheading": "The right tool for your workflow - hardware, software, and cloud options tailored to how you work.",
     "ctaHeading": "Not sure which approach is right for you?",
@@ -39,12 +41,12 @@
   "navDropdown": {
     "label": "Products",
     "items": [
-      { "label": "Dragon Professional 16", "url": "/dragon-professional-16" },
-      { "label": "Dragon Medical One", "url": "/dragon-medical-one" },
-      { "label": "Dragon Professional Anywhere", "url": "/dragon-professional-anywhere" },
-      { "label": "Cloud Speech Solutions", "url": "/cloud-speech-solutions" },
-      { "label": "Dictation Hardware", "url": "/dictation-hardware" },
-      { "label": "Transcription Services", "url": "/transcription-services" }
+      { "label": "Dragon Professional 16", "url": "/dragon-professional-16", "description": "Desktop speech recognition for Windows - offline capable, perpetual licence" },
+      { "label": "Dragon Medical One", "url": "/dragon-medical-one", "description": "Cloud AI clinical documentation for Australian doctors and healthcare teams" },
+      { "label": "Dragon Professional Anywhere", "url": "/dragon-professional-anywhere", "description": "Cloud-based Dragon for Windows and Mac - dictate from any device" },
+      { "label": "Cloud Speech Solutions", "url": "/cloud-speech-solutions", "description": "Modern AI transcription in the browser - 57 languages, free tier available" },
+      { "label": "Dictation Hardware", "url": "/dictation-hardware", "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets" },
+      { "label": "Transcription Services", "url": "/transcription-services", "description": "Professional Australian transcriptionists for medical, legal and business audio" }
     ]
   },
   "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },
@@ -54,6 +56,29 @@
     { "value": "Dragon", "label": "Authorised reseller" },
     { "value": "Philips + Olympus", "label": "Hardware specialists" },
     { "value": "Healthcare, Legal, Government", "label": "Industry focus" }
+  ],
+  "pathways": [
+    {
+      "icon": "speech",
+      "title": "Desktop Speech Recognition",
+      "description": "Dragon Professional 16 for Windows. Works offline, integrates with Word and Outlook, automates repetitive workflows by voice. Perpetual licence - buy once, own it permanently.",
+      "cta": "View Dragon Professional 16",
+      "url": "/dragon-professional-16"
+    },
+    {
+      "icon": "cloud",
+      "title": "Cloud Dictation and AI Transcription",
+      "description": "Dragon Medical One for healthcare, Dragon Professional Anywhere for enterprise, and SpeechRecognition.cloud for individuals. No local installation - access from any device.",
+      "cta": "Explore cloud options",
+      "url": "/dragon-medical-one"
+    },
+    {
+      "icon": "package",
+      "title": "Dictation Hardware and Workflow",
+      "description": "Philips and Olympus voice recorders, USB microphones, foot pedals, and professional transcription services. The complete workflow from dictation to finished document.",
+      "cta": "See hardware range",
+      "url": "/dictation-hardware"
+    }
   ],
   "products": [
     {
