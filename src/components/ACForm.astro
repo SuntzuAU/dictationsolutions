@@ -1,28 +1,27 @@
 ---
-// ActiveCampaign Form - Dictation Solutions Australia
+// Clean, reusable AC form component
+// Wraps the inline form embed without styling interference
 ---
-<div class="formbox">
-  <div style="font-weight:800;font-size:20px;color:#111827;margin-bottom:4px">Get in touch</div>
-  <div style="color:#6b7280;font-size:15px;margin-bottom:16px">Local Australian support. Fast response.</div>
 
-  <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id="_form_283_" class="_form _form_283 _inline-form" novalidate data-styles-version="5">
-    <input type="hidden" name="u" value="283" />
-    <input type="hidden" name="f" value="283" />
+<div class="ac-form-wrapper">
+  <form method="POST" action="https://voicerecognition.activehosted.com/proc.php" id="_form_287_" class="_form _form_287 _inline-form" novalidate data-styles-version="5">
+    <input type="hidden" name="u" value="287" />
+    <input type="hidden" name="f" value="287" />
     <input type="hidden" name="s" />
     <input type="hidden" name="c" value="0" />
     <input type="hidden" name="m" value="0" />
     <input type="hidden" name="act" value="sub" />
     <input type="hidden" name="v" value="2" />
-    <input type="hidden" name="or" value="452040ae-e495-4c74-bd95-dc0f67e3edd8" />
+    <input type="hidden" name="or" value="e0036509-0a90-4aa9-94b0-9a7d69012d44" />
     <div class="_form-content">
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <input type="text" id="firstname" name="firstname" placeholder="Your Name" required />
+          <input type="text" id="firstname" name="firstname" placeholder="Your Name" required/>
         </div>
       </div>
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <input type="text" id="email" name="email" placeholder="Your Email" required />
+          <input type="text" id="email" name="email" placeholder="Your Email" required/>
         </div>
       </div>
       <div class="_form_element _full_width">
@@ -32,91 +31,218 @@
       </div>
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <input type="text" id="field21" name="field[21]" placeholder="Number of Users" />
+          <input type="text" id="field[21]" name="field[21]" placeholder="Number of Users" />
         </div>
       </div>
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <input type="text" id="field35" name="field[35]" placeholder="Company / Organisation" />
+          <input type="text" id="field[35]" name="field[35]" placeholder="Company / Organisation" />
         </div>
       </div>
       <div class="_form_element _full_width">
         <div class="_field-wrapper">
-          <textarea id="field18" name="field[18]" placeholder="Describe your dictation or speech recognition needs"></textarea>
+          <textarea id="field[18]" name="field[18]" placeholder="Optionally describe your needs"></textarea>
         </div>
       </div>
       <div class="_button-wrapper _full_width">
-        <button id="_form_283_submit" class="_submit" type="submit">Send Enquiry</button>
+        <button id="_form_287_submit" class="_submit" type="submit">Request Information</button>
       </div>
     </div>
     <div class="_form-thank-you" style="display:none;"></div>
   </form>
 </div>
 
-<style is:inline>
-  ._form_element { margin-bottom: 10px; }
-  ._form_element input[type="text"],
-  ._form_element textarea {
-    background: #f9fafb;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    color: #111827;
+<style is:global>
+  .ac-form-wrapper #_form_287_ {
     font-size: 14px;
-    font-family: system-ui, -apple-system, sans-serif;
-    padding: 10px 12px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  ._form_element textarea { resize: vertical; min-height: 80px; }
-  ._submit {
-    background: #16a34a;
-    color: #fff;
+    line-height: 1.6;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    background: transparent;
     border: none;
+    padding: 0;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .ac-form-wrapper #_form_287_ input[type="text"],
+  .ac-form-wrapper #_form_287_ input[type="tel"],
+  .ac-form-wrapper #_form_287_ textarea {
+    padding: 10px 12px;
+    height: auto;
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 12px 20px;
+    color: #000 !important;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
     width: 100%;
-    margin-top: 8px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .ac-form-wrapper #_form_287_ input::placeholder {
+    color: #9ca3af;
+  }
+
+  .ac-form-wrapper #_form_287_ textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .ac-form-wrapper #_form_287_ ._submit {
     cursor: pointer;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    background: #16a34a !important;
+    border: 1px solid #16a34a !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    padding: 12px 24px !important;
+    width: 100%;
     transition: background 0.15s;
   }
-  ._submit:hover { background: #15803d; }
-  ._submit:disabled { opacity: 0.5; cursor: not-allowed; }
-  ._error-inner {
-    padding: 8px 12px;
-    background: #fef2f2;
-    border-radius: 4px;
-    font-size: 13px;
-    color: #000;
-    margin-bottom: 8px;
+
+  .ac-form-wrapper #_form_287_ ._submit:hover {
+    background: #15803d !important;
   }
-  ._form-thank-you {
+
+  .ac-form-wrapper #_form_287_ ._submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .ac-form-wrapper #_form_287_ ._submit.processing::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    border: double 3px transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(#16a34a, #16a34a), conic-gradient(#16a34a, #fff);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    animation: 1200ms ease 0s infinite normal none running _spin;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form-content {
+    margin-bottom: 0;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form_element {
+    position: relative;
+    margin-bottom: 0;
+    font-size: 0;
+    max-width: 100%;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form_element * {
+    font-size: 14px;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form_element._clear {
+    clear: both;
+    width: 100%;
+    float: none;
+  }
+
+  .ac-form-wrapper #_form_287_ ._field-wrapper {
+    position: relative;
+  }
+
+  .ac-form-wrapper #_form_287_ ._full_width {
+    width: 100%;
+  }
+
+  .ac-form-wrapper #_form_287_ ._button-wrapper {
+    margin-top: 4px;
+  }
+
+  .ac-form-wrapper #_form_287_ input[type="text"]._has_error,
+  .ac-form-wrapper #_form_287_ textarea._has_error {
+    border-color: #f87171 !important;
+    background: #fef2f2;
+  }
+
+  .ac-form-wrapper #_form_287_ ._error {
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    z-index: 10000001;
+    color: #dc2626;
+    margin-top: 4px;
+  }
+
+  .ac-form-wrapper #_form_287_ ._error-inner {
+    padding: 8px 12px;
+    background-color: #fee2e2;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM9 3V9H7V3H9ZM9 13V11H7V13H9Z' fill='%23CA0000'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 14px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #7f1d1d;
+    text-align: left;
+    border-radius: 6px;
+    padding-left: 28px;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form-thank-you {
+    position: relative;
     text-align: center;
     font-size: 16px;
-    font-weight: 600;
-    color: #166534;
-    padding: 20px;
+    line-height: 1.6;
+    color: #059669;
+  }
+
+  @keyframes _spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(450deg);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ac-form-wrapper #_form_287_ input[type="text"],
+    .ac-form-wrapper #_form_287_ textarea,
+    .ac-form-wrapper #_form_287_ ._submit {
+      font-size: 16px;
+      padding: 12px 14px;
+    }
+    .ac-form-wrapper #_form_287_ ._submit {
+      padding: 14px 16px !important;
+    }
   }
 </style>
 
-<script>
-  window.cfields = {"21": "number_of_users", "35": "company", "18": "comments_about_your_needs"};
+<script is:inline>
+  window.cfields = {"21":"number_of_users","35":"company","18":"comments_about_your_needs"};
 
   window._show_thank_you = function(id, message, trackcmp_url, email) {
-    var form = document.getElementById('_form_' + id + '_'),
-        thank_you = form.querySelector('._form-thank-you');
+    var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
     form.querySelector('._form-content').style.display = 'none';
     thank_you.innerHTML = message;
     thank_you.style.display = 'block';
     const vgoAlias = typeof visitorGlobalObjectAlias === 'undefined' ? 'vgo' : visitorGlobalObjectAlias;
     var visitorObject = window[vgoAlias];
     if (email && typeof visitorObject !== 'undefined') {
-      visitorObject('setEmail', email);
-      visitorObject('update');
+        visitorObject('setEmail', email);
+        visitorObject('update');
     } else if (typeof(trackcmp_url) != 'undefined' && trackcmp_url) {
-      _load_script(trackcmp_url);
+        _load_script(trackcmp_url);
     }
+    if (typeof window._form_callback !== 'undefined') window._form_callback(id);
+    thank_you.setAttribute('tabindex', '-1');
+    thank_you.focus();
   };
 
   window._show_error = function(id, message, html) {
@@ -128,43 +254,65 @@
     err.innerHTML = message;
     err.className = '_error-inner _form_error _no_arrow';
     var wrapper = document.createElement('div');
-    wrapper.className = '_form-inner';
+    wrapper.className = '_form-inner _show_be_error';
     wrapper.appendChild(err);
     button.parentNode.insertBefore(wrapper, button);
     var submitButton = form.querySelector('[id^="_form"][id$="_submit"]');
     submitButton.disabled = false;
+    submitButton.classList.remove('processing');
+    if (html) {
+        var div = document.createElement('div');
+        div.className = '_error-html';
+        div.innerHTML = html;
+        err.appendChild(div);
+    }
   };
 
   window._load_script = function(url, callback, isSubmit) {
     var head = document.querySelector('head'), script = document.createElement('script'), r = false;
-    var submitButton = document.querySelector('#_form_283_submit');
+    var submitButton = document.querySelector('#_form_287_submit');
     script.charset = 'utf-8';
     script.src = url;
     if (callback) {
-      script.onload = script.onreadystatechange = function() {
-        if (!r && (!this.readyState || this.readyState == 'complete')) {
-          r = true; callback();
-        }
-      };
+        script.onload = script.onreadystatechange = function() {
+            if (!r && (!this.readyState || this.readyState == 'complete')) {
+                r = true;
+                callback();
+            }
+        };
     }
     script.onerror = function() {
-      if (isSubmit) {
-        _show_error("283", "Sorry, your submission failed. Please try again.");
-        submitButton.disabled = false;
-      }
-    };
+        if (isSubmit) {
+            if (script.src.length > 10000) {
+                _show_error("287", "Sorry, your submission failed. Please shorten your responses and try again.");
+            } else {
+                _show_error("287", "Sorry, your submission failed. Please try again.");
+            }
+            submitButton.disabled = false;
+            submitButton.classList.remove('processing');
+        }
+    }
     head.appendChild(script);
   };
 
   (function() {
-    if (window.location.search.indexOf('excludeform') !== -1) return false;
-    var form_to_submit = document.getElementById('_form_283_');
-    if (!form_to_submit) return;
-    var allInputs = form_to_submit.querySelectorAll('input, select, textarea');
+    if (window.location.search.search("excludeform") !== -1) return false;
+    var form_to_submit = document.getElementById('_form_287_');
+    var allInputs = form_to_submit.querySelectorAll('input, select, textarea'), tooltips = [], submitted = false;
 
-    var validate_field = function(elem) {
-      var value = elem.value, no_error = true;
-      elem.className = elem.className.replace(/ ?_has_error ?/g, '');
+    var validate_field = function(elem, remove) {
+      var tooltip = null, value = elem.value, no_error = true;
+      if (remove) {
+        for (var i = 0; i < tooltips.length; i++) {
+          if (tooltips[i].elem === elem) {
+            if (tooltips[i].tip.parentNode) tooltips[i].tip.parentNode.removeChild(tooltips[i].tip);
+            tooltips.splice(i, 1);
+            return;
+          }
+        }
+      }
+      elem.removeAttribute('aria-invalid');
+      if (elem.type != 'checkbox') elem.className = elem.className.replace(/ ?_has_error ?/g, '');
       if (elem.getAttribute('required') !== null) {
         if (value === undefined || value === null || value === '') {
           elem.className = elem.className + ' _has_error';
@@ -172,7 +320,7 @@
         }
       }
       if (no_error && elem.name == 'email') {
-        if (!value.match(/^[\+_a-z0-9-'&=]+(\.[[\+_a-z0-9-']+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i)) {
+        if (!value.match(/^[\+_a-z0-9-'&=]+(\.[\+_a-z0-9-']+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i)) {
           elem.className = elem.className + ' _has_error';
           no_error = false;
         }
@@ -180,33 +328,54 @@
       return no_error;
     };
 
-    form_to_submit.addEventListener('submit', function(e) {
-      e.preventDefault();
+    var validate_form = function(e) {
       var no_error = true;
-      for (var i = 0; i < allInputs.length; i++) {
-        var input = allInputs[i];
-        if (input.getAttribute('required') !== null || input.name === 'email') {
-          if (!validate_field(input)) no_error = false;
-        }
-      }
-      if (no_error) {
-        var submitButton = document.getElementById('_form_283_submit');
-        submitButton.disabled = true;
-        var serialized = '';
-        for (var i = 0; i < form_to_submit.elements.length; i++) {
-          var el = form_to_submit.elements[i];
-          if (!el.name) continue;
-          if (el.type === 'checkbox' || el.type === 'radio') {
-            if (el.checked) serialized += (serialized ? '&' : '') + el.name + '=' + encodeURIComponent(el.value);
-          } else {
-            serialized += (serialized ? '&' : '') + el.name + '=' + encodeURIComponent(el.value);
+      if (!submitted) {
+        submitted = true;
+        for (var i = 0, len = allInputs.length; i < len; i++) {
+          var input = allInputs[i];
+          if (input.getAttribute('required') !== null || (input.name == 'email' && input.value)) {
+            if (input.type == 'text') {
+              input.addEventListener('blur', function() {
+                this.value = this.value.trim();
+                validate_field(this, true);
+              });
+            }
           }
         }
-        serialized = serialized.replace(/%0A/g, '\\n');
-        var err = form_to_submit.querySelector('._form_error');
-        if (err) err.parentNode.removeChild(err);
-        _load_script('https://voicerecognition.activehosted.com/proc.php?' + serialized + '&jsonp=true', null, true);
       }
-    });
+      for (var i = 0, len = allInputs.length; i < len; i++) {
+        var elem = allInputs[i];
+        if (elem.getAttribute('required') !== null) {
+          if (elem.type != 'checkbox') {
+            elem.value = elem.value.trim();
+          }
+          validate_field(elem) ? true : no_error = false;
+        }
+      }
+      if (!no_error && e) {
+        e.preventDefault();
+      }
+      return no_error;
+    };
+
+    var form_submit = function(e) {
+      e.preventDefault();
+      if (validate_form(e)) {
+        var submitButton = e.target.querySelector('#_form_287_submit');
+        submitButton.disabled = true;
+        submitButton.classList.add('processing');
+        var serialized = '';
+        for (var i = 0; i < allInputs.length; i++) {
+          if (allInputs[i].name) {
+            serialized += allInputs[i].name + '=' + encodeURIComponent(allInputs[i].value) + '&';
+          }
+        }
+        _load_script('https://voicerecognition.activehosted.com/proc.php?' + serialized + 'jsonp=true', null, true);
+      }
+      return false;
+    };
+
+    form_to_submit.addEventListener('submit', form_submit);
   })();
 </script>
