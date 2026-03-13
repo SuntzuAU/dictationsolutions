@@ -1,14 +1,11 @@
 {
   "hero": {
     "key": "hero",
-    "r2Key": "dictationsolutions/2026/03/12/dictation-solutions-australia-professional-workflow-1f455e73.jpg",
-    "filename": "dictation-solutions-australia-professional-workflow-1f455e73.jpg",
+    "r2Key": "dictationsolutions/2026/03/12/Speech-to-text dictation.jpg",
+    "filename": "Speech-to-text dictation.jpg",
     "contentType": "image/jpeg",
-    "bytes": 693756,
-    "altText": "Australian healthcare legal worker using Philips SpeechMike dictation microphone desk office environment",
-    "prompt": "Professional Australian healthcare and legal worker using a Philips SpeechMike dictation microphone at a modern desk, clean office environment, warm natural light, high quality photography style, photorealistic",
-    "promptHash": "7e9dc8862bfc1abec3b20a1e11903bba1a904cc1486437756abfccab74c1507e",
-    "generatedAt": "2026-03-12T08:36:58.172Z",
+    "bytes": 122106,
+    "altText": "Professional using speech-to-text dictation software at a modern desk, Australian workplace",
     "site": "dictationsolutions"
   },
   "about-banner": {
@@ -19,8 +16,6 @@
     "bytes": 807024,
     "altText": "Australian support team office technology environment collaborative trustworthy warm corporate photography",
     "prompt": "Australian professional support team in a clean modern office, technology environment, collaborative, trustworthy, warm lighting, corporate photography style, photorealistic",
-    "promptHash": "643432241a33023f47ecc0e5b46cfa51938d20d2e096eb5b6475b6aadb2be5eb",
-    "generatedAt": "2026-03-12T08:37:21.444Z",
     "site": "dictationsolutions"
   },
   "cta-banner": {
@@ -30,9 +25,6 @@
     "contentType": "image/jpeg",
     "bytes": 691352,
     "altText": "Australian doctor lawyer side side settings using voice dictation technology environments photography",
-    "prompt": "Australian doctor and lawyer side by side in professional settings using voice dictation technology, modern clean environments, photorealistic, professional photography",
-    "promptHash": "7f9252b477a7ccee7378492a2f3a024c27f19b0f64edbe43c254faf3cd358b7a",
-    "generatedAt": "2026-03-12T08:37:53.021Z",
     "site": "dictationsolutions"
   },
   "feature-dragon": {
@@ -42,9 +34,6 @@
     "contentType": "image/jpeg",
     "bytes": 679998,
     "altText": "Close up dictating voice into USB microphone connected Windows PC Dragon software",
-    "prompt": "Close up of professional dictating by voice into a high quality USB microphone connected to a Windows PC, Dragon software interface visible on screen, clean modern desk, photorealistic",
-    "promptHash": "8071a43ff77ff9b7d0f7ca126703e3f7ee9bcdec57562b12fd2752608b293c43",
-    "generatedAt": "2026-03-12T08:38:14.432Z",
     "site": "dictationsolutions"
   },
   "feature-hardware": {
@@ -54,9 +43,6 @@
     "contentType": "image/jpeg",
     "bytes": 523739,
     "altText": "Arrangement Philips dictation hardware including voice recorder SpeechMike microphone foot pedal desk",
-    "prompt": "Professional arrangement of Philips dictation hardware including voice recorder, SpeechMike microphone and foot pedal on a clean modern desk, product photography style, neutral background, photorealistic",
-    "promptHash": "f17647dd77e68bbfbec65f8a5167aa558d54d3f29bbd195ff826cde89308ae8c",
-    "generatedAt": "2026-03-12T08:38:36.581Z",
     "site": "dictationsolutions"
   }
 }
