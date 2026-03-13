@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import site from '../../site.config.json';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const c = site.colours;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title} | {site.siteName}</title>
+    <meta name="description" content={post.data.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${site.domain}/news/${post.slug}`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:url" content={`${site.domain}/news/${post.slug}`} />
+    <style is:inline define:vars={{
+      bg: c.background, text: c.text, primary: c.primary,
+      accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
+    }}>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:var(--accent)}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .article-wrap{max-width:740px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#374151;align-items:center}
+      .nav-links a:hover{color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
+      .article-header{padding:48px 0 36px;border-bottom:1px solid #e5e7eb}
+      .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:16px}
+      .breadcrumb a{color:var(--accent);text-decoration:none}
+      .article-meta{font-size:14px;color:var(--muted);margin-top:12px}
+      .article-header h1{font-size:36px;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.2}
+      .article-body{padding:48px 0 64px}
+      .article-body h2{font-size:24px;letter-spacing:-0.01em;margin:36px 0 12px}
+      .article-body h3{font-size:20px;margin:28px 0 10px}
+      .article-body p{font-size:16px;line-height:1.75;margin:0 0 20px;color:#374151}
+      .article-body ul,.article-body ol{font-size:16px;line-height:1.75;color:#374151;margin:0 0 20px;padding-left:24px}
+      .article-body li{margin-bottom:6px}
+      .article-body strong{color:var(--text)}
+      .back-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;margin-top:40px}
+      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .article-header h1{font-size:26px}
+        .article-body h2{font-size:20px}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary navigation">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          </nav>
+          <div class="nav-ctas">
+            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="article-header">
+        <div class="article-wrap">
+          <div class="breadcrumb"><a href="/news">&larr; News &amp; Guides</a></div>
+          <h1>{post.data.title}</h1>
+          <div class="article-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
+        </div>
+      </div>
+      <div class="article-body">
+        <div class="article-wrap">
+          <Content />
+          <a href="/news" class="back-link">&larr; Back to News &amp; Guides</a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

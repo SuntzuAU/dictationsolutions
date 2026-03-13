@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import site from '../site.config.json';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const c = site.colours;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>News & Guides | {site.siteName}</title>
+    <meta name="description" content="Practical guides and news on dictation, speech recognition and transcription for Australian professionals." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={`${site.domain}/news`} />
+    <style is:inline define:vars={{
+      bg: c.background, text: c.text, primary: c.primary,
+      accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
+    }}>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#374151;align-items:center}
+      .nav-links a:hover{color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
+      .btn-secondary:hover{background:var(--primary);color:white}
+      .page-hero{padding:48px 0 36px;border-bottom:1px solid #e5e7eb}
+      .page-hero h1{font-size:36px;letter-spacing:-0.02em;margin:0 0 10px}
+      .page-hero p{font-size:17px;color:var(--muted);margin:0;max-width:600px}
+      .posts-grid{padding:48px 0}
+      .post-card{display:block;border:1px solid #e5e7eb;border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .post-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(0,0,0,.07)}
+      .post-meta{font-size:13px;color:var(--muted);margin-bottom:10px}
+      .post-card h2{font-size:22px;margin:0 0 10px;letter-spacing:-0.01em}
+      .post-card p{font-size:15px;color:var(--muted);margin:0 0 16px;line-height:1.6}
+      .post-read-more{font-size:14px;font-weight:700;color:var(--accent)}
+      .empty-state{text-align:center;padding:80px 0;color:var(--muted)}
+      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px;margin-top:0}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      @media(max-width:600px){
+        .nav-links{display:none}
+        .page-hero h1{font-size:26px}
+        .post-card h2{font-size:18px}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary navigation">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          </nav>
+          <div class="nav-ctas">
+            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-hero">
+        <div class="wrap">
+          <h1>News &amp; Guides</h1>
+          <p>Practical advice on dictation, speech recognition and transcription for Australian professionals.</p>
+        </div>
+      </div>
+
+      <div class="posts-grid">
+        <div class="wrap">
+          {posts.length === 0 ? (
+            <div class="empty-state">
+              <p>No posts yet. Check back soon.</p>
+            </div>
+          ) : (
+            posts.map((post) => (
+              <a href={`/news/${post.slug}`} class="post-card">
+                <div class="post-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <span class="post-read-more">Read more &rarr;</span>
+              </a>
+            ))
+          )}
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
