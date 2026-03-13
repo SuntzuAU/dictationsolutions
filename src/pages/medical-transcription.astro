@@ -1,6 +1,7 @@
 ---
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+import Nav from "../components/Nav.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
 ---
@@ -9,143 +10,142 @@ const c = site.colours;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Medical Transcription Australia | Dictation Solutions Australia</title>
-    <meta name="description" content="Medical transcription solutions for Australian healthcare. Traditional dictation workflows, Dragon Medical One and SRC speech recognition, Dragon Copilot ambient AI, and AI scribes compared." />
+    <title>Medical Transcription Australia | Dragon, AI Scribes &amp; Dictation Workflows | Dictation Solutions</title>
+    <meta name="description" content="Medical transcription solutions for Australian healthcare. Traditional dictation workflows, Dragon Medical One, Dragon Copilot ambient AI, and AI scribes compared. Expert local advice." />
     <link rel="canonical" href="https://dictationsolutions.com.au/medical-transcription" />
     <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
-      .breadcrumb a{color:#9ca3af;text-decoration:underline}
-      h1{font-size:38px;line-height:1.15;margin:0 0 14px}
-      .intro{font-size:18px;color:#d1d5db;margin:0}
-      section{padding:56px 0}
-      .neutral-bg{background:var(--neutral)}
-      .dark-bg{background:var(--primary);color:white}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .page-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:white;padding:28px 0 24px}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      h1{font-size:34px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.025em;font-weight:800}
+      .intro{font-size:16px;color:rgba(255,255,255,.75);margin:0;line-height:1.6}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      section{padding:24px 0}
+      .section-neutral{background:var(--neutral)}
+      .section-dark{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
-      .card h3{margin:0 0 10px;font-size:19px}.card p{color:var(--muted);margin:0 0 12px;font-size:15px}
+      .sh{margin-bottom:14px}
+      .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px}
+      .card h3{margin:0 0 8px;font-size:17px;font-weight:800}.card p{color:var(--muted);margin:0 0 10px;font-size:14px;line-height:1.55}
       .card p:last-of-type{margin-bottom:0}
-      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
       .tag-blue{background:#2563eb}
       .tag-purple{background:#7c3aed}
       .tag-gray{background:#6b7280}
-      .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
-      .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accentHover)}
-      .notice{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px 24px;margin-top:16px}
-      .notice p{margin:0;font-size:15px;color:#166534}
-      .warning-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:20px 24px;margin-top:16px}
-      .warning-box p{margin:0;font-size:15px;color:#9a3412}
-      .cite{font-size:13px;color:#6b7280;font-style:italic;margin-top:8px}
-      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .notice{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 20px;margin-top:14px}
+      .notice p{margin:0;font-size:14px;color:#166534;line-height:1.55}
+      .warning-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:16px 20px;margin-top:12px}
+      .warning-box p{margin:0;font-size:13px;color:#9a3412;line-height:1.55}
+      .cite{font-size:12px;color:#6b7280;font-style:italic;margin-top:8px}
+      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
-      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:28px}}
-      @media(max-width:600px){section{padding:36px 0}.card{padding:20px}}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
+      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:26px}}
+      @media(max-width:600px){section{padding:16px 0}.card{padding:14px}}
     </style>
   </head>
   <body>
-    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
-      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px">
-        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
-        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
-          <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
-          <a href="/dragon-medical-one" style="color:#16a34a;font-weight:700">Medical</a>
-          <a href="/dictation-equipment">Equipment</a><a href="/support">Support</a>
-        </nav>
-        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
-      </div>
-    </header>
+    <Nav currentPath="/medical-transcription" />
 
-    <div class="page-header">
+    <div class="page-hero">
       <div class="wrap">
         <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Medical Transcription</div>
         <h1>Medical Transcription Australia</h1>
-        <p class="intro">From traditional dictation workflows to real-time speech recognition and ambient AI documentation -- understanding your options for clinical practice.</p>
+        <p class="intro">From traditional dictation workflows to ambient AI documentation &mdash; understanding your options for clinical practice.</p>
       </div>
     </div>
+    <div class="section-divider"></div>
 
     <main>
       <section>
         <div class="wrap">
-          <div style="max-width:760px">
-            <h2 style="font-size:26px;margin:0 0 16px">Four approaches to medical documentation</h2>
-            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Medical documentation has always competed with patient care for a clinician's time. The tools available to reduce that burden have shifted considerably -- from traditional dictation and human transcription, through real-time speech recognition, to ambient AI systems that listen to the consultation itself and draft notes automatically.</p>
-            <p style="font-size:16px;color:#4b5563">Each approach suits different workflows, different documentation environments, and different preferences. Understanding how they differ -- particularly around accuracy, verbatim output, and governance -- matters when choosing what is right for your practice.</p>
+          <div style="max-width:720px">
+            <h2 style="font-size:22px;margin:0 0 10px;font-weight:800">Four approaches to medical documentation</h2>
+            <p style="font-size:15px;color:var(--muted);margin:0 0 10px">Medical documentation has always competed with patient care for a clinician's time. The tools available to reduce that burden have shifted considerably &mdash; from traditional dictation and human transcription, through real-time speech recognition, to ambient AI systems that listen to the consultation itself and draft notes automatically.</p>
+            <p style="font-size:15px;color:var(--muted)">Each approach suits different workflows, documentation environments, and preferences. Understanding how they differ &mdash; particularly around accuracy, verbatim output, and governance &mdash; matters when choosing what is right for your practice.</p>
           </div>
         </div>
       </section>
 
-      <section class="neutral-bg">
-        <div class="wrap">
-          <h2 style="font-size:24px;margin:0 0 28px">Comparing the approaches</h2>
-          <div class="grid">
+      <div class="section-divider"></div>
 
+      <section class="section-neutral">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Comparing the approaches</h2>
+            <p>Four workflows for clinical documentation &mdash; from traditional to ambient AI.</p>
+          </div>
+          <div class="grid">
             <div class="card c6">
               <div class="tag tag-gray">Traditional</div>
               <h3>Dictation + Transcription</h3>
-              <p>The clinician dictates using a voice recorder or smartphone app. The audio file is routed -- automatically, in cloud-based systems -- to a transcriptionist who reviews and finalises the document. No direct software interaction required during the consultation.</p>
-              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:#16a34a;font-weight:600">Philips SpeechLive</a> is a cloud-based dictation and transcription workflow platform widely used in Australian legal and professional environments. It handles secure routing of dictation files between authors and transcriptionists, hosted on Microsoft Azure with end-to-end encryption and ISO 27001 compliance.</p>
+              <p>The clinician dictates using a voice recorder or smartphone app. The audio file is routed to a transcriptionist who reviews and finalises the document. No direct software interaction during the consultation.</p>
+              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:var(--accent);font-weight:600">Philips SpeechLive</a> is a cloud-based dictation and transcription workflow platform widely used in Australian legal and professional environments. Hosted on Microsoft Azure with end-to-end encryption and ISO 27001 compliance.</p>
             </div>
 
-            <div class="card c6" style="border-color:#16a34a;border-width:2px">
+            <div class="card c6" style="border-color:var(--accent);border-width:2px">
               <div class="tag">Recommended</div>
-              <h3>Dragon Medical One + Speech Recognition Cloud</h3>
-              <p>Dragon Medical One and <a href="https://speechrecognition.cloud" style="color:#16a34a;font-weight:600">Speech Recognition Cloud Medical</a> convert your voice to text in real time as you dictate directly into your EHR or document. Both are <strong>verbatim</strong> -- they transcribe exactly what you say, with no generative component and no interpretation.</p>
-              <p>Dragon Medical One includes built-in medical vocabularies covering cardiology, radiology, pathology, emergency medicine, general practice and more. Speech Recognition Cloud Medical adds a dual-use capability: dictate from your phone using the SRC mobile app and have text delivered directly to your PC -- even when you are away from your desk. This makes it practical for clinicians who move between rooms, sites or locations.</p>
-              <a href="/dragon-medical-one" style="color:#16a34a;font-weight:600;font-size:14px">Learn more about Dragon Medical One &rarr;</a>
+              <h3>Dragon Medical One</h3>
+              <p>Dragon Medical One converts voice to text in real time as you dictate directly into your EHR or document. It is <strong>verbatim</strong> &mdash; it transcribes exactly what you say, with no generative component.</p>
+              <p>Built-in medical vocabularies cover cardiology, radiology, pathology, emergency medicine, general practice and 35+ more specialties. Cloud-based &mdash; accessible from any device, no local installation.</p>
+              <a href="/dragon-medical-one" style="color:var(--accent);font-weight:600;font-size:13px">Dragon Medical One details &rarr;</a>
             </div>
 
             <div class="card c6">
               <div class="tag tag-blue">Ambient AI</div>
               <h3>Dragon Copilot</h3>
-              <p>Dragon Copilot extends Dragon Medical One with ambient AI capability. Rather than dictating directly, the clinician allows Dragon Copilot to listen to the consultation itself and generate structured clinical notes from the conversation -- designed to reduce cognitive interruption during the encounter.</p>
-              <p>A 2025 peer-reviewed study published in ScienceDirect assessed ambient clinical intelligence of this type and found significant reductions in daily documentation time and self-reported off-hours documentation burden among participating clinicians.</p>
-              <p class="cite">Source: "Deploying ambient clinical intelligence to improve care: Assessing the impact of Nuance DAX on documentation burden and burnout", ScienceDirect, 2025.<br /><a href="https://www.sciencedirect.com/science/article/pii/S2514664525002292" style="color:#2563eb">sciencedirect.com/science/article/pii/S2514664525002292</a></p>
+              <p>Dragon Copilot extends Dragon Medical One with ambient AI capability. Rather than dictating directly, Dragon Copilot listens to the consultation itself and generates structured clinical notes from the conversation &mdash; reducing cognitive interruption during the encounter.</p>
+              <p>A 2025 peer-reviewed study in ScienceDirect found significant reductions in daily documentation time and self-reported off-hours documentation burden among participating clinicians.</p>
+              <p class="cite">Source: "Deploying ambient clinical intelligence to improve care", ScienceDirect, 2025.</p>
             </div>
 
             <div class="card c6">
               <div class="tag tag-purple">AI Medical Scribes</div>
               <h3>Heidi and Lyrebird Health</h3>
-              <p>Heidi and Lyrebird Health are Australian-relevant AI scribe tools that also use ambient listening to generate clinical notes from consultations. Both position themselves strongly around Australian privacy compliance.</p>
-              <p>Heidi describes itself as an AI care partner that captures consultation details and generates notes, letters and documents -- their published data indicates solo practitioners save up to two hours per day on documentation. Lyrebird Health describes itself as deeply integrated with Australian EMR systems including Best Practice (Bp Premier), with data processed and stored on Australian soil in accordance with the Australian Privacy Principles.</p>
+              <p>Australian-relevant AI scribe tools that use ambient listening to generate clinical notes from consultations. Both position themselves around Australian privacy compliance.</p>
+              <p>Heidi and Lyrebird use generative AI to produce notes &mdash; they interpret and construct output based on what was heard, not verbatim transcription. Clinician review of all generated notes before they enter the medical record is non-negotiable.</p>
               <div class="warning-box">
-                <p><strong>Verbatim vs generative AI -- an important distinction:</strong> AI scribes use generative AI to produce clinical notes. Generative AI does not simply transcribe -- it interprets, summarises and constructs output based on what it heard. This is different to verbatim speech recognition. The inherent risk in any generative system is that output may paraphrase, condense or in rare cases misrepresent what was said. Both Heidi and Lyrebird acknowledge this and require clinician review of all generated notes before they enter the medical record. This review step should be considered non-negotiable regardless of which tool you use.</p>
+                <p><strong>Verbatim vs generative AI:</strong> Dragon Medical One transcribes exactly what you say. AI scribes interpret and summarise. Neither is categorically superior, but understanding which type of output you are working with is a genuine clinical governance consideration.</p>
               </div>
             </div>
-
           </div>
 
-          <div class="notice" style="margin-top:32px">
-            <p><strong>The verbatim question:</strong> Dragon Medical One and Speech Recognition Cloud are verbatim tools -- what you say is what appears. Dragon Copilot and AI scribes are generative -- they interpret and construct. Neither is categorically superior, but understanding which type of output you are working with is a genuine clinical governance consideration.</p>
+          <div class="notice">
+            <p><strong>The verbatim question:</strong> Dragon Medical One is a verbatim tool &mdash; what you say is what appears. Dragon Copilot and AI scribes are generative &mdash; they interpret and construct. Understanding this distinction matters for clinical governance.</p>
           </div>
         </div>
       </section>
 
       <section>
         <div class="wrap">
-          <div style="max-width:760px">
-            <h2 style="font-size:26px;margin:0 0 16px">Privacy and data governance in Australian healthcare</h2>
-            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">Australian health information is treated as sensitive information under the Privacy Act, attracting stricter handling requirements than general personal data. The Office of the Australian Information Commissioner explicitly frames health data as subject to heightened obligations -- making data governance a central purchasing decision, not a secondary one.</p>
-            <p style="font-size:16px;color:#4b5563;margin:0 0 14px">For any speech or transcription tool used in clinical practice, the practical questions are: where does audio and transcript data reside, how long is it retained, who has access, and what are the contractual commitments around model training?</p>
-            <p style="font-size:16px;color:#4b5563">Dragon Medical One and Dragon Copilot carry Microsoft/Nuance enterprise-grade security documentation. Speech Recognition Cloud publishes its security posture directly. Philips SpeechLive publishes detailed security documentation including explicit statements that data is not used to train AI models without permission. Heidi and Lyrebird both publish security and privacy documentation -- confirm Australian data residency requirements are met before clinical deployment.</p>
+          <div style="max-width:700px">
+            <h2 style="font-size:22px;margin:0 0 10px;font-weight:800">Privacy and data governance in Australian healthcare</h2>
+            <p style="font-size:15px;color:var(--muted);margin:0 0 10px">Australian health information is treated as sensitive information under the Privacy Act, attracting stricter handling requirements. For any speech or transcription tool used in clinical practice, the practical questions are: where does audio and transcript data reside, how long is it retained, who has access, and what are the contractual commitments around model training?</p>
+            <p style="font-size:15px;color:var(--muted)">Dragon Medical One carries Microsoft/Nuance enterprise-grade security documentation. Philips SpeechLive publishes explicit statements that data is not used to train AI models without permission. Heidi and Lyrebird both publish security documentation &mdash; confirm Australian data residency requirements are met before clinical deployment.</p>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="dark-bg">
+      <section class="section-dark">
         <div class="wrap">
-          <div class="grid">
-            <div class="c7">
-              <h2 style="color:white;font-size:26px;margin:0 0 12px">Not sure which approach suits your practice?</h2>
-              <p style="color:#9ca3af">Our team can walk you through the options based on your specialty, patient volume, EHR system and how your clinical team currently handles documentation. We can also advise on Dragon Medical One and Speech Recognition Cloud pricing for Australian practices.</p>
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:16px 0">
+              <h2 style="color:white;font-size:22px;margin:0 0 8px;font-weight:800">Not sure which approach suits your practice?</h2>
+              <p style="color:rgba(255,255,255,.7);font-size:14px;margin:0">Our team can walk you through the options based on your specialty, patient volume, EHR system and how your clinical team currently handles documentation.</p>
             </div>
-            <div class="c5"><ACForm /></div>
+            <div class="c5" style="padding:16px 0">
+              <div class="formbox"><ACForm /></div>
+            </div>
           </div>
         </div>
       </section>
@@ -156,8 +156,7 @@ const c = site.colours;
         <div class="footer-inner">
           <div>&copy; {year} {site.siteName}</div>
           <div class="footer-links">
-            <a href="/">Home</a><a href="/dragon-medical-one">Dragon Medical One</a>
-            <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
           </div>
         </div>
         <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>

@@ -1,6 +1,7 @@
 ---
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+import Nav from "../components/Nav.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
 ---
@@ -9,106 +10,106 @@ const c = site.colours;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dictation Equipment Australia | Microphones, Recorders, Foot Pedals | Dictation Solutions</title>
-    <meta name="description" content="Professional dictation equipment for Australian healthcare and legal professionals. Philips SpeechMike, SpeechLive, digital voice recorders, transcription foot pedals and accessories." />
+    <title>Dictation Equipment Australia | Microphones, Recorders &amp; Foot Pedals | Dictation Solutions</title>
+    <meta name="description" content="Professional dictation equipment for Australian healthcare and legal professionals. Philips SpeechMike, digital voice recorders, transcription foot pedals and accessories. Expert advice." />
     <link rel="canonical" href="https://dictationsolutions.com.au/dictation-equipment" />
     <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
-      .breadcrumb a{color:#9ca3af;text-decoration:underline}
-      h1{font-size:38px;line-height:1.15;margin:0 0 14px}
-      .intro{font-size:18px;color:#d1d5db;margin:0}
-      section{padding:56px 0}
-      .neutral-bg{background:var(--neutral)}
-      .dark-bg{background:var(--primary);color:white}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .page-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:white;padding:28px 0 24px}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      h1{font-size:34px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.025em;font-weight:800}
+      .intro{font-size:16px;color:rgba(255,255,255,.75);margin:0;line-height:1.6}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      section{padding:24px 0}
+      .section-neutral{background:var(--neutral)}
+      .section-dark{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
-      .card h3{margin:0 0 10px;font-size:19px}.card p{color:var(--muted);margin:0 0 12px;font-size:15px}
+      .sh{margin-bottom:14px}
+      .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px}
+      .card h3{margin:0 0 8px;font-size:17px;font-weight:800}
+      .card p{color:var(--muted);margin:0 0 10px;font-size:14px;line-height:1.55}
       .card p:last-of-type{margin-bottom:0}
-      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
       .tag-gray{background:#6b7280}
       .tag-blue{background:#2563eb}
-      .section-heading{font-size:26px;margin:0 0 8px}
-      .section-sub{font-size:16px;color:#4b5563;margin:0 0 28px;max-width:680px}
-      .info-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:20px 24px}
-      .info-box p{margin:0;font-size:15px;color:#166534}
-      .compat-note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;margin-top:16px}
-      .compat-note p{margin:0;font-size:15px;color:#475569}
-      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .info-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 20px;margin-top:14px}
+      .info-box p{margin:0;font-size:14px;color:#166534;line-height:1.55}
+      .compat-note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 20px;margin-top:14px}
+      .compat-note p{margin:0;font-size:14px;color:#475569;line-height:1.55}
+      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
-      @media(max-width:900px){.c6,.c4,.c5,.c7,.c3{grid-column:span 12}h1{font-size:28px}}
-      @media(max-width:600px){section{padding:36px 0}.card{padding:20px}}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
+      @media(max-width:900px){.c6,.c4,.c5,.c7,.c3{grid-column:span 12}h1{font-size:26px}}
+      @media(max-width:600px){section{padding:16px 0}.card{padding:14px}}
     </style>
   </head>
   <body>
-    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
-      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px">
-        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
-        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
-          <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
-          <a href="/dragon-medical-one">Medical</a>
-          <a href="/dictation-equipment" style="color:#16a34a;font-weight:700">Equipment</a>
-          <a href="/support">Support</a>
-        </nav>
-        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
-      </div>
-    </header>
+    <Nav currentPath="/dictation-equipment" />
 
-    <div class="page-header">
+    <div class="page-hero">
       <div class="wrap">
         <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Dictation Equipment</div>
         <h1>Dictation Equipment Australia</h1>
         <p class="intro">Professional microphones, voice recorders, foot pedals and transcription accessories for healthcare, legal and enterprise workflows.</p>
       </div>
     </div>
+    <div class="section-divider"></div>
 
     <main>
 
       <section>
         <div class="wrap">
-          <h2 class="section-heading">Desktop dictation microphones</h2>
-          <p class="section-sub">For professionals dictating directly into Dragon Medical One, Dragon Professional or similar speech recognition software at their desk, the microphone is the most important hardware decision.</p>
+          <div class="sh">
+            <h2>Desktop dictation microphones</h2>
+            <p>For professionals dictating directly into Dragon at their desk, the microphone is the most important hardware decision.</p>
+          </div>
           <div class="grid">
-            <div class="card c6" style="border-color:#16a34a;border-width:2px">
+            <div class="card c6" style="border-color:var(--accent);border-width:2px">
               <div class="tag">Most Popular</div>
               <h3>Philips SpeechMike</h3>
-              <p>The Philips SpeechMike range covers USB speech processing devices engineered specifically for desktop dictation. They connect directly to a Windows PC running Dragon Professional or Dragon Medical One, with precision microphone arrays and programmable slide switches that control Dragon without lifting hands from the device.</p>
+              <p>USB speech processing devices engineered specifically for desktop dictation. Connect directly to Windows running Dragon Professional or Dragon Medical One, with precision microphone arrays and programmable slide switches that control Dragon without lifting hands from the device.</p>
               <p>SpeechMike devices are the most widely used desktop dictation microphones in Australian healthcare and legal environments. If you are setting up Dragon for regular professional dictation, a SpeechMike is the standard recommendation.</p>
-              <p><a href="https://www.voicerecognition.com.au" style="color:#16a34a;font-weight:600">Available through Voice Recognition Australia &rarr;</a></p>
+              <p><a href="https://www.voicerecognition.com.au" style="color:var(--accent);font-weight:600">Available through Voice Recognition Australia &rarr;</a></p>
             </div>
             <div class="card c6">
               <div class="tag tag-gray">Alternative</div>
               <h3>Headsets and USB Microphones</h3>
-              <p>Dragon Professional and Dragon Medical One work with a range of professional headsets and USB microphones. Headsets are often preferred by clinicians who dictate in clinical environments where the SpeechMike form factor is impractical -- including ward rounds and consulting rooms where mobility matters.</p>
-              <p>For clinicians using <a href="https://speechrecognition.cloud" style="color:#16a34a;font-weight:600">Speech Recognition Cloud</a>, the SRC mobile app allows dictation directly from a smartphone and delivers text to your PC -- reducing dependence on dedicated microphone hardware for mobile workflows.</p>
+              <p>Dragon Professional and Dragon Medical One work with a range of professional headsets and USB microphones. Headsets are often preferred by clinicians in clinical environments where the SpeechMike form factor is impractical &mdash; including ward rounds and consulting rooms where mobility matters.</p>
+              <p>For mobile workflows, the <a href="https://speechrecognition.cloud" style="color:var(--accent);font-weight:600">Speech Recognition Cloud</a> mobile app allows dictation directly from a smartphone and delivers text to your PC &mdash; reducing dependence on dedicated microphone hardware.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="neutral-bg">
+      <div class="section-divider"></div>
+
+      <section class="section-neutral">
         <div class="wrap">
-          <h2 class="section-heading">Cloud dictation workflow -- Philips SpeechLive</h2>
-          <p class="section-sub">For practices with a transcriptionist, a cloud dictation platform manages the secure routing of audio from author to typist and back.</p>
+          <div class="sh">
+            <h2>Cloud dictation workflow &mdash; Philips SpeechLive</h2>
+            <p>For practices with a transcriptionist, a cloud dictation platform manages secure routing of audio from author to typist and back.</p>
+          </div>
           <div class="grid">
             <div class="card c7">
               <h3>Philips SpeechLive</h3>
-              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:#16a34a;font-weight:600">Philips SpeechLive</a> is a cloud-based dictation and transcription workflow platform that manages secure routing of audio files from authors to transcriptionists. It is hosted on Microsoft Azure with end-to-end encryption and ISO 27001 compliance.</p>
-              <p>SpeechLive includes a mobile app for dictating from your phone -- audio is automatically sent to your transcriptionist without manual file transfer. Options include human transcription, AI-assisted transcription, or a combination of both.</p>
-              <p>SpeechLive is particularly well established in Australian legal and professional services environments. Philips has also announced integration of Nuance Dragon speech recognition directly into the SpeechLive workflow, combining cloud dictation routing with Dragon's recognition accuracy engine.</p>
-              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:#16a34a;font-weight:600">View SpeechLive plans at Voice Recognition Australia &rarr;</a></p>
+              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:var(--accent);font-weight:600">Philips SpeechLive</a> is a cloud-based dictation and transcription workflow platform hosted on Microsoft Azure with end-to-end encryption and ISO 27001 compliance.</p>
+              <p>Includes a mobile app for dictating from your phone &mdash; audio is automatically sent to your transcriptionist without manual file transfer. Philips has also announced integration of Nuance Dragon speech recognition directly into the SpeechLive workflow.</p>
+              <p><a href="https://www.voicerecognition.com.au/collections/philips-speechlive" style="color:var(--accent);font-weight:600">View SpeechLive plans at Voice Recognition Australia &rarr;</a></p>
             </div>
             <div class="c5">
-              <div class="card" style="height:100%;border-color:#16a34a">
+              <div class="card" style="border-color:var(--accent)">
                 <div class="tag">Key features</div>
-                <ul style="color:#4b5563;font-size:15px;margin:0;padding-left:20px;line-height:2">
+                <ul style="color:var(--muted);font-size:14px;margin:0;padding-left:18px;line-height:2">
                   <li>Mobile and desktop dictation app</li>
                   <li>Secure author-to-typist routing</li>
                   <li>Microsoft Azure hosting</li>
@@ -125,58 +126,63 @@ const c = site.colours;
 
       <section>
         <div class="wrap">
-          <h2 class="section-heading">Foot pedals and transcription accessories</h2>
-          <p class="section-sub">Foot pedals are among the most searched-for dictation accessories -- and for good reason. The right accessories make a significant difference to transcriptionist throughput and accuracy.</p>
+          <div class="sh">
+            <h2>Foot pedals and transcription accessories</h2>
+            <p>The right accessories make a significant difference to transcriptionist throughput and accuracy.</p>
+          </div>
           <div class="grid">
             <div class="card c6">
               <div class="tag">Most Searched</div>
               <h3>Transcription Foot Pedals</h3>
-              <p>A transcription foot pedal lets a typist control audio playback hands-free during transcription -- using their feet to play, pause, rewind and fast-forward while both hands remain on the keyboard. For practices with a dedicated transcriptionist, a foot pedal significantly increases throughput compared to keyboard-controlled playback.</p>
-              <p>Philips produces foot pedals designed for use with Philips SpeechExec transcription software. Compatibility between brands is limited -- a Philips pedal is built for Philips software workflows. If you are setting up a new transcription workstation, confirm pedal and software compatibility before purchasing. Our team can advise on the right combination for your workflow.</p>
+              <p>A transcription foot pedal lets a typist control audio playback hands-free during transcription &mdash; play, pause, rewind and fast-forward while both hands remain on the keyboard. For practices with a dedicated transcriptionist, a foot pedal significantly increases throughput compared to keyboard-controlled playback.</p>
+              <p>Compatibility between brands is limited &mdash; a Philips pedal is built for Philips software workflows. Confirm pedal and software compatibility before purchasing. Our team can advise on the right combination.</p>
             </div>
             <div class="card c6">
               <div class="tag tag-gray">Also Popular</div>
               <h3>Headsets, Lapel Mics and Accessories</h3>
-              <p>Professional transcription headsets allow typists to monitor audio clearly during playback. Lapel microphones are popular with clinicians who need mobility in clinical settings -- including ward rounds and consulting environments where a desk-mounted microphone is impractical.</p>
-              <p>Other useful accessories include USB audio adaptors for older machines and Bluetooth microphone options for flexible mobile workflows. The right microphone for each environment can make a meaningful difference to speech recognition accuracy, particularly in noisier clinical settings.</p>
+              <p>Professional transcription headsets allow typists to monitor audio clearly during playback. Lapel microphones are popular with clinicians who need mobility in clinical settings including ward rounds and consulting environments.</p>
+              <p>Other useful accessories include USB audio adaptors for older machines and Bluetooth microphone options for flexible mobile workflows.</p>
             </div>
           </div>
-
-          <div class="compat-note" style="margin-top:12px">
-            <p><strong>Hardware and Dragon compatibility:</strong> Dragon Professional can transcribe single-speaker audio files recorded on supported digital voice recorders, provided the recording is in a compatible format (DS2, DSS, MP3, WAV, WMA). This suits professionals who prefer to dictate away from their desk using a recorder, then transcribe at the office. Confirm your specific device's output format is supported before relying on this workflow. Contact us if you need compatibility advice.</p>
+          <div class="compat-note">
+            <p><strong>Hardware and Dragon compatibility:</strong> Dragon Professional can transcribe single-speaker audio files recorded on supported digital voice recorders in compatible formats (DS2, DSS, MP3, WAV, WMA). Confirm your specific device's output format is supported before relying on this workflow.</p>
           </div>
         </div>
       </section>
 
-      <section class="neutral-bg">
+      <div class="section-divider"></div>
+
+      <section class="section-neutral">
         <div class="wrap">
-          <h2 class="section-heading">Mobile field dictation -- digital voice recorders</h2>
-          <p class="section-sub">For professionals who need to dictate away from the desk -- in court, on-site, during home visits or in clinical environments without a PC -- a dedicated digital voice recorder provides reliable, high-quality capture.</p>
+          <div class="sh">
+            <h2>Field dictation &mdash; digital voice recorders</h2>
+            <p>For professionals who need to dictate away from the desk &mdash; in court, on-site, during home visits or in clinical environments without a PC.</p>
+          </div>
           <div class="grid">
             <div class="card c6">
               <div class="tag">Philips</div>
               <h3>Philips Portable Recorders</h3>
-              <p>Philips produces a range of portable digital voice recorders designed for professional dictation. Philips recorders integrate with SpeechLive and SpeechExec software for automatic file routing to transcriptionists.</p>
-              <p>For most Australian professionals, Philips hardware remains the most practical choice given the ecosystem's integration with SpeechLive and Dragon workflows.</p>
+              <p>Philips produces a range of portable digital voice recorders designed for professional dictation. Philips recorders integrate with SpeechLive and SpeechExec software for automatic file routing to transcriptionists. The most practical choice for most Australian professionals given the ecosystem's integration with SpeechLive and Dragon workflows.</p>
             </div>
             <div class="card c6">
               <div class="tag tag-gray">Olympus / OM System</div>
               <h3>Olympus Recorders and ODMS Cloud</h3>
-              <p>Olympus (now OM System) produces digital voice recorders with the ODMS Cloud platform for routing audio to transcriptionists. Their hardware has been used historically in Australian healthcare and legal environments.</p>
-              <p>If you are already using Olympus hardware and it suits your workflow, ODMS Cloud continues to function as a dictation routing platform. For new setups, our team can advise on the most practical option for your environment.</p>
+              <p>Olympus (now OM System) produces digital voice recorders with the ODMS Cloud platform for routing audio to transcriptionists. Their hardware has been used historically in Australian healthcare and legal environments. If you are already using Olympus hardware and it suits your workflow, ODMS Cloud continues to function as a dictation routing platform.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="dark-bg">
+      <section class="section-dark">
         <div class="wrap">
-          <div class="grid">
-            <div class="c7">
-              <h2 style="color:white;font-size:26px;margin:0 0 12px">Hardware and software advice</h2>
-              <p style="color:#9ca3af">Not sure which hardware suits your dictation setup? Our team can advise on compatible microphones, recorders, foot pedals and accessories for your specific workflow -- whether you are running Dragon, SpeechLive, or a mix of both.</p>
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:16px 0">
+              <h2 style="color:white;font-size:22px;margin:0 0 8px;font-weight:800">Hardware and software advice</h2>
+              <p style="color:rgba(255,255,255,.7);font-size:14px;margin:0">Not sure which hardware suits your dictation setup? Our team can advise on compatible microphones, recorders, foot pedals and accessories for your specific workflow &mdash; whether you are running Dragon, SpeechLive, or a mix of both.</p>
             </div>
-            <div class="c5"><ACForm /></div>
+            <div class="c5" style="padding:16px 0">
+              <div class="formbox"><ACForm /></div>
+            </div>
           </div>
         </div>
       </section>
@@ -187,8 +193,7 @@ const c = site.colours;
         <div class="footer-inner">
           <div>&copy; {year} {site.siteName}</div>
           <div class="footer-links">
-            <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
-            <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
           </div>
         </div>
         <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
