@@ -1,3 +1,12 @@
-# Dictation Solutions Australia - URL redirects
-# This domain is a blank-slate build - no legacy URL preservation required
-# Add redirects here as needed
+/pages/speech-to-text /speech-to-text 301
+/pages/medical-transcription /medical-transcription 301
+/collections/dragon-software /dragon-professional-16 301
+/collections/dragon-medical-one /dragon-medical-one 301
+/pages/about-us /about 301
+/pages/contact /contact 301
+/pages/best-voice-recognition-for-a-doctor / 301
+/blogs/news/how-does-medical-transcription-work / 301
+/pages/dictation-technical-support /support 301
+/pages/slsupport /support 301
+/pages/ai-medical-transcription /dragon-medical-one 301
+/pages/dragon-professional-anywhere /dragon-professional-anywhere 301
