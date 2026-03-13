@@ -21,13 +21,11 @@ const c = site.colours;
 const heroSrc = imgSrc("hero");
 const canonicalUrl = site.domain;
 
-// Only show the 3 designated homepage products
 const homepageSlugs = site.homepageProducts || [];
 const homepageProducts = homepageSlugs
   .map(slug => site.products.find(p => p.slug === slug))
   .filter(Boolean);
 
-// Dark box: exclude transcription-services
 const darkBoxProducts = site.products?.filter(p => p.slug !== 'transcription-services');
 
 const recentPosts = (await getCollection('blog'))
@@ -122,8 +120,15 @@ const benefitIcons = [
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-      .stats-bar{padding:13px 0;background:var(--primary)}
-      .stats-accent{color:var(--accent)}
+
+      /* Stats bar */
+      .stats-bar{padding:0;background:var(--primary)}
+      .stats-bar-inner{display:flex;align-items:stretch;flex-wrap:wrap}
+      .stat-item{flex:1;min-width:180px;padding:20px 24px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+      .stat-item:last-child{border-right:none}
+      .stat-value{font-size:22px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:3px}
+      .stat-label{font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+
       .sh{margin-bottom:40px}
       .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:800}
       .sh p{font-size:17px;margin:0;max-width:600px;color:var(--muted)}
@@ -164,6 +169,8 @@ const benefitIcons = [
         .hero h1{font-size:32px}
         .c6,.c4,.c5,.c7,.c8,.c3{grid-column:span 12}
         .sh h2{font-size:26px}
+        .stat-item{min-width:140px;padding:16px 16px}
+        .stat-value{font-size:18px}
       }
       @media(max-width:600px){
         section{padding:40px 0}
@@ -179,6 +186,8 @@ const benefitIcons = [
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
         .hero-img{display:none}
+        .stat-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 16px}
+        .stats-bar-inner{flex-direction:row;flex-wrap:wrap}
       }
     </style>
   </head>
@@ -197,8 +206,7 @@ const benefitIcons = [
               <h1>{site.branding.headline}</h1>
               <p>{site.branding.subheadline}</p>
               <div class="hero-btns">
-                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
-                <a class="btn btn-primary btn-lg" href="https://www.speechrecognition.cloud" style="background:#2563eb;border-color:#2563eb" target="_blank" rel="noopener">Try Cloud Speech-to-Text &rarr;</a>
+                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
                 {site.secondaryCTA?.text && <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
               </div>
             </div>
@@ -212,17 +220,25 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- Stats bar -->
+      <!-- Stats bar — punchy 4-column strip -->
       <div class="stats-bar" role="complementary" aria-label="Key facts">
         <div class="wrap">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
-            <div class="stats-accent" style="font-size:15px;font-weight:800;text-align:center">{site.branding.statsMessage}</div>
-            <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
-              {site.stats?.map((s) => (
-                <div style="font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:4px">
-                  <span style="color:white;font-weight:600">{s.value}</span>&nbsp;{s.label}
-                </div>
-              ))}
+          <div class="stats-bar-inner">
+            <div class="stat-item">
+              <div class="stat-value">25 Years</div>
+              <div class="stat-label">Australian expertise</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">Dragon</div>
+              <div class="stat-label">Authorised reseller</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">Philips &amp; Olympus</div>
+              <div class="stat-label">Hardware specialists</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">Healthcare &bull; Legal &bull; Govt</div>
+              <div class="stat-label">Industry focus</div>
             </div>
           </div>
         </div>
