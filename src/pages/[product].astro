@@ -66,7 +66,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-      /* ── Header & Nav -- MUST have overflow:visible for dropdown ── */
+      /* -- Header & Nav -- */
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:42px;width:auto}
@@ -180,7 +180,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <div class="wrap">
         <div class="nav">
           <div class="logo">
-            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+            <a href="/"><img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
           </div>
           <nav class="nav-links" aria-label="Primary">
             {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
@@ -238,7 +238,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="btn btn-ghost btn-lg">Talk to VRA &mdash; local support</a>
+                <a href="/#final-cta" class="btn btn-ghost btn-lg">Talk to VRA -- local support</a>
               </div>
             </div>
             <div>
@@ -319,7 +319,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
           </div>
           <div class="other-versions">
             {site.products?.filter(p => p.slug !== product.slug).map(p => (
-              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>
+              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} -- {p.price}</a>
             ))}
           </div>
           <div style="margin-top:16px">
