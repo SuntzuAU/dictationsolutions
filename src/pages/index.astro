@@ -243,7 +243,6 @@ const products = site.navDropdown?.items || [];
       }
       @media(max-width:600px){
         .nav-main{display:none}
-        .nav-ctas .btn-secondary{display:none}
         .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
         .hamburger{display:flex}
         section{padding:16px 0}
@@ -288,7 +287,6 @@ const products = site.navDropdown?.items || [];
             <a href="/news">News</a>
           </nav>
           <div class="nav-ctas">
-            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
             <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
             <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
               <span></span><span></span><span></span>
