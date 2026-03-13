@@ -48,6 +48,13 @@ const jsonLd = {
 };
 
 const products = site.navDropdown?.items || [];
+
+const benefitIcons = [
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M10 16l4 4 8-8" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M16 10v6l4 2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="6" stroke="#16a34a" stroke-width="2.5"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><rect x="9" y="11" width="14" height="11" rx="2" stroke="#16a34a" stroke-width="2.5"/><path d="M13 11V9a3 3 0 0 1 6 0v2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M12 16c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><path d="M16 8v2M16 22v2M8 16h2M22 16h2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+];
 ---
 
 <!doctype html>
@@ -98,47 +105,21 @@ const products = site.navDropdown?.items || [];
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-      /* -- Header & Nav -- */
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
-      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
-      .logo img{height:42px;width:auto}
-      .nav-main{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
-      .nav-main > a{white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
-      .nav-main > a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-      .dropdown{position:relative}
-      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
-      .dropdown-toggle:hover{color:var(--accent)}
-      .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
-      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
-      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:300}
-      .dropdown:hover .dropdown-menu{display:block}
-      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
-      .dropdown-menu a:last-child{border-bottom:none}
-      .dropdown-menu a:hover{background:#f0fdf4;color:var(--accent)}
-      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
-
       /* -- Buttons -- */
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
-      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover);transform:translateY(-1px)}
-      .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
-      .btn-secondary:hover{background:var(--primary);color:white;transform:translateY(-1px)}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-secondary{background:white;border-color:#cbd5e1;color:var(--primary)}
+      .btn-secondary:hover{border-color:var(--primary)}
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
       .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:white}
       .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:white}
 
-      /* -- Mobile nav -- */
-      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
-      .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
-      .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
-      .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
-
       /* -- Layout -- */
-      section{padding:24px 0}
-      .hero{padding:28px 0 20px}
-      .wrap-tight{max-width:1080px;margin:0 auto;padding:0 24px}
+      section{padding:64px 0}
+      .hero{padding:72px 0 56px}
+      .neutral-bg{background:var(--neutral)}
+      .dark-bg{background:var(--primary);color:white}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}
       .c4{grid-column:span 4}
@@ -149,163 +130,95 @@ const products = site.navDropdown?.items || [];
       .c12{grid-column:span 12}
 
       /* -- Hero -- */
-      .hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;margin-bottom:14px;letter-spacing:.02em;text-transform:uppercase}
-      .hero h1{font-size:38px;line-height:1.1;margin:0 0 12px;letter-spacing:-0.03em;font-weight:800}
-      .hero p{font-size:16px;margin:0 0 20px;line-height:1.65;color:var(--muted)}
+      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
+      .hero h1{font-size:42px;line-height:1.1;margin:0 0 16px;letter-spacing:-0.03em;font-weight:800}
+      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7;color:var(--muted)}
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 20px 60px rgba(0,0,0,.14)}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
 
       /* -- Stats bar -- */
-      .stats-bar{padding:0;background:var(--primary)}
-      .stats-inner{display:flex;align-items:stretch;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.08)}
-      .stat-item{flex:1;min-width:120px;padding:12px 20px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-      .stat-item:last-child{border-right:none}
-      .stat-value{font-size:20px;font-weight:800;color:#fff;line-height:1}
-      .stat-label{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;text-transform:uppercase;letter-spacing:.05em}
-      .stats-msg{background:var(--accent);padding:8px 20px;text-align:center;font-size:13px;font-weight:700;color:#fff;letter-spacing:.01em}
+      .stats-bar{padding:13px 0;background:var(--primary)}
+      .stats-accent{color:var(--accent)}
 
       /* -- Section headers -- */
-      .sh{margin-bottom:16px}
-      .sh h2{font-size:26px;letter-spacing:-0.025em;margin:0 0 6px;font-weight:800}
-      .sh p{font-size:15px;margin:0;color:var(--muted)}
-      .sh-center{text-align:center}
-      .sh-center .sh p{margin:0 auto}
-
-      /* -- Section colours -- */
-      .section-white{background:#fff}
-      .section-neutral{background:var(--neutral)}
-      .section-dark{background:var(--primary);color:white}
-      .section-accent{background:var(--accent);color:white}
-      .section-mid{background:#e8f0fe}
+      .sh{margin-bottom:40px}
+      .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:800}
+      .sh p{font-size:17px;margin:0;max-width:600px;color:var(--muted)}
 
       /* -- Cards -- */
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
-      .card p{color:var(--muted);margin:0}
+      .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+      .card p{color:var(--muted)}
 
-      .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s;display:flex;flex-direction:column;position:relative;overflow:hidden}
-      .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform .2s;transform-origin:left}
-      .product-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.09);transform:translateY(-2px)}
-      .product-card:hover::before{transform:scaleX(1)}
-      .product-name{font-size:15px;font-weight:700;margin:0 0 4px}
-      .product-desc{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5;flex:1}
-      .product-price{font-size:13px;font-weight:700;color:var(--accent);margin-top:auto;padding-top:8px;border-top:1px solid #f3f4f6}
+      .benefit-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px}
+      .benefit-card h3{margin:8px 0 10px;font-size:18px;font-weight:700}
+      .benefit-card p{color:var(--muted);font-size:15px;line-height:1.65;margin:0}
+      .card-icon{margin-bottom:14px;line-height:1}
 
-      .pathway-card{background:#fff;border:2px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:all .15s;display:flex;flex-direction:column}
-      .pathway-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(0,0,0,.08);transform:translateY(-2px)}
-      .pathway-icon{width:44px;height:44px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:12px;flex-shrink:0}
-      .pathway-icon svg{width:22px;height:22px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+      .product-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .product-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+      .product-card.featured{border-color:var(--accent)}
+      .product-name{font-size:16px;font-weight:700;margin:0 0 4px}
+      .product-desc{font-size:14px;color:var(--muted);margin:0 0 14px;line-height:1.55;flex:1}
+      .product-cta{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
+      .product-card:hover .product-cta,.product-card.featured .product-cta{background:var(--accent);color:#fff}
 
-      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-left:4px solid var(--accent)}
-      .benefit-card h3{margin:8px 0 5px;font-size:15px;font-weight:700}
-      .benefit-card p{color:var(--muted);margin:0;font-size:13px;line-height:1.55}
-      .benefit-icon{width:36px;height:36px;border-radius:8px;background:rgba(22,163,74,.1);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-      .benefit-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+      .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:14px;background:var(--accent);color:#fff}
 
-      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px}
-      .faq-card h3{margin:0 0 5px;font-size:14px;font-weight:700;color:var(--primary)}
-      .faq-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55}
-
-      /* -- About strip -- */
-      .proof-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:white;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
-      .proof-tag-check{color:var(--accent)}
+      .faq-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
+      .faq-card h3{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
 
       /* -- Blog cards -- */
-      .blog-card{display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+      .blog-card{display:block;border:1px solid #e2e8f0;border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
       .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-      .blog-date{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-      .blog-card h3{font-size:14px;margin:0 0 4px;line-height:1.4;font-weight:700}
-      .blog-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+      .blog-date{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+      .blog-card h3{font-size:16px;margin:0 0 6px;line-height:1.4;font-weight:700}
+      .blog-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
 
-      /* -- Contact section -- */
-      .contact-section{background:var(--primary)}
-      .formbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+      /* -- About / form box -- */
+      .formbox{background:#fff;border-radius:16px;padding:28px}
 
       /* -- Footer -- */
-      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
+      footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
-
-      /* -- Divider accent -- */
-      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
 
       /* -- Responsive -- */
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
-        .hero h1{font-size:28px}
+        .hero h1{font-size:32px}
         .c6,.c4,.c5,.c7,.c8,.c3{grid-column:span 12}
-        .sh h2{font-size:22px}
-        .stat-item{min-width:80px;padding:10px 12px}
-        .stat-value{font-size:16px}
+        .sh h2{font-size:26px}
       }
       @media(max-width:600px){
-        .nav-main{display:none}
-        .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
-        .hamburger{display:flex}
-        section{padding:16px 0}
-        .hero{padding:16px 0 12px}
-        .hero h1{font-size:22px}
-        .hero p{font-size:14px}
-        .sh h2{font-size:18px}
-        .sh{margin-bottom:12px}
+        section{padding:40px 0}
+        .hero{padding:36px 0 28px}
+        .hero h1{font-size:26px}
+        .hero p{font-size:15px}
+        .sh h2{font-size:22px}
+        .sh p{font-size:15px}
+        .sh{margin-bottom:24px}
         .hero-btns{flex-direction:column}
-        .hero-btns .btn-lg{width:100%;padding:12px 20px}
-        .card,.benefit-card,.faq-card{padding:14px}
+        .hero-btns .btn-lg{width:100%;text-align:center;padding:13px 20px}
+        .card,.benefit-card,.faq-card,.formbox{padding:18px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
-        .stats-inner{flex-direction:column}
-        .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);flex-direction:row;justify-content:space-between;padding:8px 16px}
         .hero-img{display:none}
       }
     </style>
   </head>
   <body>
 
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo">
-            <a href="/"><img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
-          </div>
-          <nav class="nav-main" aria-label="Primary navigation">
-            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-            {site.navDropdown && (
-              <div class="dropdown">
-                <span class="dropdown-toggle">
-                  {site.navDropdown.label}
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </span>
-                <div class="dropdown-menu">
-                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-                  <a href="/comparison">Compare Solutions</a>
-                </div>
-              </div>
-            )}
-            <a href="/news">News</a>
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
-          <a href="/news">News</a>
-          <a href="/comparison">Compare Solutions</a>
-        </nav>
-      </div>
-    </header>
+    <Nav />
 
     <main>
 
       <!-- Hero -->
-      <section class="hero section-white" aria-label="Hero">
+      <section class="hero" aria-label="Hero">
         <div class="wrap">
           <div class="hero-inner">
             <div>
@@ -320,23 +233,22 @@ const products = site.navDropdown?.items || [];
             <div class="hero-img">
               {heroSrc
                 ? <img src={heroSrc} alt={imgAlt("hero")} width="560" height="315" loading="eager" fetchpriority="high" decoding="sync" />
-                : <div style="width:100%;height:100%;min-height:260px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:14px">Image coming</div>
+                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">Image coming</div>
               }
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Stats -->
-      <div role="complementary" aria-label="Key facts">
-        <div class="stats-msg">{site.branding.statsMessage}</div>
-        <div style="background:var(--primary)">
-          <div class="wrap">
-            <div class="stats-inner">
+      <!-- Stats bar -->
+      <div class="stats-bar" role="complementary" aria-label="Key facts">
+        <div class="wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+            <div class="stats-accent" style="font-size:15px;font-weight:800;text-align:center">{site.branding.statsMessage}</div>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
               {site.stats?.map((s) => (
-                <div class="stat-item">
-                  <div class="stat-value">{s.value}</div>
-                  <div class="stat-label">{s.label}</div>
+                <div style="font-size:13px;color:#94a3b8;display:flex;align-items:center;gap:4px">
+                  <span style="color:white;font-weight:600">{s.value}</span>&nbsp;{s.label}
                 </div>
               ))}
             </div>
@@ -344,70 +256,17 @@ const products = site.navDropdown?.items || [];
         </div>
       </div>
 
-      <!-- Products -->
-      <section id="products" class="section-white" aria-label="Our products">
-        <div class="wrap">
-          <div class="sh">
-            <h2>Complete dictation &amp; speech recognition range</h2>
-            <p>Dragon software, Philips hardware, cloud transcription and professional services -- all from one authorised Australian reseller.</p>
-          </div>
-          <div class="grid">
-            {products.map((p) => (
-              <a href={p.url} class="product-card c4" aria-label={p.label}>
-                <div class="product-name">{p.label}</div>
-                <div class="product-desc">{p.description || "Professional dictation solution for Australian enterprises"}</div>
-                <div class="product-price">{p.price || "Enquire for pricing"} &rarr;</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- Find your solution -->
-      <section id="pathways" class="section-neutral" aria-label="Find your solution">
-        <div class="wrap">
-          <div class="sh sh-center">
-            <h2>Find your solution</h2>
-            <p>Three pathways to solve your dictation workflow -- from desktop software to cloud transcription.</p>
-          </div>
-          <div class="grid">
-            {site.pathways?.map((p) => {
-              const iconMap = {
-                speech: '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>',
-                cloud: '<polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>',
-                package: '<line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>'
-              };
-              const iconSvg = iconMap[p.icon] || iconMap.package;
-              return (
-                <a href={p.url} class="pathway-card c4" aria-label={p.title}>
-                  <div class="pathway-icon">
-                    <svg viewBox="0 0 24 24" set:html={iconSvg} />
-                  </div>
-                  <div style="font-size:16px;font-weight:700;margin:0 0 4px">{p.title}</div>
-                  <div style="font-size:13px;color:var(--muted);margin:0 0 12px;flex:1;line-height:1.55">{p.description}</div>
-                  <div style="color:var(--accent);font-weight:700;font-size:13px">{p.cta} &rarr;</div>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       <!-- Benefits -->
-      <section id="benefits" class="section-white" aria-label="Why choose us">
+      <section id="benefits" aria-label="Why choose us">
         <div class="wrap">
           <div class="sh">
             <h2>Why professionals choose Dictation Solutions</h2>
             <p>Fast, accurate, secure dictation and transcription -- supported by 25 years of Australian expertise.</p>
           </div>
           <div class="grid">
-            {site.benefits?.map((b) => (
+            {site.benefits?.map((b, i) => (
               <div class="benefit-card c6">
-                <div class="benefit-icon">
-                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
-                </div>
+                <div class="card-icon" set:html={benefitIcons[i] ?? benefitIcons[0]} />
                 <h3>{b.title}</h3>
                 <p>{b.body}</p>
               </div>
@@ -416,41 +275,78 @@ const products = site.navDropdown?.items || [];
         </div>
       </section>
 
-      <div class="section-divider"></div>
+      <!-- Products -->
+      <section id="products" class="neutral-bg" aria-label="Our products">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Complete dictation &amp; speech recognition range</h2>
+            <p>Dragon software, Philips hardware, cloud transcription and professional services -- all from one authorised Australian reseller.</p>
+          </div>
+          <div class="grid">
+            {products.map((p, i) => (
+              <a href={p.url} class={`product-card c4${i === 0 ? ' featured' : ''}`} aria-label={p.label}>
+                <div class="product-name">{p.label}</div>
+                <div class="product-desc">{p.description || "Professional dictation solution for Australian enterprises"}</div>
+                <div class="product-cta">View details &rarr;</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how-it-works" aria-label="How to get started">
+        <div class="wrap">
+          <div class="sh">
+            <h2>How to buy and get started</h2>
+            <p>Simple to buy, easy to deploy, supported by local Australian experts.</p>
+          </div>
+          <div class="grid">
+            {site.steps?.map((s, i) => (
+              <div class="card c4">
+                <div class="step-num">{i + 1}</div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <!-- About -->
-      <section id="about" class="section-neutral" aria-label="About us">
+      <section id="about" class="neutral-bg" aria-label="About us">
         <div class="wrap">
           <div class="grid">
-            <div class="c7">
+            <div class="card c7">
               {imgSrc("about-banner") && (
-                <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/9;margin-bottom:14px">
+                <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:16px">
                   <img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <h3 style="margin:0 0 8px;font-size:20px;font-weight:800">{site.branding.aboutHeading}</h3>
-              <p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.65">{site.branding.aboutBody}</p>
-              <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <h3 style="margin:0 0 8px;font-size:22px;font-weight:800">{site.branding.aboutHeading}</h3>
+              <p style="margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.65">{site.branding.aboutBody}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
-                  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;color:#374151;display:inline-flex;align-items:center;gap:5px">
-                    <span style="color:var(--accent)">&#10003;</span> {p}
-                  </div>
+                  <div style="background:#f5f5f5;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#334155">&#10003; {p}</div>
                 ))}
               </div>
             </div>
-            <div class="c5">
-              <div style="background:var(--primary);border-radius:14px;padding:20px">
-                <h3 style="color:white;margin:0 0 4px;font-size:16px;font-weight:700">Get in touch</h3>
-                <p style="font-size:13px;color:rgba(255,255,255,.65);margin:0 0 14px;line-height:1.5">Tell us about your needs and we'll recommend the right solution.</p>
-                <ACForm />
-              </div>
+            <div class="card c5" style="background:var(--primary);color:white;border-color:var(--primary)">
+              <h3 style="color:white;margin:0 0 6px;font-size:18px;font-weight:700">Our solutions at a glance</h3>
+              <p style="font-size:13px;color:rgba(255,255,255,.6);margin:0 0 16px">Every major dictation and speech recognition product -- all from one authorised Australian reseller.</p>
+              {products.map((p) => (
+                <a href={p.url} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
+                  <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.label}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,.55)">{p.description || "Professional dictation solution"}</div>
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="section-white" aria-label="Frequently asked questions">
+      <section id="faq" aria-label="Frequently asked questions">
         <div class="wrap">
           <div class="sh">
             <h2>Frequently asked questions</h2>
@@ -466,13 +362,13 @@ const products = site.navDropdown?.items || [];
         </div>
       </section>
 
-      <!-- Blog -->
-      {recentPosts.length > 0 && (
-        <section class="section-neutral" aria-label="Latest news">
+      <!-- Blog (only if 2+ posts) -->
+      {recentPosts.length >= 2 && (
+        <section class="neutral-bg" aria-label="Latest news">
           <div class="wrap">
-            <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+            <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:32px">
               <h2 style="margin:0">Latest from the blog</h2>
-              <a href="/news" style="font-size:13px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
+              <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
             </div>
             <div class="grid">
               {recentPosts.map((post) => (
@@ -488,18 +384,18 @@ const products = site.navDropdown?.items || [];
       )}
 
       <!-- Contact CTA -->
-      <section id="final-cta" class="contact-section" aria-label="Contact us">
+      <section id="final-cta" class="dark-bg" aria-label="Contact us">
         <div class="wrap">
-          <div class="grid" style="align-items:start">
-            <div class="c7" style="padding:24px 0">
-              <h2 style="color:white;font-size:26px;margin:0 0 8px;font-weight:800">{site.branding.ctaHeading}</h2>
-              <p style="color:rgba(255,255,255,.7);margin:0 0 16px;max-width:520px;font-size:15px;line-height:1.6">{site.branding.ctaBody}</p>
-              <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div class="grid">
+            <div class="c7">
+              <h2 style="color:white;font-size:30px;margin:0 0 12px;font-weight:800">{site.branding.ctaHeading}</h2>
+              <p style="color:#94a3b8;margin:0 0 20px;font-size:16px;line-height:1.65;max-width:480px">{site.branding.ctaBody}</p>
+              <div style="display:flex;gap:12px;flex-wrap:wrap">
                 <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
                 {site.secondaryCTA?.text && <a class="btn btn-ghost btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
               </div>
             </div>
-            <div class="c5" style="padding:20px 0">
+            <div class="c5">
               <div class="formbox">
                 <ACForm />
               </div>
