@@ -1,1 +1,440 @@
+---
+import manifest from "../data/image-manifest.json";
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+import { getCollection } from 'astro:content';
+
+const year = new Date().getFullYear();
+const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+
+function imgSrc(key) {
+  const entry = manifest[key];
+  if (!entry?.r2Key || !R2_BASE) return "";
+  return `${R2_BASE.replace(/\/$/, "")}/${entry.r2Key}`;
+}
+function imgAlt(key) {
+  return manifest[key]?.altText || key;
+}
+
+const c = site.colours;
+const heroSrc = imgSrc("hero");
+const canonicalUrl = site.domain;
+const ogImage = heroSrc || "";
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": site.domain,
+      "name": site.siteName,
+      "url": site.domain,
+      "description": site.branding.metaDesc,
+      "areaServed": "Australia",
+      "knowsAbout": ["Dictation Software", "Speech Recognition", "Dragon Medical One", "Philips SpeechMike", "Medical Transcription", "Voice Recognition"],
+      "sameAs": ["https://www.voicerecognition.com.au"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": site.domain,
+      "name": site.siteName,
+      "url": site.domain,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${site.domain}/?s={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+};
+
+const products = site.navDropdown?.items || [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.branding.metaTitle}</title>
+    <meta name="description" content={site.branding.metaDesc} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.siteName} />
+    <meta property="og:title" content={site.branding.metaTitle} />
+    <meta property="og:description" content={site.branding.metaDesc} />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:width" content="1200" />}
+    {ogImage && <meta property="og:image:height" content="630" />}
+    <meta property="og:locale" content="en_AU" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={site.branding.metaTitle} />
+    <meta name="twitter:description" content={site.branding.metaDesc} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
+
+    {site.googleAnalyticsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
+      <script define:vars={{ gaId: site.googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
+
+    <style is:inline define:vars={{
+      bg: c.background,
+      text: c.text,
+      primary: c.primary,
+      accent: c.accent,
+      accentHover: c.accentHover,
+      muted: c.muted,
+      neutral: c.neutral,
+    }}>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100;overflow:visible}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-main{display:flex;gap:24px;font-size:14px;font-weight:500;color:#374151;align-items:center}
+      .nav-main a{white-space:nowrap}
+      .nav-main a:hover{color:var(--accent)}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle:hover{color:var(--accent)}
+      .dropdown-toggle svg{transition:transform .15s;width:12px;height:12px}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200;margin-top:4px}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s;border-bottom:1px solid #f3f4f6}
+      .dropdown-menu a:last-child{border-bottom:none}
+      .dropdown-menu a:hover{background:#f9fafb;color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
+      .btn-secondary:hover{background:var(--primary);color:white}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e5e7eb}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6}
+      section{padding:32px 0}
+      .hero{padding:36px 0}
+      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
+      .hero h1{font-size:36px;line-height:1.15;margin:0 0 12px;letter-spacing:-0.025em}
+      .hero p{font-size:16px;margin:0 0 20px;line-height:1.7;color:var(--muted)}
+      .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 16px 48px rgba(0,0,0,.12)}
+      .hero-img img{width:100%;height:100%;object-fit:cover}
+      .stats-bar{padding:8px 0;background:var(--primary)}
+      .sh{margin-bottom:20px}
+      .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
+      .sh p{font-size:15px;margin:0;max-width:620px;color:var(--muted)}
+      .neutral-bg{background:var(--neutral)}
+      .dark-bg{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}
+      .c4{grid-column:span 4}
+      .c3{grid-column:span 3}
+      .c7{grid-column:span 7}
+      .c5{grid-column:span 5}
+      .c12{grid-column:span 12}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px}
+      .card p{color:var(--muted);margin:0}
+      .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;display:flex;flex-direction:column}
+      .product-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+      .product-name{font-size:16px;font-weight:700;margin:0 0 4px}
+      .product-desc{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5;flex:1}
+      .product-price{font-size:14px;font-weight:600;color:var(--accent);margin-top:auto}
+      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px}
+      .benefit-card h3{margin:8px 0 6px;font-size:16px;font-weight:700}
+      .benefit-card p{color:var(--muted);margin:0;font-size:14px}
+      .card-icon{margin-bottom:10px;line-height:1;font-size:32px}
+      .formbox{background:#fff;border-radius:12px;padding:20px}
+      .blog-strip{background:#fff;border-top:1px solid #e5e7eb;padding:32px 0}
+      .blog-card{display:block;border:1px solid #e5e7eb;border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+      .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+      .blog-date{font-size:12px;color:var(--muted);margin-bottom:4px}
+      .blog-card h3{font-size:15px;margin:0 0 4px;line-height:1.4;font-weight:700}
+      .blog-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+      footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1f2937}
+      .compare-table{width:100%;border-collapse:collapse;font-size:14px}
+      .compare-table th,.compare-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #e5e7eb}
+      .compare-table th{background:#f9fafb;font-weight:700;color:#374151}
+      .compare-table tr:last-child td{border-bottom:none}
+      .compare-check{color:var(--accent);font-weight:700}
+      .compare-x{color:#9ca3af}
+
+      @media(max-width:900px){
+        .hero-inner{grid-template-columns:1fr}
+        .hero h1{font-size:28px}
+        .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
+        .sh h2{font-size:22px}
+      }
+      @media(max-width:600px){
+        .nav-main{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
+        .hamburger{display:flex}
+        section{padding:20px 0}
+        .hero{padding:20px 0}
+        .hero h1{font-size:22px}
+        .hero p{font-size:14px}
+        .sh h2{font-size:18px}
+        .sh p{font-size:14px}
+        .sh{margin-bottom:16px}
+        .hero-btns{flex-direction:column}
+        .hero-btns .btn-lg{width:100%;text-align:center;padding:12px 20px}
+        .card,.benefit-card,.formbox{padding:14px}
+        .footer-inner{flex-direction:column;align-items:center;text-align:center}
+        .footer-links{justify-content:center}
+        .product-card{padding:14px}
+        .compare-table{font-size:12px}
+        .compare-table th,.compare-table td{padding:10px 12px}
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+          </div>
+          <nav class="nav-main" aria-label="Primary navigation">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                  <a href="/comparison">Compare Solutions</a>
+                </div>
+              </div>
+            )}
+            <a href="/news">News</a>
+          </nav>
+          <div class="nav-ctas">
+            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
+          <a href="/news">News</a>
+          <a href="/comparison">Compare Solutions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero" aria-label="Hero">
+        <div class="wrap">
+          <div class="hero-inner">
+            <div>
+              <div class="hero-pill">{site.branding.industry} &bull; {site.branding.region}</div>
+              <h1>{site.branding.headline}</h1>
+              <p>{site.branding.subheadline}</p>
+              <div class="hero-btns">
+                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+                {site.secondaryCTA?.text && <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+              </div>
+            </div>
+            <div class="hero-img">
+              {heroSrc
+                ? <img src={heroSrc} alt={imgAlt("hero")} width="560" height="315" loading="eager" fetchpriority="high" decoding="sync" />
+                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:14px">Image coming</div>
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats-bar" role="complementary" aria-label="Key facts">
+        <div class="wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+            <div style="color:#16a34a;font-size:13px;font-weight:700;text-align:center">{site.branding.statsMessage}</div>
+            <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+              {site.stats?.map((s) => (
+                <div style="font-size:12px;color:#9ca3af;display:flex;align-items:center;gap:4px">
+                  <span style="color:white;font-weight:600">{s.value}</span>&nbsp;{s.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="products" aria-label="Our products">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Our complete dictation range</h2>
+            <p>Dragon speech recognition, Philips hardware, cloud transcription, and professional services — all in one place.</p>
+          </div>
+          <div class="grid">
+            {products.map((p) => (
+              <a href={p.url} class="product-card c4" aria-label={p.label}>
+                <div class="product-name">{p.label}</div>
+                <div class="product-desc">{p.description || "Professional dictation solution for Australian enterprises"}</div>
+                <div class="product-price">{p.price || "Enquire now"}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pathways" class="neutral-bg" aria-label="Find your solution">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Find your solution</h2>
+            <p>Three pathways to solve your dictation workflow.</p>
+          </div>
+          <div class="grid">
+            {site.pathways?.map((p) => (
+              <a href={p.url} class="card c4" aria-label={p.title} style="display:flex;flex-direction:column;text-decoration:none;color:inherit;border:2px solid #e5e7eb;transition:all .15s" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='none'">
+                <div style="font-size:24px;margin-bottom:8px">{p.icon === 'speech' ? '🎤' : p.icon === 'cloud' ? '☁️' : '📦'}</div>
+                <div style="font-size:16px;font-weight:700;margin:0 0 2px">{p.title}</div>
+                <div style="font-size:13px;color:var(--muted);margin:0 0 10px;flex:1">{p.description}</div>
+                <div style="color:var(--accent);font-weight:700;font-size:14px">{p.cta} →</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="benefits" aria-label="Why choose us">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Why professionals choose Dictation Solutions</h2>
+            <p>Everything you need for fast, accurate, secure dictation and transcription.</p>
+          </div>
+          <div class="grid">
+            {site.benefits?.map((b) => (
+              <div class="benefit-card c6">
+                <div class="card-icon">{b.icon || "✓"}</div>
+                <h3>{b.title}</h3>
+                <p>{b.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="neutral-bg" aria-label="About us">
+        <div class="wrap">
+          <div class="grid">
+            <div class="card c7">
+              {imgSrc("about-banner") && (
+                <div style="border-radius:10px;overflow:hidden;aspect-ratio:16/9;margin-bottom:12px">
+                  <img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
+                </div>
+              )}
+              <h3 style="margin:0 0 8px;font-size:18px;font-weight:700">{site.branding.aboutHeading}</h3>
+              <p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.6">{site.branding.aboutBody}</p>
+              <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
+                {site.proofPoints?.map((p) => (
+                  <div style="background:#f3f4f6;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151">✓ {p}</div>
+                ))}
+              </div>
+            </div>
+            <div class="formbox" style="background:#f9fafb;border-radius:12px;padding:18px">
+              <h3 style="margin:0 0 14px;font-size:16px;font-weight:700">Get in touch</h3>
+              <p style="font-size:13px;color:var(--muted);margin:0 0 12px">Tell us about your needs and we'll recommend the right solution.</p>
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" aria-label="Frequently asked questions">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="grid">
+            {site.faqs?.map((f) => (
+              <div class="benefit-card c6">
+                <h3 style="font-size:15px">{f.q}</h3>
+                <p style="font-size:13px">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {recentPosts.length > 0 && (
+        <section class="blog-strip" aria-label="Latest news">
+          <div class="wrap">
+            <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+              <h2 style="margin:0">Latest from the blog</h2>
+              <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles →</a>
+            </div>
+            <div class="grid">
+              {recentPosts.map((post) => (
+                <a href={`/news/${post.slug}`} class="blog-card c4">
+                  <div class="blog-date">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section id="final-cta" class="dark-bg" aria-label="Contact us">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c12">
+              <h2 style="color:white;font-size:24px;margin:0 0 8px">{site.branding.ctaHeading}</h2>
+              <p style="color:#9ca3af;margin:0 0 12px;max-width:720px;font-size:15px">{site.branding.ctaBody}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div>&copy; {year} {site.siteName}</div>
+          <div class="footer-links">
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
+          </div>
+        </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
+      </div>
+    </footer>
+
+  </body>
+</html>
