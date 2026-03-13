@@ -110,12 +110,16 @@ const products = site.navDropdown?.items || [];
       .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
       .logo img{height:40px;width:auto}
       .nav-main{display:flex;gap:24px;font-size:14px;font-weight:500;color:#374151;align-items:center}
+      .nav-main a{white-space:nowrap}
       .nav-main a:hover{color:var(--accent)}
-      .dropdown-toggle{position:relative;cursor:pointer;display:flex;align-items:center;gap:4px}
-      .dropdown-menu{position:absolute;top:100%;left:0;background:white;border:1px solid #e5e7eb;border-radius:12px;min-width:220px;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:none;margin-top:8px;z-index:200;padding:4px 0}
-      .dropdown-toggle:hover .dropdown-menu,
-      .dropdown-menu:hover{display:block}
-      .dropdown-menu a{display:block;padding:8px 16px;font-size:13px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6;transition:background .15s}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle:hover{color:var(--accent)}
+      .dropdown-toggle svg{transition:transform .15s;width:12px;height:12px}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200;margin-top:4px}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s;border-bottom:1px solid #f3f4f6}
       .dropdown-menu a:last-child{border-bottom:none}
       .dropdown-menu a:hover{background:#f9fafb;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
@@ -186,7 +190,6 @@ const products = site.navDropdown?.items || [];
         .hero h1{font-size:28px}
         .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
         .sh h2{font-size:22px}
-        .dropdown-menu{min-width:200px}
       }
       @media(max-width:600px){
         .nav-main{display:none}
@@ -220,23 +223,19 @@ const products = site.navDropdown?.items || [];
             <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
           </div>
           <nav class="nav-main" aria-label="Primary navigation">
-            {site.navItems?.map((item) => (
-              item.label === "Solutions" ? (
-                <a href={item.url}>{item.label}</a>
-              ) : (
-                <a href={item.url}>{item.label}</a>
-              )
-            ))}
-            <div class="dropdown-toggle">
-              Products
-              <span style="font-size:12px">▼</span>
-              <div class="dropdown-menu">
-                {products.map((p) => (
-                  <a href={p.url}>{p.label}</a>
-                ))}
-                <a href="/comparison">Compare Solutions</a>
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                  <a href="/comparison">Compare Solutions</a>
+                </div>
               </div>
-            </div>
+            )}
             <a href="/news">News</a>
           </nav>
           <div class="nav-ctas">
@@ -249,6 +248,7 @@ const products = site.navDropdown?.items || [];
         </div>
         <nav class="mobile-nav" aria-label="Mobile navigation">
           {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
           <a href="/news">News</a>
           <a href="/comparison">Compare Solutions</a>
         </nav>
