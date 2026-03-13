@@ -20,7 +20,6 @@ function imgAlt(key) {
 const c = site.colours;
 const heroSrc = imgSrc("hero");
 const canonicalUrl = site.domain;
-const ogImage = heroSrc || "";
 
 const recentPosts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
@@ -35,20 +34,10 @@ const jsonLd = {
       "name": site.siteName,
       "url": site.domain,
       "description": site.branding.metaDesc,
-      "areaServed": "Australia",
-      "knowsAbout": ["Dictation Software", "Speech Recognition", "Dragon Medical One", "Philips SpeechMike", "Medical Transcription", "Voice Recognition"],
-      "sameAs": ["https://www.voicerecognition.com.au"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": site.domain,
-      "name": site.siteName,
-      "url": site.domain
+      "areaServed": "Australia"
     }
   ]
 };
-
-const products = site.navDropdown?.items || [];
 
 const benefitIcons = [
   `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M10 16l4 4 8-8" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -68,16 +57,10 @@ const benefitIcons = [
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={site.siteName} />
     <meta property="og:title" content={site.branding.metaTitle} />
     <meta property="og:description" content={site.branding.metaDesc} />
     <meta property="og:url" content={canonicalUrl} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
     <meta property="og:locale" content="en_AU" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={site.branding.metaTitle} />
-    <meta name="twitter:description" content={site.branding.metaDesc} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
@@ -105,8 +88,6 @@ const benefitIcons = [
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-
-      /* -- Buttons -- */
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
       .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
@@ -115,8 +96,6 @@ const benefitIcons = [
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
       .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:white}
       .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:white}
-
-      /* -- Layout -- */
       section{padding:64px 0}
       .hero{padding:72px 0 56px}
       .neutral-bg{background:var(--neutral)}
@@ -129,8 +108,6 @@ const benefitIcons = [
       .c5{grid-column:span 5}
       .c8{grid-column:span 8}
       .c12{grid-column:span 12}
-
-      /* -- Hero -- */
       .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
       .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
       .hero h1{font-size:42px;line-height:1.1;margin:0 0 16px;letter-spacing:-0.03em;font-weight:800}
@@ -138,57 +115,41 @@ const benefitIcons = [
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-
-      /* -- Stats bar -- */
       .stats-bar{padding:13px 0;background:var(--primary)}
       .stats-accent{color:var(--accent)}
-
-      /* -- Section headers -- */
       .sh{margin-bottom:40px}
       .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:800}
       .sh p{font-size:17px;margin:0;max-width:600px;color:var(--muted)}
-
-      /* -- Cards -- */
       .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
       .card p{color:var(--muted)}
-
       .benefit-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px}
       .benefit-card h3{margin:8px 0 10px;font-size:18px;font-weight:700}
       .benefit-card p{color:var(--muted);font-size:15px;line-height:1.65;margin:0}
       .card-icon{margin-bottom:14px;line-height:1}
-
-      .product-card{background:#fff;border:2px solid #e2e8f0;border-radius:16px;padding:22px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
-      .product-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.1)}
-      .product-card.featured{border-color:var(--accent)}
-      .product-name{font-size:16px;font-weight:700;margin:0 0 4px}
-      .product-desc{font-size:14px;color:var(--muted);margin:0 0 14px;line-height:1.55;flex:1}
-      .product-cta{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
-      .product-card:hover .product-cta,.product-card.featured .product-cta{background:var(--accent);color:#fff}
-
+      .compare-card{background:#fff;border:2px solid #e2e8f0;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .compare-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+      .compare-card.featured{border-color:var(--accent)}
+      .product-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
+      .compare-title{font-size:17px;font-weight:700;margin:0 0 4px}
+      .compare-for{font-size:13px;color:#64748b;margin:0 0 12px}
+      .compare-price{font-size:28px;font-weight:800;line-height:1;margin:0 0 4px;color:var(--accent)}
+      .compare-pricenote{font-size:12px;color:#64748b;margin:0 0 16px}
+      .compare-btn{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
+      .compare-card:hover .compare-btn,.compare-card.featured .compare-btn{background:var(--accent);color:#fff}
       .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:14px;background:var(--accent);color:#fff}
-
       .faq-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
       .faq-card h3{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--primary)}
       .faq-card p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
-
-      /* -- Blog cards -- */
       .blog-card{display:block;border:1px solid #e2e8f0;border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
       .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
       .blog-date{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
       .blog-card h3{font-size:16px;margin:0 0 6px;line-height:1.4;font-weight:700}
       .blog-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
-
-      /* -- About / form box -- */
-      .formbox{background:#fff;border-radius:16px;padding:28px}
-
-      /* -- Footer -- */
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
-
-      /* -- Responsive -- */
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
         .hero h1{font-size:32px}
@@ -205,7 +166,7 @@ const benefitIcons = [
         .sh{margin-bottom:24px}
         .hero-btns{flex-direction:column}
         .hero-btns .btn-lg{width:100%;text-align:center;padding:13px 20px}
-        .card,.benefit-card,.faq-card,.formbox{padding:18px}
+        .card,.benefit-card,.faq-card,.compare-card{padding:18px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
         .hero-img{display:none}
@@ -261,8 +222,8 @@ const benefitIcons = [
       <section id="benefits" aria-label="Why choose us">
         <div class="wrap">
           <div class="sh">
-            <h2>Why professionals choose Dictation Solutions</h2>
-            <p>Fast, accurate, secure dictation and transcription -- supported by 25 years of Australian expertise.</p>
+            <h2>{site.branding.benefitsHeading}</h2>
+            <p>{site.branding.benefitsSubheading}</p>
           </div>
           <div class="grid">
             {site.benefits?.map((b, i) => (
@@ -280,15 +241,18 @@ const benefitIcons = [
       <section id="products" class="neutral-bg" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
-            <h2>Complete dictation &amp; speech recognition range</h2>
-            <p>Dragon software, Philips hardware, cloud transcription and professional services -- all from one authorised Australian reseller.</p>
+            <h2>{site.branding.compareHeading}</h2>
+            <p>{site.branding.compareSubheading}</p>
           </div>
           <div class="grid">
-            {products.map((p, i) => (
-              <a href={p.url} class={`product-card c4${i === 0 ? ' featured' : ''}`} aria-label={p.label}>
-                <div class="product-name">{p.label}</div>
-                <div class="product-desc">{p.description || "Professional dictation solution for Australian enterprises"}</div>
-                <div class="product-cta">View details &rarr;</div>
+            {site.products?.map((p, i) => (
+              <a href={`/${p.slug}`} class={`compare-card c4${i === 0 ? ' featured' : ''}`}>
+                <div class="product-badge">{p.badge}</div>
+                <div class="compare-title">{p.title}</div>
+                <div class="compare-for">{p.bestFor}</div>
+                <div class="compare-price">{p.price}</div>
+                <div class="compare-pricenote">{p.priceNote}</div>
+                <div class="compare-btn">View details &rarr;</div>
               </a>
             ))}
           </div>
@@ -300,7 +264,7 @@ const benefitIcons = [
         <div class="wrap">
           <div class="sh">
             <h2>How to buy and get started</h2>
-            <p>Simple to buy, easy to deploy, supported by local Australian experts.</p>
+            <p>{site.branding.howItWorksSubheading}</p>
           </div>
           <div class="grid">
             {site.steps?.map((s, i) => (
@@ -332,13 +296,16 @@ const benefitIcons = [
                 ))}
               </div>
             </div>
-            <div class="card c5" style="background:var(--primary);color:white;border-color:var(--primary)">
-              <h3 style="color:white;margin:0 0 6px;font-size:18px;font-weight:700">Our solutions at a glance</h3>
-              <p style="font-size:13px;color:rgba(255,255,255,.6);margin:0 0 16px">Every major dictation and speech recognition product -- all from one authorised Australian reseller.</p>
-              {products.map((p) => (
-                <a href={p.url} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
-                  <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.label}</div>
-                  <div style="font-size:13px;color:rgba(255,255,255,.55)">{p.description || "Professional dictation solution"}</div>
+            <div class="card c5" style="background:#1a1a1a;color:white;border-color:#1a1a1a">
+              <h3 style="color:white;margin:0 0 6px;font-size:18px;font-weight:700">All solutions at a glance</h3>
+              <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0 0 16px">Full dictation and speech recognition range from one authorised Australian reseller.</p>
+              {site.products?.map((p) => (
+                <a href={`/${p.slug}`} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
+                  <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
+                    <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
+                  </div>
                 </a>
               ))}
             </div>
@@ -367,8 +334,8 @@ const benefitIcons = [
       {recentPosts.length >= 2 && (
         <section class="neutral-bg" aria-label="Latest news">
           <div class="wrap">
-            <div class="sh" style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:32px">
-              <h2 style="margin:0">Latest from the blog</h2>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:32px">
+              <h2 style="margin:0;font-size:28px;font-weight:800">Latest from the blog</h2>
               <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
             </div>
             <div class="grid">
@@ -389,17 +356,19 @@ const benefitIcons = [
         <div class="wrap">
           <div class="grid">
             <div class="c7">
-              <h2 style="color:white;font-size:30px;margin:0 0 12px;font-weight:800">{site.branding.ctaHeading}</h2>
-              <p style="color:#94a3b8;margin:0 0 20px;font-size:16px;line-height:1.65;max-width:480px">{site.branding.ctaBody}</p>
-              <div style="display:flex;gap:12px;flex-wrap:wrap">
-                <a class="btn btn-primary btn-lg" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
-                {site.secondaryCTA?.text && <a class="btn btn-ghost btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
-              </div>
+              {imgSrc("cta-banner") && (
+                <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:24px">
+                  <img src={imgSrc("cta-banner")} alt={imgAlt("cta-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
+                </div>
+              )}
+              <h2 style="color:white;font-size:28px;margin:0 0 12px;font-weight:800">{site.branding.ctaHeading}</h2>
+              <p style="color:#94a3b8;margin:0 0 20px;font-size:16px;line-height:1.65">{site.branding.ctaBody}</p>
+              <ul style="color:#94a3b8;margin:0;padding-left:20px;line-height:2.2;font-size:15px">
+                {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
+              </ul>
             </div>
             <div class="c5">
-              <div class="formbox">
-                <ACForm />
-              </div>
+              <ACForm />
             </div>
           </div>
         </div>
