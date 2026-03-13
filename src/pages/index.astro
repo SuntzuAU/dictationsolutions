@@ -31,10 +31,10 @@ const recentPosts = (await getCollection('blog'))
   .slice(0, 3);
 
 const benefitIcons = [
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M10 16l4 4 8-8" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M16 10v6l4 2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="6" stroke="#16a34a" stroke-width="2.5"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><rect x="9" y="11" width="14" height="11" rx="2" stroke="#16a34a" stroke-width="2.5"/><path d="M13 11V9a3 3 0 0 1 6 0v2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M12 16c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/><path d="M16 8v2M16 22v2M8 16h2M22 16h2" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><path d="M10 16l4 4 8-8" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><path d="M16 10v6l4 2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="16" r="6" stroke="#059669" stroke-width="2"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><rect x="9" y="11" width="14" height="11" rx="2" stroke="#059669" stroke-width="2.5"/><path d="M13 11V9a3 3 0 0 1 6 0v2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><circle cx="16" cy="16" r="5" stroke="#059669" stroke-width="2.5"/><path d="M16 8v2M16 22v2M8 16h2M22 16h2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg>`,
 ];
 ---
 
@@ -52,9 +52,7 @@ const benefitIcons = [
     <meta property="og:description" content={site.branding.metaDesc} />
     <meta property="og:url" content={site.domain} />
     <meta property="og:locale" content="en_AU" />
-
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
-
     {site.googleAnalyticsId && (
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
       <script define:vars={{ gaId: site.googleAnalyticsId }}>
@@ -64,21 +62,17 @@ const benefitIcons = [
         gtag('config', gaId);
       </script>
     )}
-
     <style is:inline define:vars={{
-      bg: c.background,
-      text: c.text,
-      primary: c.primary,
-      accent: c.accent,
-      accentHover: c.accentHover,
-      muted: c.muted,
-      neutral: c.neutral,
+      bg: c.background, text: c.text, primary: c.primary,
+      accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
     }}>
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+      /* NAV */
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:40px;width:auto}
@@ -88,108 +82,146 @@ const benefitIcons = [
       .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
       .dropdown-toggle svg{transition:transform .15s}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-top:3px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:240px;padding:8px 0;z-index:200}
       .dropdown:hover .dropdown-menu{display:block}
       .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
       .dropdown-menu a:hover{background:#f0fdf4;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
       .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
-      .btn-secondary{background:white;border-color:#cbd5e1;color:var(--primary)}
-      .btn-secondary:hover{border-color:var(--primary)}
-      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .btn-secondary{background:transparent;border-color:#cbd5e1;color:var(--primary)}
+      .btn-secondary:hover{border-color:var(--primary);background:#f8fafc}
+      .btn-lg{padding:14px 32px;font-size:16px;border-radius:10px}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
       .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
-      section{padding:64px 0}
-      .hero{padding:72px 0 56px}
-      .neutral-bg{background:var(--neutral)}
+
+      /* LAYOUT */
+      section{padding:52px 0}
+      .neutral-bg{background:#f8fafc}
+      .green-bg{background:#f0fdf4}
       .dark-bg{background:var(--primary);color:white}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-      .c6{grid-column:span 6}
-      .c4{grid-column:span 4}
-      .c3{grid-column:span 3}
-      .c7{grid-column:span 7}
-      .c5{grid-column:span 5}
-      .c8{grid-column:span 8}
-      .c12{grid-column:span 12}
+
+      /* HERO */
+      .hero{padding:64px 0 48px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
       .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;margin-bottom:18px}
-      .hero h1{font-size:42px;line-height:1.1;margin:0 0 16px;letter-spacing:-0.03em;font-weight:800}
-      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7;color:var(--muted)}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
+      .hero h1{font-size:42px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em;font-weight:800;color:#111827}
+      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7;color:#4b5563;max-width:480px}
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.15)}
+      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#e5e7eb;box-shadow:0 20px 60px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-      .stats-bar{background:var(--primary);padding:0}
-      .stats-inner{display:flex;align-items:stretch;flex-wrap:wrap}
-      .stat-item{flex:1;min-width:180px;padding:20px 24px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+
+      /* STATS BAR — full bleed, no wrap constraint on flex items */
+      .stats-bar{background:var(--primary)}
+      .stats-bar .wrap{padding:0 24px}
+      .stats-inner{display:flex;align-items:stretch}
+      .stat-item{flex:1;padding:18px 20px;border-right:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0}
       .stat-item:last-child{border-right:none}
-      .stat-value{font-size:22px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:3px}
-      .stat-label{font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
-      .sh{margin-bottom:40px}
-      .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:800}
-      .sh p{font-size:17px;margin:0;max-width:600px;color:var(--muted)}
-      .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
-      .card p{color:var(--muted)}
-      .benefit-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px}
-      .benefit-card h3{margin:8px 0 10px;font-size:18px;font-weight:700}
-      .benefit-card p{color:var(--muted);font-size:15px;line-height:1.65;margin:0}
-      .card-icon{margin-bottom:14px;line-height:1}
-      .compare-card{background:#fff;border:2px solid #e2e8f0;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
-      .compare-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.1)}
-      .compare-card.featured{border-color:var(--accent)}
+      .stat-value{font-size:20px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:2px;white-space:nowrap}
+      .stat-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+
+      /* SECTION HEADINGS */
+      .sh{margin-bottom:36px}
+      .sh h2{font-size:30px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
+      .sh p{font-size:16px;margin:0;max-width:580px;color:var(--muted)}
+
+      /* GRID */
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}
+      .c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
+
+      /* BENEFIT CARDS */
+      .benefit-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;transition:box-shadow .15s}
+      .benefit-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+      .benefit-card h3{margin:8px 0 8px;font-size:17px;font-weight:700}
+      .benefit-card p{color:#6b7280;font-size:15px;line-height:1.6;margin:0}
+      .card-icon{margin-bottom:12px;line-height:1}
+
+      /* PRODUCT CARDS */
+      .compare-card{background:#fff;border:2px solid #e5e7eb;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s;text-decoration:none;color:inherit}
+      .compare-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(22,163,74,.15);transform:translateY(-2px)}
+      .compare-card.featured{border-color:var(--accent);background:linear-gradient(135deg,#f0fdf4,#fff)}
+      .compare-card.src-highlight{border-color:#2563eb;background:linear-gradient(135deg,#eff6ff,#fff)}
+      .compare-card.src-highlight:hover{border-color:#1d4ed8;box-shadow:0 8px 32px rgba(37,99,235,.2)}
       .product-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
+      .product-badge.badge-blue{background:#2563eb}
       .compare-title{font-size:17px;font-weight:700;margin:0 0 4px}
       .compare-for{font-size:13px;color:#64748b;margin:0 0 12px}
       .compare-price{font-size:28px;font-weight:800;line-height:1;margin:0 0 4px;color:var(--accent)}
+      .compare-price.price-blue{color:#2563eb}
       .compare-pricenote{font-size:12px;color:#64748b;margin:0 0 16px}
       .compare-btn{margin-top:auto;display:block;text-align:center;padding:10px 16px;border-radius:8px;font-weight:700;font-size:14px;background:#f1f5f9;color:#1a1a1a;transition:background .15s}
-      .compare-card:hover .compare-btn,.compare-card.featured .compare-btn{background:var(--accent);color:#fff}
-      .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:14px;background:var(--accent);color:#fff}
-      .faq-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px}
-      .faq-card h3{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--primary)}
-      .faq-card p{margin:0;font-size:15px;color:var(--muted);line-height:1.55}
-      .blog-card{display:block;border:1px solid #e2e8f0;border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+      .compare-card:hover .compare-btn{background:var(--accent);color:#fff}
+      .compare-card.src-highlight .compare-btn{background:#eff6ff;color:#1d4ed8}
+      .compare-card.src-highlight:hover .compare-btn{background:#2563eb;color:#fff}
+
+      /* STEPS */
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
+      .card p{color:var(--muted)}
+      .step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-weight:800;font-size:16px;margin-bottom:12px;background:var(--accent);color:#fff}
+
+      /* FAQ */
+      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:22px}
+      .faq-card h3{margin:0 0 8px;font-size:15px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:14px;color:#6b7280;line-height:1.55}
+
+      /* BLOG */
+      .blog-card{display:block;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
       .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-      .blog-date{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
-      .blog-card h3{font-size:16px;margin:0 0 6px;line-height:1.4;font-weight:700}
-      .blog-card p{font-size:14px;color:var(--muted);margin:0;line-height:1.55}
+      .blog-date{font-size:11px;color:#9ca3af;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+      .blog-card h3{font-size:15px;margin:0 0 6px;line-height:1.4;font-weight:700}
+      .blog-card p{font-size:13px;color:#6b7280;margin:0;line-height:1.5}
+
+      /* DARK BOX — SRC highlight */
+      .src-row{background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;display:block;transition:background .15s}
+      .src-row:hover{background:rgba(37,99,235,.25)}
+      .product-row{display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s}
+      .product-row:hover{background:rgba(255,255,255,.13)}
+
+      /* LINKS */
       .src-link{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
       .src-link:hover{color:var(--accentHover)}
+
+      /* FOOTER */
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
+
+      /* RESPONSIVE */
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
         .hero h1{font-size:32px}
-        .c6,.c4,.c5,.c7,.c8,.c3{grid-column:span 12}
+        .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
         .sh h2{font-size:26px}
-        .stat-item{min-width:140px;padding:16px}
-        .stat-value{font-size:18px}
+        .stat-item{padding:14px 12px}
+        .stat-value{font-size:15px}
+        .stat-label{font-size:10px}
       }
       @media(max-width:600px){
         .nav-links{display:none}
         .nav-ctas .btn-secondary{display:none}
-        .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
+        .nav-ctas .btn-primary{padding:8px 14px;font-size:13px}
         .hamburger{display:flex}
-        section{padding:40px 0}
+        section{padding:36px 0}
         .hero{padding:36px 0 28px}
         .hero h1{font-size:26px}
         .hero p{font-size:15px}
         .sh h2{font-size:22px}
-        .sh p{font-size:15px}
-        .sh{margin-bottom:24px}
+        .sh{margin-bottom:20px}
         .hero-btns{flex-direction:column}
-        .hero-btns .btn-lg{width:100%;text-align:center;padding:13px 20px}
-        .card,.benefit-card,.faq-card,.compare-card{padding:18px}
+        .hero-btns .btn-lg{width:100%;text-align:center}
+        .card,.benefit-card,.faq-card,.compare-card{padding:16px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
         .hero-img{display:none}
-        .stat-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 16px}
+        .stats-inner{flex-wrap:wrap}
+        .stat-item{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+        .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
       }
     </style>
   </head>
@@ -226,13 +258,14 @@ const benefitIcons = [
         <nav class="mobile-nav" aria-label="Mobile navigation">
           {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
           {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
+          <a href={site.primaryCTA.url} target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">{site.primaryCTA.text}</a>
         </nav>
       </div>
     </header>
 
     <main>
 
-      <!-- Hero -->
+      <!-- HERO — green gradient bg -->
       <section class="hero" aria-label="Hero">
         <div class="wrap">
           <div class="hero-inner">
@@ -248,14 +281,14 @@ const benefitIcons = [
             <div class="hero-img">
               {heroSrc
                 ? <img src={heroSrc} alt={imgAlt("hero")} width="560" height="315" loading="eager" fetchpriority="high" decoding="sync" />
-                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">Hero image loading</div>
+                : <div style="width:100%;height:100%;min-height:260px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:14px">Hero image loading</div>
               }
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Stats bar -->
+      <!-- STATS BAR — full bleed columns, no wrap on the flex row -->
       <div class="stats-bar" role="complementary" aria-label="Key facts">
         <div class="wrap">
           <div class="stats-inner">
@@ -279,7 +312,7 @@ const benefitIcons = [
         </div>
       </div>
 
-      <!-- Benefits -->
+      <!-- BENEFITS — white bg -->
       <section id="benefits" aria-label="Why choose us">
         <div class="wrap">
           <div class="sh">
@@ -298,29 +331,35 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- Products -->
-      <section id="products" class="neutral-bg" aria-label="Our products">
+      <!-- PRODUCTS — light grey bg, SRC highlighted blue -->
+      <section id="products" style="background:#f1f5f9;padding:52px 0" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
             <h2>{site.branding.compareHeading}</h2>
             <p>{site.branding.compareSubheading}</p>
           </div>
           <div class="grid">
-            {homepageProducts.map((p, i) => (
-              <a href={p.slug === 'cloud-speech-solutions' ? 'https://www.speechrecognition.cloud' : `/${p.slug}`} class={`compare-card c4${i === 0 ? ' featured' : ''}`} target={p.slug === 'cloud-speech-solutions' ? '_blank' : undefined} rel={p.slug === 'cloud-speech-solutions' ? 'noopener' : undefined}>
-                <div class="product-badge">{p.badge}</div>
-                <div class="compare-title">{p.title}</div>
-                <div class="compare-for">{p.bestFor}</div>
-                <div class="compare-price">{p.price}</div>
-                <div class="compare-pricenote">{p.priceNote}</div>
-                <div class="compare-btn">View details &rarr;</div>
-              </a>
-            ))}
+            {homepageProducts.map((p) => {
+              const isSRC = p.slug === 'cloud-speech-solutions';
+              const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
+              const cardClass = `compare-card c4${isSRC ? ' src-highlight' : ''}`;
+              return (
+                <a href={href} class={cardClass} target={isSRC ? '_blank' : undefined} rel={isSRC ? 'noopener' : undefined}>
+                  <div class={`product-badge${isSRC ? ' badge-blue' : ''}`}>{p.badge}</div>
+                  <div class="compare-title">{p.title}</div>
+                  <div class="compare-for">{p.bestFor}</div>
+                  <div class={`compare-price${isSRC ? ' price-blue' : ''}`}>{p.price}</div>
+                  <div class="compare-pricenote">{p.priceNote}</div>
+                  {isSRC && <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:12px">Free tier available &bull; 57 languages</div>}
+                  <div class="compare-btn">{isSRC ? 'Try Free Now \u2192' : 'View details \u2192'}</div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <!-- How it works -->
+      <!-- HOW IT WORKS — white -->
       <section id="how-it-works" aria-label="How to get started">
         <div class="wrap">
           <div class="sh">
@@ -339,8 +378,8 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- About -->
-      <section id="about" class="neutral-bg" aria-label="About us">
+      <!-- ABOUT — dark box with SRC highlighted -->
+      <section id="about" style="background:#f8fafc;padding:52px 0" aria-label="About us">
         <div class="wrap">
           <div class="grid">
             <div class="card c7">
@@ -349,35 +388,52 @@ const benefitIcons = [
                   <img src={imgSrc("about-banner")} alt={imgAlt("about-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <h3 style="margin:0 0 8px;font-size:22px;font-weight:800">{site.branding.aboutHeading}</h3>
-              <p style="margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.65">{site.branding.aboutBody}</p>
-              <p style="margin:0 0 16px;font-size:15px;color:var(--muted)">
-                For individuals and teams wanting a no-commitment starting point, <a href="https://www.speechrecognition.cloud" class="src-link">free speech to text software</a> is available via SpeechRecognition.cloud &mdash; 57 languages, browser-based, no install required.
+              <h3 style="margin:0 0 8px;font-size:21px;font-weight:800">{site.branding.aboutHeading}</h3>
+              <p style="margin:0 0 12px;color:#6b7280;font-size:15px;line-height:1.65">{site.branding.aboutBody}</p>
+              <p style="margin:0 0 16px;font-size:15px;color:#6b7280">
+                Want to start for free? <a href="https://www.speechrecognition.cloud" class="src-link">SpeechRecognition.cloud</a> offers browser-based AI transcription — 57 languages, no install, free tier available.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
-                  <div style="background:#f5f5f5;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:#334155">&#10003; {p}</div>
+                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;color:#166534">&#10003; {p}</div>
                 ))}
               </div>
             </div>
-            <div class="card c5" style="background:#1a1a1a;color:white;border-color:#1a1a1a">
-              <h3 style="color:white;margin:0 0 6px;font-size:18px;font-weight:700">All solutions at a glance</h3>
-              <p style="font-size:13px;color:rgba(255,255,255,.5);margin:0 0 16px">Full dictation and speech recognition range from one authorised Australian reseller.</p>
-              {darkBoxProducts?.map((p) => (
-                <a href={p.slug === 'cloud-speech-solutions' ? 'https://www.speechrecognition.cloud' : `/${p.slug}`} style="display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s">
-                  <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
-                  <div style="display:flex;justify-content:space-between;align-items:center">
-                    <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
-                    <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
-                  </div>
-                </a>
-              ))}
+            <div style="background:#111827;border-radius:16px;padding:24px;grid-column:span 5">
+              <h3 style="color:white;margin:0 0 4px;font-size:18px;font-weight:700">All solutions at a glance</h3>
+              <p style="font-size:13px;color:rgba(255,255,255,.4);margin:0 0 16px">One authorised Australian reseller. Full range.</p>
+
+              {/* SRC gets a highlighted blue row */}
+              {darkBoxProducts?.map((p) => {
+                const isSRC = p.slug === 'cloud-speech-solutions';
+                const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
+                return isSRC ? (
+                  <a href={href} target="_blank" rel="noopener" class="src-row">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
+                      <div style="color:#93c5fd;font-weight:700;font-size:14px">{p.title}</div>
+                      <span style="background:#2563eb;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em">Free tier</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
+                      <span style="font-weight:800;color:#60a5fa;font-size:15px">{p.price}</span>
+                    </div>
+                  </a>
+                ) : (
+                  <a href={href} class="product-row">
+                    <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
+                      <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      <!-- FAQ -->
+      <!-- FAQ — white -->
       <section id="faq" aria-label="Frequently asked questions">
         <div class="wrap">
           <div class="sh">
@@ -391,18 +447,15 @@ const benefitIcons = [
               </div>
             ))}
           </div>
-          <p style="margin-top:20px;font-size:15px;color:var(--muted)">
-            Looking for the <a href="https://www.speechrecognition.cloud" class="src-link">best free speech recognition software</a>? SpeechRecognition.cloud offers a free tier with no hardware required.
-          </p>
         </div>
       </section>
 
-      <!-- Blog (only if 2+ posts) -->
+      <!-- BLOG (2+ posts only) — light grey -->
       {recentPosts.length >= 2 && (
-        <section class="neutral-bg" aria-label="Latest news">
+        <section style="background:#f1f5f9;padding:52px 0" aria-label="Latest news">
           <div class="wrap">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:32px">
-              <h2 style="margin:0;font-size:28px;font-weight:800">Latest from the blog</h2>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+              <h2 style="margin:0;font-size:26px;font-weight:800">Latest from the blog</h2>
               <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
             </div>
             <div class="grid">
@@ -418,19 +471,19 @@ const benefitIcons = [
         </section>
       )}
 
-      <!-- Contact CTA -->
-      <section id="final-cta" class="dark-bg" aria-label="Contact us">
+      <!-- CONTACT CTA — dark -->
+      <section id="final-cta" class="dark-bg" aria-label="Contact us" style="padding:52px 0">
         <div class="wrap">
           <div class="grid">
             <div class="c7">
               {imgSrc("cta-banner") && (
-                <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;margin-bottom:24px">
+                <div style="border-radius:14px;overflow:hidden;aspect-ratio:16/9;margin-bottom:24px">
                   <img src={imgSrc("cta-banner")} alt={imgAlt("cta-banner")} loading="lazy" decoding="async" width="560" height="315" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
-              <h2 style="color:white;font-size:28px;margin:0 0 12px;font-weight:800">{site.branding.ctaHeading}</h2>
-              <p style="color:#94a3b8;margin:0 0 20px;font-size:16px;line-height:1.65">{site.branding.ctaBody}</p>
-              <ul style="color:#94a3b8;margin:0;padding-left:20px;line-height:2.2;font-size:15px">
+              <h2 style="color:white;font-size:26px;margin:0 0 10px;font-weight:800">{site.branding.ctaHeading}</h2>
+              <p style="color:#9ca3af;margin:0 0 18px;font-size:16px;line-height:1.65">{site.branding.ctaBody}</p>
+              <ul style="color:#9ca3af;margin:0;padding-left:20px;line-height:2.1;font-size:15px">
                 {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
               </ul>
             </div>
