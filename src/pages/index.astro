@@ -2,7 +2,6 @@
 import manifest from "../data/image-manifest.json";
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
-import Nav from "../components/Nav.astro";
 import { getCollection } from 'astro:content';
 
 const year = new Date().getFullYear();
@@ -19,7 +18,6 @@ function imgAlt(key) {
 
 const c = site.colours;
 const heroSrc = imgSrc("hero");
-const canonicalUrl = site.domain;
 
 const homepageSlugs = site.homepageProducts || [];
 const homepageProducts = homepageSlugs
@@ -31,20 +29,6 @@ const darkBoxProducts = site.products?.filter(p => p.slug !== 'transcription-ser
 const recentPosts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "@id": site.domain,
-      "name": site.siteName,
-      "url": site.domain,
-      "description": site.branding.metaDesc,
-      "areaServed": "Australia"
-    }
-  ]
-};
 
 const benefitIcons = [
   `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#dcfce7"/><path d="M10 16l4 4 8-8" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -62,13 +46,13 @@ const benefitIcons = [
     <title>{site.branding.metaTitle}</title>
     <meta name="description" content={site.branding.metaDesc} />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={site.domain} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={site.branding.metaTitle} />
     <meta property="og:description" content={site.branding.metaDesc} />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:url" content={site.domain} />
     <meta property="og:locale" content="en_AU" />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     {heroSrc && <link rel="preload" as="image" href={heroSrc} fetchpriority="high" />}
 
     {site.googleAnalyticsId && (
@@ -95,12 +79,30 @@ const benefitIcons = [
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .nav-links a:hover,.dropdown-toggle:hover{color:var(--accent)}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle svg{transition:transform .15s}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
+      .dropdown-menu a:hover{background:#f0fdf4;color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
       .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
       .btn-secondary{background:white;border-color:#cbd5e1;color:var(--primary)}
       .btn-secondary:hover{border-color:var(--primary)}
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
       section{padding:64px 0}
       .hero{padding:72px 0 56px}
       .neutral-bg{background:var(--neutral)}
@@ -120,15 +122,12 @@ const benefitIcons = [
       .hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#f3f4f6;box-shadow:0 24px 64px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-
-      /* Stats bar */
-      .stats-bar{padding:0;background:var(--primary)}
-      .stats-bar-inner{display:flex;align-items:stretch;flex-wrap:wrap}
+      .stats-bar{background:var(--primary);padding:0}
+      .stats-inner{display:flex;align-items:stretch;flex-wrap:wrap}
       .stat-item{flex:1;min-width:180px;padding:20px 24px;border-right:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
       .stat-item:last-child{border-right:none}
       .stat-value{font-size:22px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:3px}
       .stat-label{font-size:12px;color:rgba(255,255,255,.55);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
-
       .sh{margin-bottom:40px}
       .sh h2{font-size:32px;letter-spacing:-0.02em;margin:0 0 10px;font-weight:800}
       .sh p{font-size:17px;margin:0;max-width:600px;color:var(--muted)}
@@ -169,10 +168,14 @@ const benefitIcons = [
         .hero h1{font-size:32px}
         .c6,.c4,.c5,.c7,.c8,.c3{grid-column:span 12}
         .sh h2{font-size:26px}
-        .stat-item{min-width:140px;padding:16px 16px}
+        .stat-item{min-width:140px;padding:16px}
         .stat-value{font-size:18px}
       }
       @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .nav-ctas .btn-primary{padding:8px 16px;font-size:13px}
+        .hamburger{display:flex}
         section{padding:40px 0}
         .hero{padding:36px 0 28px}
         .hero h1{font-size:26px}
@@ -187,13 +190,45 @@ const benefitIcons = [
         .footer-links{justify-content:center}
         .hero-img{display:none}
         .stat-item{min-width:50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 16px}
-        .stats-bar-inner{flex-direction:row;flex-wrap:wrap}
       }
     </style>
   </head>
   <body>
 
-    <Nav />
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                </div>
+              </div>
+            )}
+          </nav>
+          <div class="nav-ctas">
+            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+            <a class="btn btn-primary" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>&nbsp;&nbsp;{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
 
     <main>
 
@@ -213,17 +248,17 @@ const benefitIcons = [
             <div class="hero-img">
               {heroSrc
                 ? <img src={heroSrc} alt={imgAlt("hero")} width="560" height="315" loading="eager" fetchpriority="high" decoding="sync" />
-                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">Image coming</div>
+                : <div style="width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:14px">Hero image loading</div>
               }
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Stats bar — punchy 4-column strip -->
+      <!-- Stats bar -->
       <div class="stats-bar" role="complementary" aria-label="Key facts">
         <div class="wrap">
-          <div class="stats-bar-inner">
+          <div class="stats-inner">
             <div class="stat-item">
               <div class="stat-value">25 Years</div>
               <div class="stat-label">Australian expertise</div>
@@ -263,7 +298,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- Products (homepage 3 only) -->
+      <!-- Products -->
       <section id="products" class="neutral-bg" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
@@ -272,7 +307,7 @@ const benefitIcons = [
           </div>
           <div class="grid">
             {homepageProducts.map((p, i) => (
-              <a href={p.slug === 'cloud-speech-solutions' ? 'https://www.speechrecognition.cloud' : `/${p.slug}`} class={`compare-card c4${i === 0 ? ' featured' : ''}`}>
+              <a href={p.slug === 'cloud-speech-solutions' ? 'https://www.speechrecognition.cloud' : `/${p.slug}`} class={`compare-card c4${i === 0 ? ' featured' : ''}`} target={p.slug === 'cloud-speech-solutions' ? '_blank' : undefined} rel={p.slug === 'cloud-speech-solutions' ? 'noopener' : undefined}>
                 <div class="product-badge">{p.badge}</div>
                 <div class="compare-title">{p.title}</div>
                 <div class="compare-for">{p.bestFor}</div>
@@ -317,7 +352,7 @@ const benefitIcons = [
               <h3 style="margin:0 0 8px;font-size:22px;font-weight:800">{site.branding.aboutHeading}</h3>
               <p style="margin:0 0 12px;color:var(--muted);font-size:15px;line-height:1.65">{site.branding.aboutBody}</p>
               <p style="margin:0 0 16px;font-size:15px;color:var(--muted)">
-                For individual users or teams wanting a no-commitment starting point, <a href="https://www.speechrecognition.cloud" class="src-link">speech to text software</a> is available free via SpeechRecognition.cloud - 57 languages, browser-based, no install required.
+                For individuals and teams wanting a no-commitment starting point, <a href="https://www.speechrecognition.cloud" class="src-link">free speech to text software</a> is available via SpeechRecognition.cloud &mdash; 57 languages, browser-based, no install required.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
@@ -357,7 +392,7 @@ const benefitIcons = [
             ))}
           </div>
           <p style="margin-top:20px;font-size:15px;color:var(--muted)">
-            Looking for the <a href="https://www.speechrecognition.cloud" class="src-link">best speech recognition software</a> without the upfront cost? SpeechRecognition.cloud offers a free tier and paid plans with no hardware required.
+            Looking for the <a href="https://www.speechrecognition.cloud" class="src-link">best free speech recognition software</a>? SpeechRecognition.cloud offers a free tier with no hardware required.
           </p>
         </div>
       </section>
@@ -398,9 +433,6 @@ const benefitIcons = [
               <ul style="color:#94a3b8;margin:0;padding-left:20px;line-height:2.2;font-size:15px">
                 {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
               </ul>
-              <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5)">
-                Already know you want browser-based? Try <a href="https://www.speechrecognition.cloud" style="color:var(--accent);font-weight:600">best speech to text software free</a> at SpeechRecognition.cloud.
-              </p>
             </div>
             <div class="c5">
               <ACForm />
