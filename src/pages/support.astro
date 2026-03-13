@@ -1,6 +1,7 @@
 ---
 import site from "../site.config.json";
 import ACForm from "../components/ACForm.astro";
+import Nav from "../components/Nav.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
 ---
@@ -9,7 +10,7 @@ const c = site.colours;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dictation and Speech Recognition Support Australia | Dictation Solutions Australia</title>
+    <title>Dictation and Speech Recognition Support Australia | {site.siteName}</title>
     <meta name="description" content="Technical support for Dragon speech recognition, Philips and Olympus dictation hardware, and speech-to-text software in Australia. Local support from Voice Recognition Australia." />
     <link rel="canonical" href="https://dictationsolutions.com.au/support" />
     <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
@@ -17,49 +18,45 @@ const c = site.colours;
       body{margin:0;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      .page-header{background:var(--primary);color:white;padding:48px 0 40px}
-      .breadcrumb{font-size:13px;color:#9ca3af;margin-bottom:16px}
-      .breadcrumb a{color:#9ca3af;text-decoration:underline}
-      h1{font-size:38px;line-height:1.15;margin:0 0 14px}
-      .intro{font-size:18px;color:#d1d5db;margin:0}
-      section{padding:56px 0}
-      .neutral-bg{background:var(--neutral)}
-      .dark-bg{background:var(--primary);color:white}
-      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
-      .c6{grid-column:span 6}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}
-      .card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:28px}
-      .card h3{margin:0 0 10px}.card p{color:var(--muted);margin:0 0 10px}
-      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:10px;text-transform:uppercase}
-      .btn{display:inline-block;padding:12px 24px;border-radius:8px;font-weight:700;font-size:15px;transition:all .15s}
-      .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accentHover)}
-      .formbox{background:#fff;border-radius:16px;padding:28px}
-      footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
+      .page-hero{background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:white;padding:28px 0 24px}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      h1{font-size:34px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.025em;font-weight:800}
+      .intro{font-size:16px;color:rgba(255,255,255,.75);margin:0;line-height:1.6}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      section{padding:24px 0}
+      .section-neutral{background:var(--neutral)}
+      .section-dark{background:var(--primary);color:white}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c7{grid-column:span 7}.c5{grid-column:span 5}.c12{grid-column:span 12}
+      .sh{margin-bottom:14px}
+      .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px}
+      .card h3{margin:0 0 8px;font-size:17px;font-weight:800}
+      .card p{color:var(--muted);margin:0 0 10px;font-size:14px;line-height:1.55}
+      .card p:last-of-type{margin-bottom:0}
+      .tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}.footer-links a:hover{color:white}
-      .footer-disclaimer{font-size:11px;color:#4b5563;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #1f2937}
-      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:28px}}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
+      @media(max-width:900px){.c6,.c4,.c5,.c7{grid-column:span 12}h1{font-size:26px}}
+      @media(max-width:600px){section{padding:16px 0}.card{padding:14px}}
     </style>
   </head>
   <body>
-    <header style="position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100">
-      <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px">
-        <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" height="40" width="160" /></a>
-        <nav style="display:flex;gap:20px;font-size:14px;font-weight:500;color:#374151">
-          <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
-          <a href="/dragon-medical-one">Medical</a><a href="/dictation-equipment">Equipment</a>
-          <a href="/support" style="color:#16a34a;font-weight:700">Support</a>
-        </nav>
-        <a href="/#final-cta" style="background:#16a34a;color:#fff;border-radius:8px;padding:9px 18px;font-weight:700;font-size:14px">Get in Touch</a>
-      </div>
-    </header>
+    <Nav currentPath="/support" />
 
-    <div class="page-header">
+    <div class="page-hero">
       <div class="wrap">
         <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Support</div>
         <h1>Technical Support</h1>
         <p class="intro">Dragon software, Philips and Olympus hardware, and speech recognition support for Australian professionals.</p>
       </div>
     </div>
+    <div class="section-divider"></div>
 
     <main>
       <section>
@@ -69,32 +66,34 @@ const c = site.colours;
               <div class="tag">Software</div>
               <h3>Dragon Support</h3>
               <p>Setup assistance, profile issues, application compatibility, microphone calibration, and troubleshooting for Dragon Professional, Dragon Medical One, and Dragon Professional Anywhere.</p>
-              <a href="https://www.voicerecognition.com.au" style="color:#16a34a;font-weight:600;font-size:14px">Contact Voice Recognition Australia &rarr;</a>
+              <a href="https://www.voicerecognition.com.au" style="color:var(--accent);font-weight:600;font-size:14px">Contact Voice Recognition Australia &rarr;</a>
             </div>
             <div class="card c4">
               <div class="tag">Hardware</div>
               <h3>Philips and Olympus Hardware</h3>
               <p>Device setup, driver issues, compatibility with Dragon software, workflow configuration for Philips SpeechMike, Olympus recorders, foot pedals and headsets.</p>
-              <a href="https://www.voicerecognition.com.au" style="color:#16a34a;font-weight:600;font-size:14px">Contact Voice Recognition Australia &rarr;</a>
+              <a href="https://www.voicerecognition.com.au" style="color:var(--accent);font-weight:600;font-size:14px">Contact Voice Recognition Australia &rarr;</a>
             </div>
             <div class="card c4">
               <div class="tag">Migration</div>
               <h3>Legacy System Migration</h3>
               <p>Migrating from older Dragon versions, Dragon Medical Practice Edition, or legacy dictation systems. Profile migration, vocabulary transfer, and new system setup assistance.</p>
-              <a href="/#final-cta" style="color:#16a34a;font-weight:600;font-size:14px">Get in touch &rarr;</a>
+              <a href="/#final-cta" style="color:var(--accent);font-weight:600;font-size:14px">Get in touch &rarr;</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="dark-bg">
+      <section id="contact" class="section-dark">
         <div class="wrap">
-          <div class="grid">
-            <div class="c7">
-              <h2 style="color:white;font-size:26px;margin:0 0 12px">Get support</h2>
-              <p style="color:#9ca3af">Describe your issue and our team will get back to you promptly. Australian support, no overseas call centres.</p>
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:16px 0">
+              <h2 style="color:white;font-size:22px;margin:0 0 8px;font-weight:800">Get support</h2>
+              <p style="color:rgba(255,255,255,.7);font-size:14px;margin:0">Describe your issue and our team will get back to you promptly. Australian support, no overseas call centres.</p>
             </div>
-            <div class="c5"><ACForm /></div>
+            <div class="c5" style="padding:16px 0">
+              <div class="formbox"><ACForm /></div>
+            </div>
           </div>
         </div>
       </section>
@@ -105,8 +104,7 @@ const c = site.colours;
         <div class="footer-inner">
           <div>&copy; {year} {site.siteName}</div>
           <div class="footer-links">
-            <a href="/">Home</a><a href="/dragon-software">Dragon Software</a>
-            <a href="/privacy">Privacy</a><a href="/terms">Terms</a>
+            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
           </div>
         </div>
         <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>

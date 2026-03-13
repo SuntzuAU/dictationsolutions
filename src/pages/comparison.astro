@@ -1,9 +1,9 @@
 ---
 import site from "../site.config.json";
+import Nav from "../components/Nav.astro";
 
 const c = site.colours;
 const canonicalUrl = site.domain + "/comparison";
-const products = site.navDropdown?.items || [];
 ---
 
 <!doctype html>
@@ -33,28 +33,6 @@ const products = site.navDropdown?.items || [];
       body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100}
-      .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
-      .logo img{height:40px;width:auto}
-      .nav-main{display:flex;gap:24px;font-size:14px;font-weight:500;color:#374151;align-items:center}
-      .dropdown{position:relative}
-      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
-      .dropdown-toggle:hover{color:var(--accent)}
-      .dropdown-toggle svg{transition:transform .15s;width:12px;height:12px}
-      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200;margin-top:4px}
-      .dropdown:hover .dropdown-menu{display:block}
-      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s;border-bottom:1px solid #f3f4f6}
-      .dropdown-menu a:last-child{border-bottom:none}
-      .dropdown-menu a:hover{background:#f9fafb;color:var(--accent)}
-      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
-      .btn-primary{background:var(--accent);color:#fff}
-      .btn-primary:hover{opacity:.9}
-      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
-      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e5e7eb}
-      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6}
       section{padding:32px 0}
       .hero{padding:36px 0;text-align:center}
       .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-0.025em}
@@ -70,20 +48,20 @@ const products = site.navDropdown?.items || [];
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
       .card h3{margin:0 0 8px;font-size:15px;font-weight:700}
       .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
+      .btn-primary{background:var(--accent);color:#fff}
+      .btn-primary:hover{opacity:.9}
       footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
       .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-
       @media(max-width:900px){
         .compare-table{font-size:12px}
         .compare-table th,.compare-table td{padding:10px 12px}
       }
       @media(max-width:600px){
-        .nav-main{display:none}
-        .nav-ctas .btn:nth-child(1){display:none}
-        .hamburger{display:flex}
         .hero h1{font-size:24px}
         section{padding:20px 0}
         .compare-table{font-size:11px}
@@ -92,42 +70,7 @@ const products = site.navDropdown?.items || [];
     </style>
   </head>
   <body>
-
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo">
-            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
-          </div>
-          <nav class="nav-main" aria-label="Primary navigation">
-            {site.navDropdown && (
-              <div class="dropdown">
-                <span class="dropdown-toggle">
-                  {site.navDropdown.label}
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </span>
-                <div class="dropdown-menu">
-                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-                  <a href="/comparison">Compare Solutions</a>
-                </div>
-              </div>
-            )}
-            <a href="/news">News</a>
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-          <a href="/news">News</a>
-          <a href="/comparison">Compare Solutions</a>
-        </nav>
-      </div>
-    </header>
+    <Nav currentPath="/comparison" />
 
     <main>
 
@@ -157,55 +100,55 @@ const products = site.navDropdown?.items || [];
                 <td><strong>Dragon Professional 16</strong></td>
                 <td>Heavy daily dictation, complex documents</td>
                 <td class="check">99%</td>
-                <td class="check">✓</td>
-                <td class="x">—</td>
-                <td class="check">✓</td>
+                <td class="check">Yes</td>
+                <td class="x">No</td>
+                <td class="check">Yes</td>
                 <td>From $994 (perpetual)</td>
               </tr>
               <tr class="compare-highlight">
                 <td><strong>Dragon Medical One</strong></td>
                 <td>Healthcare professionals, clinical documentation</td>
                 <td class="check">99%</td>
-                <td class="check">✓ (medical vocab)</td>
-                <td class="check">✓</td>
-                <td class="x">—</td>
+                <td class="check">Yes (medical vocab)</td>
+                <td class="check">Yes</td>
+                <td class="x">No</td>
                 <td>Quote required</td>
               </tr>
               <tr>
                 <td><strong>Dragon Professional Anywhere</strong></td>
                 <td>Teams, hybrid work, any device</td>
                 <td class="check">99%</td>
-                <td class="check">✓</td>
-                <td class="check">✓</td>
-                <td class="check">✓</td>
+                <td class="check">Yes</td>
+                <td class="check">Yes</td>
+                <td class="check">Yes</td>
                 <td>Quote required</td>
               </tr>
               <tr>
                 <td><strong>Philips SpeechLive</strong></td>
-                <td>Shared transcription workflows, dictation > transcription</td>
+                <td>Shared transcription workflows, dictation to transcription</td>
                 <td class="check">98%</td>
-                <td class="check">✓</td>
-                <td class="check">✓</td>
-                <td class="x">—</td>
-                <td>From ~A$30–50/user/month</td>
+                <td class="check">Yes</td>
+                <td class="check">Yes</td>
+                <td class="x">No</td>
+                <td>Enquire for pricing</td>
               </tr>
               <tr>
                 <td><strong>Dictation hardware (Philips, OM System)</strong></td>
                 <td>Secure, offline, high-sensitivity environments</td>
                 <td>N/A</td>
                 <td>N/A</td>
-                <td class="x">—</td>
+                <td class="x">No</td>
                 <td>N/A</td>
-                <td>From $50–500</td>
+                <td>From $50-500</td>
               </tr>
               <tr>
                 <td><strong>Human transcription services</strong></td>
                 <td>High-volume, sensitive, or complex content</td>
                 <td class="check">99%+</td>
-                <td class="check">✓ (context)</td>
-                <td class="check">✓</td>
-                <td class="x">—</td>
-                <td>From ~$1–2/min</td>
+                <td class="check">Yes (context)</td>
+                <td class="check">Yes</td>
+                <td class="x">No</td>
+                <td>From ~$1-2/min</td>
               </tr>
             </tbody>
           </table>
@@ -217,16 +160,16 @@ const products = site.navDropdown?.items || [];
           <h2 style="font-size:24px;margin:0 0 16px;font-weight:800">Key decision factors</h2>
           <div class="grid">
             <div class="card">
-              <h3>Accuracy & speed</h3>
-              <p>Dragon and Philips both achieve 98–99% accuracy. The difference is in speed: Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows.</p>
+              <h3>Accuracy and speed</h3>
+              <p>Dragon and Philips both achieve 98-99% accuracy. The difference is in speed: Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows.</p>
             </div>
             <div class="card">
-              <h3>Cloud vs. local</h3>
-              <p>Cloud tools (Dragon Anywhere, SpeechLive) work anywhere; local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
+              <h3>Cloud vs local</h3>
+              <p>Cloud tools (Dragon Anywhere, SpeechLive) work anywhere. Local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
             </div>
             <div class="card">
               <h3>Budget</h3>
-              <p>Dragon Professional is one-time cost (perpetual licence). Cloud subscriptions ($30–50/month) suit teams. High-volume organisations often combine multiple tools.</p>
+              <p>Dragon Professional is one-time cost (perpetual licence). Cloud subscriptions suit teams. High-volume organisations often combine multiple tools.</p>
             </div>
             <div class="card">
               <h3>Team workflows</h3>
@@ -258,11 +201,11 @@ const products = site.navDropdown?.items || [];
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Single-user heavy dictators</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional 16 (local, perpetual) + Dragon Anywhere (remote access on same licence) + custom macros for workflows.</p>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional 16 (local, perpetual) + custom macros for workflows.</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Flexible/hybrid teams</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional Anywhere (cloud, all devices) + Philips SpeechMike hardware (optional, for better audio in noisy environments).</p>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional Anywhere (cloud, all devices) + Philips SpeechMike hardware (for better audio in noisy environments).</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">High-volume transcription</h3>
@@ -279,7 +222,7 @@ const products = site.navDropdown?.items || [];
       <section style="background:var(--neutral)">
         <div class="wrap">
           <h2 style="font-size:24px;margin:0 0 8px;font-weight:800">Still not sure?</h2>
-          <p style="font-size:15px;color:var(--muted);margin:0 0 16px;max-width:640px">Talk to our team. We've helped hundreds of Australian professionals, legal firms, and healthcare organisations choose the right combination. We can trial Dragon, set up Philips SpeechLive, or connect you with human transcription services.</p>
+          <p style="font-size:15px;color:var(--muted);margin:0 0 16px;max-width:640px">Talk to our team. We have helped hundreds of Australian professionals, legal firms, and healthcare organisations choose the right combination.</p>
           <a href={site.primaryCTA.url} class="btn btn-primary">{site.primaryCTA.text}</a>
         </div>
       </section>
@@ -294,6 +237,7 @@ const products = site.navDropdown?.items || [];
             {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
           </div>
         </div>
+        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
       </div>
     </footer>
 
