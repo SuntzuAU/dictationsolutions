@@ -20,7 +20,7 @@
     "subheadline": "From traditional digital dictation hardware to modern cloud speech workflows, find the right solution for your practice, business or team. 25 years of Australian deployment experience.",
     "statsMessage": "25 years of Australian dictation and speech recognition expertise",
     "aboutHeading": "Voice Recognition Australia - 25 Years of Deployment Experience",
-    "aboutBody": "Dictation Solutions Australia is the specialist dictation and speech recognition channel of Voice Recognition Australia, an authorised Dragon reseller since the product launched in Australia. We deploy hardware and software solutions across healthcare, legal, and government - and we understand the workflows that matter in each environment. For teams looking for a browser-based option, our cloud platform offers the best free speech recognition starting point with a no-install free tier.",
+    "aboutBody": "Dictation Solutions Australia is the specialist dictation and speech recognition channel of Voice Recognition Australia, an authorised Dragon reseller since the product launched in Australia. We deploy hardware and software solutions across healthcare, legal, and government - and we understand the workflows that matter in each environment.",
     "benefitsHeading": "Why professionals choose dictation and speech recognition solutions",
     "benefitsSubheading": "The right tool for your workflow - hardware, software, and cloud options tailored to how you work.",
     "compareHeading": "Our most popular solutions",
@@ -48,7 +48,7 @@
       { "label": "Dragon Medical One", "url": "/dragon-medical-one", "description": "Cloud AI clinical documentation for Australian doctors and healthcare teams" },
       { "label": "Dragon Professional Anywhere", "url": "/dragon-professional-anywhere", "description": "Cloud-based Dragon for Windows and Mac - dictate from any device" },
       { "label": "Philips SpeechLive", "url": "/philips-speechlive", "description": "Cloud dictation workflow platform - dictate on any device, transcribe anywhere" },
-      { "label": "Cloud Speech Solutions", "url": "/cloud-speech-solutions", "description": "Modern AI transcription in the browser - 57 languages, free tier available" },
+      { "label": "Cloud Speech-to-Text", "url": "https://www.speechrecognition.cloud", "description": "Browser-based AI transcription - 57 languages, free tier, no install" },
       { "label": "Dictation Hardware", "url": "/dictation-hardware", "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets" },
       { "label": "Transcription Services", "url": "/transcription-services", "description": "Professional Australian transcriptionists for medical, legal and business audio" }
     ]
@@ -115,7 +115,7 @@
     {
       "slug": "cloud-speech-solutions",
       "badge": "Best Free Speech Recognition",
-      "navLabel": "Cloud Speech Solutions",
+      "navLabel": "Cloud Speech-to-Text",
       "title": "SpeechRecognition.cloud",
       "metaTitle": "Best Free Speech Recognition Software | SpeechRecognition.cloud | VRA",
       "metaDesc": "Best speech recognition software in the browser - free tier, 57 languages, no install. Professional and medical tiers for Australian businesses and healthcare teams.",
