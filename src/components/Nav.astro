@@ -32,11 +32,10 @@ function homeUrl(url) {
             </div>
           </div>
         )}
-        <a href="/dragon-software" class={currentPath === '/dragon-software' ? 'active' : ''}>Dragon Range</a>
         <a href="/news" class={currentPath === '/news' ? 'active' : ''}>News</a>
       </nav>
       <div class="nav-ctas">
-        <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
+        <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
         <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
           <span></span><span></span><span></span>
         </button>
@@ -47,7 +46,6 @@ function homeUrl(url) {
       {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
       {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
       <a href="/comparison">Compare Solutions</a>
-      <a href="/dragon-software">Dragon Range</a>
       <a href="/news">News</a>
     </nav>
   </div>

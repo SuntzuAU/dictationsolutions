@@ -53,7 +53,7 @@
       { "label": "Transcription Services", "url": "/transcription-services", "description": "Professional Australian transcriptionists for medical, legal and business audio" }
     ]
   },
-  "primaryCTA": { "text": "Get in Touch", "url": "#final-cta" },
+  "primaryCTA": { "text": "Free Download", "url": "https://www.speechrecognition.cloud" },
   "secondaryCTA": { "text": "Compare Solutions", "url": "/comparison" },
   "stats": [
     { "value": "25 years", "label": "Australian market expertise" },
@@ -75,7 +75,7 @@
       "text": "Our Australian team handles setup, training, and ongoing support. You get a working solution, not just a software licence."
     }
   ],
-  "homepageProducts": ["dragon-professional-16", "cloud-speech-solutions", "dragon-medical-one"],
+  "homepageProducts": ["cloud-speech-solutions", "dragon-professional-16", "dragon-medical-one"],
   "products": [
     {
       "slug": "dragon-professional-16",
