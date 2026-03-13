@@ -3,6 +3,7 @@ import site from "../site.config.json";
 
 const c = site.colours;
 const canonicalUrl = site.domain + "/comparison";
+const products = site.navDropdown?.items || [];
 ---
 
 <!doctype html>
@@ -35,10 +36,25 @@ const canonicalUrl = site.domain + "/comparison";
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
       .logo img{height:40px;width:auto}
+      .nav-main{display:flex;gap:24px;font-size:14px;font-weight:500;color:#374151;align-items:center}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
+      .dropdown-toggle:hover{color:var(--accent)}
+      .dropdown-toggle svg{transition:transform .15s;width:12px;height:12px}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e5e7eb;border-top:2px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.1);min-width:220px;padding:8px 0 6px;z-index:200;margin-top:4px}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#374151;transition:background .1s;border-bottom:1px solid #f3f4f6}
+      .dropdown-menu a:last-child{border-bottom:none}
+      .dropdown-menu a:hover{background:#f9fafb;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
       .btn-primary{background:var(--accent);color:#fff}
       .btn-primary:hover{opacity:.9}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e5e7eb}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#374151;border-bottom:1px solid #f3f4f6}
       section{padding:32px 0}
       .hero{padding:36px 0;text-align:center}
       .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-0.025em}
@@ -51,16 +67,23 @@ const canonicalUrl = site.domain + "/comparison";
       .check{color:var(--accent);font-weight:700}
       .x{color:#9ca3af}
       .compare-highlight{background:#f0fdf4}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
+      .card h3{margin:0 0 8px;font-size:15px;font-weight:700}
+      .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
       footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
+      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 
       @media(max-width:900px){
         .compare-table{font-size:12px}
         .compare-table th,.compare-table td{padding:10px 12px}
       }
       @media(max-width:600px){
+        .nav-main{display:none}
+        .nav-ctas .btn:nth-child(1){display:none}
+        .hamburger{display:flex}
         .hero h1{font-size:24px}
         section{padding:20px 0}
         .compare-table{font-size:11px}
@@ -76,10 +99,33 @@ const canonicalUrl = site.domain + "/comparison";
           <div class="logo">
             <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
           </div>
+          <nav class="nav-main" aria-label="Primary navigation">
+            {site.navDropdown && (
+              <div class="dropdown">
+                <span class="dropdown-toggle">
+                  {site.navDropdown.label}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <div class="dropdown-menu">
+                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+                  <a href="/comparison">Compare Solutions</a>
+                </div>
+              </div>
+            )}
+            <a href="/news">News</a>
+          </nav>
           <div class="nav-ctas">
             <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
           </div>
         </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          {site.navDropdown?.items?.map((item) => <a href={item.url}>{item.label}</a>)}
+          <a href="/news">News</a>
+          <a href="/comparison">Compare Solutions</a>
+        </nav>
       </div>
     </header>
 
@@ -169,30 +215,30 @@ const canonicalUrl = site.domain + "/comparison";
       <section style="background:var(--neutral)">
         <div class="wrap">
           <h2 style="font-size:24px;margin:0 0 16px;font-weight:800">Key decision factors</h2>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px">
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Accuracy & speed</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Dragon and Philips both achieve 98–99% accuracy. The difference is in speed: Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows.</p>
+          <div class="grid">
+            <div class="card">
+              <h3>Accuracy & speed</h3>
+              <p>Dragon and Philips both achieve 98–99% accuracy. The difference is in speed: Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows.</p>
             </div>
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Cloud vs. local</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Cloud tools (Dragon Anywhere, SpeechLive) work anywhere; local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
+            <div class="card">
+              <h3>Cloud vs. local</h3>
+              <p>Cloud tools (Dragon Anywhere, SpeechLive) work anywhere; local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
             </div>
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Budget</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Dragon Professional is one-time cost (perpetual licence). Cloud subscriptions ($30–50/month) suit teams. High-volume organisations often combine multiple tools.</p>
+            <div class="card">
+              <h3>Budget</h3>
+              <p>Dragon Professional is one-time cost (perpetual licence). Cloud subscriptions ($30–50/month) suit teams. High-volume organisations often combine multiple tools.</p>
             </div>
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Team workflows</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Philips SpeechLive and human transcription handle delegation. Dragon works best for individual power users who dictate heavily and automate repeatedly.</p>
+            <div class="card">
+              <h3>Team workflows</h3>
+              <p>Philips SpeechLive and human transcription handle delegation. Dragon works best for individual power users who dictate heavily and automate repeatedly.</p>
             </div>
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Governance</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Healthcare and government users need clear data retention, training, and compliance. Dragon Medical One and enterprise Philips include HIPAA/BAA options.</p>
+            <div class="card">
+              <h3>Governance</h3>
+              <p>Healthcare and government users need clear data retention, training, and compliance. Dragon Medical One and enterprise Philips include HIPAA/BAA options.</p>
             </div>
-            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:16px;font-weight:700">Specialisation</h3>
-              <p style="margin:0;font-size:14px;color:var(--muted);line-height:1.6">Medical professionals benefit from Dragon Medical (built-in medical vocabulary). Lawyers and legal teams should use Philips SpeechLive with Dragon for document production.</p>
+            <div class="card">
+              <h3>Specialisation</h3>
+              <p>Medical professionals benefit from Dragon Medical (built-in medical vocabulary). Lawyers and legal teams should use Philips SpeechLive with Dragon for document production.</p>
             </div>
           </div>
         </div>
@@ -201,7 +247,7 @@ const canonicalUrl = site.domain + "/comparison";
       <section>
         <div class="wrap">
           <h2 style="font-size:24px;margin:0 0 12px;font-weight:800">Common combinations</h2>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:20px">
+          <div class="grid">
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Medical professionals</h3>
               <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Medical One (primary) + Philips SpeechMike recorder (secure backup) + optional human transcription for complex cases.</p>
