@@ -1,0 +1,372 @@
+---
+import site from "../site.config.json";
+import ACForm from "../components/ACForm.astro";
+
+const c = site.colours;
+const year = new Date().getFullYear();
+
+function homeUrl(url) {
+  if (!url) return "/";
+  return url.startsWith("#") ? `/${url}` : url;
+}
+
+const metaTitle = "SpeechRecognition.cloud - Cloud Speech-to-Text for Australian Professionals | Dictation Solutions";
+const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recognition platform built for Australian professionals. 57 languages, free tier, medical and professional plans. No installation required.";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDesc} />
+    <link rel="canonical" href={`${site.domain}/speech-recognition-cloud`} />
+    {site.googleAnalyticsId && (<script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script><script define:vars={{ gaId: site.googleAnalyticsId }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);</script>)}
+    <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:42px;width:auto}
+      .nav-links{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
+      .nav-links > a{white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+      .nav-links > a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+      .dropdown{position:relative}
+      .dropdown-toggle{cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+      .dropdown-toggle:hover,.dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
+      .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
+      .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
+      .dropdown-menu{display:none;position:fixed;top:auto;left:auto;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:9999}
+      .dropdown:hover .dropdown-menu{display:block}
+      .dropdown-menu a{display:block;padding:11px 18px;font-size:13px;font-weight:600;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
+      .dropdown-menu a:last-child{border-bottom:none}
+      .dropdown-menu a:hover{background:#f0f9ff;color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover);transform:translateY(-1px)}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .btn-outline{background:transparent;border-color:var(--accent);color:var(--accent)}
+      .btn-outline:hover{background:var(--accent);color:#fff}
+      .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
+      .btn-dark:hover{background:#374151;border-color:#374151;transform:translateY(-1px)}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
+      .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
+      .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
+      .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
+      section{padding:28px 0}
+      .page-hero{padding:36px 0 40px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 55%,#16a34a 100%);color:white}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:16px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      .breadcrumb a:hover{color:white}
+      .breadcrumb-sep{margin:0 6px;color:rgba(255,255,255,.4)}
+      .page-hero h1{font-size:36px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em;font-weight:800;color:white;max-width:700px}
+      .page-hero .subhead{font-size:17px;line-height:1.65;margin:0 0 24px;color:rgba(255,255,255,.85);max-width:620px}
+      .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+      .pill-badge{display:inline-block;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em}
+      .sh{margin-bottom:18px}
+      .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 6px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}.c3{grid-column:span 3}
+      .section-white{background:#fff}.section-neutral{background:var(--neutral)}.section-dark{background:var(--primary);color:white}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:22px}
+      .card h3{font-size:16px;font-weight:700;margin:0 0 8px;color:var(--primary)}
+      .card p{font-size:14px;margin:0;color:var(--muted);line-height:1.6}
+      .feature-list{list-style:none;padding:0;margin:0}
+      .feature-list li{padding:9px 0;border-bottom:1px solid #f3f4f6;font-size:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+      .feature-list li:last-child{border-bottom:none}
+      .feature-check{color:var(--accent);font-weight:700;flex-shrink:0;font-size:15px}
+      .plan-card{background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:24px;text-align:center}
+      .plan-card.highlight{border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,163,74,.1)}
+      .plan-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+      .plan-price{font-size:36px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:4px}
+      .plan-period{font-size:13px;color:var(--muted);margin-bottom:16px}
+      .plan-features{list-style:none;padding:0;margin:0 0 20px;text-align:left}
+      .plan-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #f3f4f6;color:#374151;display:flex;gap:8px}
+      .plan-features li:last-child{border-bottom:none}
+      .plan-features .ck{color:var(--accent);font-weight:700;flex-shrink:0}
+      .compare-table{width:100%;border-collapse:collapse;font-size:14px}
+      .compare-table th{text-align:left;padding:12px 14px;background:var(--primary);color:white;font-weight:700;font-size:13px}
+      .compare-table td{padding:12px 14px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+      .compare-table tr:last-child td{border-bottom:none}
+      .compare-table tr:nth-child(even) td{background:#f9fafb}
+      .compare-table .yes{color:var(--accent);font-weight:700}
+      .compare-table .no{color:#9ca3af}
+      .compare-table .bold{font-weight:700;color:var(--primary)}
+      .use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      .use-case{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-top:3px solid var(--accent)}
+      .use-case h3{font-size:15px;font-weight:700;margin:0 0 8px;color:var(--primary)}
+      .use-case p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-left:4px solid var(--accent)}
+      .faq-card h3{margin:0 0 6px;font-size:14px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
+      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:24px}
+      .src-cta-box{background:linear-gradient(135deg,#16a34a,#15803d);border-radius:16px;padding:28px;color:white;text-align:center}
+      .src-cta-box h3{font-size:20px;font-weight:800;margin:0 0 10px}
+      .src-cta-box p{font-size:14px;color:rgba(255,255,255,.85);margin:0 0 20px;line-height:1.6}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
+      .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+      .footer-links{display:flex;gap:20px}
+      .footer-links a:hover{color:white}
+      .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
+      @media(max-width:900px){.use-case-grid{grid-template-columns:1fr 1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 6}.sh h2{font-size:22px}.page-hero h1{font-size:28px}}
+      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:18px 0}.page-hero{padding:22px 0 26px}.use-case-grid{grid-template-columns:1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 12}.hero-actions{flex-direction:column}.hero-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a></div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
+            {site.navDropdown && (<div class="dropdown"><span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="dropdown-menu">{site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}<a href="/comparison">Compare Solutions</a></div></div>)}
+            <a href="/news">News</a>
+          </nav>
+          <div class="nav-ctas"><a class="btn btn-primary" href="https://www.speechrecognition.cloud" target="_blank" rel="noopener">{site.primaryCTA.text}</a><button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button></div>
+        </div>
+        <nav class="mobile-nav"><a href="/">Home</a>{site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}{site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}<a href="/news">News</a><a href="/comparison">Compare Solutions</a></nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">&rsaquo;</span>Cloud Speech-to-Text</div>
+          <div class="pill-badge">From Free - No Installation Required</div>
+          <h1>SpeechRecognition.cloud - Browser-Based AI Speech-to-Text for Australian Professionals</h1>
+          <p class="subhead">Dictate, transcribe, and document without installing software. SpeechRecognition.cloud works in any browser, supports 57 languages, and includes a free tier for individuals and teams getting started.</p>
+          <div class="hero-actions">
+            <a href="https://www.speechrecognition.cloud" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Try SpeechRecognition.cloud Free &rarr;</a>
+            <a href="#what-is-src" class="btn btn-outline btn-lg">Learn more</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <section id="what-is-src" class="section-white">
+        <div class="wrap">
+          <div class="grid">
+            <div class="c7">
+              <div class="sh">
+                <h2>What is SpeechRecognition.cloud?</h2>
+                <p>An AI-powered speech recognition platform built for professionals who need flexibility without the complexity of desktop software.</p>
+              </div>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">SpeechRecognition.cloud is a cloud-based speech-to-text platform developed by Voice Recognition Australia - the same team that has been deploying dictation and speech recognition solutions in Australian healthcare, legal, and enterprise environments for 25 years.</p>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">Where traditional speech recognition software like Dragon Professional requires a Windows desktop installation and a learning curve, SpeechRecognition.cloud works in any web browser. You log in, speak, and your words become text. There is nothing to install and nothing to configure before you can start.</p>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0">The platform is designed for professionals who move between devices, work across multiple locations, or need to transcribe audio files without specialist software. A free tier makes it accessible to individuals and small teams who want to try cloud speech recognition before committing to a subscription.</p>
+            </div>
+            <div class="c5">
+              <div class="card" style="margin-top:8px">
+                <h3>At a glance</h3>
+                <ul class="feature-list">
+                  <li><span class="feature-check">&#10003;</span>Works in any web browser - no installation</li>
+                  <li><span class="feature-check">&#10003;</span>57 languages supported</li>
+                  <li><span class="feature-check">&#10003;</span>Free tier available</li>
+                  <li><span class="feature-check">&#10003;</span>Professional tier for higher usage</li>
+                  <li><span class="feature-check">&#10003;</span>Medical tier with healthcare vocabulary</li>
+                  <li><span class="feature-check">&#10003;</span>Real-time dictation and file transcription</li>
+                  <li><span class="feature-check">&#10003;</span>Developed by Voice Recognition Australia</li>
+                  <li><span class="feature-check">&#10003;</span>No hardware requirements beyond a microphone</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-neutral">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Plans and pricing</h2>
+            <p>Start free and upgrade when your usage grows. No lock-in contracts.</p>
+          </div>
+          <div class="grid">
+            <div class="c4">
+              <div class="plan-card">
+                <div class="plan-name">Free</div>
+                <div class="plan-price">$0</div>
+                <div class="plan-period">per month</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Browser-based dictation</li>
+                  <li><span class="ck">&#10003;</span>Usage limits apply</li>
+                  <li><span class="ck">&#10003;</span>Major language support</li>
+                  <li><span class="ck">&#10003;</span>No credit card required</li>
+                </ul>
+                <a href="https://www.speechrecognition.cloud" class="btn btn-outline" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box">Start Free</a>
+              </div>
+            </div>
+            <div class="c4">
+              <div class="plan-card highlight">
+                <div class="plan-name">Professional</div>
+                <div class="plan-price" style="font-size:22px;margin-bottom:2px">Subscription</div>
+                <div class="plan-period">Contact for current pricing</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Higher usage allowances</li>
+                  <li><span class="ck">&#10003;</span>Priority processing</li>
+                  <li><span class="ck">&#10003;</span>57 languages</li>
+                  <li><span class="ck">&#10003;</span>API access</li>
+                </ul>
+                <a href="https://www.speechrecognition.cloud" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box">View Pricing &rarr;</a>
+              </div>
+            </div>
+            <div class="c4">
+              <div class="plan-card">
+                <div class="plan-name">Medical</div>
+                <div class="plan-price" style="font-size:22px;margin-bottom:2px">Healthcare Tier</div>
+                <div class="plan-period">Contact for current pricing</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Medical vocabulary built-in</li>
+                  <li><span class="ck">&#10003;</span>Enhanced privacy controls</li>
+                  <li><span class="ck">&#10003;</span>Healthcare compliance features</li>
+                  <li><span class="ck">&#10003;</span>Priority support</li>
+                </ul>
+                <a href="#contact" class="btn btn-dark" style="width:100%;box-sizing:border-box">Enquire</a>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:14px">Pricing is set by SpeechRecognition.cloud and may change. Verify current pricing at speechrecognition.cloud before purchasing.</p>
+        </div>
+      </section>
+
+      <section class="section-white">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Who is it suited to?</h2>
+            <p>Cloud speech recognition fills a real gap between basic built-in dictation and full desktop solutions like Dragon Professional.</p>
+          </div>
+          <div class="use-case-grid">
+            <div class="use-case">
+              <h3>Professionals on the move</h3>
+              <p>Clinicians, lawyers, and consultants who work across multiple locations and devices. No installation means you can dictate from any computer without carrying software licences or user profiles.</p>
+            </div>
+            <div class="use-case">
+              <h3>Small teams and practices</h3>
+              <p>Teams that need speech recognition for occasional use but cannot justify the per-seat cost of desktop software. The free tier and low-cost subscriptions make cloud speech practical for smaller deployments.</p>
+            </div>
+            <div class="use-case">
+              <h3>Mac users</h3>
+              <p>Dragon Professional is Windows-only. Cloud speech recognition works on any operating system through a browser, making it the practical option for Mac-based professionals who need more than OS dictation provides.</p>
+            </div>
+            <div class="use-case">
+              <h3>Students and researchers</h3>
+              <p>A free tier with no software installation removes the cost barrier for students who need accurate speech-to-text for assignments, transcription, and research. 57 languages covers multilingual academic work.</p>
+            </div>
+            <div class="use-case">
+              <h3>Healthcare administration</h3>
+              <p>Medical administration staff handling correspondence, referral letters, and non-clinical documentation can use the Medical tier's healthcare vocabulary without requiring a full Dragon Medical One subscription.</p>
+            </div>
+            <div class="use-case">
+              <h3>International professionals</h3>
+              <p>With 57 language options including regional dialects, SpeechRecognition.cloud supports professionals who work in languages beyond English - useful in multicultural healthcare and legal environments.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-neutral">
+        <div class="wrap">
+          <div class="sh">
+            <h2>How it compares to other options</h2>
+            <p>Different tools suit different workflows. Here is how SpeechRecognition.cloud sits alongside the alternatives.</p>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>SpeechRecognition.cloud</th>
+                  <th>Dragon Professional 16</th>
+                  <th>OS Built-in Dictation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Installation required</td><td class="yes">No - browser only</td><td class="no">Yes - Windows only</td><td class="yes">No</td></tr>
+                <tr><td>Works offline</td><td class="no">No - requires internet</td><td class="yes">Yes - after activation</td><td class="yes">Partial (Windows/Mac)</td></tr>
+                <tr><td>Mac compatible</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>
+                <tr><td>Free tier</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes (included)</td></tr>
+                <tr><td>Medical vocabulary</td><td class="yes">Medical tier</td><td class="yes">Add-on available</td><td class="no">No</td></tr>
+                <tr><td>Custom commands/macros</td><td class="no">No</td><td class="yes">Yes - advanced</td><td class="no">Limited</td></tr>
+                <tr><td>Languages supported</td><td class="bold">57 languages</td><td>English + selected</td><td>20-30 languages</td></tr>
+                <tr><td>File transcription</td><td class="yes">Yes</td><td class="yes">Yes (single speaker)</td><td class="no">No</td></tr>
+                <tr><td>Best for</td><td>Flexible cloud-first users</td><td>Power dictation, Windows, offline</td><td>Basic occasional use</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px">For professionals who rely on dictation as their primary documentation tool - especially in legal and medical environments - Dragon Professional or Dragon Medical One typically delivers higher accuracy and deeper workflow integration. Cloud speech recognition is the practical choice when flexibility and accessibility matter more than power-user features. Our team can help you work out which approach is right for your situation.</p>
+        </div>
+      </section>
+
+      <section class="section-white">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div class="grid">
+            <div class="faq-card c6">
+              <h3>Do I need to install anything to use SpeechRecognition.cloud?</h3>
+              <p>No. It runs entirely in a web browser. You need a microphone and an internet connection. There is no software to download, install, or update.</p>
+            </div>
+            <div class="faq-card c6">
+              <h3>Is there a free option to try before subscribing?</h3>
+              <p>Yes. A free tier is available with usage limits. You can start immediately without a credit card. Upgrade to a paid plan when your usage exceeds the free allowance.</p>
+            </div>
+            <div class="faq-card c6">
+              <h3>How does it handle Australian accents and terminology?</h3>
+              <p>The platform uses AI speech models that handle Australian English well. The Medical tier includes Australian healthcare terminology. Accuracy can vary depending on accent, microphone quality, and background noise - as with any speech recognition system.</p>
+            </div>
+            <div class="faq-card c6">
+              <h3>Is it suitable for healthcare use?</h3>
+              <p>The Medical tier includes healthcare-specific vocabulary and enhanced privacy controls. For clinical documentation at scale, Dragon Medical One with ambient AI is typically more suitable. Our team can advise on the right fit for your practice.</p>
+            </div>
+            <div class="faq-card c6">
+              <h3>Can I use it on a Mac?</h3>
+              <p>Yes. Because it runs in a browser, it works on Mac, Windows, and any device with a modern browser and microphone. This makes it the practical cloud alternative for Mac users who need more than Apple's built-in dictation.</p>
+            </div>
+            <div class="faq-card c6">
+              <h3>How does it compare to Dragon Professional for heavy daily dictation?</h3>
+              <p>Dragon Professional is better suited for heavy daily dictation with its deep Windows application integration, custom macros, and offline capability. SpeechRecognition.cloud suits professionals who need flexibility across devices and locations, or who cannot justify the upfront cost of a desktop licence.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-neutral">
+        <div class="wrap">
+          <div class="sh">
+            <h2>Other dictation and speech solutions</h2>
+            <p>SpeechRecognition.cloud is one option in a broader range. Compare our other solutions to find the right fit.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="/dragon-professional-16" style="padding:10px 18px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s;text-decoration:none" onmouseover="this.style.borderColor='#16a34a';this.style.color='#16a34a'" onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#374151'">Dragon Professional 16 - $994 one-off</a>
+            <a href="/dragon-medical-one" style="padding:10px 18px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s;text-decoration:none" onmouseover="this.style.borderColor='#16a34a';this.style.color='#16a34a'" onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#374151'">Dragon Medical One - Clinical AI</a>
+            <a href="/philips-speechlive" style="padding:10px 18px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s;text-decoration:none" onmouseover="this.style.borderColor='#16a34a';this.style.color='#16a34a'" onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#374151'">Philips SpeechLive - Workflow Platform</a>
+            <a href="/comparison" style="padding:10px 18px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s;text-decoration:none" onmouseover="this.style.borderColor='#16a34a';this.style.color='#16a34a'" onmouseout="this.style.borderColor='#e5e7eb';this.style.color='#374151'">Compare All Solutions</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-dark">
+        <div class="wrap">
+          <div class="grid" style="align-items:start">
+            <div class="c7" style="padding:20px 0">
+              <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Not sure if SpeechRecognition.cloud is right for you?</h2>
+              <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:15px;line-height:1.65">Our team has been matching Australian professionals to the right dictation and speech recognition solution for 25 years. Tell us your situation and we'll give you a straight answer - even if the right answer is a different product.</p>
+              <a href="https://www.speechrecognition.cloud" class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:12px">Try SpeechRecognition.cloud Free &rarr;</a>
+            </div>
+            <div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div></div><div class="footer-disclaimer">{site.branding.footerDisclaimer}</div></div></footer>
+  </body>
+</html>
