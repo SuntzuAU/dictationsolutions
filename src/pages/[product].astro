@@ -66,8 +66,8 @@ const featureKey = product.featureImageKey || "feature-dictation";
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-      /* -- Header & Nav -- */
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
+      /* NAV — overflow must NOT be set on sticky header or dropdown gets clipped */
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:42px;width:auto}
       .nav-links{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
@@ -78,7 +78,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .dropdown-toggle:hover,.dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
       .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:300}
+      .dropdown-menu{display:none;position:fixed;top:auto;left:auto;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:9999}
       .dropdown:hover .dropdown-menu{display:block}
       .dropdown-menu a{display:block;padding:11px 18px;font-size:13px;font-weight:600;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
       .dropdown-menu a:last-child{border-bottom:none}
@@ -92,8 +92,6 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
       .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
       .btn-dark:hover{background:#374151;border-color:#374151;transform:translateY(-1px)}
-      .btn-outline-white{background:transparent;border-color:rgba(255,255,255,.5);color:white}
-      .btn-outline-white:hover{background:rgba(255,255,255,.12);border-color:white}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
       .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
@@ -101,8 +99,6 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
 
       section{padding:22px 0}
-
-      /* PRODUCT HERO — dark gradient, all text white */
       .product-hero{padding:24px 0 28px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,#16a34a 100%);color:white}
       .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;font-weight:500}
       .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
@@ -116,23 +112,18 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .price-note{font-size:13px;color:rgba(255,255,255,.65);margin:0 0 6px}
       .licence-note{font-size:13px;color:rgba(255,255,255,.8);margin:0 0 20px;padding:10px 14px;background:rgba(255,255,255,.1);border-radius:8px;border-left:3px solid var(--accent)}
       .buy-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-
-      /* STAT TRIO — lives inside dark hero column, always white text */
       .stat-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px}
       .stat-box{text-align:center;padding:12px 8px;background:rgba(255,255,255,.12);border-radius:10px;border:1px solid rgba(255,255,255,.2)}
       .stat-box-val{font-size:15px;font-weight:800;color:#fff;line-height:1.1}
       .stat-box-lbl{font-size:10px;color:rgba(255,255,255,.6);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
-
       .sh{margin-bottom:14px}
       .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
       .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}
-
       .section-white{background:#fff}
       .section-neutral{background:var(--neutral)}
       .section-dark{background:var(--primary);color:white}
-
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
       .feature-list{list-style:none;padding:0;margin:0}
       .feature-list li{padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
@@ -148,23 +139,19 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .feature-image{border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-image img{width:100%;height:auto;display:block}
       .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
-
       footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
-
       @media(max-width:900px){
         .product-hero-inner{grid-template-columns:1fr}
         .product-hero h1{font-size:26px}
         .c6,.c4,.c5,.c7{grid-column:span 12}
         .sh h2{font-size:20px}
-        .stat-trio{grid-template-columns:1fr 1fr 1fr}
       }
       @media(max-width:600px){
         .nav-links{display:none}
-        .nav-ctas .btn-secondary{display:none}
         .hamburger{display:flex}
         section{padding:14px 0}
         .product-hero{padding:16px 0 18px}
@@ -254,18 +241,9 @@ const featureKey = product.featureImageKey || "feature-dictation";
                 </div>
               )}
               <div class="stat-trio">
-                <div class="stat-box">
-                  <div class="stat-box-val">{product.price}</div>
-                  <div class="stat-box-lbl">Price</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-box-val">{product.installLimit}</div>
-                  <div class="stat-box-lbl">Licence</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-box-val">{product.bestFor?.split(' ').slice(0,2).join(' ')}</div>
-                  <div class="stat-box-lbl">Best for</div>
-                </div>
+                <div class="stat-box"><div class="stat-box-val">{product.price}</div><div class="stat-box-lbl">Price</div></div>
+                <div class="stat-box"><div class="stat-box-val">{product.installLimit}</div><div class="stat-box-lbl">Licence</div></div>
+                <div class="stat-box"><div class="stat-box-val">{product.bestFor?.split(' ').slice(0,2).join(' ')}</div><div class="stat-box-lbl">Best for</div></div>
               </div>
             </div>
           </div>
@@ -278,15 +256,10 @@ const featureKey = product.featureImageKey || "feature-dictation";
         <div class="wrap">
           <div class="grid">
             <div class="c7">
-              <div class="sh">
-                <h2>What's included</h2>
-                <p>Everything you get with {product.title}.</p>
-              </div>
+              <div class="sh"><h2>What's included</h2><p>Everything you get with {product.title}.</p></div>
               <div class="card">
                 <ul class="feature-list">
-                  {product.features?.map((f) => (
-                    <li><span class="feature-check">&#10003;</span>{f}</li>
-                  ))}
+                  {product.features?.map((f) => (<li><span class="feature-check">&#10003;</span>{f}</li>))}
                 </ul>
               </div>
             </div>
@@ -303,34 +276,22 @@ const featureKey = product.featureImageKey || "feature-dictation";
 
       <section class="section-white">
         <div class="wrap">
-          <div class="sh">
-            <h2>Frequently asked questions</h2>
-          </div>
+          <div class="sh"><h2>Frequently asked questions</h2></div>
           <div class="grid">
-            {product.faqs?.map((f) => (
-              <div class="faq-card c6">
-                <h3>{f.q}</h3>
-                <p>{f.a}</p>
-              </div>
-            ))}
+            {product.faqs?.map((f) => (<div class="faq-card c6"><h3>{f.q}</h3><p>{f.a}</p></div>))}
           </div>
         </div>
       </section>
 
       <section class="section-neutral">
         <div class="wrap">
-          <div class="sh">
-            <h2>Other solutions</h2>
-            <p>Compare other dictation and transcription solutions.</p>
-          </div>
+          <div class="sh"><h2>Other solutions</h2><p>Compare other dictation and transcription solutions.</p></div>
           <div class="other-versions">
             {site.products?.filter(p => p.slug !== product.slug).map(p => (
               <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>
             ))}
           </div>
-          <div style="margin-top:16px">
-            <a href="/" class="btn btn-primary">View all solutions</a>
-          </div>
+          <div style="margin-top:16px"><a href="/" class="btn btn-primary">View all solutions</a></div>
         </div>
       </section>
 
@@ -342,11 +303,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
               <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a>
             </div>
-            <div class="c5" style="padding:20px 0">
-              <div class="formbox">
-                <ACForm />
-              </div>
-            </div>
+            <div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div>
           </div>
         </div>
       </section>
@@ -357,9 +314,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <div class="wrap">
         <div class="footer-inner">
           <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}
-          </div>
+          <div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div>
         </div>
         <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
       </div>
