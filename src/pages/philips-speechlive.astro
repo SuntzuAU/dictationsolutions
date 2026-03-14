@@ -30,22 +30,14 @@ const featureKey = product.featureImageKey || "feature-dictation";
     <title>{product.metaTitle}</title>
     <meta name="description" content={product.metaDesc} />
     <link rel="canonical" href={`${site.domain}/${product.slug}`} />
-    {site.googleAnalyticsId && (
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script>
-      <script define:vars={{ gaId: site.googleAnalyticsId }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', gaId);
-      </script>
-    )}
+    {site.googleAnalyticsId && (<script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script><script define:vars={{ gaId: site.googleAnalyticsId }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);</script>)}
     <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200;overflow:visible}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:42px;width:auto}
       .nav-links{display:flex;gap:20px;font-size:14px;font-weight:600;color:#374151;align-items:center}
@@ -56,7 +48,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .dropdown-toggle:hover,.dropdown:hover .dropdown-toggle{color:var(--accent);border-bottom-color:var(--accent)}
       .dropdown-toggle svg{transition:transform .2s;flex-shrink:0}
       .dropdown:hover .dropdown-toggle svg{transform:rotate(180deg)}
-      .dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:300}
+      .dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-top:3px solid var(--accent);border-radius:0 0 12px 12px;box-shadow:0 12px 40px rgba(0,0,0,.12);min-width:230px;padding:6px 0;z-index:9999}
       .dropdown:hover .dropdown-menu{display:block}
       .dropdown-menu a{display:block;padding:11px 18px;font-size:13px;font-weight:600;color:#374151;transition:background .1s,color .1s;border-bottom:1px solid #f3f4f6}
       .dropdown-menu a:last-child{border-bottom:none}
@@ -128,28 +120,12 @@ const featureKey = product.featureImageKey || "feature-dictation";
           <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a></div>
           <nav class="nav-links" aria-label="Primary">
             {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-            {site.navDropdown && (
-              <div class="dropdown">
-                <span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-                <div class="dropdown-menu">
-                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-                  <a href="/comparison">Compare Solutions</a>
-                </div>
-              </div>
-            )}
+            {site.navDropdown && (<div class="dropdown"><span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="dropdown-menu">{site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}<a href="/comparison">Compare Solutions</a></div></div>)}
             <a href="/news">News</a>
           </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
-          </div>
+          <div class="nav-ctas"><a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a><button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button></div>
         </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          <a href="/">Home</a>
-          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
-          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-          <a href="/news">News</a><a href="/comparison">Compare Solutions</a>
-        </nav>
+        <nav class="mobile-nav"><a href="/">Home</a>{site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}{site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}<a href="/news">News</a><a href="/comparison">Compare Solutions</a></nav>
       </div>
     </header>
     <main>
@@ -169,7 +145,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               </div>
             </div>
             <div>
-              {imgSrc(heroKey) && (<div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.3)"><img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || `${product.title}`} loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover" /></div>)}
+              {imgSrc(heroKey) && (<div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.3)"><img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || product.title} loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover" /></div>)}
               <div class="stat-trio">
                 <div class="stat-box"><div class="stat-box-val">{product.price}</div><div class="stat-box-lbl">Price</div></div>
                 <div class="stat-box"><div class="stat-box-val">{product.installLimit}</div><div class="stat-box-lbl">Licence</div></div>
@@ -180,48 +156,11 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
       </section>
       <div class="section-divider"></div>
-      <section class="section-neutral">
-        <div class="wrap">
-          <div class="grid">
-            <div class="c7"><div class="sh"><h2>What's included</h2><p>Everything you get with {product.title}.</p></div><div class="card"><ul class="feature-list">{product.features?.map((f) => (<li><span class="feature-check">&#10003;</span>{f}</li>))}</ul></div></div>
-            <div class="c5">{imgSrc(featureKey) && (<div class="feature-image" style="margin-top:46px"><img src={imgSrc(featureKey)} alt={imgAlt(featureKey) || `${product.title} feature`} loading="lazy" decoding="async" /></div>)}</div>
-          </div>
-        </div>
-      </section>
-      <section class="section-white">
-        <div class="wrap">
-          <div class="sh"><h2>Frequently asked questions</h2></div>
-          <div class="grid">{product.faqs?.map((f) => (<div class="faq-card c6"><h3>{f.q}</h3><p>{f.a}</p></div>))}</div>
-        </div>
-      </section>
-      <section class="section-neutral">
-        <div class="wrap">
-          <div class="sh"><h2>Other solutions</h2><p>Compare other dictation and transcription solutions.</p></div>
-          <div class="other-versions">{site.products?.filter(p => p.slug !== product.slug).map(p => (<a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>))}</div>
-          <div style="margin-top:16px"><a href="/" class="btn btn-primary">View all solutions</a></div>
-        </div>
-      </section>
-      <section id="final-cta" class="section-dark">
-        <div class="wrap">
-          <div class="grid" style="align-items:start">
-            <div class="c7" style="padding:20px 0">
-              <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2>
-              <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
-              <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a>
-            </div>
-            <div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div>
-          </div>
-        </div>
-      </section>
+      <section class="section-neutral"><div class="wrap"><div class="grid"><div class="c7"><div class="sh"><h2>What's included</h2><p>Everything you get with {product.title}.</p></div><div class="card"><ul class="feature-list">{product.features?.map((f) => (<li><span class="feature-check">&#10003;</span>{f}</li>))}</ul></div></div><div class="c5">{imgSrc(featureKey) && (<div class="feature-image" style="margin-top:46px"><img src={imgSrc(featureKey)} alt={imgAlt(featureKey)} loading="lazy" decoding="async" /></div>)}</div></div></div></section>
+      <section class="section-white"><div class="wrap"><div class="sh"><h2>Frequently asked questions</h2></div><div class="grid">{product.faqs?.map((f) => (<div class="faq-card c6"><h3>{f.q}</h3><p>{f.a}</p></div>))}</div></div></section>
+      <section class="section-neutral"><div class="wrap"><div class="sh"><h2>Other solutions</h2><p>Compare other dictation and transcription solutions.</p></div><div class="other-versions">{site.products?.filter(p => p.slug !== product.slug).map(p => (<a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>))}</div><div style="margin-top:16px"><a href="/" class="btn btn-primary">View all solutions</a></div></div></section>
+      <section id="final-cta" class="section-dark"><div class="wrap"><div class="grid" style="align-items:start"><div class="c7" style="padding:20px 0"><h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2><p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose solutions for 25 years.</p><a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a></div><div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div></div></div></section>
     </main>
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div></div><div class="footer-disclaimer">{site.branding.footerDisclaimer}</div></div></footer>
   </body>
 </html>
