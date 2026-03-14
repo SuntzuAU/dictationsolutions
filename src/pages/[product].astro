@@ -91,9 +91,9 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .btn-secondary:hover{background:var(--primary);color:white}
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
       .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
-      .btn-dark:hover{background:#374151;border-color:#374151}
-      .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:white}
-      .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:white}
+      .btn-dark:hover{background:#374151;border-color:#374151;transform:translateY(-1px)}
+      .btn-outline-white{background:transparent;border-color:rgba(255,255,255,.5);color:white}
+      .btn-outline-white:hover{background:rgba(255,255,255,.12);border-color:white}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
       .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
@@ -101,7 +101,9 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
 
       section{padding:22px 0}
-      .product-hero{padding:24px 0 18px;background:linear-gradient(135deg,var(--primary) 0%,#1e40af 100%);color:white}
+
+      /* PRODUCT HERO — dark gradient, all text white */
+      .product-hero{padding:24px 0 28px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,#16a34a 100%);color:white}
       .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;font-weight:500}
       .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
       .breadcrumb a:hover{color:white}
@@ -109,15 +111,17 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .product-hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:36px;align-items:start}
       .licence-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--accent);color:#fff}
       .product-hero h1{font-size:32px;line-height:1.1;margin:0 0 10px;letter-spacing:-0.03em;font-weight:800;color:white}
-      .product-hero .subhead{font-size:15px;line-height:1.65;margin:0 0 18px;color:rgba(255,255,255,.75)}
+      .product-hero .subhead{font-size:15px;line-height:1.65;margin:0 0 18px;color:rgba(255,255,255,.8)}
       .price-display{font-size:44px;font-weight:800;line-height:1;color:white;margin:0 0 2px}
-      .price-note{font-size:13px;color:rgba(255,255,255,.6);margin:0 0 6px}
-      .licence-note{font-size:13px;color:rgba(255,255,255,.7);margin:0 0 18px;padding:10px 14px;background:rgba(255,255,255,.1);border-radius:8px;border-left:3px solid var(--accent)}
-      .buy-actions{display:flex;flex-direction:column;gap:10px}
+      .price-note{font-size:13px;color:rgba(255,255,255,.65);margin:0 0 6px}
+      .licence-note{font-size:13px;color:rgba(255,255,255,.8);margin:0 0 20px;padding:10px 14px;background:rgba(255,255,255,.1);border-radius:8px;border-left:3px solid var(--accent)}
+      .buy-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+      /* STAT TRIO — lives inside dark hero column, always white text */
       .stat-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px}
-      .stat-box{text-align:center;padding:12px;background:rgba(255,255,255,.1);border-radius:10px;border:1px solid rgba(255,255,255,.15)}
-      .stat-box-val{font-size:16px;font-weight:800;color:white;line-height:1}
-      .stat-box-lbl{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+      .stat-box{text-align:center;padding:12px 8px;background:rgba(255,255,255,.12);border-radius:10px;border:1px solid rgba(255,255,255,.2)}
+      .stat-box-val{font-size:15px;font-weight:800;color:#fff;line-height:1.1}
+      .stat-box-lbl{font-size:10px;color:rgba(255,255,255,.6);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
 
       .sh{margin-bottom:14px}
       .sh h2{font-size:24px;letter-spacing:-0.02em;margin:0 0 5px;font-weight:800}
@@ -163,13 +167,15 @@ const featureKey = product.featureImageKey || "feature-dictation";
         .nav-ctas .btn-secondary{display:none}
         .hamburger{display:flex}
         section{padding:14px 0}
-        .product-hero{padding:16px 0 14px}
+        .product-hero{padding:16px 0 18px}
         .card,.faq-card,.formbox{padding:14px}
         .price-display{font-size:32px}
+        .buy-actions{flex-direction:column}
+        .buy-actions .btn-lg{width:100%;text-align:center}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
-        .stat-trio{grid-template-columns:1fr 1fr 1fr;gap:6px}
-        .stat-box{padding:8px 6px}
+        .stat-trio{gap:6px}
+        .stat-box{padding:8px 4px}
         .stat-box-val{font-size:13px}
       }
     </style>
@@ -180,7 +186,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <div class="wrap">
         <div class="nav">
           <div class="logo">
-            <a href="/"><img src="/logo.jpg" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
           </div>
           <nav class="nav-links" aria-label="Primary">
             {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
@@ -238,12 +244,12 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="btn btn-ghost btn-lg">Talk to VRA -- local support</a>
+                <a href="/#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
               </div>
             </div>
             <div>
               {imgSrc(heroKey) && (
-                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.25)">
+                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.3)">
                   <img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || `${product.title}`} loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover" />
                 </div>
               )}
@@ -319,7 +325,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
           </div>
           <div class="other-versions">
             {site.products?.filter(p => p.slug !== product.slug).map(p => (
-              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} -- {p.price}</a>
+              <a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>
             ))}
           </div>
           <div style="margin-top:16px">
@@ -333,7 +339,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
           <div class="grid" style="align-items:start">
             <div class="c7" style="padding:20px 0">
               <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2>
-              <p style="color:rgba(255,255,255,.7);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
+              <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
               <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a>
             </div>
             <div class="c5" style="padding:20px 0">
