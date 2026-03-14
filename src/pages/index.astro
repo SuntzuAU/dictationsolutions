@@ -90,33 +90,32 @@ const benefitIcons = [
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
       .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-navy{background:var(--primary);border-color:var(--primary);color:#fff}
+      .btn-navy:hover{background:#111827;border-color:#111827}
       .btn-secondary{background:transparent;border-color:#cbd5e1;color:var(--primary)}
       .btn-secondary:hover{border-color:var(--primary);background:#f8fafc}
-      .btn-lg{padding:14px 32px;font-size:16px;border-radius:10px}
+      .btn-lg{padding:13px 28px;font-size:15px;border-radius:10px}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
       .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
 
       /* LAYOUT */
-      section{padding:52px 0}
-      .neutral-bg{background:#f8fafc}
-      .green-bg{background:#f0fdf4}
+      section{padding:48px 0}
       .dark-bg{background:var(--primary);color:white}
 
-      /* HERO */
-      .hero{padding:64px 0 48px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
+      /* HERO — tightened bottom padding to close gap */
+      .hero{padding:56px 0 32px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
       .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:16px}
-      .hero h1{font-size:42px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em;font-weight:800;color:#111827}
-      .hero p{font-size:17px;margin:0 0 28px;line-height:1.7;color:#4b5563;max-width:480px}
-      .hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+      .hero h1{font-size:42px;line-height:1.1;margin:0 0 12px;letter-spacing:-0.03em;font-weight:800;color:#111827}
+      .hero p{font-size:17px;margin:0 0 22px;line-height:1.65;color:#4b5563;max-width:480px}
+      .hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#e5e7eb;box-shadow:0 20px 60px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
 
-      /* STATS BAR — full bleed, no wrap constraint on flex items */
+      /* STATS BAR */
       .stats-bar{background:var(--primary)}
-      .stats-bar .wrap{padding:0 24px}
       .stats-inner{display:flex;align-items:stretch}
       .stat-item{flex:1;padding:18px 20px;border-right:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0}
       .stat-item:last-child{border-right:none}
@@ -124,7 +123,7 @@ const benefitIcons = [
       .stat-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
 
       /* SECTION HEADINGS */
-      .sh{margin-bottom:36px}
+      .sh{margin-bottom:32px}
       .sh h2{font-size:30px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
       .sh p{font-size:16px;margin:0;max-width:580px;color:var(--muted)}
 
@@ -143,7 +142,6 @@ const benefitIcons = [
       /* PRODUCT CARDS */
       .compare-card{background:#fff;border:2px solid #e5e7eb;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s;text-decoration:none;color:inherit}
       .compare-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(22,163,74,.15);transform:translateY(-2px)}
-      .compare-card.featured{border-color:var(--accent);background:linear-gradient(135deg,#f0fdf4,#fff)}
       .compare-card.src-highlight{border-color:#2563eb;background:linear-gradient(135deg,#eff6ff,#fff)}
       .compare-card.src-highlight:hover{border-color:#1d4ed8;box-shadow:0 8px 32px rgba(37,99,235,.2)}
       .product-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
@@ -175,24 +173,21 @@ const benefitIcons = [
       .blog-card h3{font-size:15px;margin:0 0 6px;line-height:1.4;font-weight:700}
       .blog-card p{font-size:13px;color:#6b7280;margin:0;line-height:1.5}
 
-      /* DARK BOX — SRC highlight */
+      /* DARK BOX */
       .src-row{background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;display:block;transition:background .15s}
       .src-row:hover{background:rgba(37,99,235,.25)}
       .product-row{display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s}
       .product-row:hover{background:rgba(255,255,255,.13)}
 
-      /* LINKS */
       .src-link{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
       .src-link:hover{color:var(--accentHover)}
 
-      /* FOOTER */
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
 
-      /* RESPONSIVE */
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
         .hero h1{font-size:32px}
@@ -207,8 +202,8 @@ const benefitIcons = [
         .nav-ctas .btn-secondary{display:none}
         .nav-ctas .btn-primary{padding:8px 14px;font-size:13px}
         .hamburger{display:flex}
-        section{padding:36px 0}
-        .hero{padding:36px 0 28px}
+        section{padding:32px 0}
+        .hero{padding:28px 0 24px}
         .hero h1{font-size:26px}
         .hero p{font-size:15px}
         .sh h2{font-size:22px}
@@ -265,7 +260,7 @@ const benefitIcons = [
 
     <main>
 
-      <!-- HERO — green gradient bg -->
+      <!-- HERO -->
       <section class="hero" aria-label="Hero">
         <div class="wrap">
           <div class="hero-inner">
@@ -275,7 +270,8 @@ const benefitIcons = [
               <p>{site.branding.subheadline}</p>
               <div class="hero-btns">
                 <a class="btn btn-primary btn-lg" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
-                {site.secondaryCTA?.text && <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
+                <a class="btn btn-navy btn-lg" href="#final-cta">Contact Us</a>
+                <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>
               </div>
             </div>
             <div class="hero-img">
@@ -288,7 +284,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- STATS BAR — full bleed columns, no wrap on the flex row -->
+      <!-- STATS BAR -->
       <div class="stats-bar" role="complementary" aria-label="Key facts">
         <div class="wrap">
           <div class="stats-inner">
@@ -312,7 +308,7 @@ const benefitIcons = [
         </div>
       </div>
 
-      <!-- BENEFITS — white bg -->
+      <!-- BENEFITS -->
       <section id="benefits" aria-label="Why choose us">
         <div class="wrap">
           <div class="sh">
@@ -331,8 +327,8 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- PRODUCTS — light grey bg, SRC highlighted blue -->
-      <section id="products" style="background:#f1f5f9;padding:52px 0" aria-label="Our products">
+      <!-- PRODUCTS -->
+      <section id="products" style="background:#f1f5f9;padding:48px 0" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
             <h2>{site.branding.compareHeading}</h2>
@@ -359,7 +355,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- HOW IT WORKS — white -->
+      <!-- HOW IT WORKS -->
       <section id="how-it-works" aria-label="How to get started">
         <div class="wrap">
           <div class="sh">
@@ -378,8 +374,8 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- ABOUT — dark box with SRC highlighted -->
-      <section id="about" style="background:#f8fafc;padding:52px 0" aria-label="About us">
+      <!-- ABOUT -->
+      <section id="about" style="background:#f8fafc;padding:48px 0" aria-label="About us">
         <div class="wrap">
           <div class="grid">
             <div class="card c7">
@@ -391,7 +387,7 @@ const benefitIcons = [
               <h3 style="margin:0 0 8px;font-size:21px;font-weight:800">{site.branding.aboutHeading}</h3>
               <p style="margin:0 0 12px;color:#6b7280;font-size:15px;line-height:1.65">{site.branding.aboutBody}</p>
               <p style="margin:0 0 16px;font-size:15px;color:#6b7280">
-                Want to start for free? <a href="https://www.speechrecognition.cloud" class="src-link">SpeechRecognition.cloud</a> offers browser-based AI transcription — 57 languages, no install, free tier available.
+                Want to start for free? <a href="https://www.speechrecognition.cloud" class="src-link">SpeechRecognition.cloud</a> offers browser-based AI transcription &mdash; 57 languages, no install, free tier available.
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
@@ -402,8 +398,6 @@ const benefitIcons = [
             <div style="background:#111827;border-radius:16px;padding:24px;grid-column:span 5">
               <h3 style="color:white;margin:0 0 4px;font-size:18px;font-weight:700">All solutions at a glance</h3>
               <p style="font-size:13px;color:rgba(255,255,255,.4);margin:0 0 16px">One authorised Australian reseller. Full range.</p>
-
-              {/* SRC gets a highlighted blue row */}
               {darkBoxProducts?.map((p) => {
                 const isSRC = p.slug === 'cloud-speech-solutions';
                 const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
@@ -433,7 +427,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- FAQ — white -->
+      <!-- FAQ -->
       <section id="faq" aria-label="Frequently asked questions">
         <div class="wrap">
           <div class="sh">
@@ -450,9 +444,9 @@ const benefitIcons = [
         </div>
       </section>
 
-      <!-- BLOG (2+ posts only) — light grey -->
+      <!-- BLOG -->
       {recentPosts.length >= 2 && (
-        <section style="background:#f1f5f9;padding:52px 0" aria-label="Latest news">
+        <section style="background:#f1f5f9;padding:48px 0" aria-label="Latest news">
           <div class="wrap">
             <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:28px">
               <h2 style="margin:0;font-size:26px;font-weight:800">Latest from the blog</h2>
@@ -471,8 +465,8 @@ const benefitIcons = [
         </section>
       )}
 
-      <!-- CONTACT CTA — dark -->
-      <section id="final-cta" class="dark-bg" aria-label="Contact us" style="padding:52px 0">
+      <!-- CONTACT CTA -->
+      <section id="final-cta" class="dark-bg" aria-label="Contact us" style="padding:48px 0">
         <div class="wrap">
           <div class="grid">
             <div class="c7">
