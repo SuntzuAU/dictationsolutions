@@ -154,6 +154,7 @@ const benefitIcons = [
       .src-row:hover{background:rgba(37,99,235,.25)}
       .product-row{display:block;background:rgba(255,255,255,.07);border-radius:10px;padding:14px;margin-bottom:10px;text-decoration:none;transition:background .15s}
       .product-row:hover{background:rgba(255,255,255,.13)}
+      .product-row-title{font-size:14px;font-weight:700;color:#d1d5db;margin-bottom:2px}
       .src-link{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
       .src-link:hover{color:var(--accentHover)}
       footer{background:#111;color:#64748b;padding:28px 0;font-size:14px}
@@ -187,6 +188,7 @@ const benefitIcons = [
         .hero-btns{flex-direction:column}
         .hero-btns .btn-lg{width:100%;text-align:center}
         .hero-img{display:block;margin-top:20px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+        .dark-box{display:none}
         .card,.benefit-card,.faq-card,.compare-card{padding:16px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
@@ -353,7 +355,7 @@ const benefitIcons = [
                 ))}
               </div>
             </div>
-            <div style="background:#111827;border-radius:16px;padding:24px;grid-column:span 5">
+            <div class="dark-box" style="background:#111827;border-radius:16px;padding:24px;grid-column:span 5">
               <h3 style="color:white;margin:0 0 4px;font-size:18px;font-weight:700">All solutions at a glance</h3>
               <p style="font-size:13px;color:rgba(255,255,255,.4);margin:0 0 16px">One authorised Australian reseller. Full range.</p>
               {darkBoxProducts?.map((p) => {
@@ -372,7 +374,7 @@ const benefitIcons = [
                   </a>
                 ) : (
                   <a href={href} class="product-row">
-                    <div style="color:var(--accent);font-weight:700;font-size:14px;margin-bottom:2px">{p.title}</div>
+                    <div class="product-row-title">{p.title}</div>
                     <div style="display:flex;justify-content:space-between;align-items:center">
                       <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
                       <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
