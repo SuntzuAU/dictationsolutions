@@ -66,6 +66,8 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
       .btn-outline{background:transparent;border:2px solid white;color:white}
       .btn-outline:hover{background:rgba(255,255,255,.1)}
+      .btn-white{background:#fff;border:2px solid #fff;color:#166534;font-weight:700}
+      .btn-white:hover{background:#f0fdf4;border-color:#f0fdf4}
       .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
       .btn-dark:hover{background:#374151;border-color:#374151}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
@@ -115,29 +117,43 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .plan-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #f3f4f6;color:#374151;display:flex;gap:8px}
       .plan-features li:last-child{border-bottom:none}
       .plan-features .ck{color:var(--accent);font-weight:700;flex-shrink:0}
-      /* Comparison table */
-      .compare-wrap{overflow-x:auto}
-      .compare-table{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
-      .compare-table th{padding:14px 16px;font-weight:700;font-size:13px;text-align:center;vertical-align:bottom;border-bottom:2px solid #e5e7eb}
-      .compare-table th:first-child{text-align:left;background:var(--primary);color:white;border-bottom:2px solid var(--primary)}
-      .compare-table th.col-src{background:var(--accent);color:#fff;border-bottom:2px solid var(--accentHover)}
-      .compare-table th.col-other{background:#f1f5f9;color:#374151}
-      .compare-table .group-row td{background:var(--primary);color:white;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:8px 16px}
-      .compare-table .group-row td.src-col{background:var(--accent)}
-      .compare-table .group-row td.other-col{background:#374151}
-      .compare-table td{padding:11px 16px;border-bottom:1px solid #e5e7eb;vertical-align:middle;text-align:center}
-      .compare-table td:first-child{text-align:left;font-weight:600;color:#374151;background:#fff}
-      .compare-table td.src-col{background:#f0fdf4;font-weight:600}
-      .compare-table tr:hover td:first-child{background:#f9fafb}
-      .compare-table tr:hover td.src-col{background:#dcfce7}
-      .yes{color:var(--accent);font-weight:700}
+      /* --- Comparison table --- */
+      .compare-wrap{overflow-x:auto;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+      .compare-table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+      /* Header row */
+      .compare-table thead tr{border:none}
+      .compare-table th{padding:16px 14px;font-weight:700;font-size:13px;text-align:center;vertical-align:bottom}
+      .compare-table th:first-child{text-align:left;background:#1a2f5e;color:#fff;width:26%}
+      .th-src{background:#15803d;color:#fff;width:22%;border-left:3px solid #166534;border-right:3px solid #166534}
+      .th-other{background:#374151;color:#e5e7eb;width:17%}
+      .th-name{font-size:14px;font-weight:800;display:block;margin-bottom:3px;line-height:1.2}
+      .th-sub{font-size:11px;font-weight:500;opacity:.75;display:block;margin-top:4px}
+      .th-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:999px;background:rgba(255,255,255,.2);color:#fff;margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+      /* Group header rows */
+      .compare-table .group-row td{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:7px 14px;border:none}
+      .compare-table .group-row td:first-child{background:#1a2f5e;color:#93c5fd}
+      .compare-table .group-row td.src-col{background:#166534;color:#bbf7d0;border-left:3px solid #166534;border-right:3px solid #166534}
+      .compare-table .group-row td.other-col{background:#374151;color:#9ca3af}
+      /* Data rows */
+      .compare-table td{padding:11px 14px;border-bottom:1px solid #e5e7eb;vertical-align:middle;text-align:center;color:#374151}
+      .compare-table td:first-child{text-align:left;font-weight:600;color:#1f2937;background:#fafafa}
+      .compare-table tbody tr:last-child td{border-bottom:none}
+      /* SRC column - solid green, always white text */
+      .compare-table td.src-col{background:#166534;color:#fff;font-weight:700;border-left:3px solid #166534;border-right:3px solid #166534}
+      .compare-table td.src-col.yes-cell{color:#bbf7d0}
+      .compare-table td.src-col.no-cell{color:rgba(255,255,255,.6)}
+      /* Other columns */
+      .compare-table td.other-col{background:#f9fafb;color:#6b7280}
+      .yes{color:#15803d;font-weight:700}
       .no{color:#9ca3af}
-      .compare-table .cta-row td{padding:14px 16px;border-bottom:none}
-      .compare-table .cta-row td.src-col{background:#f0fdf4}
-      .compare-table .cta-row td:first-child{background:#fff}
-      .compare-table .cta-row td.other-col{background:#f9fafb}
-      .col-header-sub{display:block;font-size:11px;font-weight:500;opacity:.8;margin-top:3px}
-      .best-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.25);color:#fff;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+      .warn{color:#d97706;font-weight:600}
+      /* CTA row */
+      .compare-table .cta-row td{padding:16px 14px;border-bottom:none;background:#fafafa}
+      .compare-table .cta-row td.src-col{background:#166534;border-left:3px solid #166634;border-right:3px solid #166534}
+      .compare-table .cta-row td.other-col{background:#f1f5f9}
+      /* Row hover */
+      .compare-table tbody tr:not(.group-row):not(.cta-row):hover td:first-child{background:#f0f9ff}
+      .compare-table tbody tr:not(.group-row):not(.cta-row):hover td.src-col{background:#15803d}
       .use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
       .use-case{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-top:3px solid var(--accent)}
       .use-case h3{font-size:15px;font-weight:700;margin:0 0 8px;color:var(--primary)}
@@ -337,23 +353,23 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
             <table class="compare-table">
               <thead>
                 <tr>
-                  <th style="width:28%">Feature</th>
-                  <th class="col-src" style="width:22%">
-                    <span class="best-badge">Recommended</span><br />
-                    Speech Recognition Cloud<br />
-                    <span class="col-header-sub">Windows app &mdash; from free</span>
+                  <th style="text-align:left">Feature</th>
+                  <th class="th-src">
+                    <div class="th-badge">Recommended</div>
+                    <div class="th-name">Speech Recognition Cloud</div>
+                    <div class="th-sub">Windows app &mdash; from free</div>
                   </th>
-                  <th class="col-other" style="width:22%">
-                    Dragon Professional 16<br />
-                    <span class="col-header-sub">Windows app &mdash; from $495</span>
+                  <th class="th-other">
+                    <div class="th-name">Dragon Professional 16</div>
+                    <div class="th-sub">Windows app &mdash; from $495</div>
                   </th>
-                  <th class="col-other" style="width:14%">
-                    Windows Voice Typing<br />
-                    <span class="col-header-sub">Win+H, built-in</span>
+                  <th class="th-other">
+                    <div class="th-name">Windows Voice Typing</div>
+                    <div class="th-sub">Win+H, built-in</div>
                   </th>
-                  <th class="col-other" style="width:14%">
-                    Browser Dictation Tools<br />
-                    <span class="col-header-sub">Web-based</span>
+                  <th class="th-other">
+                    <div class="th-name">Browser Dictation Tools</div>
+                    <div class="th-sub">Web-based</div>
                   </th>
                 </tr>
               </thead>
@@ -367,28 +383,28 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
                 </tr>
                 <tr>
                   <td>Works offline</td>
-                  <td class="src-col no">No &mdash; cloud-powered</td>
+                  <td class="src-col no-cell">No &mdash; cloud-powered</td>
                   <td class="yes">Yes &mdash; after activation</td>
                   <td class="no">No &mdash; requires internet</td>
                   <td class="no">No &mdash; browser/cloud</td>
                 </tr>
                 <tr>
                   <td>Works in any Windows app</td>
-                  <td class="src-col yes">Yes &mdash; any Windows app</td>
+                  <td class="src-col yes-cell">Yes &mdash; any Windows app</td>
                   <td class="yes">Yes &mdash; Word, Outlook, Teams, EMRs</td>
-                  <td style="color:#d97706;font-weight:600">Limited</td>
+                  <td class="warn">Limited</td>
                   <td class="no">No &mdash; browser only, cut &amp; paste</td>
                 </tr>
                 <tr>
                   <td>No voice training needed</td>
-                  <td class="src-col yes">Yes &mdash; works instantly</td>
-                  <td style="color:#d97706;font-weight:600">Brief setup</td>
+                  <td class="src-col yes-cell">Yes &mdash; works instantly</td>
+                  <td class="warn">Brief setup</td>
                   <td class="yes">Yes</td>
                   <td class="yes">Yes</td>
                 </tr>
                 <tr>
                   <td>Mac support</td>
-                  <td class="src-col no">No &mdash; Windows only</td>
+                  <td class="src-col no-cell">No &mdash; Windows only</td>
                   <td class="no">No &mdash; Windows only</td>
                   <td class="no">No &mdash; Windows only</td>
                   <td class="yes">Yes &mdash; most support Mac</td>
@@ -402,42 +418,42 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
                 </tr>
                 <tr>
                   <td>Automatic AI punctuation</td>
-                  <td class="src-col yes">Yes &mdash; AI-handled</td>
-                  <td style="color:#d97706;font-weight:600">Partial</td>
+                  <td class="src-col yes-cell">Yes &mdash; AI-handled</td>
+                  <td class="warn">Partial</td>
                   <td class="no">Limited</td>
                   <td class="no">Limited</td>
                 </tr>
                 <tr>
                   <td>Custom vocabulary</td>
-                  <td class="src-col yes">Yes &mdash; Personal+ editions</td>
+                  <td class="src-col yes-cell">Yes &mdash; Personal+ editions</td>
                   <td class="yes">Yes &mdash; deep customisation</td>
                   <td class="no">No</td>
                   <td class="no">No</td>
                 </tr>
                 <tr>
                   <td>Voice macros / automation</td>
-                  <td class="src-col yes">20+ AI voice commands</td>
+                  <td class="src-col yes-cell">20+ AI voice commands</td>
                   <td class="yes">Yes &mdash; full macro support</td>
                   <td class="no">No</td>
                   <td class="no">No</td>
                 </tr>
                 <tr>
                   <td>Transcribe audio files</td>
-                  <td class="src-col no">No</td>
+                  <td class="src-col no-cell">No</td>
                   <td class="yes">Yes &mdash; single speaker</td>
                   <td class="no">No</td>
                   <td class="no">No</td>
                 </tr>
                 <tr>
                   <td>Medical edition</td>
-                  <td class="src-col yes">Yes &mdash; Medical Ultra</td>
+                  <td class="src-col yes-cell">Yes &mdash; Medical Ultra</td>
                   <td class="yes">Yes &mdash; add-on available</td>
                   <td class="no">No</td>
                   <td class="no">No</td>
                 </tr>
                 <tr>
                   <td>Languages supported</td>
-                  <td class="src-col yes">57+ languages</td>
+                  <td class="src-col yes-cell">57+ languages</td>
                   <td>English only (AU, NZ, UK, US, CA, IN)</td>
                   <td>English + others</td>
                   <td>Varies</td>
@@ -451,29 +467,28 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
                 </tr>
                 <tr>
                   <td>Free option</td>
-                  <td class="src-col yes">Yes &mdash; 20 min/month free</td>
+                  <td class="src-col yes-cell">Yes &mdash; 20 min/month free</td>
                   <td class="no">No</td>
                   <td class="yes">Yes &mdash; built-in, free</td>
                   <td class="yes">Yes &mdash; free / low cost</td>
                 </tr>
                 <tr>
                   <td>Paid pricing</td>
-                  <td class="src-col yes">From $119 AUD/yr</td>
+                  <td class="src-col yes-cell">From $119 AUD/yr</td>
                   <td>From $495 AUD one-time</td>
                   <td style="color:#6b7280">Free (included)</td>
                   <td style="color:#6b7280">Free / low cost</td>
                 </tr>
                 <tr class="cta-row">
                   <td></td>
-                  <td class="src-col" style="text-align:center">
-                    <a href={downloadUrl} class="btn btn-primary" target="_blank" rel="noopener" style="margin-bottom:6px;display:inline-block">Free Download &rarr;</a><br />
-                    <a href={buyUrl} style="font-size:12px;color:var(--accent);font-weight:600;text-decoration:underline" target="_blank" rel="noopener">Buy via VRA &rarr;</a>
+                  <td class="src-col" style="text-align:center;vertical-align:middle">
+                    <a href={downloadUrl} class="btn btn-white" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;font-size:13px">Free Download &rarr;</a>
                   </td>
-                  <td class="other-col" style="text-align:center">
-                    <a href={dragonBuyUrl} class="btn btn-dark" target="_blank" rel="noopener" style="display:inline-block">Buy Dragon &rarr;</a>
+                  <td class="other-col" style="text-align:center;vertical-align:middle">
+                    <a href={dragonBuyUrl} class="btn btn-dark" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;font-size:13px">Buy Dragon &rarr;</a>
                   </td>
-                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280">Built into Windows 11</td>
-                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280">Various providers</td>
+                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280;vertical-align:middle">Built into Windows 11</td>
+                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280;vertical-align:middle">Various providers</td>
                 </tr>
               </tbody>
             </table>
