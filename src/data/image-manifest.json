@@ -83,6 +83,13 @@
     "altText": "Person speaking into a laptop microphone in a browser-based speech-to-text app with waveform animating on screen",
     "site": "dictationsolutions"
   },
+  "src-feature": {
+    "key": "src-feature",
+    "r2Key": "dictationsolutions/2026/03/15/speech-recognition-cloud-feature-25bd007a.png",
+    "contentType": "image/png",
+    "altText": "Browser-based AI speech recognition dashboard showing real-time transcription of multiple languages",
+    "site": "dictationsolutions"
+  },
   "hw-hero": {
     "key": "hw-hero",
     "r2Key": "dictationsolutions/2026/03/15/dictation-hardware-hero-a4875a6a.png",
@@ -97,11 +104,25 @@
     "altText": "Professional transcriptionist at a desk with headphones, foot pedal and keyboard transcribing audio",
     "site": "dictationsolutions"
   },
+  "ts-feature": {
+    "key": "ts-feature",
+    "r2Key": "dictationsolutions/2026/03/15/transcription-services-feature-64b11b6f.png",
+    "contentType": "image/png",
+    "altText": "Medical transcription workflow showing a typed transcript document on screen next to a digital voice recorder and headset",
+    "site": "dictationsolutions"
+  },
   "dpa-hero": {
     "key": "dpa-hero",
     "r2Key": "dictationsolutions/2026/03/15/dragon-professional-anywhere-hero-fa9b96f4.png",
     "contentType": "image/png",
     "altText": "Government professional using cloud-based speech recognition on a laptop in a modern Australian public sector office",
+    "site": "dictationsolutions"
+  },
+  "dpa-feature": {
+    "key": "dpa-feature",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-professional-anywhere-feature-e2318b65.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional Anywhere cloud speech recognition interface on a MacBook showing dictation waveform and real-time transcription",
     "site": "dictationsolutions"
   }
 }

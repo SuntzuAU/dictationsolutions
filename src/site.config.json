@@ -1,5 +1,5 @@
 {
-  "_buildNote": "per-product-images",
+  "_buildNote": "unique-feature-images-all-products",
   "siteName": "Dictation Solutions Australia",
   "domain": "https://dictationsolutions.com.au",
   "googleAnalyticsId": "",
@@ -118,7 +118,7 @@
     {
       "slug": "cloud-speech-solutions",
       "heroImageKey": "src-hero",
-      "featureImageKey": "src-hero",
+      "featureImageKey": "src-feature",
       "badge": "Best Free Speech Recognition",
       "navLabel": "Cloud Speech-to-Text",
       "title": "SpeechRecognition.cloud",
@@ -226,7 +226,7 @@
     {
       "slug": "dragon-professional-anywhere",
       "heroImageKey": "dpa-hero",
-      "featureImageKey": "dpa-hero",
+      "featureImageKey": "dpa-feature",
       "badge": "Cloud Speech Recognition",
       "navLabel": "Dragon Professional Anywhere",
       "title": "Dragon Professional Anywhere",
@@ -298,7 +298,7 @@
     {
       "slug": "transcription-services",
       "heroImageKey": "ts-hero",
-      "featureImageKey": "ts-hero",
+      "featureImageKey": "ts-feature",
       "badge": "Professional Services",
       "navLabel": "Transcription Services",
       "title": "Transcription Services",
