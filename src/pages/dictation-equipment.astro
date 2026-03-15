@@ -7,6 +7,8 @@ const product = site.products.find(p => p.slug === 'dictation-hardware');
 const c = site.colours;
 const year = new Date().getFullYear();
 const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
+const primaryColour = c.primary || "#1f2937";
+const accentColour = c.accent || "#16a34a";
 
 function imgSrc(key) {
   const entry = manifest[key];
@@ -20,7 +22,7 @@ function homeUrl(url) {
 }
 
 const heroKey = product?.heroImageKey || "hero";
-const featureKey = product?.featureImageKey || "feature-dictation";
+const featureKey = product?.featureImageKey || "feature-hardware";
 ---
 <!doctype html>
 <html lang="en">
@@ -87,7 +89,7 @@ const featureKey = product?.featureImageKey || "feature-dictation";
       .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}
-      .section-white{background:#fff}.section-neutral{background:var(--neutral)}.section-dark{background:var(--primary);color:white}
+      .section-white{background:#fff}.section-neutral{background:var(--neutral)}
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
       .feature-list{list-style:none;padding:0;margin:0}
       .feature-list li{padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
@@ -99,7 +101,6 @@ const featureKey = product?.featureImageKey || "feature-dictation";
       .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
       .other-version-link{padding:8px 16px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s}
       .other-version-link:hover{border-color:var(--accent);color:var(--accent)}
-      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
       .feature-image{border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-image img{width:100%;height:auto;display:block}
       .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
@@ -109,7 +110,7 @@ const featureKey = product?.featureImageKey || "feature-dictation";
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
       @media(max-width:900px){.product-hero-inner{grid-template-columns:1fr}.product-hero h1{font-size:26px}.c6,.c4,.c5,.c7{grid-column:span 12}.sh h2{font-size:20px}}
-      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:14px 0}.product-hero{padding:16px 0 18px}.card,.faq-card,.formbox{padding:14px}.price-display{font-size:32px}.buy-actions{flex-direction:column}.buy-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:14px 0}.product-hero{padding:16px 0 18px}.card,.faq-card{padding:14px}.price-display{font-size:32px}.buy-actions{flex-direction:column}.buy-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
     </style>
   </head>
   <body>
@@ -156,7 +157,7 @@ const featureKey = product?.featureImageKey || "feature-dictation";
               <div class="licence-note">{product?.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product?.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product?.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
+                <a href="#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
               </div>
             </div>
             <div>
@@ -192,14 +193,22 @@ const featureKey = product?.featureImageKey || "feature-dictation";
           <div style="margin-top:16px"><a href="/" class="btn btn-primary">View all solutions</a></div>
         </div>
       </section>
-      <section id="final-cta" class="section-dark">
+      <section id="final-cta" style={`background:${primaryColour};padding:48px 0`}>
         <div class="wrap">
-          <div class="grid" style="align-items:start">
-            <div class="c7" style="padding:20px 0">
-              <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about dictation equipment?</h2>
-              <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team can recommend the right Philips or Olympus hardware for your workflow and integrate it with Dragon or SpeechLive.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+            <div>
+              {imgSrc(heroKey) && (<div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.4)"><img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || `${product?.title}`} loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>)}
+              <div style="margin-top:24px">
+                <h2 style="font-size:26px;font-weight:800;margin:0 0 10px;color:#ffffff;line-height:1.2">Questions about dictation equipment?</h2>
+                <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65">Our team can recommend the right Philips or Olympus hardware for your workflow and integrate it with Dragon or SpeechLive.</p>
+                <a href={product?.vraUrl} style={`display:inline-block;padding:12px 24px;background:${accentColour};color:#fff;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none`} target="_blank" rel="noopener">{product?.ctaText} &rarr;</a>
+              </div>
             </div>
-            <div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div>
+            <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
+              <div style={`font-size:18px;font-weight:800;color:${primaryColour};margin:0 0 4px`}>Get in touch</div>
+              <div style="font-size:13px;color:#6b7280;margin:0 0 18px">Local Australian support. Fast response.</div>
+              <ACForm />
+            </div>
           </div>
         </div>
       </section>
