@@ -22,8 +22,10 @@ function homeUrl(url) {
 
 const heroSrc = imgSrc("src-hero");
 const featureSrc = imgSrc("src-feature");
-const metaTitle = "SpeechRecognition.cloud - Cloud Speech-to-Text for Australian Professionals | Dictation Solutions";
-const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recognition platform built for Australian professionals. 57 languages, free tier, medical and professional plans. No installation required.";
+const metaTitle = "SpeechRecognition.cloud - AI Speech-to-Text Software for Windows | Dictation Solutions Australia";
+const metaDesc = "SpeechRecognition.cloud is a Windows speech recognition app with no voice training required. Free edition available. Professional and Medical Ultra editions for Australian businesses and healthcare. Download and start dictating in minutes.";
+const downloadUrl = "https://download.speechrecognition.cloud/src/SpeechRecognitionCloudInstaller.exe";
+const buyUrl = "https://www.voicerecognition.com.au/collections/speech-to-text-software";
 ---
 <!doctype html>
 <html lang="en">
@@ -64,6 +66,7 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
       .btn-outline{background:transparent;border:2px solid white;color:white}
       .btn-outline:hover{background:rgba(255,255,255,.1)}
       .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
+      .btn-dark:hover{background:#374151;border-color:#374151}
       .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
       .hamburger span{display:block;width:22px;height:2px;background:#374151;border-radius:2px}
       .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
@@ -81,6 +84,11 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
       .pill-badge{display:inline-block;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.3)}
       .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+      .stats-stripe{background:rgba(255,255,255,.1);border-top:1px solid rgba(255,255,255,.15);margin-top:28px;padding:16px 0}
+      .stats-row{display:flex;gap:32px;flex-wrap:wrap}
+      .stat-item{text-align:center}
+      .stat-val{font-size:22px;font-weight:800;color:#fff;line-height:1}
+      .stat-lbl{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
       .sh{margin-bottom:18px}
       .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 6px;font-weight:800}
       .sh p{font-size:15px;margin:0;color:var(--muted)}
@@ -96,12 +104,13 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
       .feature-check{color:var(--accent);font-weight:700;flex-shrink:0;font-size:15px}
       .feature-img{border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-img img{width:100%;height:auto;display:block}
-      .plan-card{background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:24px;text-align:center}
+      .plan-card{background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:24px;display:flex;flex-direction:column}
       .plan-card.highlight{border-color:var(--accent);box-shadow:0 0 0 3px rgba(22,163,74,.1)}
       .plan-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
-      .plan-price{font-size:36px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:4px}
-      .plan-period{font-size:13px;color:var(--muted);margin-bottom:16px}
-      .plan-features{list-style:none;padding:0;margin:0 0 20px;text-align:left}
+      .plan-price{font-size:36px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:2px}
+      .plan-period{font-size:13px;color:var(--muted);margin-bottom:6px}
+      .plan-tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:14px}
+      .plan-features{list-style:none;padding:0;margin:0 0 20px;flex:1}
       .plan-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #f3f4f6;color:#374151;display:flex;gap:8px}
       .plan-features li:last-child{border-bottom:none}
       .plan-features .ck{color:var(--accent);font-weight:700;flex-shrink:0}
@@ -130,8 +139,8 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
-      @media(max-width:900px){.page-hero-inner{grid-template-columns:1fr}.use-case-grid{grid-template-columns:1fr 1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 6}.sh h2{font-size:22px}.page-hero h1{font-size:26px}}
-      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:18px 0}.page-hero{padding:22px 0 26px}.use-case-grid{grid-template-columns:1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 12}.hero-actions{flex-direction:column}.hero-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+      @media(max-width:900px){.page-hero-inner{grid-template-columns:1fr}.use-case-grid{grid-template-columns:1fr 1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 6}.sh h2{font-size:22px}.page-hero h1{font-size:26px}.stats-row{gap:20px}}
+      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:18px 0}.page-hero{padding:22px 0 26px}.use-case-grid{grid-template-columns:1fr}.c6,.c4,.c5,.c7,.c3{grid-column:span 12}.hero-actions{flex-direction:column}.hero-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}.stats-row{gap:14px}}
     </style>
   </head>
   <body>
@@ -144,7 +153,7 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
             {site.navDropdown && (<div class="dropdown"><span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="dropdown-menu">{site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}<a href="/comparison">Compare Solutions</a></div></div>)}
             <a href="/news">News</a>
           </nav>
-          <div class="nav-ctas"><a class="btn btn-primary" href="https://www.speechrecognition.cloud" target="_blank" rel="noopener">{site.primaryCTA.text}</a><button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button></div>
+          <div class="nav-ctas"><a class="btn btn-primary" href={downloadUrl} target="_blank" rel="noopener">Free Download</a><button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button></div>
         </div>
         <nav class="mobile-nav"><a href="/">Home</a>{site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}{site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}<a href="/news">News</a><a href="/comparison">Compare Solutions</a></nav>
       </div>
@@ -153,19 +162,28 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
     <main>
       <section class="page-hero">
         <div class="wrap">
-          <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">&rsaquo;</span>Cloud Speech-to-Text</div>
+          <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">&rsaquo;</span>Speech Recognition Software</div>
           <div class="page-hero-inner">
             <div>
-              <div class="pill-badge">From Free - No Installation Required</div>
-              <h1>SpeechRecognition.cloud - Browser-Based AI Speech-to-Text for Australian Professionals</h1>
-              <p class="subhead">Dictate, transcribe, and document without installing software. SpeechRecognition.cloud works in any browser, supports 57 languages, and includes a free tier for individuals and teams getting started.</p>
+              <div class="pill-badge">Free Edition Available - Windows</div>
+              <h1>SpeechRecognition.cloud - AI Speech-to-Text for Windows</h1>
+              <p class="subhead">Modern AI speech recognition that installs on Windows and dictates directly into any application. No voice training. No clunky dictation boxes. Just speak and watch your words appear in Word, Outlook, Teams, your EMR - anywhere you type.</p>
               <div class="hero-actions">
-                <a href="https://www.speechrecognition.cloud" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Try Free &rarr;</a>
-                <a href="#what-is-src" class="btn btn-outline btn-lg">Learn more</a>
+                <a href={downloadUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">Free Download &rarr;</a>
+                <a href="#editions" class="btn btn-outline btn-lg">View editions</a>
               </div>
             </div>
             <div>
-              {heroSrc && (<div class="hero-img"><img src={heroSrc} alt={imgAlt("src-hero") || "SpeechRecognition.cloud browser-based speech to text"} loading="eager" decoding="async" /></div>)}
+              {heroSrc && (<div class="hero-img"><img src={heroSrc} alt={imgAlt("src-hero") || "SpeechRecognition.cloud Windows speech to text software"} loading="eager" decoding="async" /></div>)}
+            </div>
+          </div>
+          <div class="stats-stripe">
+            <div class="stats-row">
+              <div class="stat-item"><div class="stat-val">99%</div><div class="stat-lbl">Accuracy</div></div>
+              <div class="stat-item"><div class="stat-val">3x</div><div class="stat-lbl">Faster than typing</div></div>
+              <div class="stat-item"><div class="stat-val">57+</div><div class="stat-lbl">Languages</div></div>
+              <div class="stat-item"><div class="stat-val">20+</div><div class="stat-lbl">AI voice commands</div></div>
+              <div class="stat-item"><div class="stat-val">Free</div><div class="stat-lbl">Starter edition</div></div>
             </div>
           </div>
         </div>
@@ -179,24 +197,24 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
             <div class="c7">
               <div class="sh">
                 <h2>What is SpeechRecognition.cloud?</h2>
-                <p>An AI-powered speech recognition platform built for professionals who need flexibility without the complexity of desktop software.</p>
+                <p>A modern Windows speech recognition app built to replace ageing dictation software without the complexity or cost.</p>
               </div>
-              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">SpeechRecognition.cloud is a cloud-based speech-to-text platform developed by Voice Recognition Australia - the same team that has been deploying dictation and speech recognition solutions in Australian healthcare, legal, and enterprise environments for 25 years.</p>
-              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">Where traditional speech recognition software like Dragon Professional requires a Windows desktop installation and a learning curve, SpeechRecognition.cloud works in any web browser. You log in, speak, and your words become text. There is nothing to install and nothing to configure before you can start.</p>
-              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0">The platform is designed for professionals who move between devices, work across multiple locations, or need to transcribe audio files without specialist software. A free tier makes it accessible to individuals and small teams who want to try cloud speech recognition before committing to a subscription.</p>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">SpeechRecognition.cloud is a Windows application developed by Voice Recognition Australia - the same team that has been deploying Dragon and dictation solutions across Australian healthcare, legal, and enterprise environments for 25 years.</p>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0 0 16px">It installs on Windows and dictates directly into any application - Word, Outlook, Teams, Chrome, your practice management system, your EMR. There are no dictation boxes or intermediate steps. You speak and the text appears exactly where your cursor is.</p>
+              <p style="font-size:15px;line-height:1.7;color:#374151;margin:0">Unlike older dictation software, it requires no voice training before you can start, and AI handles punctuation automatically. It is designed for professionals who are frustrated with expensive upgrade cycles, serial number headaches, and compatibility problems from legacy speech recognition products.</p>
             </div>
             <div class="c5">
-              {featureSrc && (<div class="feature-img" style="margin-top:8px"><img src={featureSrc} alt={imgAlt("src-feature") || "SpeechRecognition.cloud transcription interface"} loading="lazy" decoding="async" /></div>)}
+              {featureSrc && (<div class="feature-img" style="margin-top:8px"><img src={featureSrc} alt={imgAlt("src-feature") || "SpeechRecognition.cloud dictating into Windows"} loading="lazy" decoding="async" /></div>)}
               <div class="card" style="margin-top:16px">
                 <h3>At a glance</h3>
                 <ul class="feature-list">
-                  <li><span class="feature-check">&#10003;</span>Works in any web browser - no installation</li>
-                  <li><span class="feature-check">&#10003;</span>57 languages supported</li>
-                  <li><span class="feature-check">&#10003;</span>Free tier available</li>
-                  <li><span class="feature-check">&#10003;</span>Professional tier for higher usage</li>
-                  <li><span class="feature-check">&#10003;</span>Medical tier with healthcare vocabulary</li>
-                  <li><span class="feature-check">&#10003;</span>Real-time dictation and file transcription</li>
-                  <li><span class="feature-check">&#10003;</span>Developed by Voice Recognition Australia</li>
+                  <li><span class="feature-check">&#10003;</span>Installs on Windows - works in any app</li>
+                  <li><span class="feature-check">&#10003;</span>No voice training required</li>
+                  <li><span class="feature-check">&#10003;</span>Automatic AI punctuation</li>
+                  <li><span class="feature-check">&#10003;</span>57+ languages supported</li>
+                  <li><span class="feature-check">&#10003;</span>Free Starter edition available</li>
+                  <li><span class="feature-check">&#10003;</span>Professional edition with AI features</li>
+                  <li><span class="feature-check">&#10003;</span>Medical Ultra edition for healthcare</li>
                 </ul>
               </div>
             </div>
@@ -204,57 +222,75 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
         </div>
       </section>
 
-      <section class="section-neutral">
+      <section id="editions" class="section-neutral">
         <div class="wrap">
           <div class="sh">
-            <h2>Plans and pricing</h2>
-            <p>Start free and upgrade when your usage grows. No lock-in contracts.</p>
+            <h2>Editions and pricing</h2>
+            <p>Start free and upgrade to the edition that suits your usage. Pricing in USD, converts at checkout.</p>
           </div>
           <div class="grid">
-            <div class="c4">
+            <div class="c3">
               <div class="plan-card">
-                <div class="plan-name">Free</div>
-                <div class="plan-price">$0</div>
-                <div class="plan-period">per month</div>
+                <div class="plan-name">Starter</div>
+                <div class="plan-price">Free</div>
+                <div class="plan-period">20 min per month</div>
+                <div class="plan-tag">No credit card</div>
                 <ul class="plan-features">
-                  <li><span class="ck">&#10003;</span>Browser-based dictation</li>
-                  <li><span class="ck">&#10003;</span>Usage limits apply</li>
-                  <li><span class="ck">&#10003;</span>Major language support</li>
-                  <li><span class="ck">&#10003;</span>No credit card required</li>
+                  <li><span class="ck">&#10003;</span>20 min usage per month</li>
+                  <li><span class="ck">&#10003;</span>Works in any Windows app</li>
+                  <li><span class="ck">&#10003;</span>Automatic punctuation</li>
+                  <li><span class="ck">&#10003;</span>Highly accurate</li>
                 </ul>
-                <a href="https://www.speechrecognition.cloud" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block">Start Free</a>
+                <a href={downloadUrl} class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block;text-align:center">Free Download</a>
               </div>
             </div>
-            <div class="c4">
+            <div class="c3">
+              <div class="plan-card">
+                <div class="plan-name">Personal / Educational</div>
+                <div class="plan-price">$79</div>
+                <div class="plan-period">USD per year</div>
+                <div class="plan-tag">Students &amp; individuals</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Unlimited usage</li>
+                  <li><span class="ck">&#10003;</span>Custom vocabulary</li>
+                  <li><span class="ck">&#10003;</span>Text replacements</li>
+                  <li><span class="ck">&#10003;</span>Email support</li>
+                </ul>
+                <a href={buyUrl} class="btn btn-dark" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block;text-align:center">Buy via VRA &rarr;</a>
+              </div>
+            </div>
+            <div class="c3">
               <div class="plan-card highlight">
                 <div class="plan-name">Professional</div>
-                <div class="plan-price" style="font-size:22px;margin-bottom:2px">Subscription</div>
-                <div class="plan-period">Contact for current pricing</div>
+                <div class="plan-price">$159</div>
+                <div class="plan-period">USD per year</div>
+                <div class="plan-tag">Most popular</div>
                 <ul class="plan-features">
-                  <li><span class="ck">&#10003;</span>Higher usage allowances</li>
-                  <li><span class="ck">&#10003;</span>Priority processing</li>
-                  <li><span class="ck">&#10003;</span>57 languages</li>
-                  <li><span class="ck">&#10003;</span>API access</li>
-                </ul>
-                <a href="https://www.speechrecognition.cloud" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block">View Pricing &rarr;</a>
-              </div>
-            </div>
-            <div class="c4">
-              <div class="plan-card">
-                <div class="plan-name">Medical</div>
-                <div class="plan-price" style="font-size:22px;margin-bottom:2px">Healthcare Tier</div>
-                <div class="plan-period">Contact for current pricing</div>
-                <ul class="plan-features">
-                  <li><span class="ck">&#10003;</span>Medical vocabulary built-in</li>
-                  <li><span class="ck">&#10003;</span>Enhanced privacy controls</li>
-                  <li><span class="ck">&#10003;</span>Healthcare compliance features</li>
+                  <li><span class="ck">&#10003;</span>Everything in Personal</li>
+                  <li><span class="ck">&#10003;</span>20+ AI voice commands</li>
+                  <li><span class="ck">&#10003;</span>Advanced AI features</li>
                   <li><span class="ck">&#10003;</span>Priority support</li>
                 </ul>
-                <a href="#contact" class="btn btn-dark" style="width:100%;box-sizing:border-box;display:block">Enquire</a>
+                <a href={buyUrl} class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block;text-align:center">Buy via VRA &rarr;</a>
+              </div>
+            </div>
+            <div class="c3">
+              <div class="plan-card">
+                <div class="plan-name">Medical Ultra</div>
+                <div class="plan-price" style="font-size:24px;margin-bottom:2px">Enquire</div>
+                <div class="plan-period">Contact for pricing</div>
+                <div class="plan-tag">Healthcare</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Medical vocabulary built-in</li>
+                  <li><span class="ck">&#10003;</span>Healthcare-grade accuracy</li>
+                  <li><span class="ck">&#10003;</span>Suitable for clinical notes</li>
+                  <li><span class="ck">&#10003;</span>Australian support included</li>
+                </ul>
+                <a href="#contact" class="btn btn-dark" style="width:100%;box-sizing:border-box;display:block;text-align:center">Enquire</a>
               </div>
             </div>
           </div>
-          <p style="font-size:12px;color:var(--muted);margin-top:14px">Pricing is set by SpeechRecognition.cloud and may change. Verify current pricing at speechrecognition.cloud before purchasing.</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:14px">Pricing in USD and converts to your local currency at checkout. Verify current pricing at speechrecognition.cloud before purchasing.</p>
         </div>
       </section>
 
@@ -262,15 +298,15 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
         <div class="wrap">
           <div class="sh">
             <h2>Who is it suited to?</h2>
-            <p>Cloud speech recognition fills a real gap between basic built-in dictation and full desktop solutions like Dragon Professional.</p>
+            <p>A practical modern alternative for professionals frustrated with legacy dictation software.</p>
           </div>
           <div class="use-case-grid">
-            <div class="use-case"><h3>Professionals on the move</h3><p>Clinicians, lawyers, and consultants who work across multiple locations and devices. No installation means you can dictate from any computer without carrying software licences or user profiles.</p></div>
-            <div class="use-case"><h3>Small teams and practices</h3><p>Teams that need speech recognition for occasional use but cannot justify the per-seat cost of desktop software. The free tier and low-cost subscriptions make cloud speech practical for smaller deployments.</p></div>
-            <div class="use-case"><h3>Mac users</h3><p>Dragon Professional is Windows-only. Cloud speech recognition works on any operating system through a browser, making it the practical option for Mac-based professionals who need more than OS dictation provides.</p></div>
-            <div class="use-case"><h3>Students and researchers</h3><p>A free tier with no software installation removes the cost barrier for students who need accurate speech-to-text for assignments, transcription, and research. 57 languages covers multilingual academic work.</p></div>
-            <div class="use-case"><h3>Healthcare administration</h3><p>Medical administration staff handling correspondence, referral letters, and non-clinical documentation can use the Medical tier's healthcare vocabulary without requiring a full Dragon Medical One subscription.</p></div>
-            <div class="use-case"><h3>International professionals</h3><p>With 57 language options including regional dialects, SpeechRecognition.cloud supports professionals who work in languages beyond English - useful in multicultural healthcare and legal environments.</p></div>
+            <div class="use-case"><h3>Professionals moving on from Dragon</h3><p>If you are on an older Dragon version and facing expensive upgrade costs, SpeechRecognition.cloud offers instant setup, comparable accuracy, and a fraction of the price. No serial numbers, no activation headaches.</p></div>
+            <div class="use-case"><h3>Healthcare professionals</h3><p>The Medical Ultra edition includes medical vocabulary and is suited to clinical documentation. For ambient AI note-taking at scale, Dragon Medical One is still the benchmark - our team can help you choose.</p></div>
+            <div class="use-case"><h3>Legal and business professionals</h3><p>Dictate letters, briefs, reports, and file notes directly into Word, Outlook, or your practice management system. No intermediate steps, no dictation boxes, no transcription queue.</p></div>
+            <div class="use-case"><h3>Students and researchers</h3><p>The free Starter edition removes the cost barrier entirely. 57+ language support covers multilingual academic work. Unlimited usage available on the Personal/Educational plan for heavy study use.</p></div>
+            <div class="use-case"><h3>Small teams and practices</h3><p>Per-user annual pricing makes it practical for smaller teams who need reliable speech recognition without the per-seat cost and complexity of enterprise Dragon deployments.</p></div>
+            <div class="use-case"><h3>Anyone stuck on legacy software</h3><p>No voice training means you can start immediately. AI punctuation means you can speak naturally rather than dictating punctuation commands. It is a straightforward upgrade path from any older dictation system.</p></div>
           </div>
         </div>
       </section>
@@ -278,25 +314,27 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
       <section class="section-neutral">
         <div class="wrap">
           <div class="sh">
-            <h2>How it compares to other options</h2>
-            <p>Different tools suit different workflows. Here is how SpeechRecognition.cloud sits alongside the alternatives.</p>
+            <h2>How it compares</h2>
+            <p>Where SpeechRecognition.cloud sits alongside Dragon Professional and built-in dictation.</p>
           </div>
           <div style="overflow-x:auto">
             <table class="compare-table">
-              <thead><tr><th>Feature</th><th>SpeechRecognition.cloud</th><th>Dragon Professional 16</th><th>OS Built-in Dictation</th></tr></thead>
+              <thead><tr><th>Feature</th><th>SpeechRecognition.cloud</th><th>Dragon Professional 16</th><th>Windows Voice Access</th></tr></thead>
               <tbody>
-                <tr><td>Installation required</td><td class="yes">No - browser only</td><td class="no">Yes - Windows only</td><td class="yes">No</td></tr>
-                <tr><td>Works offline</td><td class="no">No - requires internet</td><td class="yes">Yes - after activation</td><td class="yes">Partial (Windows/Mac)</td></tr>
-                <tr><td>Mac compatible</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>
-                <tr><td>Free tier</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes (included)</td></tr>
-                <tr><td>Medical vocabulary</td><td class="yes">Medical tier</td><td class="yes">Add-on available</td><td class="no">No</td></tr>
-                <tr><td>Custom commands/macros</td><td class="no">No</td><td class="yes">Yes - advanced</td><td class="no">Limited</td></tr>
-                <tr><td>Languages supported</td><td class="bold">57 languages</td><td>English + selected</td><td>20-30 languages</td></tr>
-                <tr><td>File transcription</td><td class="yes">Yes</td><td class="yes">Yes (single speaker)</td><td class="no">No</td></tr>
+                <tr><td>Platform</td><td class="bold">Windows app</td><td class="bold">Windows app</td><td>Windows built-in</td></tr>
+                <tr><td>Voice training required</td><td class="yes">No - start immediately</td><td class="no">Minimal (improved in v16)</td><td class="yes">No</td></tr>
+                <tr><td>Works offline</td><td class="no">No - cloud-powered</td><td class="yes">Yes - after activation</td><td class="yes">Yes</td></tr>
+                <tr><td>Dictates into any Windows app</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+                <tr><td>Automatic AI punctuation</td><td class="yes">Yes</td><td class="no">Partial</td><td class="no">Limited</td></tr>
+                <tr><td>Custom vocabulary</td><td class="yes">Personal+ editions</td><td class="yes">Yes - advanced</td><td class="no">No</td></tr>
+                <tr><td>Voice macros / automation</td><td class="no">Professional AI commands</td><td class="yes">Yes - full macro support</td><td class="no">No</td></tr>
+                <tr><td>Medical edition</td><td class="yes">Medical Ultra</td><td class="yes">Add-on available</td><td class="no">No</td></tr>
+                <tr><td>Free tier</td><td class="yes">Yes - 20 min/month</td><td class="no">No</td><td class="yes">Yes - included</td></tr>
+                <tr><td>Languages</td><td class="bold">57+</td><td>English + selected</td><td>Limited</td></tr>
               </tbody>
             </table>
           </div>
-          <p style="font-size:13px;color:var(--muted);margin-top:12px">For professionals who rely on dictation as their primary documentation tool, Dragon Professional or Dragon Medical One typically delivers higher accuracy and deeper workflow integration. Cloud speech recognition is the practical choice when flexibility and accessibility matter more than power-user features.</p>
+          <p style="font-size:13px;color:var(--muted);margin-top:12px">For heavy daily dictation with deep macro automation and offline capability, Dragon Professional 16 remains the benchmark. SpeechRecognition.cloud is the practical choice for professionals who want modern AI accuracy with simple pricing and no legacy overhead.</p>
         </div>
       </section>
 
@@ -304,12 +342,12 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
         <div class="wrap">
           <div class="sh"><h2>Frequently asked questions</h2></div>
           <div class="grid">
-            <div class="faq-card c6"><h3>Do I need to install anything?</h3><p>No. It runs entirely in a web browser. You need a microphone and an internet connection. There is no software to download, install, or update.</p></div>
-            <div class="faq-card c6"><h3>Is there a free option?</h3><p>Yes. A free tier is available with usage limits. You can start immediately without a credit card. Upgrade to a paid plan when your usage exceeds the free allowance.</p></div>
-            <div class="faq-card c6"><h3>How does it handle Australian accents?</h3><p>The platform uses AI speech models that handle Australian English well. The Medical tier includes Australian healthcare terminology. Accuracy varies depending on accent, microphone quality, and background noise.</p></div>
-            <div class="faq-card c6"><h3>Is it suitable for healthcare use?</h3><p>The Medical tier includes healthcare-specific vocabulary and enhanced privacy controls. For clinical documentation at scale, Dragon Medical One with ambient AI is typically more suitable. Our team can advise on the right fit.</p></div>
-            <div class="faq-card c6"><h3>Can I use it on a Mac?</h3><p>Yes. Because it runs in a browser, it works on Mac, Windows, and any device with a modern browser and microphone.</p></div>
-            <div class="faq-card c6"><h3>How does it compare to Dragon for heavy daily dictation?</h3><p>Dragon Professional is better suited for heavy daily dictation with deep Windows integration, custom macros, and offline capability. SpeechRecognition.cloud suits professionals who need flexibility across devices and locations.</p></div>
+            <div class="faq-card c6"><h3>Is this a Windows app or browser-based?</h3><p>It is a Windows application. You download and install it on your Windows PC. Once installed, it dictates directly into any Windows application - Word, Outlook, Teams, Chrome, EMRs - wherever your cursor is.</p></div>
+            <div class="faq-card c6"><h3>Do I need to train my voice before using it?</h3><p>No. SpeechRecognition.cloud uses AI-powered speech recognition that works immediately without any voice profile training. You install it and start dictating.</p></div>
+            <div class="faq-card c6"><h3>What is the difference between the editions?</h3><p>Starter is free with 20 minutes per month. Personal/Educational adds unlimited usage and custom vocabulary for $79 USD/year. Professional adds AI voice commands and advanced features for $159 USD/year. Medical Ultra is the healthcare edition with medical vocabulary - contact us for pricing.</p></div>
+            <div class="faq-card c6"><h3>Does it work with my EMR or practice management system?</h3><p>Yes. Because it dictates directly at the cursor into any Windows application, it works with any software that accepts typed text input - including healthcare practice management systems, EMRs, and clinical documentation tools.</p></div>
+            <div class="faq-card c6"><h3>How does it compare to Dragon for medical use?</h3><p>For ambient AI consultation capture and structured clinical note generation, Dragon Medical One is the more comprehensive solution. SpeechRecognition.cloud Medical Ultra suits clinicians who want straightforward Windows dictation with medical vocabulary at a lower price point.</p></div>
+            <div class="faq-card c6"><h3>Can I try it before buying?</h3><p>Yes. The free Starter edition includes 20 minutes per month with no credit card required. Download it, use it in your real workflow, and upgrade if you need more usage.</p></div>
           </div>
         </div>
       </section>
@@ -320,9 +358,9 @@ const metaDesc = "SpeechRecognition.cloud is a browser-based AI speech recogniti
             <div>
               {heroSrc && (<div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.4)"><img src={heroSrc} alt={imgAlt("src-hero") || "SpeechRecognition.cloud"} loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>)}
               <div style="margin-top:24px">
-                <h2 style="font-size:26px;font-weight:800;margin:0 0 10px;color:#ffffff;line-height:1.2">Not sure if SpeechRecognition.cloud is right for you?</h2>
-                <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65">Our team has been matching Australian professionals to the right dictation and speech recognition solution for 25 years. Tell us your situation and we will give you a straight answer - even if the right answer is a different product.</p>
-                <a href="https://www.speechrecognition.cloud" style={`display:inline-block;padding:12px 24px;background:${accentColour};color:#fff;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none`} target="_blank" rel="noopener">Try SpeechRecognition.cloud Free &rarr;</a>
+                <h2 style="font-size:26px;font-weight:800;margin:0 0 10px;color:#ffffff;line-height:1.2">Not sure which edition is right for you?</h2>
+                <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65">Our team has been matching Australian professionals to speech recognition solutions for 25 years. Tell us your workflow and we will give you a straight recommendation - including whether Dragon Professional or Dragon Medical One would serve you better.</p>
+                <a href={downloadUrl} style={`display:inline-block;padding:12px 24px;background:${accentColour};color:#fff;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none`} target="_blank" rel="noopener">Download Free Edition &rarr;</a>
               </div>
             </div>
             <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
