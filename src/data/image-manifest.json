@@ -2,47 +2,106 @@
   "hero": {
     "key": "hero",
     "r2Key": "dictationsolutions/2026/03/12/Speech-to-text dictation.jpg",
-    "filename": "Speech-to-text dictation.jpg",
     "contentType": "image/jpeg",
-    "bytes": 122106,
     "altText": "Professional using speech-to-text dictation software at a modern desk, Australian workplace",
     "site": "dictationsolutions"
   },
   "about-banner": {
     "key": "about-banner",
     "r2Key": "dictationsolutions/2026/03/12/voice-recognition-australia-dictation-support-team-fc62ce41.jpg",
-    "filename": "voice-recognition-australia-dictation-support-team-fc62ce41.jpg",
     "contentType": "image/jpeg",
-    "bytes": 807024,
-    "altText": "Australian support team office technology environment collaborative trustworthy warm corporate photography",
-    "prompt": "Australian professional support team in a clean modern office, technology environment, collaborative, trustworthy, warm lighting, corporate photography style, photorealistic",
+    "altText": "Australian support team in a modern office environment",
     "site": "dictationsolutions"
   },
   "cta-banner": {
     "key": "cta-banner",
     "r2Key": "dictationsolutions/2026/03/12/dictation-solutions-australia-healthcare-legal-99c97d0e.jpg",
-    "filename": "dictation-solutions-australia-healthcare-legal-99c97d0e.jpg",
     "contentType": "image/jpeg",
-    "bytes": 691352,
-    "altText": "Australian doctor lawyer side side settings using voice dictation technology environments photography",
+    "altText": "Australian doctor and lawyer using voice dictation technology",
     "site": "dictationsolutions"
   },
   "feature-dragon": {
     "key": "feature-dragon",
     "r2Key": "dictationsolutions/2026/03/12/dragon-speech-recognition-software-australia-5fa43187.jpg",
-    "filename": "dragon-speech-recognition-software-australia-5fa43187.jpg",
     "contentType": "image/jpeg",
-    "bytes": 679998,
-    "altText": "Close up dictating voice into USB microphone connected Windows PC Dragon software",
+    "altText": "Close up of dictating voice into USB microphone connected to Windows PC with Dragon software",
     "site": "dictationsolutions"
   },
   "feature-hardware": {
     "key": "feature-hardware",
     "r2Key": "dictationsolutions/2026/03/12/philips-olympus-dictation-hardware-australia-a3151d9c.jpg",
-    "filename": "philips-olympus-dictation-hardware-australia-a3151d9c.jpg",
     "contentType": "image/jpeg",
-    "bytes": 523739,
-    "altText": "Arrangement Philips dictation hardware including voice recorder SpeechMike microphone foot pedal desk",
+    "altText": "Arrangement of Philips dictation hardware including voice recorder, SpeechMike microphone and foot pedal",
+    "site": "dictationsolutions"
+  },
+  "dp16-hero": {
+    "key": "dp16-hero",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-professional-16-hero-7515a52a.png",
+    "contentType": "image/png",
+    "altText": "Professional dictating by voice into a SpeechMike USB microphone on a Windows desktop PC in a clean Australian office",
+    "site": "dictationsolutions"
+  },
+  "dp16-feature": {
+    "key": "dp16-feature",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-professional-16-feature-2110686e.png",
+    "contentType": "image/png",
+    "altText": "Dragon Professional speech recognition software waveform on a Windows laptop screen with a Word document open",
+    "site": "dictationsolutions"
+  },
+  "dmo-hero": {
+    "key": "dmo-hero",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-medical-one-hero-194c12a1.png",
+    "contentType": "image/png",
+    "altText": "Australian doctor dictating clinical notes by voice at a hospital workstation",
+    "site": "dictationsolutions"
+  },
+  "dmo-feature": {
+    "key": "dmo-feature",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-medical-one-feature-2f8d672b.png",
+    "contentType": "image/png",
+    "altText": "Clinical AI documentation interface on a tablet showing structured medical SOAP notes with speech waveform",
+    "site": "dictationsolutions"
+  },
+  "psl-hero": {
+    "key": "psl-hero",
+    "r2Key": "dictationsolutions/2026/03/15/philips-speechlive-hero-fa244519.png",
+    "contentType": "image/png",
+    "altText": "Legal professional dictating into a Philips SpeechMike at a desk with legal documents and cloud workflow on screen",
+    "site": "dictationsolutions"
+  },
+  "psl-feature": {
+    "key": "psl-feature",
+    "r2Key": "dictationsolutions/2026/03/15/philips-speechlive-feature-9280da36.png",
+    "contentType": "image/png",
+    "altText": "Cloud dictation workflow dashboard showing audio routing from author to transcriptionist",
+    "site": "dictationsolutions"
+  },
+  "src-hero": {
+    "key": "src-hero",
+    "r2Key": "dictationsolutions/2026/03/15/speech-recognition-cloud-hero-d86257f9.png",
+    "contentType": "image/png",
+    "altText": "Person speaking into a laptop microphone in a browser-based speech-to-text app with waveform animating on screen",
+    "site": "dictationsolutions"
+  },
+  "hw-hero": {
+    "key": "hw-hero",
+    "r2Key": "dictationsolutions/2026/03/15/dictation-hardware-hero-a4875a6a.png",
+    "contentType": "image/png",
+    "altText": "Flat lay of professional dictation equipment including Philips voice recorder, SpeechMike USB microphone, foot pedal and headset",
+    "site": "dictationsolutions"
+  },
+  "ts-hero": {
+    "key": "ts-hero",
+    "r2Key": "dictationsolutions/2026/03/15/transcription-services-hero-5379754b.png",
+    "contentType": "image/png",
+    "altText": "Professional transcriptionist at a desk with headphones, foot pedal and keyboard transcribing audio",
+    "site": "dictationsolutions"
+  },
+  "dpa-hero": {
+    "key": "dpa-hero",
+    "r2Key": "dictationsolutions/2026/03/15/dragon-professional-16-hero-7515a52a.png",
+    "contentType": "image/png",
+    "altText": "Professional dictating by voice using Dragon cloud speech recognition on a laptop",
     "site": "dictationsolutions"
   }
 }
