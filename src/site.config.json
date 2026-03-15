@@ -50,7 +50,7 @@
       { "label": "Dragon Professional Anywhere", "url": "/dragon-professional-anywhere", "description": "Cloud-based Dragon for Windows and Mac - dictate from any device" },
       { "label": "Philips SpeechLive", "url": "/philips-speechlive", "description": "Cloud dictation workflow platform - dictate on any device, transcribe anywhere" },
       { "label": "Cloud Speech-to-Text", "url": "/speech-recognition-cloud", "description": "Browser-based AI transcription - 57 languages, free tier, no install" },
-      { "label": "Dictation Hardware", "url": "/dictation-hardware", "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets" },
+      { "label": "Dictation Hardware", "url": "/dictation-equipment", "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets" },
       { "label": "Transcription Services", "url": "/transcription-services", "description": "Professional Australian transcriptionists for medical, legal and business audio" }
     ]
   },
@@ -201,8 +201,8 @@
       "price": "Enquire",
       "priceNote": "Annual subscription - contact for Australian pricing",
       "licenceNote": "Cloud-based subscription. Works with Philips SpeechMike, smartphones, and web browser.",
-      "installLimit": "Any device",
-      "bestFor": "Healthcare and legal teams with dictation workflows",
+      "installLimit": "Cloud subscription",
+      "bestFor": "Medical and legal",
       "vraUrl": "https://www.voicerecognition.com.au",
       "ctaText": "Enquire About SpeechLive",
       "features": [
@@ -273,8 +273,8 @@
       "price": "From $50",
       "priceNote": "Foot pedals - Recorders and mics priced individually",
       "licenceNote": "One-off hardware purchase. Local Australian stock and support available.",
-      "installLimit": "Hardware",
-      "bestFor": "Organisations using traditional or hybrid dictation workflows",
+      "installLimit": "Recorders, pedals, headsets",
+      "bestFor": "Medical and legal",
       "vraUrl": "https://www.voicerecognition.com.au/collections/dictation-hardware",
       "ctaText": "Browse Dictation Equipment",
       "features": [
