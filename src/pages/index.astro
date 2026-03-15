@@ -98,22 +98,22 @@ const benefitIcons = [
       .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
       .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
-      section{padding:48px 0}
-      .hero{padding:56px 0 32px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
-      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+      section{padding:36px 0}
+      .hero{padding:40px 0 24px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
+      .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
       .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
       .hero h1{font-size:42px;line-height:1.1;margin:0 0 12px;letter-spacing:-0.03em;font-weight:800;color:#111827}
       .hero p{font-size:17px;margin:0 0 22px;line-height:1.65;color:#4b5563;max-width:480px}
       .hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
       .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#e5e7eb;box-shadow:0 20px 60px rgba(0,0,0,.15)}
       .hero-img img{width:100%;height:100%;object-fit:cover}
-      .stats-bar{background:var(--primary)}
+      .stats-bar{background:var(--primary);border-top:3px solid var(--accent)}
       .stats-inner{display:flex;align-items:stretch}
       .stat-item{flex:1;padding:18px 20px;border-right:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-width:0}
       .stat-item:last-child{border-right:none}
       .stat-value{font-size:20px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:2px;white-space:nowrap}
       .stat-label{font-size:11px;color:rgba(255,255,255,.5);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-      .sh{margin-bottom:32px}
+      .sh{margin-bottom:24px}
       .sh h2{font-size:30px;letter-spacing:-0.02em;margin:0 0 8px;font-weight:800}
       .sh p{font-size:16px;margin:0;max-width:580px;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
@@ -163,30 +163,32 @@ const benefitIcons = [
       .footer-disclaimer{font-size:11px;color:#475569;line-height:1.6;margin-top:12px;padding-top:12px;border-top:1px solid #222}
       @media(max-width:900px){
         .hero-inner{grid-template-columns:1fr}
+        .hero-img{display:none}
+        .hero{padding:28px 0 20px}
         .hero h1{font-size:32px}
         .c6,.c4,.c5,.c7,.c3{grid-column:span 12}
         .sh h2{font-size:26px}
         .stat-item{padding:14px 12px}
         .stat-value{font-size:15px}
         .stat-label{font-size:10px}
+        section{padding:28px 0}
       }
       @media(max-width:600px){
         .nav-links{display:none}
         .nav-ctas .btn-secondary{display:none}
         .nav-ctas .btn-primary{padding:8px 14px;font-size:13px}
         .hamburger{display:flex}
-        section{padding:32px 0}
-        .hero{padding:28px 0 24px}
+        section{padding:22px 0}
+        .hero{padding:20px 0 16px}
         .hero h1{font-size:26px}
         .hero p{font-size:15px}
         .sh h2{font-size:22px}
-        .sh{margin-bottom:20px}
+        .sh{margin-bottom:16px}
         .hero-btns{flex-direction:column}
         .hero-btns .btn-lg{width:100%;text-align:center}
         .card,.benefit-card,.faq-card,.compare-card{padding:16px}
         .footer-inner{flex-direction:column;align-items:center;text-align:center}
         .footer-links{justify-content:center}
-        .hero-img{display:none}
         .stats-inner{flex-wrap:wrap}
         .stat-item{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
         .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
@@ -285,7 +287,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <section id="products" style="background:#f1f5f9;padding:48px 0" aria-label="Our products">
+      <section id="products" style="background:#f1f5f9;padding:36px 0" aria-label="Our products">
         <div class="wrap">
           <div class="sh">
             <h2>{site.branding.compareHeading}</h2>
@@ -330,7 +332,7 @@ const benefitIcons = [
         </div>
       </section>
 
-      <section id="about" style="background:#f8fafc;padding:48px 0" aria-label="About us">
+      <section id="about" style="background:#f8fafc;padding:36px 0" aria-label="About us">
         <div class="wrap">
           <div class="grid">
             <div class="card c7">
@@ -397,9 +399,9 @@ const benefitIcons = [
       </section>
 
       {recentPosts.length >= 2 && (
-        <section style="background:#f1f5f9;padding:48px 0" aria-label="Latest news">
+        <section style="background:#f1f5f9;padding:36px 0" aria-label="Latest news">
           <div class="wrap">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:20px">
               <h2 style="margin:0;font-size:26px;font-weight:800">Latest from the blog</h2>
               <a href="/news" style="font-size:14px;font-weight:700;color:var(--accent)">All articles &rarr;</a>
             </div>
@@ -416,7 +418,7 @@ const benefitIcons = [
         </section>
       )}
 
-      <section id="final-cta" aria-label="Contact us" style={`background:${primaryColour};padding:48px 0`}>
+      <section id="final-cta" aria-label="Contact us" style={`background:${primaryColour};padding:36px 0`}>
         <div class="wrap">
           <div class="grid">
             <div class="c7">
