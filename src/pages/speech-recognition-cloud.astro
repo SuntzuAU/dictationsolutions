@@ -26,6 +26,7 @@ const metaTitle = "SpeechRecognition.cloud - AI Speech-to-Text Software for Wind
 const metaDesc = "SpeechRecognition.cloud is a Windows speech recognition app with no voice training required. Free edition available. Professional and Medical Ultra editions for Australian businesses and healthcare. Download and start dictating in minutes.";
 const downloadUrl = "https://download.speechrecognition.cloud/src/SpeechRecognitionCloudInstaller.exe";
 const buyUrl = "https://www.voicerecognition.com.au/collections/speech-to-text-software";
+const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-professional";
 ---
 <!doctype html>
 <html lang="en">
@@ -114,14 +115,29 @@ const buyUrl = "https://www.voicerecognition.com.au/collections/speech-to-text-s
       .plan-features li{font-size:13px;padding:6px 0;border-bottom:1px solid #f3f4f6;color:#374151;display:flex;gap:8px}
       .plan-features li:last-child{border-bottom:none}
       .plan-features .ck{color:var(--accent);font-weight:700;flex-shrink:0}
-      .compare-table{width:100%;border-collapse:collapse;font-size:14px}
-      .compare-table th{text-align:left;padding:12px 14px;background:var(--primary);color:white;font-weight:700;font-size:13px}
-      .compare-table td{padding:12px 14px;border-bottom:1px solid #e5e7eb;vertical-align:top}
-      .compare-table tr:last-child td{border-bottom:none}
-      .compare-table tr:nth-child(even) td{background:#f9fafb}
-      .compare-table .yes{color:var(--accent);font-weight:700}
-      .compare-table .no{color:#9ca3af}
-      .compare-table .bold{font-weight:700;color:var(--primary)}
+      /* Comparison table */
+      .compare-wrap{overflow-x:auto}
+      .compare-table{width:100%;border-collapse:collapse;font-size:14px;min-width:600px}
+      .compare-table th{padding:14px 16px;font-weight:700;font-size:13px;text-align:center;vertical-align:bottom;border-bottom:2px solid #e5e7eb}
+      .compare-table th:first-child{text-align:left;background:var(--primary);color:white;border-bottom:2px solid var(--primary)}
+      .compare-table th.col-src{background:var(--accent);color:#fff;border-bottom:2px solid var(--accentHover)}
+      .compare-table th.col-other{background:#f1f5f9;color:#374151}
+      .compare-table .group-row td{background:var(--primary);color:white;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:8px 16px}
+      .compare-table .group-row td.src-col{background:var(--accent)}
+      .compare-table .group-row td.other-col{background:#374151}
+      .compare-table td{padding:11px 16px;border-bottom:1px solid #e5e7eb;vertical-align:middle;text-align:center}
+      .compare-table td:first-child{text-align:left;font-weight:600;color:#374151;background:#fff}
+      .compare-table td.src-col{background:#f0fdf4;font-weight:600}
+      .compare-table tr:hover td:first-child{background:#f9fafb}
+      .compare-table tr:hover td.src-col{background:#dcfce7}
+      .yes{color:var(--accent);font-weight:700}
+      .no{color:#9ca3af}
+      .compare-table .cta-row td{padding:14px 16px;border-bottom:none}
+      .compare-table .cta-row td.src-col{background:#f0fdf4}
+      .compare-table .cta-row td:first-child{background:#fff}
+      .compare-table .cta-row td.other-col{background:#f9fafb}
+      .col-header-sub{display:block;font-size:11px;font-weight:500;opacity:.8;margin-top:3px}
+      .best-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.25);color:#fff;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
       .use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
       .use-case{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-top:3px solid var(--accent)}
       .use-case h3{font-size:15px;font-weight:700;margin:0 0 8px;color:var(--primary)}
@@ -311,30 +327,158 @@ const buyUrl = "https://www.voicerecognition.com.au/collections/speech-to-text-s
         </div>
       </section>
 
-      <section class="section-neutral">
+      <section id="compare" class="section-neutral">
         <div class="wrap">
           <div class="sh">
             <h2>How it compares</h2>
-            <p>Where SpeechRecognition.cloud sits alongside Dragon Professional and built-in dictation.</p>
+            <p>Speech Recognition Cloud vs Dragon Professional 16, Windows Voice Typing, and browser-based tools.</p>
           </div>
-          <div style="overflow-x:auto">
+          <div class="compare-wrap">
             <table class="compare-table">
-              <thead><tr><th>Feature</th><th>SpeechRecognition.cloud</th><th>Dragon Professional 16</th><th>Windows Voice Access</th></tr></thead>
+              <thead>
+                <tr>
+                  <th style="width:28%">Feature</th>
+                  <th class="col-src" style="width:22%">
+                    <span class="best-badge">Recommended</span><br />
+                    Speech Recognition Cloud<br />
+                    <span class="col-header-sub">Windows app &mdash; from free</span>
+                  </th>
+                  <th class="col-other" style="width:22%">
+                    Dragon Professional 16<br />
+                    <span class="col-header-sub">Windows app &mdash; from $495</span>
+                  </th>
+                  <th class="col-other" style="width:14%">
+                    Windows Voice Typing<br />
+                    <span class="col-header-sub">Win+H, built-in</span>
+                  </th>
+                  <th class="col-other" style="width:14%">
+                    Browser Dictation Tools<br />
+                    <span class="col-header-sub">Web-based</span>
+                  </th>
+                </tr>
+              </thead>
               <tbody>
-                <tr><td>Platform</td><td class="bold">Windows app</td><td class="bold">Windows app</td><td>Windows built-in</td></tr>
-                <tr><td>Voice training required</td><td class="yes">No - start immediately</td><td class="no">Minimal (improved in v16)</td><td class="yes">No</td></tr>
-                <tr><td>Works offline</td><td class="no">No - cloud-powered</td><td class="yes">Yes - after activation</td><td class="yes">Yes</td></tr>
-                <tr><td>Dictates into any Windows app</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-                <tr><td>Automatic AI punctuation</td><td class="yes">Yes</td><td class="no">Partial</td><td class="no">Limited</td></tr>
-                <tr><td>Custom vocabulary</td><td class="yes">Personal+ editions</td><td class="yes">Yes - advanced</td><td class="no">No</td></tr>
-                <tr><td>Voice macros / automation</td><td class="no">Professional AI commands</td><td class="yes">Yes - full macro support</td><td class="no">No</td></tr>
-                <tr><td>Medical edition</td><td class="yes">Medical Ultra</td><td class="yes">Add-on available</td><td class="no">No</td></tr>
-                <tr><td>Free tier</td><td class="yes">Yes - 20 min/month</td><td class="no">No</td><td class="yes">Yes - included</td></tr>
-                <tr><td>Languages</td><td class="bold">57+</td><td>English + selected</td><td>Limited</td></tr>
+                <tr class="group-row">
+                  <td>Setup &amp; compatibility</td>
+                  <td class="src-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                </tr>
+                <tr>
+                  <td>Works offline</td>
+                  <td class="src-col no">No &mdash; cloud-powered</td>
+                  <td class="yes">Yes &mdash; after activation</td>
+                  <td class="no">No &mdash; requires internet</td>
+                  <td class="no">No &mdash; browser/cloud</td>
+                </tr>
+                <tr>
+                  <td>Works in any Windows app</td>
+                  <td class="src-col yes">Yes &mdash; any Windows app</td>
+                  <td class="yes">Yes &mdash; Word, Outlook, Teams, EMRs</td>
+                  <td style="color:#d97706;font-weight:600">Limited</td>
+                  <td class="no">No &mdash; browser only, cut &amp; paste</td>
+                </tr>
+                <tr>
+                  <td>No voice training needed</td>
+                  <td class="src-col yes">Yes &mdash; works instantly</td>
+                  <td style="color:#d97706;font-weight:600">Brief setup</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                  <td>Mac support</td>
+                  <td class="src-col no">No &mdash; Windows only</td>
+                  <td class="no">No &mdash; Windows only</td>
+                  <td class="no">No &mdash; Windows only</td>
+                  <td class="yes">Yes &mdash; most support Mac</td>
+                </tr>
+                <tr class="group-row">
+                  <td>Features</td>
+                  <td class="src-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                </tr>
+                <tr>
+                  <td>Automatic AI punctuation</td>
+                  <td class="src-col yes">Yes &mdash; AI-handled</td>
+                  <td style="color:#d97706;font-weight:600">Partial</td>
+                  <td class="no">Limited</td>
+                  <td class="no">Limited</td>
+                </tr>
+                <tr>
+                  <td>Custom vocabulary</td>
+                  <td class="src-col yes">Yes &mdash; Personal+ editions</td>
+                  <td class="yes">Yes &mdash; deep customisation</td>
+                  <td class="no">No</td>
+                  <td class="no">No</td>
+                </tr>
+                <tr>
+                  <td>Voice macros / automation</td>
+                  <td class="src-col yes">20+ AI voice commands</td>
+                  <td class="yes">Yes &mdash; full macro support</td>
+                  <td class="no">No</td>
+                  <td class="no">No</td>
+                </tr>
+                <tr>
+                  <td>Transcribe audio files</td>
+                  <td class="src-col no">No</td>
+                  <td class="yes">Yes &mdash; single speaker</td>
+                  <td class="no">No</td>
+                  <td class="no">No</td>
+                </tr>
+                <tr>
+                  <td>Medical edition</td>
+                  <td class="src-col yes">Yes &mdash; Medical Ultra</td>
+                  <td class="yes">Yes &mdash; add-on available</td>
+                  <td class="no">No</td>
+                  <td class="no">No</td>
+                </tr>
+                <tr>
+                  <td>Languages supported</td>
+                  <td class="src-col yes">57+ languages</td>
+                  <td>English only (AU, NZ, UK, US, CA, IN)</td>
+                  <td>English + others</td>
+                  <td>Varies</td>
+                </tr>
+                <tr class="group-row">
+                  <td>Cost</td>
+                  <td class="src-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                  <td class="other-col"></td>
+                </tr>
+                <tr>
+                  <td>Free option</td>
+                  <td class="src-col yes">Yes &mdash; 20 min/month free</td>
+                  <td class="no">No</td>
+                  <td class="yes">Yes &mdash; built-in, free</td>
+                  <td class="yes">Yes &mdash; free / low cost</td>
+                </tr>
+                <tr>
+                  <td>Paid pricing</td>
+                  <td class="src-col yes">From $119 AUD/yr</td>
+                  <td>From $495 AUD one-time</td>
+                  <td style="color:#6b7280">Free (included)</td>
+                  <td style="color:#6b7280">Free / low cost</td>
+                </tr>
+                <tr class="cta-row">
+                  <td></td>
+                  <td class="src-col" style="text-align:center">
+                    <a href={downloadUrl} class="btn btn-primary" target="_blank" rel="noopener" style="margin-bottom:6px;display:inline-block">Free Download &rarr;</a><br />
+                    <a href={buyUrl} style="font-size:12px;color:var(--accent);font-weight:600;text-decoration:underline" target="_blank" rel="noopener">Buy via VRA &rarr;</a>
+                  </td>
+                  <td class="other-col" style="text-align:center">
+                    <a href={dragonBuyUrl} class="btn btn-dark" target="_blank" rel="noopener" style="display:inline-block">Buy Dragon &rarr;</a>
+                  </td>
+                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280">Built into Windows 11</td>
+                  <td class="other-col" style="text-align:center;font-size:13px;color:#6b7280">Various providers</td>
+                </tr>
               </tbody>
             </table>
           </div>
-          <p style="font-size:13px;color:var(--muted);margin-top:12px">For heavy daily dictation with deep macro automation and offline capability, Dragon Professional 16 remains the benchmark. SpeechRecognition.cloud is the practical choice for professionals who want modern AI accuracy with simple pricing and no legacy overhead.</p>
+          <p style="font-size:12px;color:var(--muted);margin-top:12px">Sources: Microsoft Support documentation, speechrecognition.cloud, and official Dragon Professional 16 documentation. Information reflects publicly available data (March 2026). Pricing AUD inc GST.</p>
         </div>
       </section>
 
