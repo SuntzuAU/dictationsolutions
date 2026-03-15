@@ -30,7 +30,6 @@ const heroKey = product.heroImageKey || "hero";
 const featureKey = product.featureImageKey || "feature-dictation";
 const primaryColour = c.primary || "#1f2937";
 const accentColour = c.accent || "#16a34a";
-const accentHoverColour = c.accentHover || "#15803d";
 ---
 
 <!doctype html>
@@ -189,7 +188,7 @@ const accentHoverColour = c.accentHover || "#15803d";
               <div class="stat-trio">
                 <div class="stat-box"><div class="stat-box-val">{product.price}</div><div class="stat-box-lbl">Price</div></div>
                 <div class="stat-box"><div class="stat-box-val">{product.installLimit}</div><div class="stat-box-lbl">Licence</div></div>
-                <div class="stat-box"><div class="stat-box-val">{product.bestFor?.split(' ').slice(0,2).join(' ')}</div><div class="stat-box-lbl">Best for</div></div>
+                <div class="stat-box"><div class="stat-box-val">{product.bestFor}</div><div class="stat-box-lbl">Best for</div></div>
               </div>
             </div>
           </div>
