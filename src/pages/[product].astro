@@ -65,8 +65,6 @@ const featureKey = product.featureImageKey || "feature-dictation";
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-
-      /* NAV — overflow must NOT be set on sticky header or dropdown gets clipped */
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
       .logo img{height:42px;width:auto}
@@ -97,7 +95,6 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .mobile-nav{display:none;padding:10px 0 8px;border-top:1px solid #e5e7eb}
       .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
       .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
-
       section{padding:22px 0}
       .product-hero{padding:24px 0 28px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,#16a34a 100%);color:white}
       .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;font-weight:500}
@@ -135,10 +132,22 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
       .other-version-link{padding:8px 16px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s}
       .other-version-link:hover{border-color:var(--accent);color:var(--accent)}
-      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
       .feature-image{border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-image img{width:100%;height:auto;display:block}
       .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      .cta-section{background:var(--primary);padding:48px 0}
+      .cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+      .cta-image{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+      .cta-image img{width:100%;height:100%;object-fit:cover;display:block}
+      .cta-text{color:white}
+      .cta-text h2{font-size:26px;font-weight:800;margin:0 0 10px;color:white;line-height:1.2}
+      .cta-text p{font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65}
+      .cta-text ul{color:rgba(255,255,255,.7);margin:0 0 24px;padding-left:18px;font-size:14px;line-height:2}
+      .cta-text .cta-btn{display:inline-block;padding:12px 24px;background:var(--accent);color:#fff;border-radius:8px;font-weight:700;font-size:14px;transition:background .15s}
+      .cta-text .cta-btn:hover{background:var(--accentHover)}
+      .formbox{background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+      .formbox-heading{font-size:18px;font-weight:800;color:var(--primary);margin:0 0 4px}
+      .formbox-sub{font-size:13px;color:var(--muted);margin:0 0 18px}
       footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
@@ -149,6 +158,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
         .product-hero h1{font-size:26px}
         .c6,.c4,.c5,.c7{grid-column:span 12}
         .sh h2{font-size:20px}
+        .cta-inner{grid-template-columns:1fr}
       }
       @media(max-width:600px){
         .nav-links{display:none}
@@ -164,6 +174,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
         .stat-trio{gap:6px}
         .stat-box{padding:8px 4px}
         .stat-box-val{font-size:13px}
+        .cta-section{padding:28px 0}
       }
     </style>
   </head>
@@ -231,7 +242,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
+                <a href="#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
               </div>
             </div>
             <div>
@@ -295,15 +306,32 @@ const featureKey = product.featureImageKey || "feature-dictation";
         </div>
       </section>
 
-      <section id="final-cta" class="section-dark">
+      <section id="final-cta" class="cta-section">
         <div class="wrap">
-          <div class="grid" style="align-items:start">
-            <div class="c7" style="padding:20px 0">
-              <h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2>
-              <p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we'll recommend the right solution.</p>
-              <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a>
+          <div class="cta-inner">
+            <div>
+              {imgSrc(heroKey) && (
+                <div class="cta-image">
+                  <img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || product.title} loading="lazy" decoding="async" />
+                </div>
+              )}
+              <div class="cta-text" style="margin-top:24px">
+                <h2>Questions about {product.title}?</h2>
+                <p>Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we will recommend the right option.</p>
+                <ul>
+                  <li>How many users and what type of work</li>
+                  <li>Windows, Mac, or cloud preference</li>
+                  <li>Healthcare, legal, or general professional use</li>
+                  <li>Budget and licensing preferences</li>
+                </ul>
+                <a href={product.vraUrl} class="cta-btn" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
+              </div>
             </div>
-            <div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div>
+            <div class="formbox">
+              <div class="formbox-heading">Get in touch</div>
+              <div class="formbox-sub">Local Australian support. Fast response.</div>
+              <ACForm />
+            </div>
           </div>
         </div>
       </section>

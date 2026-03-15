@@ -100,17 +100,29 @@ const featureKey = product.featureImageKey || "feature-dictation";
       .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
       .other-version-link{padding:8px 16px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s}
       .other-version-link:hover{border-color:var(--accent);color:var(--accent)}
-      .formbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px}
       .feature-image{border-radius:12px;overflow:hidden;margin-top:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
       .feature-image img{width:100%;height:auto;display:block}
       .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      .cta-section{background:var(--primary);padding:48px 0}
+      .cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+      .cta-image{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+      .cta-image img{width:100%;height:100%;object-fit:cover;display:block}
+      .cta-text{color:white}
+      .cta-text h2{font-size:26px;font-weight:800;margin:0 0 10px;color:white;line-height:1.2}
+      .cta-text p{font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65}
+      .cta-text ul{color:rgba(255,255,255,.7);margin:0 0 24px;padding-left:18px;font-size:14px;line-height:2}
+      .cta-text .cta-btn{display:inline-block;padding:12px 24px;background:var(--accent);color:#fff;border-radius:8px;font-weight:700;font-size:14px;transition:background .15s}
+      .cta-text .cta-btn:hover{background:var(--accentHover)}
+      .formbox{background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+      .formbox-heading{font-size:18px;font-weight:800;color:var(--primary);margin:0 0 4px}
+      .formbox-sub{font-size:13px;color:var(--muted);margin:0 0 18px}
       footer{background:#0f172a;color:#6b7280;padding:16px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
       .footer-disclaimer{font-size:11px;color:#374151;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid #1e293b}
-      @media(max-width:900px){.product-hero-inner{grid-template-columns:1fr}.product-hero h1{font-size:26px}.c6,.c4,.c5,.c7{grid-column:span 12}.sh h2{font-size:20px}}
-      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:14px 0}.product-hero{padding:16px 0 18px}.card,.faq-card,.formbox{padding:14px}.price-display{font-size:32px}.buy-actions{flex-direction:column}.buy-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}}
+      @media(max-width:900px){.product-hero-inner{grid-template-columns:1fr}.product-hero h1{font-size:26px}.c6,.c4,.c5,.c7{grid-column:span 12}.sh h2{font-size:20px}.cta-inner{grid-template-columns:1fr}}
+      @media(max-width:600px){.nav-links{display:none}.hamburger{display:flex}section{padding:14px 0}.product-hero{padding:16px 0 18px}.card,.faq-card,.formbox{padding:14px}.price-display{font-size:32px}.buy-actions{flex-direction:column}.buy-actions .btn-lg{width:100%;text-align:center}.footer-inner{flex-direction:column;align-items:center;text-align:center}.footer-links{justify-content:center}.cta-section{padding:28px 0}}
     </style>
   </head>
   <body>
@@ -141,7 +153,7 @@ const featureKey = product.featureImageKey || "feature-dictation";
               <div class="licence-note">{product.licenceNote}</div>
               <div class="buy-actions">
                 <a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
-                <a href="/#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
+                <a href="#final-cta" class="btn btn-dark btn-lg">Talk to our team</a>
               </div>
             </div>
             <div>
@@ -159,7 +171,31 @@ const featureKey = product.featureImageKey || "feature-dictation";
       <section class="section-neutral"><div class="wrap"><div class="grid"><div class="c7"><div class="sh"><h2>What's included</h2><p>Everything you get with {product.title}.</p></div><div class="card"><ul class="feature-list">{product.features?.map((f) => (<li><span class="feature-check">&#10003;</span>{f}</li>))}</ul></div></div><div class="c5">{imgSrc(featureKey) && (<div class="feature-image" style="margin-top:46px"><img src={imgSrc(featureKey)} alt={imgAlt(featureKey)} loading="lazy" decoding="async" /></div>)}</div></div></div></section>
       <section class="section-white"><div class="wrap"><div class="sh"><h2>Frequently asked questions</h2></div><div class="grid">{product.faqs?.map((f) => (<div class="faq-card c6"><h3>{f.q}</h3><p>{f.a}</p></div>))}</div></div></section>
       <section class="section-neutral"><div class="wrap"><div class="sh"><h2>Other solutions</h2><p>Compare other dictation and transcription solutions.</p></div><div class="other-versions">{site.products?.filter(p => p.slug !== product.slug).map(p => (<a href={`/${p.slug}`} class="other-version-link">{p.navLabel || p.title} &mdash; {p.price}</a>))}</div><div style="margin-top:16px"><a href="/" class="btn btn-primary">View all solutions</a></div></div></section>
-      <section id="final-cta" class="section-dark"><div class="wrap"><div class="grid" style="align-items:start"><div class="c7" style="padding:20px 0"><h2 style="color:white;font-size:24px;margin:0 0 8px;font-weight:800">Questions about {product.title}?</h2><p style="color:rgba(255,255,255,.75);margin:0 0 18px;font-size:14px;line-height:1.65">Our team has been helping Australian professionals choose solutions for 25 years.</p><a href={product.vraUrl} class="btn btn-primary btn-lg" target="_blank" rel="noopener" style="margin-right:10px">{product.ctaText} &rarr;</a></div><div class="c5" style="padding:20px 0"><div class="formbox"><ACForm /></div></div></div></div></section>
+      <section id="final-cta" class="cta-section">
+        <div class="wrap">
+          <div class="cta-inner">
+            <div>
+              {imgSrc(heroKey) && (<div class="cta-image"><img src={imgSrc(heroKey)} alt={imgAlt(heroKey) || product.title} loading="lazy" decoding="async" /></div>)}
+              <div class="cta-text" style="margin-top:24px">
+                <h2>Questions about {product.title}?</h2>
+                <p>Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your situation and we will recommend the right option.</p>
+                <ul>
+                  <li>How many users and what type of work</li>
+                  <li>Windows, Mac, or cloud preference</li>
+                  <li>Healthcare, legal, or general professional use</li>
+                  <li>Budget and licensing preferences</li>
+                </ul>
+                <a href={product.vraUrl} class="cta-btn" target="_blank" rel="noopener">{product.ctaText} &rarr;</a>
+              </div>
+            </div>
+            <div class="formbox">
+              <div class="formbox-heading">Get in touch</div>
+              <div class="formbox-sub">Local Australian support. Fast response.</div>
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer><div class="wrap"><div class="footer-inner"><div>&copy; {year} {site.siteName}</div><div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div></div><div class="footer-disclaimer">{site.branding.footerDisclaimer}</div></div></footer>
   </body>
