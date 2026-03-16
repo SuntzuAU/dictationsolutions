@@ -1,9 +1,10 @@
 ---
 import site from "../site.config.json";
-import Nav from "../components/Nav.astro";
 
 const c = site.colours;
+const primaryColour = c.primary || "#1f2937";
 const canonicalUrl = site.domain + "/comparison";
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -26,6 +27,7 @@ const canonicalUrl = site.domain + "/comparison";
       text: c.text,
       primary: c.primary,
       accent: c.accent,
+      accentHover: c.accentHover,
       muted: c.muted,
       neutral: c.neutral,
     }}>
@@ -33,10 +35,25 @@ const canonicalUrl = site.domain + "/comparison";
       body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
+      .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
+      .logo img{height:40px;width:auto}
+      .nav-links{display:flex;gap:18px;font-size:14px;font-weight:500;color:#334155;align-items:center}
+      .nav-links a:hover{color:var(--accent)}
+      .nav-ctas{display:flex;gap:10px;align-items:center}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
+      .btn-secondary{background:transparent;border-color:var(--primary);color:var(--primary)}
+      .btn-secondary:hover{background:var(--primary);color:#fff}
+      .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+      .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
+      .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
+      .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
       section{padding:32px 0}
       .hero{padding:36px 0;text-align:center}
       .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-0.025em}
-      .hero p{font-size:15px;color:var(--muted);margin:0 0 20px;max-width:720px;line-height:1.7}
+      .hero p{font-size:15px;color:var(--muted);margin:0 0 20px;max-width:720px;line-height:1.7;margin-left:auto;margin-right:auto}
       .compare-table{width:100%;border-collapse:collapse;margin-top:20px}
       .compare-table th,.compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid #e5e7eb}
       .compare-table th{background:#f9fafb;font-weight:700;color:var(--text);font-size:14px}
@@ -49,11 +66,8 @@ const canonicalUrl = site.domain + "/comparison";
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
       .card h3{margin:0 0 8px;font-size:15px;font-weight:700}
       .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
-      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
-      .btn-primary{background:#16a34a;color:#fff}
-      .btn-primary:hover{opacity:.9}
-      .download-link{color:#2563eb;font-weight:700;text-decoration:underline;text-underline-offset:2px}
-      .download-link:hover{color:#1d4ed8}
+      .product-link{color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+      .product-link:hover{opacity:.8}
       footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       .footer-links{display:flex;gap:20px}
@@ -65,6 +79,9 @@ const canonicalUrl = site.domain + "/comparison";
         .compare-table th,.compare-table td{padding:10px 12px}
       }
       @media(max-width:600px){
+        .nav-links{display:none}
+        .nav-ctas .btn-secondary{display:none}
+        .hamburger{display:flex}
         .hero h1{font-size:24px}
         section{padding:20px 0}
         .compare-table{font-size:11px}
@@ -73,7 +90,30 @@ const canonicalUrl = site.domain + "/comparison";
     </style>
   </head>
   <body>
-    <Nav currentPath="/comparison" />
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="logo">
+            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
+          </div>
+          <nav class="nav-links" aria-label="Primary">
+            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          </nav>
+          <div class="nav-ctas">
+            <a class="btn btn-secondary" href="/#final-cta">Contact Us</a>
+            <a class="btn btn-primary" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
+            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+        </div>
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
+          <a href="/#final-cta" style="color:var(--accent);font-weight:700">Contact Us</a>
+        </nav>
+      </div>
+    </header>
 
     <main>
 
@@ -104,7 +144,7 @@ const canonicalUrl = site.domain + "/comparison";
                 <td class="check">Yes</td>
                 <td class="x">No</td>
                 <td class="check">Yes</td>
-                <td>From $994 (perpetual)</td>
+                <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="product-link">From $994 &rarr;</a></td>
               </tr>
               <tr class="compare-highlight">
                 <td><strong>Dragon Medical One</strong></td>
@@ -112,7 +152,7 @@ const canonicalUrl = site.domain + "/comparison";
                 <td class="check">Yes (medical vocab)</td>
                 <td class="check">Yes</td>
                 <td class="x">No</td>
-                <td>Quote required</td>
+                <td><a href="https://www.voicerecognition.com.au/products/dragon-medical-one" target="_blank" rel="noopener" class="product-link">Enquire &rarr;</a></td>
               </tr>
               <tr>
                 <td><strong>Dragon Professional Anywhere</strong></td>
@@ -120,7 +160,7 @@ const canonicalUrl = site.domain + "/comparison";
                 <td class="check">Yes</td>
                 <td class="check">Yes</td>
                 <td class="check">Yes</td>
-                <td>Quote required</td>
+                <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="product-link">Enquire &rarr;</a></td>
               </tr>
               <tr class="src-row">
                 <td><strong>Speech Recognition Cloud</strong></td>
@@ -128,7 +168,7 @@ const canonicalUrl = site.domain + "/comparison";
                 <td class="x">AI-assisted</td>
                 <td class="check">Yes</td>
                 <td class="check">20+ AI commands</td>
-                <td><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="download-link">Free download &rarr;</a></td>
+                <td><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="product-link">Free download &rarr;</a></td>
               </tr>
               <tr>
                 <td><strong>Philips SpeechLive</strong></td>
@@ -144,7 +184,7 @@ const canonicalUrl = site.domain + "/comparison";
                 <td>N/A</td>
                 <td class="x">No</td>
                 <td>N/A</td>
-                <td>From $50–500</td>
+                <td><a href="https://www.voicerecognition.com.au/collections/voice-recorder" target="_blank" rel="noopener" class="product-link">Browse hardware &rarr;</a></td>
               </tr>
             </tbody>
           </table>
@@ -215,11 +255,11 @@ const canonicalUrl = site.domain + "/comparison";
         </div>
       </section>
 
-      <section style="background:var(--neutral)">
+      <section style={`background:${primaryColour};padding:36px 0`}>
         <div class="wrap">
-          <h2 style="font-size:24px;margin:0 0 8px;font-weight:800">Still not sure?</h2>
-          <p style="font-size:15px;color:var(--muted);margin:0 0 16px;max-width:640px">Talk to our team. We have helped hundreds of Australian professionals, legal firms, and healthcare organisations choose the right combination.</p>
-          <a href={site.primaryCTA.url} class="btn btn-primary">{site.primaryCTA.text}</a>
+          <h2 style="font-size:24px;margin:0 0 8px;font-weight:800;color:white">Not sure which solution is right for you?</h2>
+          <p style="font-size:15px;color:#9ca3af;margin:0 0 20px;max-width:640px">Talk to our team. We have helped hundreds of Australian professionals, legal firms, and healthcare organisations choose the right combination. 25 years of deployment experience.</p>
+          <a href="/#final-cta" class="btn btn-primary" style="background:var(--accent);border-color:var(--accent)">Contact Us</a>
         </div>
       </section>
 
@@ -228,7 +268,7 @@ const canonicalUrl = site.domain + "/comparison";
     <footer>
       <div class="wrap">
         <div class="footer-inner">
-          <div>&copy; {new Date().getFullYear()} {site.siteName}</div>
+          <div>&copy; {year} {site.siteName}</div>
           <div class="footer-links">
             {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
           </div>
