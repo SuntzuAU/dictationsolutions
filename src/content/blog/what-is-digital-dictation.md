@@ -3,7 +3,12 @@ title: "What Is Digital Dictation and Why Do Australian Professionals Still Use 
 date: "2026-03-13"
 description: "Digital dictation remains one of the most efficient ways for healthcare, legal and business professionals to produce accurate documents. Here's how it works and why it's still relevant in 2026."
 author: "Voice Recognition Australia"
-heroImage: ""
+heroImage: "dictationsolutions/2026/03/16/digital-dictation-australia-professional-speechmike-hero-e158022f.png"
+heroImageAlt: "Australian healthcare professional dictating into a Philips SpeechMike at a clinic desk"
+breakImage1: "dictationsolutions/2026/03/16/digital-dictation-philips-hardware-recorder-break1-d04b058e.png"
+breakImage1Alt: "Philips digital voice recorder and SpeechMike dictation hardware on a professional desk"
+breakImage2: "dictationsolutions/2026/03/16/digital-dictation-gp-clinical-notes-cloud-workflow-break2-9535007e.png"
+breakImage2Alt: "Australian GP dictating clinical notes using speech recognition at a modern medical practice"
 context: "descriptive"
 ---
 
