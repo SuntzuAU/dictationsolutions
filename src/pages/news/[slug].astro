@@ -11,6 +11,9 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const c = site.colours;
 const year = new Date().getFullYear();
+
+const R2_BASE = (import.meta.env.PUBLIC_R2_BASE ?? 'https://pub-c7a09e1ddb7c45e6a38fcdca1e4b6897.r2.dev').replace(/\/$/, '');
+const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
 ---
 
 <!doctype html>
@@ -26,6 +29,8 @@ const year = new Date().getFullYear();
     <meta property="og:title" content={post.data.title} />
     <meta property="og:description" content={post.data.description} />
     <meta property="og:url" content={`${site.domain}/news/${post.slug}`} />
+    {post.data.heroImage && <meta property="og:image" content={imgSrc(post.data.heroImage)} />}
+    {post.data.heroImage && <link rel="preload" as="image" href={imgSrc(post.data.heroImage)} fetchpriority="high" />}
     <style is:inline define:vars={{
       bg: c.background, text: c.text, primary: c.primary,
       accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
@@ -46,6 +51,8 @@ const year = new Date().getFullYear();
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
       .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover)}
       .btn-secondary{background:white;border-color:var(--primary);color:var(--primary)}
+      .hero-img{width:100%;max-height:480px;overflow:hidden;background:#f1f5f9}
+      .hero-img img{width:100%;height:480px;object-fit:cover;display:block}
       .article-header{padding:48px 0 36px;border-bottom:1px solid #e5e7eb}
       .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:16px}
       .breadcrumb a{color:var(--accent);text-decoration:none}
@@ -58,6 +65,8 @@ const year = new Date().getFullYear();
       .article-body ul,.article-body ol{font-size:16px;line-height:1.75;color:#374151;margin:0 0 20px;padding-left:24px}
       .article-body li{margin-bottom:6px}
       .article-body strong{color:var(--text)}
+      .img-break{margin:36px 0;border-radius:14px;overflow:hidden;background:#f1f5f9}
+      .img-break img{width:100%;max-height:400px;object-fit:cover;display:block}
       .back-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;margin-top:40px}
       footer{background:#111827;color:#6b7280;padding:28px 0;font-size:14px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
@@ -67,6 +76,7 @@ const year = new Date().getFullYear();
         .nav-links{display:none}
         .article-header h1{font-size:26px}
         .article-body h2{font-size:20px}
+        .hero-img img{height:220px}
       }
     </style>
   </head>
@@ -89,6 +99,11 @@ const year = new Date().getFullYear();
     </header>
 
     <main>
+      {post.data.heroImage && (
+        <div class="hero-img">
+          <img src={imgSrc(post.data.heroImage)} alt={post.data.heroImageAlt ?? post.data.title} loading="eager" fetchpriority="high" decoding="async" width="1080" height="480" />
+        </div>
+      )}
       <div class="article-header">
         <div class="article-wrap">
           <div class="breadcrumb"><a href="/news">&larr; News &amp; Guides</a></div>
@@ -96,9 +111,21 @@ const year = new Date().getFullYear();
           <div class="article-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
         </div>
       </div>
+      {post.data.breakImage1 && (
+        <div class="article-wrap">
+          <div class="img-break">
+            <img src={imgSrc(post.data.breakImage1)} alt={post.data.breakImage1Alt ?? ''} loading="lazy" decoding="async" width="740" height="400" />
+          </div>
+        </div>
+      )}
       <div class="article-body">
         <div class="article-wrap">
           <Content />
+          {post.data.breakImage2 && (
+            <div class="img-break">
+              <img src={imgSrc(post.data.breakImage2)} alt={post.data.breakImage2Alt ?? ''} loading="lazy" decoding="async" width="740" height="400" />
+            </div>
+          )}
           <a href="/news" class="back-link">&larr; Back to News &amp; Guides</a>
         </div>
       </div>
