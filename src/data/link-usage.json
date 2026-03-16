@@ -4,8 +4,8 @@
   "_note": "Link audit from actual blog posts. Tracks external link coverage and anchor text variation. Min 1 internal link per page, max 2 external per page.",
   "external": {
     "voicerecognition.com.au": {
-      "count": 0,
-      "anchorsUsed": []
+      "count": 1,
+      "anchorsUsed": ["speech recognition software Australia"]
     },
     "pdfsoftware.com.au": {
       "count": 1,

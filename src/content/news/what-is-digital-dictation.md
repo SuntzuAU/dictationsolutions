@@ -10,6 +10,13 @@ breakImage1Alt: "Philips digital voice recorder and SpeechMike dictation hardwar
 breakImage2: "dictationsolutions/2026/03/16/digital-dictation-gp-clinical-notes-cloud-workflow-break2-9535007e.png"
 breakImage2Alt: "Australian GP dictating clinical notes using speech recognition at a modern medical practice"
 context: "descriptive"
+internalLinks:
+  - to: "/news/productivity-stack-before-ai"
+    anchor: "the productivity stack professionals need before starting their AI journey"
+externalLinks:
+  - to: "voicerecognition.com.au"
+    anchor: "speech recognition software Australia"
+    url: "https://www.voicerecognition.com.au"
 ---
 
 For most professionals, the bottleneck in document production is not thinking -- it's typing. A GP finishing a patient consultation, a lawyer drafting a file note, a consultant summarising a meeting: all of them know what they want to say. The slow part is getting it into a document.
@@ -58,4 +65,6 @@ The right dictation solution depends on three things: your document volume, your
 
 For a sole practitioner dictating a handful of letters a week, a USB microphone and Dragon Professional may be all that is needed. For a specialist practice with high patient volume and a transcription team, a cloud workflow platform with dedicated hardware is the better fit. For a large health system, Dragon Medical One or an ambient AI platform may be the most scalable option.
 
-[Voice Recognition Australia](https://www.voicerecognition.com.au) has been helping Australian professionals choose and implement dictation solutions for 25 years. If you are unsure which approach suits your practice or business, the team can advise based on your specific workflow.
+If you are building out your broader productivity workflow, it is worth reading about [the productivity stack professionals need before starting their AI journey](/news/productivity-stack-before-ai) -- voice input is just one piece of a well-structured setup.
+
+[Speech recognition software Australia](https://www.voicerecognition.com.au) -- Voice Recognition Australia has been helping Australian professionals choose and implement dictation solutions for 25 years. If you are unsure which approach suits your practice or business, the team can advise based on your specific workflow.
