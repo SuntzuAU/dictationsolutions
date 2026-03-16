@@ -12,7 +12,7 @@ const canonicalUrl = site.domain + "/comparison";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Compare Dictation Solutions | {site.siteName}</title>
-    <meta name="description" content="Compare Dragon, Philips SpeechLive, cloud transcription, and hardware solutions side-by-side to find the right fit for your workflow." />
+    <meta name="description" content="Compare Dragon, Philips SpeechLive, Speech Recognition Cloud, and hardware solutions side-by-side to find the right fit for your workflow." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:type" content="website" />
@@ -42,15 +42,18 @@ const canonicalUrl = site.domain + "/comparison";
       .compare-table th{background:#f9fafb;font-weight:700;color:var(--text);font-size:14px}
       .compare-table td{font-size:13px;color:var(--muted)}
       .compare-table tr:last-child td{border-bottom:none}
-      .check{color:var(--accent);font-weight:700}
+      .check{color:#16a34a;font-weight:700}
       .x{color:#9ca3af}
       .compare-highlight{background:#f0fdf4}
+      .src-row{background:#eff6ff}
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
       .card h3{margin:0 0 8px;font-size:15px;font-weight:700}
       .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s}
-      .btn-primary{background:var(--accent);color:#fff}
+      .btn-primary{background:#16a34a;color:#fff}
       .btn-primary:hover{opacity:.9}
+      .download-link{color:#2563eb;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+      .download-link:hover{color:#1d4ed8}
       footer{background:#111827;color:#6b7280;padding:20px 0;font-size:13px}
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       .footer-links{display:flex;gap:20px}
@@ -77,7 +80,7 @@ const canonicalUrl = site.domain + "/comparison";
       <section class="hero">
         <div class="wrap">
           <h1>Compare dictation solutions</h1>
-          <p>Find the right tool for your workflow. Dragon, cloud transcription, Philips SpeechLive, hardware — or combine them all.</p>
+          <p>Find the right tool for your workflow. Dragon, Speech Recognition Cloud, Philips SpeechLive, hardware — or combine them all.</p>
         </div>
       </section>
 
@@ -88,7 +91,6 @@ const canonicalUrl = site.domain + "/comparison";
               <tr>
                 <th>Solution</th>
                 <th>Best for</th>
-                <th>Accuracy</th>
                 <th>Custom vocabulary</th>
                 <th>Cloud-based</th>
                 <th>Macros / automation</th>
@@ -99,7 +101,6 @@ const canonicalUrl = site.domain + "/comparison";
               <tr>
                 <td><strong>Dragon Professional 16</strong></td>
                 <td>Heavy daily dictation, complex documents</td>
-                <td class="check">99%</td>
                 <td class="check">Yes</td>
                 <td class="x">No</td>
                 <td class="check">Yes</td>
@@ -108,7 +109,6 @@ const canonicalUrl = site.domain + "/comparison";
               <tr class="compare-highlight">
                 <td><strong>Dragon Medical One</strong></td>
                 <td>Healthcare professionals, clinical documentation</td>
-                <td class="check">99%</td>
                 <td class="check">Yes (medical vocab)</td>
                 <td class="check">Yes</td>
                 <td class="x">No</td>
@@ -117,16 +117,22 @@ const canonicalUrl = site.domain + "/comparison";
               <tr>
                 <td><strong>Dragon Professional Anywhere</strong></td>
                 <td>Teams, hybrid work, any device</td>
-                <td class="check">99%</td>
                 <td class="check">Yes</td>
                 <td class="check">Yes</td>
                 <td class="check">Yes</td>
                 <td>Quote required</td>
               </tr>
+              <tr class="src-row">
+                <td><strong>Speech Recognition Cloud</strong></td>
+                <td>Cloud-first users, 57+ languages, free to start</td>
+                <td class="x">AI-assisted</td>
+                <td class="check">Yes</td>
+                <td class="check">20+ AI commands</td>
+                <td><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="download-link">Free download &rarr;</a></td>
+              </tr>
               <tr>
                 <td><strong>Philips SpeechLive</strong></td>
                 <td>Shared transcription workflows, dictation to transcription</td>
-                <td class="check">98%</td>
                 <td class="check">Yes</td>
                 <td class="check">Yes</td>
                 <td class="x">No</td>
@@ -136,19 +142,9 @@ const canonicalUrl = site.domain + "/comparison";
                 <td><strong>Dictation hardware (Philips, OM System)</strong></td>
                 <td>Secure, offline, high-sensitivity environments</td>
                 <td>N/A</td>
-                <td>N/A</td>
                 <td class="x">No</td>
                 <td>N/A</td>
-                <td>From $50-500</td>
-              </tr>
-              <tr>
-                <td><strong>Human transcription services</strong></td>
-                <td>High-volume, sensitive, or complex content</td>
-                <td class="check">99%+</td>
-                <td class="check">Yes (context)</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td>From ~$1-2/min</td>
+                <td>From $50–500</td>
               </tr>
             </tbody>
           </table>
@@ -160,20 +156,20 @@ const canonicalUrl = site.domain + "/comparison";
           <h2 style="font-size:24px;margin:0 0 16px;font-weight:800">Key decision factors</h2>
           <div class="grid">
             <div class="card">
-              <h3>Accuracy and speed</h3>
-              <p>Dragon and Philips both achieve 98-99% accuracy. The difference is in speed: Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows.</p>
+              <h3>Cloud vs local</h3>
+              <p>Cloud tools (Dragon Anywhere, SpeechLive, Speech Recognition Cloud) work anywhere. Local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
             </div>
             <div class="card">
-              <h3>Cloud vs local</h3>
-              <p>Cloud tools (Dragon Anywhere, SpeechLive) work anywhere. Local tools (Dragon Professional desktop) offer offline capability and tighter data control.</p>
+              <h3>Custom vocabulary and macros</h3>
+              <p>Dragon with custom macros can be 3x faster than typing. Philips excels at shared workflows. Speech Recognition Cloud offers 20+ AI commands without setup.</p>
             </div>
             <div class="card">
               <h3>Budget</h3>
-              <p>Dragon Professional is one-time cost (perpetual licence). Cloud subscriptions suit teams. High-volume organisations often combine multiple tools.</p>
+              <p>Dragon Professional is a one-time cost (perpetual licence). Speech Recognition Cloud offers a free tier to start. Cloud subscriptions suit teams needing flexibility.</p>
             </div>
             <div class="card">
               <h3>Team workflows</h3>
-              <p>Philips SpeechLive and human transcription handle delegation. Dragon works best for individual power users who dictate heavily and automate repeatedly.</p>
+              <p>Philips SpeechLive handles delegation between authors and transcriptionists. Dragon works best for individual power users who dictate heavily and automate repeatedly.</p>
             </div>
             <div class="card">
               <h3>Governance</h3>
@@ -193,23 +189,23 @@ const canonicalUrl = site.domain + "/comparison";
           <div class="grid">
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Medical professionals</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Medical One (primary) + Philips SpeechMike recorder (secure backup) + optional human transcription for complex cases.</p>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Medical One (primary) + Philips SpeechMike recorder (secure backup). For simpler needs, Speech Recognition Cloud with its free tier is a low-friction starting point.</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Legal teams</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Philips SpeechLive (workflow) + Dragon Professional (personal power users) + human transcription (complex briefs).</p>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Philips SpeechLive (workflow) + Dragon Professional (personal power users). Speech Recognition Cloud suits fee earners who need fast, flexible dictation across devices.</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Single-user heavy dictators</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional 16 (local, perpetual) + custom macros for workflows.</p>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional 16 (local, perpetual) + custom macros for workflows. Or Speech Recognition Cloud for a cloud-first alternative with no upfront cost.</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Flexible/hybrid teams</h3>
+              <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Flexible / hybrid teams</h3>
               <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Dragon Professional Anywhere (cloud, all devices) + Philips SpeechMike hardware (for better audio in noisy environments).</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
-              <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">High-volume transcription</h3>
-              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Professional human transcription service (primary) + Dragon for staff self-service + Philips hardware for dictation capture.</p>
+              <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Multilingual teams</h3>
+              <p style="margin:0;font-size:13px;color:#374151;line-height:1.6">Speech Recognition Cloud (57+ languages, free tier) is the natural choice where English-only Dragon is not sufficient. No training required, works instantly.</p>
             </div>
             <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:12px;padding:18px">
               <h3 style="margin:0 0 8px;font-size:15px;font-weight:700">Government agencies</h3>
