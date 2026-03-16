@@ -21,7 +21,7 @@ externalLinks:
 
 There's an enormous amount of enthusiasm right now about AI tools and what they can do for professionals. Doctors, lawyers, and consultants are all being told that AI is going to transform their practice. Some of that is true. But most of the conversation skips over the fundamentals.
 
-Before AI can help you work faster, you need to be able to get information in quickly and handle what comes out efficiently. Most professionals I talk to haven't sorted either of those things out. They're still typing everything and paying Adobe $419.89 per user per year to edit PDFs. No AI tool is going to fix a broken input workflow.
+Before AI can help you work faster, you need to be able to get information in quickly and handle what comes out efficiently. Most professionals I talk to haven't sorted either of those things out. They're still typing everything and paying Adobe hundreds of dollars per user per year to edit PDFs. No AI tool is going to fix a broken input workflow.
 
 Here's what I'd actually recommend getting in place first.
 
@@ -41,13 +41,13 @@ Either way — get your voice input sorted first. Everything downstream, includi
 
 Once information is flowing efficiently, the next friction point for most professionals is documents. You receive PDFs constantly. You need to edit them, annotate them, combine them, and convert them. For legal practitioners especially, this is daily work.
 
-Adobe Acrobat Pro for teams is $419.89 per user per year (AUD inc GST, verified on adobe.com/au, March 2026). That cost adds up fast across a practice, and frankly most professionals don't use a fraction of what they're paying for.
+Adobe Acrobat Pro is available on an annual subscription model — pricing varies depending on whether you are an individual or business customer and how you choose to pay. Check adobe.com/au for current pricing. Whatever tier applies to your situation, the ongoing annual cost adds up quickly across a practice, and frankly most professionals don't use a fraction of what they're paying for.
 
 [Perpetual licence PDF software](https://www.pdfsoftware.com.au) from pdfsoftware.com.au is a one-time purchase at $261 for the Advanced version (AUD inc GST, verified March 2026). It handles everything a professional practice actually needs — editing, combining, annotating, form filling, and converting to and from Word. No annual renewal. No subscription creep. You buy it once and own it.
 
-For a sole practitioner or a small team, switching from Adobe to a perpetual licence alternative will save you thousands over three years.
+For a sole practitioner or a small team, switching from Adobe to a perpetual licence alternative will commonly save you hundreds per user per year.
 
-*Pricing accurate at time of publication, 16 March 2026. Software vendors may change pricing without notice. Verify current pricing directly with the vendor before making purchasing decisions.*
+*All pricing accurate at time of publication, 16 March 2026. Software vendors may change pricing without notice. Verify current pricing directly with the vendor before making purchasing decisions.*
 
 ## Why get these foundations right before AI?
 
