@@ -145,6 +145,8 @@ const benefitIcons = [
       .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:22px}
       .faq-card h3{margin:0 0 8px;font-size:15px;font-weight:700;color:var(--primary)}
       .faq-card p{margin:0;font-size:14px;color:#6b7280;line-height:1.55}
+      .faq-card p a{color:var(--accent);font-weight:600}
+      .faq-card p a:hover{text-decoration:underline}
       .blog-card{display:block;border:1px solid #e5e7eb;border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
       .blog-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06)}
       .blog-date{font-size:11px;color:#9ca3af;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
@@ -394,7 +396,7 @@ const benefitIcons = [
             {site.faqs?.map((f) => (
               <div class="faq-card c6">
                 <h3>{f.q}</h3>
-                <p>{f.a}</p>
+                <p set:html={f.a} />
               </div>
             ))}
           </div>
