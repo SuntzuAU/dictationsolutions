@@ -39,6 +39,7 @@
   },
   "navItems": [
     { "label": "Solutions", "url": "#benefits" },
+    { "label": "News", "url": "/news" },
     { "label": "FAQ", "url": "#faq" },
     { "label": "Contact", "url": "#final-cta" }
   ],
@@ -354,6 +355,7 @@
   ],
   "footerLinks": [
     { "label": "About", "url": "/about" },
+    { "label": "News", "url": "/news" },
     { "label": "Privacy Policy", "url": "/privacy" },
     { "label": "Terms", "url": "/terms" },
     { "label": "Contact", "url": "#final-cta" }
