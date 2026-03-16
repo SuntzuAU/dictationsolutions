@@ -8,6 +8,8 @@ const posts = (await getCollection('blog')).sort(
 
 const c = site.colours;
 const year = new Date().getFullYear();
+const R2_BASE = (import.meta.env.PUBLIC_R2_BASE ?? 'https://pub-c7a09e1ddb7c45e6a38fcdca1e4b6897.r2.dev').replace(/\/$/, '');
+const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
 ---
 
 <!doctype html>
@@ -43,10 +45,14 @@ const year = new Date().getFullYear();
       .page-hero h1{font-size:36px;letter-spacing:-0.02em;margin:0 0 10px}
       .page-hero p{font-size:17px;color:var(--muted);margin:0;max-width:600px}
       .posts-grid{padding:48px 0}
-      .post-card{display:block;border:1px solid #e5e7eb;border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit}
+      .post-card{display:grid;grid-template-columns:280px 1fr;gap:24px;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin-bottom:20px;transition:border-color .15s,box-shadow .15s;text-decoration:none;color:inherit;align-items:stretch}
       .post-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(0,0,0,.07)}
+      .post-thumb{width:280px;min-height:180px;background:#f1f5f9;overflow:hidden;flex-shrink:0}
+      .post-thumb img{width:100%;height:100%;object-fit:cover;min-height:180px}
+      .post-thumb-placeholder{width:100%;height:100%;min-height:180px;background:linear-gradient(135deg,var(--neutral) 0%,#e5e7eb 100%);display:flex;align-items:center;justify-content:center}
+      .post-body{padding:24px 28px 24px 0}
       .post-meta{font-size:13px;color:var(--muted);margin-bottom:10px}
-      .post-card h2{font-size:22px;margin:0 0 10px;letter-spacing:-0.01em}
+      .post-card h2{font-size:20px;margin:0 0 10px;letter-spacing:-0.01em;line-height:1.3}
       .post-card p{font-size:15px;color:var(--muted);margin:0 0 16px;line-height:1.6}
       .post-read-more{font-size:14px;font-weight:700;color:var(--accent)}
       .empty-state{text-align:center;padding:80px 0;color:var(--muted)}
@@ -54,9 +60,12 @@ const year = new Date().getFullYear();
       .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
       .footer-links{display:flex;gap:20px}
       .footer-links a:hover{color:white}
-      @media(max-width:600px){
+      @media(max-width:700px){
         .nav-links{display:none}
         .page-hero h1{font-size:26px}
+        .post-card{grid-template-columns:1fr}
+        .post-thumb{width:100%;min-height:180px}
+        .post-body{padding:16px}
         .post-card h2{font-size:18px}
       }
     </style>
@@ -96,10 +105,18 @@ const year = new Date().getFullYear();
           ) : (
             posts.map((post) => (
               <a href={`/news/${post.slug}`} class="post-card">
-                <div class="post-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
-                <h2>{post.data.title}</h2>
-                <p>{post.data.description}</p>
-                <span class="post-read-more">Read more &rarr;</span>
+                <div class="post-thumb">
+                  {post.data.heroImage
+                    ? <img src={imgSrc(post.data.heroImage)} alt={post.data.heroImageAlt ?? post.data.title} loading="lazy" decoding="async" width="280" height="180" />
+                    : <div class="post-thumb-placeholder"></div>
+                  }
+                </div>
+                <div class="post-body">
+                  <div class="post-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                  <span class="post-read-more">Read more &rarr;</span>
+                </div>
               </a>
             ))
           )}
