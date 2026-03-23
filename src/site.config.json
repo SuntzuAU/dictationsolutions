@@ -1,8 +1,8 @@
 {
-  "_buildNote": "dns-cutover-rebuild-2026-03-16",
+  "_buildNote": "ga4-measurement-id-fix-2026-03-23",
   "siteName": "Dictation Solutions Australia",
   "domain": "https://dictationsolutions.com.au",
-  "googleAnalyticsId": "G-74PW1ZVXZC",
+  "googleAnalyticsId": "G-L72W274FHD",
   "colours": {
     "primary": "#1f2937",
     "background": "#ffffff",
