@@ -1,0 +1,7 @@
+{
+  "_readme": "Shared prompt suffixes for the VRA gateway network image pipeline. generate-images.js appends `suffix` plus `heroSuffix` or `breakSuffix` to every per-article prompt. Rules mirror .claude/IMAGE-GENERATION.md.",
+  "suffix": "Photorealistic DSLR photography, warm natural lighting, shallow depth of field. Subjects are Australian adults aged 28 to 45, professionally dressed and well groomed, with warm genuine smiles or confident relaxed expressions, looking toward camera or mid-conversation. Approved equipment only: slim Bluetooth boom headset, compact gooseneck desktop microphone, or laptop built-in microphone. No bulky studio or podcast microphones. No text overlays, no logos, no UI mockups, no watermarks, no stock-photo cliches.",
+  "heroSuffix": "Hero composition, 16:9, subject prominently featured with uncluttered space to one side.",
+  "breakSuffix": "Wide cinematic composition, 21:9. Must feature people prominently. No empty rooms.",
+  "scenes": {}
+}
