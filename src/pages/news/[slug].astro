@@ -14,8 +14,8 @@ const year = new Date().getFullYear();
 
 const R2_BASE = (import.meta.env.PUBLIC_R2_BASE ?? 'https://pub-c7a09e1ddb7c45e6a38fcdca1e4b6897.r2.dev').replace(/\/$/, '');
 const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
-const FALLBACK_HERO = 'dictationsolutions/2026/03/12/dictation-solutions-australia-healthcare-legal-99c97d0e.jpg';
-const FALLBACK_HERO_ALT = 'Australian healthcare and legal professionals using voice dictation technology';
+const FALLBACK_HERO = 'dictationsolutions/2026/03/12/Speech-to-text%20dictation.jpg';
+const FALLBACK_HERO_ALT = 'Australian professional using speech-to-text dictation software at a desk';
 const heroKey = post.data.heroImage || FALLBACK_HERO;
 const heroAlt = post.data.heroImage ? (post.data.heroImageAlt || post.data.title) : FALLBACK_HERO_ALT;
 ---
