@@ -18,6 +18,10 @@ const FALLBACK_HERO = 'dictationsolutions/2026/03/12/Speech-to-text%20dictation.
 const FALLBACK_HERO_ALT = 'Australian professional using speech-to-text dictation software at a desk';
 const heroKey = post.data.heroImage || FALLBACK_HERO;
 const heroAlt = post.data.heroImage ? (post.data.heroImageAlt || post.data.title) : FALLBACK_HERO_ALT;
+const FALLBACK_BREAK1 = 'dictationsolutions/2026/03/12/voice-recognition-australia-dictation-support-team-fc62ce41.jpg';
+const FALLBACK_BREAK1_ALT = 'Australian support team in a modern office environment';
+const break1Key = post.data.breakImage1 || FALLBACK_BREAK1;
+const break1Alt = post.data.breakImage1 ? (post.data.breakImage1Alt || '') : FALLBACK_BREAK1_ALT;
 ---
 
 <!doctype html>
@@ -126,10 +130,10 @@ const heroAlt = post.data.heroImage ? (post.data.heroImageAlt || post.data.title
           <div class="article-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
         </div>
       </div>
-      {post.data.breakImage1 && (
+      {break1Key && (
         <div class="article-wrap">
           <div class="img-break">
-            <img src={imgSrc(post.data.breakImage1)} alt={post.data.breakImage1Alt ?? ''} loading="lazy" decoding="async" width="740" height="400" />
+            <img src={imgSrc(break1Key)} alt={break1Alt} loading="lazy" decoding="async" width="740" height="400" />
           </div>
         </div>
       )}
