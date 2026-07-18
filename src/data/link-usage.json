@@ -1,19 +1,26 @@
 {
   "thisSite": "dictationsolutions.com.au",
-  "lastRebuilt": "2026-03-16",
+  "lastRebuilt": "2026-07-18",
   "_note": "Link audit from actual blog posts. Tracks external link coverage and anchor text variation. Min 1 internal link per page, max 2 external per page.",
   "external": {
     "voicerecognition.com.au": {
-      "count": 1,
-      "anchorsUsed": ["speech recognition software Australia"]
+      "count": 2,
+      "anchorsUsed": [
+        "speech recognition software Australia",
+        "Philips SpeechLive Legal AI Assistant"
+      ]
     },
     "pdfsoftware.com.au": {
       "count": 1,
-      "anchorsUsed": ["perpetual licence PDF software"]
+      "anchorsUsed": [
+        "perpetual licence PDF software"
+      ]
     },
     "dragonprofessional16.com.au": {
       "count": 1,
-      "anchorsUsed": ["Dragon Professional 16"]
+      "anchorsUsed": [
+        "Dragon Professional 16"
+      ]
     },
     "dragonnaturallyspeaking.com.au": {
       "count": 0,
@@ -21,7 +28,9 @@
     },
     "speechrecognition.cloud": {
       "count": 1,
-      "anchorsUsed": ["speech to text software"]
+      "anchorsUsed": [
+        "speech to text software"
+      ]
     },
     "cloudprinting.au": {
       "count": 0,
