@@ -14,14 +14,6 @@ const year = new Date().getFullYear();
 
 const R2_BASE = (import.meta.env.PUBLIC_R2_BASE ?? 'https://pub-c7a09e1ddb7c45e6a38fcdca1e4b6897.r2.dev').replace(/\/$/, '');
 const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
-const FALLBACK_HERO = 'dictationsolutions/2026/03/12/Speech-to-text%20dictation.jpg';
-const FALLBACK_HERO_ALT = 'Australian professional using speech-to-text dictation software at a desk';
-const heroKey = post.data.heroImage || FALLBACK_HERO;
-const heroAlt = post.data.heroImage ? (post.data.heroImageAlt || post.data.title) : FALLBACK_HERO_ALT;
-const FALLBACK_BREAK1 = 'dictationsolutions/2026/03/12/voice-recognition-australia-dictation-support-team-fc62ce41.jpg';
-const FALLBACK_BREAK1_ALT = 'Australian support team in a modern office environment';
-const break1Key = post.data.breakImage1 || FALLBACK_BREAK1;
-const break1Alt = post.data.breakImage1 ? (post.data.breakImage1Alt || '') : FALLBACK_BREAK1_ALT;
 ---
 
 <!doctype html>
@@ -37,8 +29,8 @@ const break1Alt = post.data.breakImage1 ? (post.data.breakImage1Alt || '') : FAL
     <meta property="og:title" content={post.data.title} />
     <meta property="og:description" content={post.data.description} />
     <meta property="og:url" content={`${site.domain}/news/${post.slug}`} />
-    {heroKey && <meta property="og:image" content={imgSrc(heroKey)} />}
-    {heroKey && <link rel="preload" as="image" href={imgSrc(heroKey)} fetchpriority="high" />}
+    {post.data.heroImage && <meta property="og:image" content={imgSrc(post.data.heroImage)} />}
+    {post.data.heroImage && <link rel="preload" as="image" href={imgSrc(post.data.heroImage)} fetchpriority="high" />}
     <style is:inline define:vars={{
       bg: c.background, text: c.text, primary: c.primary,
       accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
@@ -118,9 +110,9 @@ const break1Alt = post.data.breakImage1 ? (post.data.breakImage1Alt || '') : FAL
     </header>
 
     <main>
-      {heroKey && (
+      {post.data.heroImage && (
         <div class="hero-img">
-          <img src={imgSrc(heroKey)} alt={heroAlt} loading="eager" fetchpriority="high" decoding="async" width="1080" height="480" />
+          <img src={imgSrc(post.data.heroImage)} alt={post.data.heroImageAlt || post.data.title} loading="eager" fetchpriority="high" decoding="async" width="1080" height="480" />
         </div>
       )}
       <div class="article-header">
@@ -130,10 +122,10 @@ const break1Alt = post.data.breakImage1 ? (post.data.breakImage1Alt || '') : FAL
           <div class="article-meta">{new Date(post.data.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })} &bull; {post.data.author}</div>
         </div>
       </div>
-      {break1Key && (
+      {post.data.breakImage1 && (
         <div class="article-wrap">
           <div class="img-break">
-            <img src={imgSrc(break1Key)} alt={break1Alt} loading="lazy" decoding="async" width="740" height="400" />
+            <img src={imgSrc(post.data.breakImage1)} alt={post.data.breakImage1Alt || ''} loading="lazy" decoding="async" width="740" height="400" />
           </div>
         </div>
       )}
