@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import site from '../../site.config.json';
+import ACForm from '../../components/ACForm.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news');
@@ -40,6 +41,8 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
       a{color:var(--accent)}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      .cta-grid{display:grid;grid-template-columns:7fr 5fr;gap:36px;align-items:start}
+      @media(max-width:800px){.cta-grid{grid-template-columns:1fr}}
       .article-wrap{max-width:740px;margin:0 auto;padding:0 24px}
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;z-index:100}
       .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;gap:16px}
@@ -140,6 +143,27 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
           <a href="/news" class="back-link">&larr; Back to News &amp; Guides</a>
         </div>
       </div>
+
+      <section id="final-cta" aria-label="Contact us" style={`background:${c.primary};padding:44px 0;margin-top:48px`}>
+        <div class="wrap">
+          <div class="cta-grid">
+            <div>
+              <h2 style="color:#fff;font-size:26px;margin:0 0 10px;font-weight:800">{site.branding.ctaHeading}</h2>
+              <p style="color:#9ca3af;margin:0 0 18px;font-size:16px;line-height:1.65">{site.branding.ctaBody}</p>
+              <ul style="color:#9ca3af;margin:0;padding-left:20px;line-height:2.1;font-size:15px">
+                {site.branding.ctaBullets?.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+            <div>
+              <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
+                <div style={`font-size:18px;font-weight:800;color:${c.primary};margin:0 0 4px`}>Get in touch</div>
+                <div style="font-size:13px;color:#6b7280;margin:0 0 18px">Local Australian support. Fast response.</div>
+                <ACForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
