@@ -22,6 +22,9 @@ externalLinks:
   - to: "voicerecognition.com.au"
     anchor: "Voice Recognition Australia"
     url: "https://www.voicerecognition.com.au"
+  - to: "voicerecognition.com.au"
+    anchor: "speech-to-text volume licensing for education"
+    url: "https://www.voicerecognition.com.au/collections/speech-recognition-cloud-academic-volume-licensing"
 ---
 
 Dragon has been the default answer to "what speech recognition should a student use" in Australia for the better part of two decades. For some students it is still the right answer. But it is no longer the only one, and for the job most students actually need doing — getting words out of their head and onto the page — it is now a long way from the cheapest or the fastest to deploy.
@@ -48,7 +51,7 @@ All prices below are current Australian pricing including GST, from [Voice Recog
 | Dragon Professional 16 (full retail) | A$994 | 1 user, perpetual |
 | Dragon Professional Anywhere | A$795 / year | 1 user, annual subscription |
 
-For schools buying more than one licence:
+For schools, you can see current [speech-to-text volume licensing for education](https://www.voicerecognition.com.au/collections/speech-recognition-cloud-academic-volume-licensing) online. Buying more than one licence:
 
 | Licences | Speech Recognition Cloud | Per student |
 |---|---|---|
@@ -136,7 +139,7 @@ On paper the two cross over at about three years and eight months. In practice, 
 
 **Can a school buy licences in bulk?**
 
-Yes. Speech Recognition Cloud is sold in 5, 25 and 100-user annual packs (A$695, A$3,135 and A$9,895 respectively). Dragon academic and lab-pack licensing is available on quote through Voice Recognition Australia — [contact us](#final-cta) and we will price your specific deployment.
+Yes. Speech Recognition Cloud is sold in 5, 25 and 100-user annual packs (A$695, A$3,135 and A$9,895 respectively) — see [volume licensing for education](https://www.voicerecognition.com.au/collections/speech-recognition-cloud-academic-volume-licensing). Dragon academic and lab-pack licensing is available on quote through Voice Recognition Australia — [contact us](#final-cta) and we will price your specific deployment.
 
 **Will dictation be allowed in exams?**
 
