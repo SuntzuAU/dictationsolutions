@@ -148,3 +148,5 @@ Sometimes, but it is case-specific. Australian exam authorities permit assistive
 ---
 
 *Dictation Solutions Australia is part of the Voice Recognition Australia network, an authorised Australian reseller of both Dragon and Speech Recognition Cloud. Pricing current as at July 2026 and subject to change. Dragon and related marks are the property of Nuance Communications (Microsoft).*
+
+<!-- rebuild 20260722T030812Z -->
