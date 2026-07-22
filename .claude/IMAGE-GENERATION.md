@@ -5,7 +5,7 @@
 
 This document describes the VRA gateway network's automated image generation system for blog posts. If you are a Claude session about to write or regenerate images for an article in this repo, **read this first**.
 
-Last synced from canonical: 2026-04-22
+Last synced from canonical: 2026-07-22
 
 ---
 
@@ -128,6 +128,12 @@ The daily-quota and kill-switch checks run BEFORE the `imagesPending` scan, so a
 **Images in R2 but not on page**: layout issue. Verify R2 URL loads. Check `[slug].astro` renders break images inline, not at container edges.
 
 **Preflight failed on text-only edit**: known cosmetic issue, ignore the email.
+
+**Images in R2 but not on page (MOST COMMON)**: the generator's bot commit ends in `[skip ci]`, which Cloudflare Pages honours as well as GitHub Actions — so the deploy is skipped and the live HTML stays stale. Fix: push a **real** commit (a one-line body change) to force a Pages rebuild. An **empty commit does NOT work**. Then hard-refresh (Ctrl+F5).
+
+**This repo is on the legacy manual workflow**: `dictationsolutions` runs `generate-images.yml` (manual dispatch), not the push-triggered `generate-on-demand.yml`. See CLAUDE.md "Image generation on THIS repo" for the full procedure.
+
+
 
 ---
 
