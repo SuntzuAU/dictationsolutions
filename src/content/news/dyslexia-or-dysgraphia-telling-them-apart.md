@@ -66,6 +66,12 @@ Speech-to-text is a way *around* the barrier, not a way to remove the underlying
 
 There are practical bits too. A quiet-ish spot and a decent microphone make a real difference, and whether dictation is allowed in a particular exam is a case-by-case decision made with the school — which is exactly why it works best as routine classroom practice, not a last-minute exam trick.
 
+## Why we keep saying "it depends on the student"
+
+Voice Recognition Australia has been supplying speech recognition to Australian schools, universities, students and families since 1999, working alongside the teachers, learning support staff and occupational therapists who put it into practice. Russell Bewsell, who founded the business, has 28 years in the speech recognition industry, and a substantial share of that has gone into one question: which student needs which tool, and when is dictation not the answer at all.
+
+That is where the caution in this article comes from. Dictation is not a universal fix, and a student set up with the wrong tool — or the right tool with no instruction behind it — will usually conclude that speech recognition "did not work for them", when what actually failed was the fit. Getting that judgement right the first time is most of the job.
+
 ## Where to start
 
 The lowest-risk way to find out whether dictation helps your particular child is to try it on real homework for a couple of weeks before spending anything serious. Modern [cloud speech-to-text](/speech-recognition-cloud) needs no voice-profile training and works straight into Word, Google Docs or an online assignment form on Windows — a long way from the software that used to struggle with younger voices. For schools and families, the [Student and Academic edition](https://www.voicerecognition.com.au/products/speech-recognition-cloud-student-academic) is priced for exactly this, and support is Australian-based.
