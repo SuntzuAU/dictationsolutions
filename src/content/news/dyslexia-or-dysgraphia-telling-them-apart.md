@@ -12,7 +12,7 @@ breakImage2Alt: ""
 heroPrompt: "An Australian parent in their forties sitting beside a secondary student of about fourteen at a kitchen table in the early evening. The student wears a slim discreet boom headset and is dictating homework into a laptop, mid-sentence and relaxed; the parent wears no headset and is simply watching the screen. An open exercise book sits beside the laptop. Warm domestic lighting, candid and unposed, both faces clearly visible."
 breakPrompt1: "A bright, down-to-earth Australian classroom. A learning support teacher leans in beside a student of about eleven who wears a slim boom headset and is dictating into a school laptop; the two look at a screen of text and talk it through. The teacher wears no headset. Warm afternoon light, real classroom detail, natural and unposed, composition centred vertically for a wide cinematic strip."
 context: "education"
-imagesPending: true
+imagesPending: false
 internalLinks:
   - to: "/speech-recognition-cloud"
     anchor: "cloud speech-to-text"
