@@ -71,3 +71,4 @@ There are practical bits too. A quiet-ish spot and a decent microphone make a re
 The lowest-risk way to find out whether dictation helps your particular child is to try it on real homework for a couple of weeks before spending anything serious. Modern [cloud speech-to-text](/speech-recognition-cloud) needs no voice-profile training and works straight into Word, Google Docs or an online assignment form on Windows — a long way from the software that used to struggle with younger voices. For schools and families, the [Student and Academic edition](https://www.voicerecognition.com.au/products/speech-recognition-cloud-student-academic) is priced for exactly this, and support is Australian-based.
 
 Whichever label ends up on the assessment, the goal is the same: let the student show what they know, instead of losing it on the way to the page.
+
