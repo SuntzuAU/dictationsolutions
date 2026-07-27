@@ -301,10 +301,11 @@ const benefitIcons = [
           <div class="grid">
             {homepageProducts.map((p) => {
               const isSRC = p.slug === 'cloud-speech-solutions';
-              const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
+              const isDMO = p.slug === 'dragon-medical-one';
+              const href = isSRC ? 'https://www.speechrecognition.cloud' : isDMO ? 'https://dragonmedicalone.au' : `/${p.slug}`;
               const cardClass = `compare-card c4${isSRC ? ' src-highlight' : ''}`;
               return (
-                <a href={href} class={cardClass} target={isSRC ? '_blank' : undefined} rel={isSRC ? 'noopener' : undefined}>
+                <a href={href} class={cardClass} target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined}>
                   <div class={`product-badge${isSRC ? ' badge-blue' : ''}`}>{p.badge}</div>
                   <div class="compare-title">{p.title}</div>
                   <div class="compare-for">{p.bestFor}</div>
@@ -362,7 +363,8 @@ const benefitIcons = [
               <p style="font-size:13px;color:rgba(255,255,255,.4);margin:0 0 16px">One authorised Australian reseller. Full range.</p>
               {darkBoxProducts?.map((p) => {
                 const isSRC = p.slug === 'cloud-speech-solutions';
-                const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
+                const isDMO = p.slug === 'dragon-medical-one';
+                const href = isSRC ? 'https://www.speechrecognition.cloud' : isDMO ? 'https://dragonmedicalone.au' : `/${p.slug}`;
                 return isSRC ? (
                   <a href={href} target="_blank" rel="noopener" class="src-row">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
@@ -375,8 +377,8 @@ const benefitIcons = [
                     </div>
                   </a>
                 ) : (
-                  <a href={href} class="product-row">
-                    <div class="product-row-title">{p.title}</div>
+                  <a href={href} class="product-row" target={isDMO ? '_blank' : undefined} rel={isDMO ? 'noopener' : undefined}>
+                    <div class="product-row-title">{isDMO ? 'Dragon Medical One for clinicians' : p.title}</div>
                     <div style="display:flex;justify-content:space-between;align-items:center">
                       <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
                       <span style="font-weight:800;color:white;font-size:15px">{p.price}</span>
