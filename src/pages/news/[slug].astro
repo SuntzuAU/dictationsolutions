@@ -1,4 +1,6 @@
 ---
+import SiteNav from "../../components/SiteNav.astro";
+import Footer from "../../components/Footer.astro";
 import { getCollection } from 'astro:content';
 import site from '../../site.config.json';
 import ACForm from '../../components/ACForm.astro';
@@ -93,22 +95,7 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
     </style>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo">
-            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
-          </div>
-          <nav class="nav-links" aria-label="Primary navigation">
-            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          </nav>
-          <div class="nav-ctas">
-            {site.secondaryCTA?.text && <a class="btn btn-secondary" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>}
-            <a class="btn btn-primary" href={site.primaryCTA.url}>{site.primaryCTA.text}</a>
-          </div>
-        </div>
-      </div>
-    </header>
+    <SiteNav />
 
     <main>
       {post.data.heroImage && (
@@ -164,15 +151,6 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
       </section>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
-          </div>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

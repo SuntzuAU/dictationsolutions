@@ -1,4 +1,6 @@
 ---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
 import site from "../site.config.json";
 
 const c = site.colours;
@@ -84,29 +86,7 @@ const year = new Date().getFullYear();
   </head>
   <body>
 
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo">
-            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
-          </div>
-          <nav class="nav-links" aria-label="Primary">
-            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-secondary" href="/#final-cta">Contact Us</a>
-            <a class="btn btn-primary" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          <a href="/#final-cta" style="color:var(--accent);font-weight:700">Contact Us</a>
-        </nav>
-      </div>
-    </header>
+    <SiteNav />
 
     <main>
 
@@ -258,17 +238,7 @@ const year = new Date().getFullYear();
 
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
-          </div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <Footer />
 
   </body>
 </html>

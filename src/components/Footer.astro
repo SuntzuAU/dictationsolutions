@@ -1,16 +1,63 @@
 ---
+/**
+ * Footer — the single site footer.
+ * CSS ships as an inline string (see styles/chrome.ts), token-optional.
+ */
 import site from "../site.config.json";
 const year = new Date().getFullYear();
-const links = site.footerLinks ?? [];
+
+const cols = [
+  { heading: "SpeechLive AI", links: [
+    { label: "SpeechLive platform",   href: "/philips-speechlive" },
+    { label: "Legal AI Assistant",    href: "/legal" },
+    { label: "Professional AI",       href: "/professional" },
+  ]},
+  { heading: "Solutions", links: [
+    { label: "Dragon software",       href: "/dragon-software" },
+    { label: "Dictation hardware",    href: "/dictation-equipment" },
+    { label: "Transcription",         href: "/transcription-services" },
+    { label: "Compare solutions",     href: "/comparison" },
+  ]},
+  { heading: "Company", links: [
+    { label: "About",                 href: "/about" },
+    { label: "News & guides",         href: "/news" },
+    { label: "Support",               href: "/support" },
+    { label: "Privacy",               href: "/privacy" },
+    { label: "Terms",                 href: "/terms" },
+  ]},
+];
+import { footerCss } from "../styles/chrome";
 ---
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <span>&copy; {year} {site.siteName}</span>
-      <div class="footer-links">
-        {links.map((l: any) => <a href={l.url}>{l.label}</a>)}
+<footer class="sf">
+  <div class="sf-wrap">
+    <div class="sf-grid">
+      <div class="sf-brandcol">
+        <div class="sf-brand">
+          <span class="sf-mark" aria-hidden="true">
+            <i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i>
+          </span>
+          <span>Dictation Solutions</span>
+        </div>
+        <p class="sf-blurb">
+          Australian dictation and speech recognition specialists.
+          Official Philips SpeechLive partner.
+        </p>
+        <a href="tel:1300255900" class="sf-phone">1300 255 900</a>
       </div>
+
+      {cols.map((c) => (
+        <div>
+          <h3>{c.heading}</h3>
+          <ul>
+            {c.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
     </div>
-    <p class="footer-legal">{site.branding?.footerDisclaimer}</p>
+
+    <p class="sf-legal">{site.branding?.footerDisclaimer}</p>
+    <p class="sf-copy">&copy; {year} Dictation Solutions Australia — part of the Voice Recognition Australia network.</p>
   </div>
 </footer>
+
+<style is:inline set:html={footerCss}></style>

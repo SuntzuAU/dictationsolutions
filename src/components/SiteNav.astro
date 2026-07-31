@@ -1,30 +1,50 @@
 ---
-import site from "../site.config.json";
+/**
+ * SiteNav — the single site header.
+ *
+ * Self-contained: CSS ships as an inline string (see styles/chrome.ts) and
+ * every token has a literal fallback, so this renders correctly on legacy
+ * pages that never load tokens.css.
+ */
 export interface Props { active?: string | null }
 const { active = null } = Astro.props;
+
 const items = [
-  { label: "Legal AI",        href: "/legal",        key: "legal" },
-  { label: "Professional AI", href: "/professional", key: "professional" },
-  { label: "Pricing",         href: "/pricing",      key: "pricing" },
-  { label: "Security",        href: "/security",     key: "security" },
-  { label: "Support",         href: "/support",      key: "support" },
+  { label: "SpeechLive",      href: "/philips-speechlive", key: "speechlive" },
+  { label: "Legal AI",        href: "/legal",              key: "legal" },
+  { label: "Professional AI", href: "/professional",       key: "professional" },
+  { label: "Dragon",          href: "/dragon-software",    key: "dragon" },
+  { label: "Hardware",        href: "/dictation-equipment",key: "hardware" },
+  { label: "News",            href: "/news",               key: "news" },
+  { label: "Support",         href: "/support",            key: "support" },
 ];
+import { navCss } from "../styles/chrome";
 ---
-<header>
-  <div class="wrap">
-    <nav class="nav" aria-label="Primary">
-      <a href="/" class="brand">
-        <span class="brand-mark" aria-hidden="true">
-          <i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i>
-        </span>
-        <span>{site.siteName ?? "Dictation Solutions"}</span>
-      </a>
-      <div class="nav-links">
-        {items.map((i) => (
-          <a href={i.href} aria-current={active === i.key ? "page" : undefined}>{i.label}</a>
-        ))}
-      </div>
-      <a href="#register" class="nav-cta">Book a demo</a>
+<header class="sn">
+  <div class="sn-wrap">
+    <a href="/" class="sn-brand">
+      <span class="sn-mark" aria-hidden="true">
+        <i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i>
+      </span>
+      <span>Dictation Solutions</span>
+    </a>
+
+    <nav class="sn-links" aria-label="Primary">
+      {items.map((i) => (
+        <a href={i.href} aria-current={active === i.key ? "page" : undefined}>{i.label}</a>
+      ))}
     </nav>
+
+    <a href="/legal#register" class="sn-cta">Book a demo</a>
+
+    <details class="sn-mobile">
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <div class="sn-drawer">
+        {items.map((i) => <a href={i.href}>{i.label}</a>)}
+        <a href="/legal#register" class="sn-drawer-cta">Book a demo</a>
+      </div>
+    </details>
   </div>
 </header>
+
+<style is:inline set:html={navCss}></style>

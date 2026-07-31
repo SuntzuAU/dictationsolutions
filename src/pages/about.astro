@@ -1,6 +1,7 @@
 ---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
 import site from "../site.config.json";
-import Nav from "../components/Nav.astro";
 const year = new Date().getFullYear();
 const c = site.colours;
 ---
@@ -33,7 +34,7 @@ const c = site.colours;
     </style>
   </head>
   <body>
-    <Nav currentPath="/about" />
+    <SiteNav />
 
     <div class="page-hero">
       <div class="wrap">
@@ -54,16 +55,6 @@ const c = site.colours;
       </div>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
-          </div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

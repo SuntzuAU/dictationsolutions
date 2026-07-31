@@ -1,4 +1,6 @@
 ---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
 import site from "../site.config.json";
 import manifest from "../data/image-manifest.json";
 import ACForm from "../components/ACForm.astro";
@@ -134,37 +136,7 @@ const accentColour = c.accent || "#16a34a";
     </style>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a></div>
-          <nav class="nav-links" aria-label="Primary">
-            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-            {site.navDropdown && (
-              <div class="dropdown">
-                <span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-                <div class="dropdown-menu">
-                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-                  <a href="/comparison">Compare Solutions</a>
-                </div>
-              </div>
-            )}
-            <a href="/news">News</a>
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
-          </div>
-        </div>
-        <nav class="mobile-nav">
-          <a href="/">Home</a>
-          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
-          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-          <a href="/news">News</a>
-          <a href="/comparison">Compare Solutions</a>
-        </nav>
-      </div>
-    </header>
+    <SiteNav />
     <main>
       <section class="product-hero">
         <div class="wrap">
@@ -255,14 +227,6 @@ const accentColour = c.accent || "#16a34a";
         </div>
       </section>
     </main>
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

@@ -31,15 +31,7 @@
   background:color-mix(in srgb, var(--v-tint-2) 40%, #fff);
 }
 
-/* ---------- nav ---------- */
-.nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; border-bottom:1px solid var(--line) }
-.brand{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:16px; letter-spacing:-.03em; color:var(--ink) }
-.brand-mark{ width:27px; height:27px; border-radius:7px; background:var(--ink); display:flex; align-items:flex-end; justify-content:center; gap:2px; padding-bottom:7px; flex:0 0 auto }
-.brand-mark i{ width:2.5px; background:#fff; border-radius:2px; display:block }
-.nav-links{ display:flex; gap:25px; font-size:var(--fs-small); font-weight:500; color:var(--ink-2); align-items:center }
-.nav-links a[aria-current="page"]{ font-weight:700; color:var(--v-mid); position:relative }
-.nav-links a[aria-current="page"]::after{ content:""; position:absolute; left:0; right:0; bottom:-19px; height:2px; background:var(--v) }
-.nav-cta{ background:var(--ink); color:#fff; font-weight:700; font-size:13.5px; padding:11px 19px; border-radius:8px }
+/* nav + footer live in SiteNav.astro / Footer.astro (scoped) */
 
 /* ---------- hero ---------- */
 .hero{ padding:64px 0 0; background:linear-gradient(180deg, var(--v-tint) 0%, var(--white) 70%) }
@@ -112,17 +104,9 @@
 .price-amt{ font-size:31px; font-weight:800; letter-spacing:-.04em; line-height:1; margin-bottom:5px; color:var(--ink) }
 .price-per{ font-size:var(--fs-caption); color:#939CA9; margin-bottom:14px }
 
-/* ---------- footer ---------- */
-.footer{ background:var(--ink); color:rgba(255,255,255,.55); padding:34px 0 28px; font-size:var(--fs-small) }
-.footer a:hover{ color:#fff }
-.footer-top{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center }
-.footer-links{ display:flex; gap:20px; flex-wrap:wrap }
-.footer-legal{ font-size:11px; color:rgba(255,255,255,.36); line-height:1.65; margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,.1) }
-
 /* ---------- responsive: single breakpoint (spec §4) ---------- */
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns:1fr; gap:32px }
   .cards-3, .price-cards{ grid-template-columns:1fr }
   .stats{ grid-template-columns:1fr 1fr }
-  .nav-links{ display:none }
 }
