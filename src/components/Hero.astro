@@ -1,0 +1,27 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+export interface Props {
+  eyebrow: string; headline: string; emphasis?: string; lead: string;
+  primaryCta: { text: string; href: string };
+  secondaryCta?: { text: string; href: string };
+  partner?: string;
+}
+const { eyebrow, headline, emphasis, lead, primaryCta, secondaryCta, partner } = Astro.props;
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <Eyebrow text={eyebrow} />
+        <h1>{headline}{emphasis && <> <u>{emphasis}</u></>}</h1>
+        <p class="lead">{lead}</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href={primaryCta.href}>{primaryCta.text}</a>
+          {secondaryCta && <a class="btn btn-secondary" href={secondaryCta.href}>{secondaryCta.text}</a>}
+        </div>
+        {partner && <p class="hero-partner" set:html={partner} />}
+      </div>
+      <slot />
+    </div>
+  </div>
+</section>

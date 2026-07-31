@@ -1,0 +1,17 @@
+---
+const certs = [
+  ["Certified", "ISO 27001"], [null, "ISO 9001"], [null, "ISO 14001"],
+  [null, "GDPR"], [null, "EU AI Act"],
+  [null, "Australian"], [null, "99.999%"],
+];
+const suffix: Record<string, string> = {
+  "GDPR": " compliant", "Australian": " data residency", "99.999%": " Azure uptime",
+};
+---
+<section class="spine" aria-label="Certifications and compliance">
+  <div class="wrap">
+    {certs.map(([pre, val]) => (
+      <span>{pre ? pre + " " : ""}<b>{val}</b>{suffix[val as string] ?? ""}</span>
+    ))}
+  </div>
+</section>

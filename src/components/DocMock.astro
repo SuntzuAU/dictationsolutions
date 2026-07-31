@@ -1,0 +1,22 @@
+---
+export interface Props {
+  label?: string; file: string; heading: string; from: string;
+  sections: { title: string; body: string }[]; ready?: string;
+}
+const { label = "AI drafted", file, heading, from, sections,
+        ready = "Ready for your review" } = Astro.props;
+---
+<figure class="doc" style="margin:0">
+  <figcaption class="doc-top">
+    <span class="doc-pill">{label}</span>
+    <span class="doc-file">{file}</span>
+  </figcaption>
+  <div class="doc-body">
+    <h4>{heading}</h4>
+    <div class="doc-from">{from}</div>
+    {sections.map((s) => (
+      <div class="doc-sec"><b>{s.title}</b><p>{s.body}</p></div>
+    ))}
+    <div class="doc-ready"><i aria-hidden="true">✓</i>{ready}</div>
+  </div>
+</figure>

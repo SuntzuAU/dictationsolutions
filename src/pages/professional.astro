@@ -1,0 +1,55 @@
+---
+import ProductLayout from "../layouts/ProductLayout.astro";
+import Hero from "../components/Hero.astro";
+import DocMock from "../components/DocMock.astro";
+import FeatureCards from "../components/FeatureCards.astro";
+import DeepBand from "../components/DeepBand.astro";
+---
+<ProductLayout
+  vertical="professional"
+  title="Philips SpeechLive Professional AI Assistant | Australia | Dictation Solutions"
+  description="SpeechLive Professional turns dictation and attached paperwork into finished, templated documents for finance, insurance, construction and real estate. Australian data residency."
+>
+  <Hero
+    slot="hero"
+    eyebrow="Finance · Insurance · Construction · Real Estate"
+    headline="Every report you write,"
+    emphasis="drafted from your voice."
+    lead="Talk through the site visit, the claim, the settlement. Attach the invoices, statements and photos. SpeechLive Professional returns a finished, templated document — not a transcript to retype."
+    primaryCta={{ text: "Register for early access", href: "#register" }}
+    secondaryCta={{ text: "Book a demonstration", href: "#register" }}
+    partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
+  >
+    <DocMock
+      file="Site inspection · Draft"
+      heading="Inspection Report — Lot 14, Marsden"
+      from="Drafted from 1 recording + 3 attached files"
+      sections={[
+        { title: "§1 · Scope",          body: "Structural walkthrough, ground and first floor." },
+        { title: "§2 · Observations",   body: "Moisture ingress noted to southern elevation." },
+        { title: "§3 · Recommendation", body: "Remediation quote to be obtained before settlement." },
+      ]}
+    />
+  </Hero>
+
+  <FeatureCards
+    kicker="One recording, one finished document"
+    heading="Built for the documents your industry runs on."
+    cards={[
+      { title: "Voice plus paperwork",   body: "Combine what you dictate with statements, invoices and photos into one cohesive document." },
+      { title: "Up to 5 supporting files", body: ".pdf, .docx, .txt, .jpeg, .png, .bmp and .heif — the Assistant takes only what the template needs." },
+      { title: "Edit by talking",        body: "“Shorten section three.” “Add the remediation costs.” No manual reformatting." },
+    ]}
+  />
+
+  <DeepBand
+    heading="Four industries, one drafting engine."
+    lead="The same technology behind SpeechLive Legal, with standard vocabulary and your own templates."
+    stats={[
+      { value: "Financial",   label: "Advice records, file notes, client reviews" },
+      { value: "Insurance",   label: "Claims assessments, loss adjusting, statements" },
+      { value: "Construction",label: "Site reports, variations, defect schedules" },
+      { value: "Real Estate", label: "Inspections, appraisals, settlement notes" },
+    ]}
+  />
+</ProductLayout>

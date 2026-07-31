@@ -1,0 +1,30 @@
+---
+import site from "../site.config.json";
+export interface Props { active?: string | null }
+const { active = null } = Astro.props;
+const items = [
+  { label: "Legal AI",        href: "/legal",        key: "legal" },
+  { label: "Professional AI", href: "/professional", key: "professional" },
+  { label: "Pricing",         href: "/pricing",      key: "pricing" },
+  { label: "Security",        href: "/security",     key: "security" },
+  { label: "Support",         href: "/support",      key: "support" },
+];
+---
+<header>
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i>
+        </span>
+        <span>{site.siteName ?? "Dictation Solutions"}</span>
+      </a>
+      <div class="nav-links">
+        {items.map((i) => (
+          <a href={i.href} aria-current={active === i.key ? "page" : undefined}>{i.label}</a>
+        ))}
+      </div>
+      <a href="#register" class="nav-cta">Book a demo</a>
+    </nav>
+  </div>
+</header>

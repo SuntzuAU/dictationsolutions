@@ -1,0 +1,16 @@
+---
+import site from "../site.config.json";
+const year = new Date().getFullYear();
+const links = site.footerLinks ?? [];
+---
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <span>&copy; {year} {site.siteName}</span>
+      <div class="footer-links">
+        {links.map((l: any) => <a href={l.url}>{l.label}</a>)}
+      </div>
+    </div>
+    <p class="footer-legal">{site.branding?.footerDisclaimer}</p>
+  </div>
+</footer>

@@ -1,0 +1,55 @@
+---
+import ProductLayout from "../layouts/ProductLayout.astro";
+import Hero from "../components/Hero.astro";
+import DocMock from "../components/DocMock.astro";
+import FeatureCards from "../components/FeatureCards.astro";
+import DeepBand from "../components/DeepBand.astro";
+---
+<ProductLayout
+  vertical="legal"
+  title="Philips SpeechLive Legal AI Assistant | Australia | Dictation Solutions"
+  description="SpeechLive Legal AI turns your dictation and attached files into a structured legal document in your firm's own template. Australian data residency. Register for early access."
+>
+  <Hero
+    slot="hero"
+    eyebrow="SpeechLive Legal · Australia & NZ · 12 August 2026"
+    headline="From dictation to a"
+    emphasis="finished legal draft."
+    lead="Dictate the matter and attach up to five files. SpeechLive Legal returns a structured document in your own template — facts under the right headings, ready for your review. Nothing is finalised without your approval."
+    primaryCta={{ text: "Register for early access", href: "#register" }}
+    secondaryCta={{ text: "Book a demonstration", href: "#register" }}
+    partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
+  >
+    <DocMock
+      file="Attendance note · Draft"
+      heading="Attendance Note — Henderson"
+      from="Drafted from 1 recording + 2 attached files"
+      sections={[
+        { title: "§1 · Parties",      body: "Henderson & Coastal Freight Pty Ltd." },
+        { title: "§2 · Advice given", body: "Prospects assessed; limitation period diarised." },
+        { title: "§3 · Next steps",   body: "Letter of demand to issue within 14 days." },
+      ]}
+    />
+  </Hero>
+
+  <FeatureCards
+    kicker="More than an AI note-taker"
+    heading="Built for legal documents, not generic summaries."
+    cards={[
+      { title: "Speech Recognition Legal", body: "An engine tuned for legal terminology and case citations — included, not a separate purchase." },
+      { title: "Up to 5 supporting files", body: "Attach PDFs, Word docs and images. The Assistant pulls only what your chosen template needs." },
+      { title: "Templates from a sentence", body: "“Create a template for an attendance note.” It builds the structure, you refine and save it." },
+    ]}
+  />
+
+  <DeepBand
+    heading="The documentation drain, in numbers."
+    lead="Over half a legal workday goes to admin rather than practising law. That's the gap this closes."
+    stats={[
+      { value: ">50%",    label: "Of a legal workday spent on administrative and document tasks" },
+      { value: "2–5 hrs", label: "Daily admin reported by nearly half of global law firms" },
+      { value: "100,000", label: "Registered lawyers in Australia; 18,018 in New Zealand" },
+      { value: "26 yrs",  label: "Australian deployment experience behind your implementation" },
+    ]}
+  />
+</ProductLayout>
