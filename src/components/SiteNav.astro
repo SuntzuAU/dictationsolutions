@@ -12,14 +12,9 @@ type Item = { label: string; href: string; key: string; desc?: string };
 type Group = { label: string; key: string; href?: string; items?: Item[] };
 
 const groups: Group[] = [
-  { label: "SpeechLive", key: "speechlive", href: "/philips-speechlive", items: [
-    { label: "SpeechLive platform",       href: "/philips-speechlive", key: "speechlive",
-      desc: "Cloud dictation, transcription and workflow" },
-    { label: "Legal AI Assistant",        href: "/legal", key: "legal",
-      desc: "Structured legal documents from your dictation" },
-    { label: "Professional AI Assistant", href: "/professional", key: "professional",
-      desc: "Finance, insurance, construction, real estate" },
-  ]},
+  { label: "SpeechLive",     key: "speechlive",   href: "/philips-speechlive" },
+  { label: "Legal AI",       key: "legal",        href: "/legal" },
+  { label: "Professional AI",key: "professional", href: "/professional" },
   { label: "Speech-to-Text", key: "stt", href: "/speech-to-text", items: [
     { label: "Dragon Professional 16",       href: "/dragon-professional-16", key: "dp16",
       desc: "Desktop speech recognition for Windows" },
