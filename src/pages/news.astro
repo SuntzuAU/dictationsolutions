@@ -21,10 +21,8 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
     <meta name="description" content="Practical guides and news on dictation, speech recognition and transcription for Australian professionals." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={`${site.domain}/news`} />
-    <style is:inline define:vars={{
-      bg: c.background, text: c.text, primary: c.primary,
-      accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral,
-    }}>
+    <style is:inline>
+:root{--bg:#ffffff;--text:#111827;--primary:#1f2937;--accent:#16a34a;--accentHover:#15803d;--muted:#6b7280;--neutral:#f3f4f6}
       *,*::before,*::after{box-sizing:border-box}
       body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}

@@ -53,15 +53,8 @@ function homeUrl(url) {
   </div>
 </header>
 
-<style is:inline define:vars={{
-  accent: c.accent,
-  accentHover: c.accentHover,
-  primary: c.primary,
-  text: c.text,
-  muted: c.muted,
-  neutral: c.neutral,
-  bg: c.background,
-}}>
+<style is:inline>
+:root{--bg:#ffffff;--text:#111827;--primary:#1f2937;--accent:#16a34a;--accentHover:#15803d;--muted:#6b7280;--neutral:#f3f4f6}
   /* overflow must NOT be set on sticky header — browsers treat it as clip, breaking dropdowns */
   header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--accent);z-index:200}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
