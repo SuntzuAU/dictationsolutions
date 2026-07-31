@@ -1,24 +1,47 @@
 ---
 /**
  * SiteNav — the single site header.
- *
- * Self-contained: CSS ships as an inline string (see styles/chrome.ts) and
- * every token has a literal fallback, so this renders correctly on legacy
- * pages that never load tokens.css.
+ * CSS ships as an inline string (styles/chrome.ts) with literal token
+ * fallbacks so it renders on legacy pages too.
  */
+import { navCss } from "../styles/chrome";
 export interface Props { active?: string | null }
 const { active = null } = Astro.props;
 
-const items = [
-  { label: "SpeechLive",      href: "/philips-speechlive", key: "speechlive" },
-  { label: "Legal AI",        href: "/legal",              key: "legal" },
-  { label: "Professional AI", href: "/professional",       key: "professional" },
-  { label: "Dragon",          href: "/dragon-software",    key: "dragon" },
-  { label: "Hardware",        href: "/dictation-equipment",key: "hardware" },
-  { label: "News",            href: "/news",               key: "news" },
-  { label: "Support",         href: "/support",            key: "support" },
+type Item = { label: string; href: string; key: string; desc?: string };
+type Group = { label: string; key: string; href?: string; items?: Item[] };
+
+const groups: Group[] = [
+  { label: "SpeechLive", key: "speechlive", href: "/philips-speechlive", items: [
+    { label: "SpeechLive platform",       href: "/philips-speechlive", key: "speechlive",
+      desc: "Cloud dictation, transcription and workflow" },
+    { label: "Legal AI Assistant",        href: "/legal", key: "legal",
+      desc: "Structured legal documents from your dictation" },
+    { label: "Professional AI Assistant", href: "/professional", key: "professional",
+      desc: "Finance, insurance, construction, real estate" },
+  ]},
+  { label: "Speech-to-Text", key: "stt", href: "/speech-to-text", items: [
+    { label: "Dragon Professional 16",       href: "/dragon-professional-16", key: "dp16",
+      desc: "Desktop speech recognition for Windows" },
+    { label: "Dragon Medical One",           href: "/dragon-medical-one", key: "dmo",
+      desc: "Cloud clinical documentation for healthcare" },
+    { label: "Dragon Professional Anywhere", href: "/dragon-professional-anywhere", key: "dpa",
+      desc: "Cloud Dragon for Windows and Mac" },
+    { label: "All Dragon software",          href: "/dragon-software", key: "dragon",
+      desc: "Compare the full Dragon range" },
+    { label: "Cloud speech-to-text",         href: "/speech-recognition-cloud", key: "src",
+      desc: "Browser based, 57 languages, free tier" },
+    { label: "Dictation hardware",           href: "/dictation-equipment", key: "hw",
+      desc: "Philips and Olympus recorders, mics, pedals" },
+    { label: "Transcription services",       href: "/transcription-services", key: "ts",
+      desc: "Australian transcriptionists" },
+  ]},
+  { label: "Compare", key: "compare", href: "/comparison" },
+  { label: "News",    key: "news",    href: "/news" },
 ];
-import { navCss } from "../styles/chrome";
+
+const isOn = (g: Group) =>
+  g.key === active || (g.items ?? []).some((i) => i.key === active);
 ---
 <header class="sn">
   <div class="sn-wrap">
@@ -30,8 +53,25 @@ import { navCss } from "../styles/chrome";
     </a>
 
     <nav class="sn-links" aria-label="Primary">
-      {items.map((i) => (
-        <a href={i.href} aria-current={active === i.key ? "page" : undefined}>{i.label}</a>
+      {groups.map((g) => g.items ? (
+        <div class="sn-group">
+          <a href={g.href} class="sn-top" aria-current={isOn(g) ? "page" : undefined}>
+            {g.label}
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <div class="sn-menu">
+            {g.items.map((i) => (
+              <a href={i.href}>
+                <b>{i.label}</b>
+                {i.desc && <span>{i.desc}</span>}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={g.href} class="sn-top" aria-current={isOn(g) ? "page" : undefined}>{g.label}</a>
       ))}
     </nav>
 
@@ -40,7 +80,13 @@ import { navCss } from "../styles/chrome";
     <details class="sn-mobile">
       <summary aria-label="Menu"><span></span><span></span><span></span></summary>
       <div class="sn-drawer">
-        {items.map((i) => <a href={i.href}>{i.label}</a>)}
+        {groups.map((g) => g.items ? (
+          <div class="sn-dgroup">
+            <p>{g.label}</p>
+            {g.items.map((i) => <a href={i.href}>{i.label}</a>)}
+          </div>
+        ) : <a href={g.href} class="sn-dtop">{g.label}</a>)}
+        <a href="/support" class="sn-dtop">Support</a>
         <a href="/legal#register" class="sn-drawer-cta">Book a demo</a>
       </div>
     </details>
