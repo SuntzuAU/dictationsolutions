@@ -34,10 +34,13 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
     <meta property="og:url" content={`${site.domain}/news/${post.slug}`} />
     {post.data.heroImage && <meta property="og:image" content={imgSrc(post.data.heroImage)} />}
     {post.data.heroImage && <link rel="preload" as="image" href={imgSrc(post.data.heroImage)} fetchpriority="high" />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" />
     <style is:inline>
-:root{--bg:#ffffff;--text:#111827;--primary:#1f2937;--accent:#16a34a;--accentHover:#15803d;--muted:#6b7280;--neutral:#f3f4f6}
+:root{--bg:#ffffff;--text:#12151A;--primary:#12151A;--accent:#12151A;--accentHover:#2A3038;--muted:#5A6473;--neutral:#F7F8FA;--line:#E5E8ED;--soft:#F7F8FA;--ink:#12151A;--ink-2:#2A3038;--v:#12151A;--v-mid:#2A3038;--v-tint:#F7F8FA;--v-tint-2:#E5E8ED;--font:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif;--container:1180px;--gutter:44px}
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      body{margin:0;font-family:var(--font);line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:var(--accent)}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -60,7 +63,7 @@ const imgSrc = (key) => key ? `${R2_BASE}/${key}` : '';
       .breadcrumb{font-size:13px;color:var(--muted);margin-bottom:16px}
       .breadcrumb a{color:var(--accent);text-decoration:none}
       .article-meta{font-size:14px;color:var(--muted);margin-top:12px}
-      .article-header h1{font-size:36px;letter-spacing:-0.02em;margin:0 0 10px;line-height:1.2}
+      .article-header h1{font-size:36px;letter-spacing:-.038em;margin:0 0 10px;line-height:1.2}
       .article-body{padding:48px 0 64px}
       .article-body h2{font-size:24px;letter-spacing:-0.01em;margin:36px 0 12px}
       .article-body h3{font-size:20px;margin:28px 0 10px}

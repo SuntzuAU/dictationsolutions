@@ -7,8 +7,8 @@
     "primary": "#1f2937",
     "background": "#ffffff",
     "neutral": "#f3f4f6",
-    "accent": "#16a34a",
-    "accentHover": "#15803d",
+    "accent": "#12151A",
+    "accentHover": "#2A3038",
     "text": "#111827",
     "muted": "#6b7280"
   },
@@ -515,7 +515,7 @@
     },
     {
       "q": "Do I need Dragon software or is cloud speech recognition enough?",
-      "a": "It depends on your workflow. Dragon Professional works offline, has deep Windows application integration, and can automate complex tasks by voice. <a href=\"https://www.speechrecognition.cloud\" style=\"color:#16a34a;font-weight:600\">speech to text software</a> from SpeechRecognition.cloud is a lightweight installed Windows app that works in any application - the base package is free and it is a cost-effective way to get started. We can help you work out which approach suits your situation."
+      "a": "It depends on your workflow. Dragon Professional works offline, has deep Windows application integration, and can automate complex tasks by voice. <a href=\"https://www.speechrecognition.cloud\" style=\"color:#12151A;font-weight:600\">speech to text software</a> from SpeechRecognition.cloud is a lightweight installed Windows app that works in any application - the base package is free and it is a cost-effective way to get started. We can help you work out which approach suits your situation."
     },
     {
       "q": "What dictation hardware do you recommend for healthcare?",
@@ -523,7 +523,7 @@
     },
     {
       "q": "Is Dragon Medical One available in Australia?",
-      "a": "Yes. <a href=\"https://www.voicerecognition.com.au/pages/dragon-medical-one\" style=\"color:#16a34a;font-weight:600\">Dragon Medical One</a> is available through <a href=\"https://www.voicerecognition.com.au\" style=\"color:#16a34a;font-weight:600\">Voice Recognition Australia</a>, Australia's number one Nuance/Microsoft reseller for speech recognition and Dragon software. VRA's founder and CEO Russell Bewsell has 28 years of experience in the speech recognition industry and is one of Australia's leading authorities on Dragon deployment in healthcare and enterprise. Contact Voice Recognition Australia for current Australian pricing."
+      "a": "Yes. <a href=\"https://www.voicerecognition.com.au/pages/dragon-medical-one\" style=\"color:#12151A;font-weight:600\">Dragon Medical One</a> is available through <a href=\"https://www.voicerecognition.com.au\" style=\"color:#12151A;font-weight:600\">Voice Recognition Australia</a>, Australia's number one Nuance/Microsoft reseller for speech recognition and Dragon software. VRA's founder and CEO Russell Bewsell has 28 years of experience in the speech recognition industry and is one of Australia's leading authorities on Dragon deployment in healthcare and enterprise. Contact Voice Recognition Australia for current Australian pricing."
     },
     {
       "q": "What is a foot pedal used for in dictation?",

@@ -9,7 +9,7 @@ const c = site.colours;
 const year = new Date().getFullYear();
 const R2_BASE = import.meta.env.PUBLIC_R2_BASE || "";
 const primaryColour = c.primary || "#1f2937";
-const accentColour = c.accent || "#16a34a";
+const accentColour = c.accent || "var(--accent)";
 
 function imgSrc(key) {
   const entry = manifest[key];
@@ -39,10 +39,13 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
     <meta name="description" content={metaDesc} />
     <link rel="canonical" href={`${site.domain}/speech-recognition-cloud`} />
     {site.googleAnalyticsId && (<script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script><script define:vars={{ gaId: site.googleAnalyticsId }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);</script>)}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" />
     <style is:inline>
-:root{--bg:#ffffff;--text:#111827;--primary:#1f2937;--accent:#16a34a;--accentHover:#15803d;--muted:#6b7280;--neutral:#f3f4f6}
+:root{--bg:#ffffff;--text:#12151A;--primary:#12151A;--accent:#12151A;--accentHover:#2A3038;--muted:#5A6473;--neutral:#F7F8FA;--line:#E5E8ED;--soft:#F7F8FA;--ink:#12151A;--ink-2:#2A3038;--v:#12151A;--v-mid:#2A3038;--v-tint:#F7F8FA;--v-tint-2:#E5E8ED;--font:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif;--container:1180px;--gutter:44px}
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      body{margin:0;font-family:var(--font);line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -79,12 +82,12 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
       .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
       section{padding:28px 0}
-      .page-hero{padding:36px 0 40px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 55%,#16a34a 100%);color:white}
+      .page-hero{padding:36px 0 40px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 55%,var(--accent) 100%);color:white}
       .page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
       .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:16px;font-weight:500}
       .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
       .breadcrumb-sep{margin:0 6px;color:rgba(255,255,255,.4)}
-      .page-hero h1{font-size:34px;line-height:1.1;margin:0 0 14px;letter-spacing:-0.03em;font-weight:800;color:white}
+      .page-hero h1{font-size:34px;line-height:1.1;margin:0 0 14px;letter-spacing:-.038em;font-weight:800;color:white}
       .page-hero .subhead{font-size:16px;line-height:1.65;margin:0 0 24px;color:rgba(255,255,255,.85)}
       .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
       .pill-badge{display:inline-block;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;background:var(--accent);color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em}
@@ -96,7 +99,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .stat-val{font-size:22px;font-weight:800;color:#fff;line-height:1}
       .stat-lbl{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
       .sh{margin-bottom:18px}
-      .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 6px;font-weight:800}
+      .sh h2{font-size:26px;letter-spacing:-.035em;margin:0 0 6px;font-weight:800}
       .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}.c3{grid-column:span 3}
@@ -127,7 +130,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .compare-table thead tr{border:none}
       .compare-table th{padding:16px 14px;font-weight:700;font-size:13px;text-align:center;vertical-align:bottom}
       .compare-table th:first-child{text-align:left;background:#1a2f5e;color:#fff;width:26%}
-      .th-src{background:#15803d;color:#fff;width:22%;border-left:3px solid #166534;border-right:3px solid #166534}
+      .th-src{background:var(--accentHover);color:#fff;width:22%;border-left:3px solid #166534;border-right:3px solid #166534}
       .th-other{background:#374151;color:#e5e7eb;width:17%}
       .th-name{font-size:14px;font-weight:800;display:block;margin-bottom:3px;line-height:1.2}
       .th-sub{font-size:11px;font-weight:500;opacity:.75;display:block;margin-top:4px}
@@ -147,7 +150,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .compare-table td.src-col.no-cell{color:rgba(255,255,255,.6)}
       /* Other columns */
       .compare-table td.other-col{background:#f9fafb;color:#6b7280}
-      .yes{color:#15803d;font-weight:700}
+      .yes{color:var(--accentHover);font-weight:700}
       .no{color:#9ca3af}
       .warn{color:#d97706;font-weight:600}
       /* CTA row */
@@ -156,7 +159,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .compare-table .cta-row td.other-col{background:#f1f5f9}
       /* Row hover */
       .compare-table tbody tr:not(.group-row):not(.cta-row):hover td:first-child{background:#f0f9ff}
-      .compare-table tbody tr:not(.group-row):not(.cta-row):hover td.src-col{background:#15803d}
+      .compare-table tbody tr:not(.group-row):not(.cta-row):hover td.src-col{background:var(--accentHover)}
       .use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
       .use-case{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px;border-top:3px solid var(--accent)}
       .use-case h3{font-size:15px;font-weight:700;margin:0 0 8px;color:var(--primary)}
