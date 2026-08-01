@@ -338,25 +338,25 @@
       "slug": "dragon-professional-anywhere",
       "heroImageKey": "dpa-hero",
       "featureImageKey": "dpa-feature",
-      "badge": "End of Life — replaced by SpeechRecognition.cloud",
+      "badge": "Approaching end of life",
       "navLabel": "Dragon Professional Anywhere",
       "title": "Dragon Professional Anywhere",
       "metaTitle": "Dragon Professional Anywhere End of Life | What to Use Instead | Australia",
       "metaDesc": "Dragon Professional Anywhere is end of life and will not be sold after 31 December 2026. SpeechRecognition.cloud is the recommended replacement for Australian users — browser based, 57 languages, free tier. Talk to Voice Recognition Australia.",
-      "headline": "Dragon Professional Anywhere is being retired",
-      "subheadline": "Dragon Professional Anywhere reaches end of life and will no longer be sold from 1 January 2027. If you are looking for cloud speech recognition today, SpeechRecognition.cloud is the replacement we recommend — browser based, no installation, 57 languages, and a free tier so you can test it before committing.",
+      "headline": "Dragon Professional Anywhere is approaching end of life",
+      "subheadline": "Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year. If you are looking at cloud speech recognition now, SpeechRecognition.cloud is the replacement we recommend — browser based, nothing to install, 57 languages, and a free tier so you can trial it before moving your team.",
       "price": "From Free",
       "priceNote": "SpeechRecognition.cloud pricing — free tier, professional and medical plans",
-      "licenceNote": "Dragon Professional Anywhere: available until 31 December 2026, existing subscriptions honoured to their renewal date. SpeechRecognition.cloud: cloud based, no installation.",
+      "licenceNote": "Dragon Professional Anywhere and Dragon Professional Legal are being retired by the end of the year. Existing subscriptions are honoured to their renewal date. SpeechRecognition.cloud is cloud based with no installation.",
       "installLimit": "Browser based",
       "bestFor": "Anyone currently on, or considering, Dragon Anywhere",
       "vraUrl": "https://www.speechrecognition.cloud",
       "ctaText": "Try SpeechRecognition.cloud free",
       "features": [
-        "Dragon Professional Anywhere will not be sold after 31 December 2026",
+        "Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year",
         "Existing subscriptions are honoured through to their renewal date",
         "SpeechRecognition.cloud is the recommended replacement for cloud dictation",
-        "Browser based — works on Windows, Mac, and any device with a browser",
+        "Browser based — works on Windows, Mac and any device with a browser",
         "57 languages supported, including regional dialects",
         "Free tier available, so you can trial it before moving your team",
         "Professional and medical plans with specialist vocabulary",
@@ -365,24 +365,24 @@
       ],
       "faqs": [
         {
-          "q": "When does Dragon Professional Anywhere reach end of life?",
-          "a": "Dragon Professional Anywhere will no longer be sold from 1 January 2027. New licences are available until 31 December 2026."
-        },
-        {
-          "q": "What happens to my existing subscription?",
-          "a": "Existing subscriptions are honoured through to their renewal date. We recommend planning your move before renewal so there is no gap in service. Voice Recognition Australia can map out the timing with you."
+          "q": "Is Dragon Professional Anywhere being discontinued?",
+          "a": "Yes. Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year. Existing subscriptions are honoured through to their renewal date."
         },
         {
           "q": "What should I use instead?",
-          "a": "For cloud dictation, SpeechRecognition.cloud is the replacement we recommend. It is browser based with nothing to install, supports 57 languages, and has a free tier so you can trial it against your own workflow before committing. Healthcare users should also look at Dragon Medical One."
+          "a": "For cloud dictation, SpeechRecognition.cloud is the replacement we recommend. It is browser based with nothing to install, supports 57 languages, and has a free tier so you can trial it against your own workflow first. Healthcare users should look at Dragon Medical One."
         },
         {
-          "q": "Is SpeechRecognition.cloud a like-for-like replacement?",
+          "q": "Is it a like-for-like replacement?",
           "a": "For dictation and transcription, yes — and it removes the installation and device-licensing overhead. If you rely on Dragon's deep Windows application control and voice macros, Dragon Professional 16 remains available as a desktop, perpetual-licence option. We can advise which fits your workflow."
         },
         {
+          "q": "What happens to my existing subscription?",
+          "a": "It runs to its renewal date. We recommend planning the move before renewal so there is no gap in service — Voice Recognition Australia can map the timing out with you."
+        },
+        {
           "q": "Can you help us migrate?",
-          "a": "Yes. Voice Recognition Australia handles setup, user training and migration planning for Australian teams moving off Dragon Anywhere. Get in touch and we will scope it around your renewal date."
+          "a": "Yes. We handle setup, user training and migration planning for Australian teams moving off Dragon Anywhere or Dragon Legal. Get in touch and we will scope it around your renewal date."
         }
       ],
       "highlight": false
