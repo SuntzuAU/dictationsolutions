@@ -1,0 +1,17 @@
+---
+export interface Props { kicker:string; heading:string; steps:{title:string;body:string}[] }
+const { kicker, heading, steps } = Astro.props;
+---
+<section class="sec-lg surface-soft">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">{kicker}</div><h2>{heading}</h2></div>
+    <div class="steps">
+      {steps.map((s,i)=>(
+        <div class="step">
+          <div class="n">Step {String(i+1).padStart(2,'0')}</div>
+          <h3>{s.title}</h3><p>{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

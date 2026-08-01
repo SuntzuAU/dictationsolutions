@@ -1,0 +1,23 @@
+---
+export interface Props { heading:string; items:{q:string;a:string}[] }
+const { heading, items } = Astro.props;
+const schema = {
+  "@context":"https://schema.org","@type":"FAQPage",
+  mainEntity: items.map(i=>({"@type":"Question",name:i.q,
+    acceptedAnswer:{"@type":"Answer",text:i.a}}))
+};
+---
+<section class="sec-lg">
+  <div class="wrap">
+    <div class="sec-head"><h2>{heading}</h2></div>
+    <div class="faq">
+      {items.map((i,n)=>(
+        <details open={n===0}>
+          <summary>{i.q}</summary>
+          <p>{i.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
