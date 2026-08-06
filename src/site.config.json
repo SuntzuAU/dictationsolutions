@@ -25,7 +25,7 @@
     "benefitsHeading": "Why professionals choose dictation and speech recognition solutions",
     "benefitsSubheading": "The right tool for your workflow - hardware, software, and cloud options tailored to how you work.",
     "compareHeading": "Our most popular solutions",
-    "compareSubheading": "Dragon Professional 16 for desktop power users, Dragon Medical One for healthcare, and SpeechRecognition.cloud as the best speech recognition software for browser-based teams.",
+    "compareSubheading": "Philips SpeechLive for cloud dictation and workflow, plus the two new AI Assistants that turn what you dictate into a finished, templated document.",
     "howItWorksSubheading": "Simple to buy, easy to deploy, supported by local Australian experts.",
     "ctaHeading": "Not sure which approach is right for you?",
     "ctaBody": "Our team has been helping Australian professionals choose dictation and speech recognition solutions for 25 years. Tell us about your workflow and we will point you in the right direction.",
@@ -136,9 +136,9 @@
     }
   ],
   "homepageProducts": [
-    "cloud-speech-solutions",
-    "dragon-professional-16",
-    "dragon-medical-one"
+    "philips-speechlive",
+    "speechlive-legal",
+    "speechlive-professional"
   ],
   "products": [
     {
@@ -482,6 +482,30 @@
           "a": "Yes. We employ transcriptionists with medical and legal industry experience. Healthcare and legal terminology is standard for our specialists."
         }
       ]
+    },
+    {
+      "slug": "speechlive-legal",
+      "badge": "New · Legal AI",
+      "navLabel": "Legal AI Assistant",
+      "title": "SpeechLive Legal AI",
+      "bestFor": "Law firms and in-house counsel",
+      "price": "Contact us",
+      "priceNote": "Add-on to a SpeechLive subscription",
+      "ctaText": "Explore Legal AI",
+      "vraUrl": "/legal/",
+      "homepageOnly": true
+    },
+    {
+      "slug": "speechlive-professional",
+      "badge": "New · Professional AI",
+      "navLabel": "Professional AI Assistant",
+      "title": "SpeechLive Professional AI",
+      "bestFor": "Finance, insurance, construction, real estate",
+      "price": "Contact us",
+      "priceNote": "Add-on to a SpeechLive subscription",
+      "ctaText": "Explore Professional AI",
+      "vraUrl": "/professional/",
+      "homepageOnly": true
     }
   ],
   "benefits": [

@@ -6,7 +6,8 @@ import manifest from "../data/image-manifest.json";
 import ACForm from "../components/ACForm.astro";
 
 export function getStaticPaths() {
-  return site.products.map((p) => ({
+  // homepageOnly entries are cards on the homepage, not pages of their own
+  return site.products.filter((p) => !p.homepageOnly).map((p) => ({
     params: { product: p.slug },
     props: { product: p },
   }));

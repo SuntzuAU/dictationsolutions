@@ -2,6 +2,7 @@
 import ProductLayout from "../layouts/ProductLayout.astro";
 import Hero from "../components/Hero.astro";
 import DocMock from "../components/DocMock.astro";
+import HeroImage from "../components/HeroImage.astro";
 import Pain from "../components/Pain.astro";
 import Steps from "../components/Steps.astro";
 import FeatureCards from "../components/FeatureCards.astro";
@@ -28,7 +29,9 @@ import Disclaimer from "../components/Disclaimer.astro";
     secondaryCta={{ text: "Book a demonstration", href: "#register" }}
     partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
   >
-    <DocMock
+    <div class="hero-media">
+      <HeroImage imageKey="dictationsolutions/2026/08/06/speechlive-legal-ai-australian-solicitor-dictating-hero-48963821.jpg" alt="Australian solicitor dictating an attendance note into a handheld dictation microphone at her desk" />
+      <DocMock
       file="Attendance note · Draft"
       heading="Attendance Note — Henderson"
       from="Drafted from 1 recording + 2 attached files"
@@ -37,7 +40,8 @@ import Disclaimer from "../components/Disclaimer.astro";
         { title: "§2 · Advice given", body: "Prospects assessed; limitation period diarised." },
         { title: "§3 · Next steps",   body: "Letter of demand to issue within 14 days." },
       ]}
-    />
+      />
+    </div>
   </Hero>
 
   <Pain

@@ -1,0 +1,10 @@
+---
+/** Hero photograph. Resolves a bare R2 key against PUBLIC_R2_BASE. */
+export interface Props { imageKey: string; alt: string }
+const { imageKey, alt } = Astro.props;
+const BASE = (import.meta.env.PUBLIC_R2_BASE ?? 'https://pub-c7a09e1ddb7c45e6a38fcdca1e4b6897.r2.dev').replace(/\/$/, '');
+const src = `${BASE}/${imageKey}`;
+---
+<figure class="hero-photo">
+  <img src={src} alt={alt} width="1376" height="768" loading="eager" fetchpriority="high" />
+</figure>

@@ -27,7 +27,12 @@ const homepageProducts = homepageSlugs
   .map(slug => site.products.find(p => p.slug === slug))
   .filter(Boolean);
 
-const darkBoxProducts = site.products?.filter(p => p.slug !== 'transcription-services');
+const EXCLUDE_FROM_GLANCE = new Set([
+  'transcription-services',
+  'dragon-professional-anywhere',  // approaching end of life
+  'dictation-hardware',            // duplicate of /dictation-equipment
+]);
+const darkBoxProducts = site.products?.filter(p => !EXCLUDE_FROM_GLANCE.has(p.slug));
 
 const recentPosts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
@@ -133,6 +138,16 @@ const benefitIcons = [
       .compare-card{background:#fff;border:2px solid #e5e7eb;border-radius:20px;padding:24px;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s;text-decoration:none;color:inherit}
       .compare-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(22,163,74,.15);transform:translateY(-2px)}
       .compare-card.src-highlight{border-color:#2563eb;background:linear-gradient(135deg,#eff6ff,#fff)}
+      .compare-card.v-legal{border-color:#A80DF1;background:linear-gradient(150deg,#FAF2FE,#fff)}
+      .compare-card.v-legal:hover{border-color:#7A0BB5;box-shadow:0 8px 32px rgba(168,13,241,.18)}
+      .compare-card.v-prof{border-color:#1B3BC4;background:linear-gradient(150deg,#F2F5FC,#fff)}
+      .compare-card.v-prof:hover{border-color:#0A2394;box-shadow:0 8px 32px rgba(27,59,196,.18)}
+      .product-badge.badge-legal{background:#7A0BB5}
+      .product-badge.badge-prof{background:#0A2394}
+      .compare-price.price-legal{color:#7A0BB5}
+      .compare-price.price-prof{color:#0A2394}
+      .compare-card.v-legal:hover .compare-btn{background:#7A0BB5;color:#fff}
+      .compare-card.v-prof:hover .compare-btn{background:#0A2394;color:#fff}
       .compare-card.src-highlight:hover{border-color:#1d4ed8;box-shadow:0 8px 32px rgba(37,99,235,.2)}
       .product-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em;background:var(--accent);color:#fff}
       .product-badge.badge-blue{background:#2563eb}
@@ -333,19 +348,25 @@ const benefitIcons = [
             {homepageProducts.map((p) => {
               const isSRC = p.slug === 'cloud-speech-solutions';
               const isDMO = p.slug === 'dragon-medical-one';
-              const href = isSRC ? 'https://www.speechrecognition.cloud' : isDMO ? 'https://dragonmedicalone.au' : `/${p.slug}`;
-              const cardClass = `compare-card c4${isSRC ? ' src-highlight' : ''}`;
+              const isAI  = p.slug === 'speechlive-legal' || p.slug === 'speechlive-professional';
+              const href = p.homepageOnly ? p.vraUrl
+                         : isSRC ? 'https://www.speechrecognition.cloud'
+                         : isDMO ? 'https://dragonmedicalone.au'
+                         : `/${p.slug}/`;
+              const vertical = p.slug === 'speechlive-legal' ? 'legal'
+                            : p.slug === 'speechlive-professional' ? 'prof' : '';
+              const cardClass = `compare-card c4${isSRC ? ' src-highlight' : ''}${vertical ? ' v-' + vertical : ''}`;
               return (
                 <div class={cardClass}>
-                  <div class={`product-badge${isSRC ? ' badge-blue' : ''}`}>{p.badge}</div>
+                  <div class={`product-badge${isSRC ? ' badge-blue' : ''}${vertical ? ' badge-' + vertical : ''}`}>{p.badge}</div>
                   <h3 class="compare-title">
                     <a href={href} class="compare-link" target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined}>{p.title}</a>
                   </h3>
                   <div class="compare-for">{p.bestFor}</div>
-                  <div class={`compare-price${isSRC ? ' price-blue' : ''}`}>{p.price}</div>
+                  <div class={`compare-price${isSRC ? ' price-blue' : ''}${vertical ? ' price-' + vertical : ''}`}>{p.price}</div>
                   <div class="compare-pricenote">{p.priceNote}</div>
                   {isSRC && <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:12px">Free tier available &bull; 57 languages</div>}
-                  <a href={href} class="compare-btn" target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined} aria-label={isSRC ? 'Try speech-to-text software free' : `View ${p.title} details`}>{isSRC ? 'Try speech-to-text software free \u2192' : 'View details \u2192'}</a>
+                  <a href={href} class="compare-btn" target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined} aria-label={isSRC ? 'Try speech-to-text software free' : `View ${p.title} details`}>{p.ctaText ? p.ctaText + ' \u2192' : isSRC ? 'Try speech-to-text software free \u2192' : 'View details \u2192'}</a>
                 </div>
               );
             })}

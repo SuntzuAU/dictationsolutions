@@ -2,6 +2,7 @@
 import ProductLayout from "../layouts/ProductLayout.astro";
 import Hero from "../components/Hero.astro";
 import DocMock from "../components/DocMock.astro";
+import HeroImage from "../components/HeroImage.astro";
 import Pain from "../components/Pain.astro";
 import Steps from "../components/Steps.astro";
 import FeatureCards from "../components/FeatureCards.astro";
@@ -27,7 +28,9 @@ import Disclaimer from "../components/Disclaimer.astro";
     secondaryCta={{ text: "Book a demonstration", href: "#register" }}
     partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
   >
-    <DocMock
+    <div class="hero-media">
+      <HeroImage imageKey="dictationsolutions/2026/08/06/speechlive-professional-ai-site-inspector-dictating-report-h-f59d9133.jpg" alt="Site inspector dictating an inspection report on a construction site using a handheld microphone and Windows tablet" />
+      <DocMock
       file="Site inspection · Draft"
       heading="Inspection Report — Lot 14, Marsden"
       from="Drafted from 1 recording + 3 attached files"
@@ -36,7 +39,8 @@ import Disclaimer from "../components/Disclaimer.astro";
         { title: "§2 · Observations",   body: "Moisture ingress noted to southern elevation." },
         { title: "§3 · Recommendation", body: "Remediation quote to be obtained before settlement." },
       ]}
-    />
+      />
+    </div>
   </Hero>
 
   <Pain
