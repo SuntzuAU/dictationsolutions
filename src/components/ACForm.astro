@@ -1,5 +1,5 @@
 ---
-// ActiveCampaign form 287 - complete embed with full AC validation and submission logic
+// ActiveCampaign form 287 - with reCAPTCHA and intl-tel-input phone field
 ---
 
 <div class="ac-form-wrapper">
@@ -11,41 +11,54 @@
     <input type="hidden" name="m" value="0" />
     <input type="hidden" name="act" value="sub" />
     <input type="hidden" name="v" value="2" />
-    <input type="hidden" name="or" value="74d80ece-4b93-4925-a1de-22d5aabdabb7" />
+    <input type="hidden" name="or" value="237a79c4-9a59-4259-bb6b-ad08e2404edc" />
     <div class="_form-content">
       <div class="_form_element _x31455613 _full_width">
+        <label for="firstname" class="_form-label"></label>
         <div class="_field-wrapper">
           <input type="text" id="firstname" name="firstname" placeholder="Your Name" required/>
         </div>
       </div>
       <div class="_form_element _x81578100 _full_width">
+        <label for="email" class="_form-label"></label>
         <div class="_field-wrapper">
           <input type="text" id="email" name="email" placeholder="Your Email" required/>
         </div>
       </div>
       <div class="_form_element _x15938165 _full_width">
+        <label for="phone" class="_form-label"></label>
         <div class="_field-wrapper">
-          <input type="text" id="field36" name="field[36]" placeholder="Your Phone Number" autocomplete="off" />
+          <input type="text" id="phone" name="phone" placeholder="Your Phone Number" />
         </div>
       </div>
       <div class="_form_element _x18932205 _full_width">
+        <label for="field[21]" class="_form-label"></label>
         <div class="_field-wrapper">
           <input type="text" id="field[21]" name="field[21]" value="" placeholder="Number of Users" />
         </div>
       </div>
       <div class="_form_element _x04855334 _full_width">
+        <label for="field[35]" class="_form-label"></label>
         <div class="_field-wrapper">
           <input type="text" id="field[35]" name="field[35]" value="" placeholder="Company / Organisation" />
         </div>
       </div>
       <div class="_form_element _x92520415 _full_width">
+        <label for="field[18]" class="_form-label"></label>
         <div class="_field-wrapper">
           <textarea id="field[18]" name="field[18]" placeholder="Optionally describe your needs"></textarea>
         </div>
       </div>
+      <div class="_form_element _x50821106 _full_width">
+        <label for="g-recaptcha-response" class="_form-label">
+          Please verify your request.<span class="field-required"> *</span>
+        </label>
+        <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go"></div>
+      </div>
       <div class="_button-wrapper _full_width">
         <button id="_form_287_submit" class="_submit" type="submit">Request Information</button>
       </div>
+      <div class="_clear-element"></div>
     </div>
     <div class="_form-thank-you" style="display:none;"></div>
   </form>
@@ -242,6 +255,72 @@
     padding: 20px 0;
   }
 
+  .ac-form-wrapper #_form_287_ .field-required {
+    color: #FF0000;
+  }
+
+  .ac-form-wrapper #_form_287_ ._form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+  }
+
+  .ac-form-wrapper #_form_287_ .g-recaptcha {
+    margin-bottom: 12px;
+  }
+
+  .ac-form-wrapper #_form_287_ .phone-error-hidden {
+    display: none;
+  }
+
+  .ac-form-wrapper #_form_287_ .phone-error {
+    color: #E40E49;
+  }
+
+  .ac-form-wrapper #_form_287_ .phone-input-error {
+    border: 1px solid #E40E49 !important;
+  }
+
+  .ac-form-wrapper #_form_287_ .iti {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .ac-form-wrapper #_form_287_ .iti.iti--allow-dropdown.iti--separate-dial-code {
+    width: 100%;
+  }
+
+  .ac-form-wrapper #_form_287_ .iti input {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 0;
+  }
+
+  .ac-form-wrapper #_form_287_ .iti--separate-dial-code .iti__selected-flag {
+    background-color: #FFFFFF;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .ac-form-wrapper #_form_287_ .iti--separate-dial-code .iti__selected-flag:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .ac-form-wrapper #_form_287_ .iti__country-list {
+    border-radius: 4px;
+    margin-top: 4px;
+    min-width: 460px;
+  }
+
+  .ac-form-wrapper #_form_287_ ._show_be_error {
+    min-width: 100%;
+  }
+
+  .ac-form-wrapper #_form_287_ ._clear-element {
+    clear: left;
+  }
+
   @keyframes _spin {
     0% { transform: translate(-50%, -50%) rotate(90deg); }
     100% { transform: translate(-50%, -50%) rotate(450deg); }
@@ -257,12 +336,16 @@
       padding: 14px 16px !important;
       font-size: 16px;
     }
+    .ac-form-wrapper #_form_287_ .iti__country-list {
+      min-width: 100%;
+    }
   }
 </style>
 
 <script is:inline>
 (function() {
-  window.cfields = {"36":"phone_number","21":"number_of_users","35":"company","18":"comments_about_your_needs"};
+  window.cfields = {"21":"number_of_users","35":"company","18":"comments_about_your_needs"};
+  var iti;
 
   window._show_thank_you = function(id, message, trackcmp_url, email) {
     var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
@@ -340,6 +423,9 @@
       switch (form.elements[i].nodeName) {
         case 'INPUT':
           switch (form.elements[i].type) {
+            case 'tel':
+              q.push(form.elements[i].name + "=" + encodeURIComponent(form.elements[i].previousSibling.querySelector('div.iti__selected-dial-code').innerText) + encodeURIComponent(" ") + encodeURIComponent(form.elements[i].value));
+              break;
             case 'text':
             case 'number':
             case 'date':
@@ -416,16 +502,21 @@
     return false;
   };
 
+  var acctDateFormat = "$d/%m/%y";
+
   for (var i = 0; i < allInputs.length; i++) {
     var regexStr = "field\\[(\\d+)\\]";
     var results = new RegExp(regexStr).exec(allInputs[i].name);
     if (results != undefined) {
-      allInputs[i].dataset.name = window.cfields[results[1]];
+      allInputs[i].dataset.name = allInputs[i].name.match(/\[time\]$/)
+        ? window.cfields[results[1]] + '_time'
+        : window.cfields[results[1]];
     } else {
       allInputs[i].dataset.name = allInputs[i].name;
     }
     var fieldVal = getUrlParam(allInputs[i].dataset.name);
     if (fieldVal) {
+      if (allInputs[i].dataset.autofill === "false") { continue; }
       if (allInputs[i].type == "radio" || allInputs[i].type == "checkbox") {
         if (allInputs[i].value == fieldVal) { allInputs[i].checked = true; }
       } else {
@@ -501,7 +592,56 @@
     elem.removeAttribute('aria-describedby');
     if (elem.type != 'checkbox') elem.className = elem.className.replace(/ ?_has_error ?/g, '');
     if (elem.getAttribute('required') !== null) {
-      if (value === undefined || value === null || value === '') {
+      if (elem.type == 'radio' || (elem.type == 'checkbox' && /any/.test(elem.className))) {
+        var elems = form_to_submit.elements[elem.name];
+        if (!(elems instanceof NodeList || elems instanceof HTMLCollection) || elems.length <= 1) {
+          no_error = elem.checked;
+        } else {
+          no_error = false;
+          for (var i = 0; i < elems.length; i++) {
+            if (elems[i].checked) no_error = true;
+          }
+        }
+        if (!no_error) {
+          tooltip = create_tooltip(elem, "Please select an option.");
+        }
+      } else if (elem.type == 'checkbox') {
+        var elems = form_to_submit.elements[elem.name], found = false, err = [];
+        no_error = true;
+        for (var i = 0; i < elems.length; i++) {
+          if (elems[i].getAttribute('required') === null) continue;
+          if (!found && elems[i] !== elem) return true;
+          found = true;
+          elems[i].className = elems[i].className.replace(/ ?_has_error ?/g, '');
+          if (!elems[i].checked) {
+            no_error = false;
+            elems[i].className = elems[i].className + ' _has_error';
+            err.push("Checking %s is required".replace("%s", elems[i].value));
+          }
+        }
+        if (!no_error) {
+          tooltip = create_tooltip(elem, err.join('<br/>'));
+        }
+      } else if (elem.tagName == 'SELECT') {
+        var selected = true;
+        if (elem.multiple) {
+          selected = false;
+          for (var i = 0; i < elem.options.length; i++) {
+            if (elem.options[i].selected) { selected = true; break; }
+          }
+        } else {
+          for (var i = 0; i < elem.options.length; i++) {
+            if (elem.options[i].selected && (!elem.options[i].value || (elem.options[i].value.match(/\n/g)))) {
+              selected = false;
+            }
+          }
+        }
+        if (!selected) {
+          elem.className = elem.className + ' _has_error';
+          no_error = false;
+          tooltip = create_tooltip(elem, "Please select an option.");
+        }
+      } else if (value === undefined || value === null || value === '') {
         elem.className = elem.className + ' _has_error';
         no_error = false;
         tooltip = create_tooltip(elem, "This field is required.");
@@ -514,6 +654,13 @@
         tooltip = create_tooltip(elem, "Enter a valid email address.");
       }
     }
+    if (no_error && (elem.id == 'phone')) {
+      if (elem.value.trim() && typeof iti != 'undefined' && !iti.isValidNumber()) {
+        elem.className = elem.className + ' _has_error';
+        no_error = false;
+        tooltip = create_tooltip(elem, "Enter a valid phone number.");
+      }
+    }
     if (tooltip) resize_tooltip(tooltip);
     if (!no_error && elem.hasAttribute('id')) {
       elem.setAttribute('aria-invalid', 'true');
@@ -524,7 +671,25 @@
 
   var needs_validate = function(el) {
     if (el.getAttribute('required') !== null) { return true; }
-    if (el.name === 'email' && el.value !== "") { return true; }
+    if ((el.name === 'email' || el.name === 'phone') && el.value !== "") { return true; }
+    return false;
+  };
+
+  var validate_email_or_phone_required = function() {
+    var emailInput = form_to_submit.querySelector('input[name="email"]');
+    var phoneInput = form_to_submit.querySelector('input[name="phone"]');
+    if (!emailInput && !phoneInput) { return true; }
+    var hasEmailValue = emailInput && emailInput.value.trim() !== '';
+    var hasPhoneValue = phoneInput && phoneInput.value.trim() !== '';
+    if (hasEmailValue || hasPhoneValue) { return true; }
+    var errorField = emailInput || phoneInput;
+    errorField.className = errorField.className.replace(/ ?_has_error ?/g, '') + ' _has_error';
+    var tooltip = create_tooltip(errorField, "Forms must have an email field or a phone field present");
+    resize_tooltip(tooltip);
+    errorField.setAttribute('aria-invalid', 'true');
+    if (errorField.hasAttribute('id')) {
+      errorField.setAttribute('aria-describedby', errorField.id + '-error');
+    }
     return false;
   };
 
@@ -535,7 +700,7 @@
       for (var i = 0, len = allInputs.length; i < len; i++) {
         var input = allInputs[i];
         if (needs_validate(input)) {
-          if (input.type == 'text' || input.type == 'number' || input.type == 'time') {
+          if (input.type == 'text' || input.type == 'number' || input.type == 'time' || input.type == 'tel') {
             input.addEventListener('blur', function() {
               this.value = this.value.trim();
               validate_field(this, true);
@@ -543,6 +708,18 @@
             input.addEventListener('input', function() {
               validate_field(this, true);
             });
+          } else if (input.type == 'radio' || input.type == 'checkbox') {
+            (function(el) {
+              var radios = form_to_submit.elements[el.name];
+              if (!Array.isArray(radios)) radios = [radios];
+              for (var i = 0; i < radios.length; i++) {
+                radios[i].addEventListener('change', function() { validate_field(el, true); });
+              }
+            })(input);
+          } else if (input.tagName == 'SELECT') {
+            input.addEventListener('change', function() { validate_field(this, true); });
+          } else if (input.type == 'textarea') {
+            input.addEventListener('input', function() { validate_field(this, true); });
           }
         }
       }
@@ -556,6 +733,9 @@
         }
         validate_field(elem) ? true : no_error = false;
       }
+    }
+    if (!validate_email_or_phone_required()) {
+      no_error = false;
     }
     if (!no_error && e) { e.preventDefault(); }
     if (!no_error) {
@@ -571,8 +751,50 @@
   window.addEventListener('resize', resize_tooltips);
   window.addEventListener('scroll', resize_tooltips);
 
+  // Initialize intl-tel-input for phone field
+  var initializePhoneInput = function(inputPhone) {
+    var stylesheetLink = document.createElement('link');
+    stylesheetLink.rel = 'stylesheet';
+    stylesheetLink.href = 'https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.0/build/css/intlTelInput.css';
+    document.head.appendChild(stylesheetLink);
+    window._load_script('https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.0/build/js/intlTelInput.min.js', function() {
+      inputPhone.setAttribute("name", "phone-iti");
+      iti = intlTelInput(inputPhone, {
+        loadUtils: function() { return import('https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.0/build/js/utils.js'); },
+        hiddenInput: function(telInputName) { return { phone: 'phone' }; },
+        separateDialCode: true,
+        autoPlaceholder: 'aggressive',
+        initialCountry: "au",
+      });
+    }, false);
+  };
+
+  var inputPhone = form_to_submit.querySelector('input[name="phone"]');
+  if (inputPhone) {
+    initializePhoneInput(inputPhone);
+  }
+
+  // Load reCAPTCHA
+  window['recaptcha_callback'] = function() {
+    var recaptchas = document.getElementsByClassName("g-recaptcha");
+    for (var i in recaptchas) {
+      var recaptcha_id = "recaptcha_" + i;
+      recaptchas[i].id = recaptcha_id;
+      var el = document.getElementById(recaptcha_id);
+      if (el != null) {
+        var sitekey = el.getAttribute("data-sitekey");
+        var stoken = el.getAttribute("data-stoken");
+        grecaptcha.render(recaptcha_id, {"sitekey": sitekey, "stoken": stoken});
+      }
+    }
+  };
+  _load_script("https://www.google.com/recaptcha/api.js?onload=recaptcha_callback&render=explicit");
+
   var form_submit = function(e) {
     e.preventDefault();
+    if (form_to_submit.querySelector('input[name="phone"]') && typeof iti != 'undefined') {
+      form_to_submit.querySelector('input[name="phone"]').value = iti.getNumber();
+    }
     if (validate_form(e)) {
       var submitButton = e.target.querySelector('#_form_287_submit');
       submitButton.disabled = true;
