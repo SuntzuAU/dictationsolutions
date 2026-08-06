@@ -34,7 +34,7 @@ This page compares the realistic options for Australian students, parents, schoo
 
 ## The short version
 
-If a student needs to **dictate** — essays, assignments, exam practice, homework, emails — [Speech Recognition Cloud](https://www.speechrecognition.cloud) does that job at a fraction of Dragon's cost and installs in a couple of minutes.
+If a student needs to **dictate** — essays, assignments, exam practice, homework, emails — [voice-to-text software](https://www.speechrecognition.cloud) does that job at a fraction of Dragon's cost and installs in a couple of minutes.
 
 If a student needs to **control the whole computer by voice** — navigate menus, click, run macros, operate a PC with little or no hand use — Dragon is still the stronger product, and we will tell you that honestly.
 
@@ -124,7 +124,7 @@ Schools should also check assessment rules early. Australian exam authorities pe
 
 ## Getting started
 
-**Parents and individual students** — start with the free edition and find out whether dictation actually helps before spending anything. You can [download it here](https://www.speechrecognition.cloud).
+**Parents and individual students** — start with the free edition and find out whether dictation actually helps before spending anything. You can [download free speech-to-text software for students](https://www.speechrecognition.cloud).
 
 **Schools, universities and disability teams** — we have been deploying speech recognition in Australian education for 25 years. Tell us the number of students, the environment and the constraints, and we will tell you honestly whether Speech Recognition Cloud, Dragon, or a mix of both is the right answer.
 

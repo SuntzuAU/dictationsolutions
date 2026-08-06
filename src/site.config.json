@@ -96,7 +96,7 @@
     ]
   },
   "primaryCTA": {
-    "text": "Free Download",
+    "text": "Try speech-to-text free",
     "url": "https://www.speechrecognition.cloud"
   },
   "secondaryCTA": {
@@ -207,7 +207,7 @@
       "installLimit": "Browser-based",
       "bestFor": "Cloud-first users - free tier available",
       "vraUrl": "https://www.speechrecognition.cloud",
-      "ctaText": "Visit SpeechRecognition.cloud",
+      "ctaText": "Try speech-to-text software free",
       "features": [
         "Browser-based - works on any device with a web browser",
         "57 languages supported - global and regional dialects",
@@ -351,7 +351,7 @@
       "installLimit": "Browser based",
       "bestFor": "Anyone currently on, or considering, Dragon Anywhere",
       "vraUrl": "https://www.speechrecognition.cloud",
-      "ctaText": "Try SpeechRecognition.cloud free",
+      "ctaText": "Try cloud speech-to-text free",
       "features": [
         "Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year",
         "Existing subscriptions are honoured through to their renewal date",
