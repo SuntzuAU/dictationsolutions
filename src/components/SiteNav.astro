@@ -1,0 +1,91 @@
+---
+/**
+ * SiteNav — the single site header.
+ * CSS ships as an inline string (styles/chrome.ts) with literal token
+ * fallbacks so it renders on legacy pages too.
+ */
+import { navCss } from "../styles/chrome";
+export interface Props { active?: string | null }
+const { active = null } = Astro.props;
+
+type Item = { label: string; href: string; key: string; desc?: string };
+type Group = { label: string; key: string; href?: string; items?: Item[] };
+
+const groups: Group[] = [
+  { label: "SpeechLive",     key: "speechlive",   href: "/philips-speechlive" },
+  { label: "Legal AI",       key: "legal",        href: "/legal" },
+  { label: "Professional AI",key: "professional", href: "/professional" },
+  { label: "Speech-to-Text", key: "stt", href: "/speech-to-text", items: [
+    { label: "Dragon Professional 16",       href: "/dragon-professional-16", key: "dp16",
+      desc: "Desktop speech recognition for Windows" },
+    { label: "Dragon Medical One",           href: "/dragon-medical-one", key: "dmo",
+      desc: "Cloud clinical documentation for healthcare" },
+    { label: "Dragon Anywhere (end of life)",href: "/dragon-professional-anywhere", key: "dpa",
+      desc: "Retiring this year — see the replacement" },
+    { label: "All Dragon software",          href: "/dragon-software", key: "dragon",
+      desc: "Compare the full Dragon range" },
+    { label: "SpeechRecognition.cloud",      href: "/speech-recognition-cloud", key: "src",
+      desc: "Browser based, 57 languages, free tier" },
+    { label: "Dictation hardware",           href: "/dictation-equipment", key: "hw",
+      desc: "Philips and Olympus recorders, mics, pedals" },
+    { label: "Transcription services",       href: "/transcription-services", key: "ts",
+      desc: "Australian transcriptionists" },
+  ]},
+  { label: "Compare", key: "compare", href: "/comparison" },
+  { label: "News",    key: "news",    href: "/news" },
+];
+
+const isOn = (g: Group) =>
+  g.key === active || (g.items ?? []).some((i) => i.key === active);
+---
+<header class="sn">
+  <div class="sn-wrap">
+    <a href="/" class="sn-brand">
+      <span class="sn-mark" aria-hidden="true">
+        <i style="height:7px"></i><i style="height:12px"></i><i style="height:9px"></i>
+      </span>
+      <span>Dictation Solutions</span>
+    </a>
+
+    <nav class="sn-links" aria-label="Primary">
+      {groups.map((g) => g.items ? (
+        <div class="sn-group">
+          <a href={g.href} class="sn-top" aria-current={isOn(g) ? "page" : undefined}>
+            {g.label}
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <div class="sn-menu">
+            {g.items.map((i) => (
+              <a href={i.href}>
+                <b>{i.label}</b>
+                {i.desc && <span>{i.desc}</span>}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a href={g.href} class="sn-top" aria-current={isOn(g) ? "page" : undefined}>{g.label}</a>
+      ))}
+    </nav>
+
+    <a href="/legal#register" class="sn-cta">Book a demo</a>
+
+    <details class="sn-mobile">
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <div class="sn-drawer">
+        {groups.map((g) => g.items ? (
+          <div class="sn-dgroup">
+            <p>{g.label}</p>
+            {g.items.map((i) => <a href={i.href}>{i.label}</a>)}
+          </div>
+        ) : <a href={g.href} class="sn-dtop">{g.label}</a>)}
+        <a href="/support" class="sn-dtop">Support</a>
+        <a href="/legal#register" class="sn-drawer-cta">Book a demo</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style is:inline set:html={navCss}></style>

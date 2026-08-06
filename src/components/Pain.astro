@@ -1,0 +1,11 @@
+---
+export interface Props { kicker:string; heading:string; body:string[] }
+const { kicker, heading, body } = Astro.props;
+---
+<section class="pain">
+  <div class="wrap">
+    <div class="kicker" style="margin-bottom:11px">{kicker}</div>
+    <h2>{heading}</h2>
+    {body.map(p=><p class="lead" style="margin-bottom:12px">{p}</p>)}
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+  heading: string; lead: string;
+  stats: { value: string; label: string }[];
+}
+const { heading, lead, stats } = Astro.props;
+---
+<section class="deep sec-md">
+  <div class="wrap">
+    <div class="deep-head">
+      <h2>{heading}</h2>
+      <p>{lead}</p>
+    </div>
+    <div class="stats">
+      {stats.map((s) => (
+        <div class="stat">
+          <div class="stat-value">{s.value}</div>
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

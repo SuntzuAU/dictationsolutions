@@ -1,0 +1,18 @@
+---
+export interface Props { kicker:string; heading:string; lead:string; items:{title:string;body:string}[] }
+const { kicker, heading, lead, items } = Astro.props;
+---
+<section class="deep sec-md">
+  <div class="wrap">
+    <div class="deep-head">
+      <div>
+        <div class="kicker" style="color:rgba(255,255,255,.55);margin-bottom:11px">{kicker}</div>
+        <h2>{heading}</h2>
+      </div>
+      <p>{lead}</p>
+    </div>
+    <div class="sec-grid">
+      {items.map(i=>(<div class="sec-item"><h3>{i.title}</h3><p>{i.body}</p></div>))}
+    </div>
+  </div>
+</section>

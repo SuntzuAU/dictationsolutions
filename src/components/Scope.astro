@@ -1,0 +1,23 @@
+---
+export interface Props {
+  kicker:string; heading:string; forTitle:string; forItems:string[];
+  notTitle:string; notItems:string[]; note:string;
+}
+const { kicker, heading, forTitle, forItems, notTitle, notItems, note } = Astro.props;
+---
+<section class="sec-md surface-soft">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">{kicker}</div><h2>{heading}</h2></div>
+    <div class="scope">
+      <div class="scope-col" style="background:#fff">
+        <h3><i>✓</i>{forTitle}</h3>
+        <ul>{forItems.map(i=><li>{i}</li>)}</ul>
+      </div>
+      <div class="scope-col no">
+        <h3><i>—</i>{notTitle}</h3>
+        <ul>{notItems.map(i=><li>{i}</li>)}</ul>
+      </div>
+    </div>
+    <p class="scope-note">{note}</p>
+  </div>
+</section>

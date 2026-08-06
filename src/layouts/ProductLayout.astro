@@ -1,0 +1,30 @@
+---
+/**
+ * ProductLayout.astro — a product page.
+ *
+ * Sets data-vertical on <html>, which is the entire mechanism for
+ * switching the whole page between Legal and Professional. The token
+ * overrides live in styles/tokens.css.
+ */
+import Layout from "./Layout.astro";
+import Nav from "../components/SiteNav.astro";
+import TrustSpine from "../components/TrustSpine.astro";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  vertical: "legal" | "professional" | "health";
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, vertical, canonical, ogImage } = Astro.props;
+---
+<Layout {title} {description} {vertical} {canonical} {ogImage}>
+  <Nav active={vertical} />
+  <slot name="hero" />
+  <TrustSpine />
+  <slot />
+  <Footer />
+</Layout>

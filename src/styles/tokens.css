@@ -1,0 +1,90 @@
+/* ============================================================
+   Dictation Solutions — design tokens
+   Single source of truth. Nothing else defines colour or type.
+   See DESIGN-SPEC.md §2 and §3.
+   ============================================================ */
+
+:root{
+  /* --- neutrals: shared by every product --- */
+  --ink:        #12151A;
+  --ink-2:      #2A3038;
+  --muted:      #5A6473;
+  --line:       #E5E8ED;
+  --soft:       #F7F8FA;
+  --white:      #FFFFFF;
+
+  /* --- vertical: defaults to neutral.
+         ProductLayout overrides these three-plus tokens. --- */
+  --v:          #12151A;
+  --v-mid:      #2A3038;
+  --v-deep:     #12151A;
+  --v-tint:     #F7F8FA;
+  --v-tint-2:   #E5E8ED;
+  --btn:        #12151A;
+  --btn-glow:   rgba(18,21,26,.22);
+
+  /* --- type --- */
+  --font: Figtree, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fs-hero:    55px;
+  --fs-h2:      36px;
+  --fs-h3:      16px;
+  --fs-stat:    29px;
+  --fs-lead:    18px;
+  --fs-body:    15px;
+  --fs-small:   14px;
+  --fs-kicker:  11.5px;
+  --fs-caption: 12px;
+
+  /* --- layout --- */
+  --container:  1180px;
+  --gutter:     44px;
+  --gap:        17px;
+
+  /* --- radius --- */
+  --r-card:     13px;
+  --r-btn:      9px;
+  --r-pill:     5px;
+  --r-label:    4px;
+
+  /* --- elevation: one level only --- */
+  --shadow:     0 22px 56px rgba(18,21,26,.15);
+}
+
+/* Legal — #A80DF1 reserved for elements under 40px */
+[data-vertical="legal"]{
+  --v:        #A80DF1;
+  --v-mid:    #7A0BB5;
+  --v-deep:   #250836;
+  --v-tint:   #FAF2FE;
+  --v-tint-2: #EEDCFB;
+  --btn:      #1A1220;
+  --btn-glow: rgba(168,13,241,.24);
+}
+
+/* Professional — --v brightened from Philips #00126D for small-element
+   hue legibility; --v-deep holds the exact spec value. */
+[data-vertical="professional"]{
+  --v:        #1B3BC4;
+  --v-mid:    #0A2394;
+  --v-deep:   #000B44;
+  --v-tint:   #F2F5FC;
+  --v-tint-2: #DAE2F6;
+  --btn:      #101526;
+  --btn-glow: rgba(27,59,196,.24);
+}
+
+/* Health — not launched. Reserved. */
+[data-vertical="health"]{
+  --v:        #01ABB0;
+  --v-mid:    #017C80;
+  --v-deep:   #04343A;
+  --v-tint:   #F0FCFC;
+  --v-tint-2: #CDF2F3;
+  --btn:      #04262A;
+  --btn-glow: rgba(1,171,176,.24);
+}
+
+@media (max-width: 900px){
+  :root{ --fs-hero: 38px; --fs-h2: 28px; --gutter: 24px; }
+}

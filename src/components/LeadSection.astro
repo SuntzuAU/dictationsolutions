@@ -1,0 +1,22 @@
+---
+import ACForm from "./ACForm.astro";
+export interface Props { heading:string; lead:string; bullets:string[]; formTitle:string; formNote:string }
+const { heading, lead, bullets, formTitle, formNote } = Astro.props;
+---
+<section class="sec-lg surface-soft" id="register">
+  <div class="wrap">
+    <div class="lead-grid">
+      <div class="lead-copy">
+        <h2>{heading}</h2>
+        <p class="lead">{lead}</p>
+        <ul>{bullets.map(b=><li>{b}</li>)}</ul>
+        <p class="lead-phone">Prefer to talk now? Call <b>1300 255 900</b></p>
+      </div>
+      <div class="lead-form">
+        <h3>{formTitle}</h3>
+        <p>{formNote}</p>
+        <ACForm />
+      </div>
+    </div>
+  </div>
+</section>

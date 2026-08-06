@@ -1,0 +1,157 @@
+---
+import ProductLayout from "../layouts/ProductLayout.astro";
+import Hero from "../components/Hero.astro";
+import DocMock from "../components/DocMock.astro";
+import Pain from "../components/Pain.astro";
+import Steps from "../components/Steps.astro";
+import FeatureCards from "../components/FeatureCards.astro";
+import DocTypes from "../components/DocTypes.astro";
+import DeepBand from "../components/DeepBand.astro";
+import Security from "../components/Security.astro";
+import FAQ from "../components/FAQ.astro";
+import LeadSection from "../components/LeadSection.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+---
+<ProductLayout
+  vertical="professional"
+  title="Philips SpeechLive Professional AI Assistant | Australia | Dictation Solutions"
+  description="SpeechLive Professional turns dictation and attached paperwork into finished, templated documents for finance, insurance, construction and real estate. Australian data residency, ISO 27001."
+>
+  <Hero
+    slot="hero"
+    eyebrow="Finance · Insurance · Construction · Real Estate"
+    headline="Every report you write,"
+    emphasis="drafted from your voice."
+    lead="Talk through the site visit, the claim, the client review. Attach the invoices, statements and photos. SpeechLive Professional returns a finished, templated document — not a transcript to retype."
+    primaryCta={{ text: "Register for early access", href: "#register" }}
+    secondaryCta={{ text: "Book a demonstration", href: "#register" }}
+    partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
+  >
+    <DocMock
+      file="Site inspection · Draft"
+      heading="Inspection Report — Lot 14, Marsden"
+      from="Drafted from 1 recording + 3 attached files"
+      sections={[
+        { title: "§1 · Scope",          body: "Structural walkthrough, ground and first floor." },
+        { title: "§2 · Observations",   body: "Moisture ingress noted to southern elevation." },
+        { title: "§3 · Recommendation", body: "Remediation quote to be obtained before settlement." },
+      ]}
+    />
+  </Hero>
+
+  <Pain
+    kicker="The paperwork tax"
+    heading="The work is done. The write-up isn't."
+    body={[
+      "The inspection is finished, the claim is assessed, the client meeting is over. The thinking was done on site — what's left is turning it into a document that matches your template, with the figures from three other files pasted into the right places.",
+      "SpeechLive Professional takes the recording and the paperwork together and gives you back a formatted first draft. You review it and sign it off.",
+    ]}
+  />
+
+  <Steps
+    kicker="How SpeechLive Professional works"
+    heading="Three steps from spoken words to a finished report."
+    steps={[
+      { title: "Dictate or upload",
+        body: "Record on site, in the car or at your desk — SpeechMike, recorder or phone. Attach statements, invoices, photos and documents so the draft reflects the whole job." },
+      { title: "The AI drafts into your template",
+        body: "SpeechLive Professional maps your dictation and every attached source to your chosen template, pulls the key facts, and structures them under the correct headings." },
+      { title: "Review, refine, approve",
+        body: "Edit by hand or in plain language — \"shorten section 3\", \"add the remediation costs\". Then export to Word or PDF, or send it to your admin team inside the SpeechLive workflow." },
+    ]}
+  />
+
+  <FeatureCards
+    kicker="One recording, one finished document"
+    heading="Built for the documents your industry runs on."
+    cards={[
+      { title: "Voice plus paperwork",
+        body: "Combine what you dictate with statements, invoices, photographs and documents into one cohesive report rather than a transcript plus a pile of attachments." },
+      { title: "Up to five supporting files",
+        body: "Attach .pdf, .docx, .txt, .jpeg, .png, .bmp and .heif. The Assistant takes only what your chosen template actually needs." },
+      { title: "Templates from a sentence",
+        body: "Describe the template you want in plain English. It builds the structure with the right sections and placeholders, ready to refine and save for reuse." },
+      { title: "Natural-language editing",
+        body: "Tell the Assistant to shorten a section or add a figure. No manual reformatting, and the meaning is preserved." },
+      { title: "Human review, always",
+        body: "Every output is prepared for a person to check. Nothing is finalised or sent without your approval." },
+      { title: "Connected to SpeechLive",
+        body: "Your dictation, transcription and typist worklist stay intact. The Assistant works on top of them rather than replacing them." },
+    ]}
+  />
+
+  <DocTypes
+    kicker="One recording, many documents"
+    heading="Whichever document the job needs."
+    lead="A single dictation can hold observations, figures, advice and next steps. Choose the template and the Assistant structures the facts to match."
+    items={[
+      "Inspection reports","Claims assessments","Advice records","File notes",
+      "Client reviews","Variations","Defect schedules","Appraisals",
+      "Settlement notes","Meeting minutes","Statements","Internal memos",
+    ]}
+  />
+
+  <DeepBand
+    heading="Four industries, one drafting engine."
+    lead="The same technology behind SpeechLive Legal, with standard vocabulary and your own templates."
+    stats={[
+      { value: "Financial",    label: "Advice records, file notes, client reviews" },
+      { value: "Insurance",    label: "Claims assessments, loss adjusting, statements" },
+      { value: "Construction", label: "Site reports, variations, defect schedules" },
+      { value: "Real Estate",  label: "Inspections, appraisals, settlement notes" },
+    ]}
+  />
+
+  <Security
+    kicker="Security and confidentiality"
+    heading="Client data, handled properly."
+    lead="Built for the standards regulated industries demand, so the answers are ready before your IT provider or compliance team asks the questions."
+    items={[
+      { title: "Australian data residency",
+        body: "Your dictations and attachments are hosted on Microsoft Azure and stored in-region. Data is not moved outside your designated storage location." },
+      { title: "Isolated AI processing",
+        body: "AI processing runs in a secure, isolated Azure environment and is deleted once complete. Your material is not shared with public AI services and is never used to train AI models." },
+      { title: "Certified platform",
+        body: "The SpeechLive platform is certified to ISO 27001, ISO 9001 and ISO 14001, is GDPR compliant, and is built to meet EU AI Act requirements." },
+      { title: "Reliable and recoverable",
+        body: "A 99.9% uptime guarantee, with administrators able to recover accidentally deleted dictations for up to 30 days." },
+    ]}
+  />
+
+  <FAQ
+    heading="SpeechLive Professional AI Assistant — questions answered."
+    items={[
+      { q: "How is this different from the Legal AI Assistant?",
+        a: "Same drafting engine, same workflow. The Legal version adds Speech Recognition Legal, an engine tuned for legal terminology and case citations, plus legal-specific templates. Professional uses standard speech recognition vocabulary and is aimed at any industry that runs on templated documents. Legal-specific features do not carry across to Professional." },
+      { q: "Which industries is it built for?",
+        a: "Financial services, insurance, construction and real estate are the leading candidates — but it suits any business that turns conversations and paperwork into structured documents. If you have a template and a recorder, it applies." },
+      { q: "Can it read the paperwork as well as the recording?",
+        a: "Yes. Attach up to five files per dictation — statements, invoices, photographs, PDFs — and the Assistant pulls the relevant facts from all of them into your template, not just from the audio." },
+      { q: "Do I stay in control of the final document?",
+        a: "Always. Every output is drafted for your review and nothing is finalised or sent without your approval." },
+      { q: "Does it replace our admin team?",
+        a: "No. It keeps the author and typist workflow you already use. The AI prepares a first draft; your team reviews and finalises it. Their work shifts from typing to checking, and the audio, transcript and draft stay together as one job." },
+      { q: "What does it cost?",
+        a: "SpeechLive Professional is an add-on to a SpeechLive subscription, priced per author and typist. Contact us for Australian pricing and we will quote against your actual user numbers." },
+      { q: "When is it available in Australia?",
+        a: "SpeechLive Professional is arriving in Australia in 2026. Register your interest and Voice Recognition Australia will arrange a demonstration and an obligation-free trial as soon as it is available." },
+    ]}
+  />
+
+  <LeadSection
+    heading="See it run on your own documents."
+    lead="Register for pre-launch updates, priority early access, and a demonstration built around the reports your business actually produces."
+    bullets={[
+      "A demonstration using your templates and document types",
+      "An obligation-free trial when it launches in Australia",
+      "Local setup, training and support from the VRA team",
+      "An honest view on whether it fits your workflow",
+    ]}
+    formTitle="Register your interest"
+    formNote="Tell us a little about your business and we'll be in touch before launch."
+  />
+
+  <div class="sec-sm">
+    <Disclaimer text="The Philips SpeechLive Professional AI Assistant is designed to assist with documentation drafting and information synthesis. Outputs are intended to complement, not replace, professional judgement, and should be reviewed before use. Please verify the information. Philips and SpeechLive are trademarks of their respective owners. Voice Recognition Australia is an authorised Australian reseller." />
+  </div>
+</ProductLayout>

@@ -1,0 +1,80 @@
+---
+/**
+ * Layout.astro — the ONLY place that defines <head>, tokens and global CSS.
+ *
+ * Do not add <style> blocks to pages. Do not use define:vars for styling:
+ * Astro silently drops define:vars on `is:inline` styles, which is what
+ * broke every CSS variable on the previous build. See DESIGN-SPEC.md §9.1.
+ */
+import site from "../site.config.json";
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/components.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  vertical?: "legal" | "professional" | "health" | null;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  vertical = null,
+  ogImage,
+  noindex = false,
+} = Astro.props;
+
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site.domain).href;
+const gaId = site.googleAnalyticsId;
+---
+<!doctype html>
+<html lang="en-AU" data-vertical={vertical}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_AU" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap"
+    />
+
+    {gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+
+    <slot name="head" />
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

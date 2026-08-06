@@ -7,8 +7,8 @@
     "primary": "#1f2937",
     "background": "#ffffff",
     "neutral": "#f3f4f6",
-    "accent": "#16a34a",
-    "accentHover": "#15803d",
+    "accent": "#12151A",
+    "accentHover": "#2A3038",
     "text": "#111827",
     "muted": "#6b7280"
   },
@@ -38,30 +38,88 @@
     "footerDisclaimer": "Dictation Solutions Australia is part of the Voice Recognition Australia network. Dragon and related marks are the property of Nuance Communications (Microsoft). Philips, SpeechLive and Olympus dictation products are trademarks of their respective owners. Voice Recognition Australia is an authorised Australian reseller. All prices AUD including GST where shown."
   },
   "navItems": [
-    { "label": "Solutions", "url": "#benefits" },
-    { "label": "News", "url": "/news" },
-    { "label": "FAQ", "url": "#faq" },
-    { "label": "Contact", "url": "#final-cta" }
+    {
+      "label": "Solutions",
+      "url": "#benefits"
+    },
+    {
+      "label": "News",
+      "url": "/news"
+    },
+    {
+      "label": "FAQ",
+      "url": "#faq"
+    },
+    {
+      "label": "Contact",
+      "url": "#final-cta"
+    }
   ],
   "navDropdown": {
     "label": "Speech-to-Text",
     "items": [
-      { "label": "Dragon Professional 16", "url": "/dragon-professional-16", "description": "Desktop speech recognition for Windows - offline capable, perpetual licence" },
-      { "label": "Dragon Medical One", "url": "/dragon-medical-one", "description": "Cloud AI clinical documentation for Australian doctors and healthcare teams" },
-      { "label": "Dragon Professional Anywhere", "url": "/dragon-professional-anywhere", "description": "Cloud-based Dragon for Windows and Mac - dictate from any device" },
-      { "label": "Philips SpeechLive", "url": "/philips-speechlive", "description": "Cloud dictation workflow platform - dictate on any device, transcribe anywhere" },
-      { "label": "Cloud Speech-to-Text", "url": "/speech-recognition-cloud", "description": "Browser-based AI transcription - 57 languages, free tier, no install" },
-      { "label": "Dictation Hardware", "url": "/dictation-equipment", "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets" },
-      { "label": "Transcription Services", "url": "/transcription-services", "description": "Professional Australian transcriptionists for medical, legal and business audio" }
+      {
+        "label": "Dragon Professional 16",
+        "url": "/dragon-professional-16",
+        "description": "Desktop speech recognition for Windows - offline capable, perpetual licence"
+      },
+      {
+        "label": "Dragon Medical One",
+        "url": "/dragon-medical-one",
+        "description": "Cloud AI clinical documentation for Australian doctors and healthcare teams"
+      },
+      {
+        "label": "Dragon Professional Anywhere",
+        "url": "/dragon-professional-anywhere",
+        "description": "Cloud-based Dragon for Windows and Mac - dictate from any device"
+      },
+      {
+        "label": "Philips SpeechLive",
+        "url": "/philips-speechlive",
+        "description": "Cloud dictation workflow platform - dictate on any device, transcribe anywhere"
+      },
+      {
+        "label": "Cloud Speech-to-Text",
+        "url": "/speech-recognition-cloud",
+        "description": "Browser-based AI transcription - 57 languages, free tier, no install"
+      },
+      {
+        "label": "Dictation Hardware",
+        "url": "/dictation-equipment",
+        "description": "Philips and Olympus voice recorders, microphones, foot pedals and headsets"
+      },
+      {
+        "label": "Transcription Services",
+        "url": "/transcription-services",
+        "description": "Professional Australian transcriptionists for medical, legal and business audio"
+      }
     ]
   },
-  "primaryCTA": { "text": "Free Download", "url": "https://www.speechrecognition.cloud" },
-  "secondaryCTA": { "text": "Compare Solutions", "url": "/comparison" },
+  "primaryCTA": {
+    "text": "Free Download",
+    "url": "https://www.speechrecognition.cloud"
+  },
+  "secondaryCTA": {
+    "text": "Compare Solutions",
+    "url": "/comparison"
+  },
   "stats": [
-    { "value": "25 years", "label": "Australian market expertise" },
-    { "value": "Dragon", "label": "Authorised reseller" },
-    { "value": "Philips + Olympus", "label": "Hardware specialists" },
-    { "value": "Healthcare, Legal, Government", "label": "Industry focus" }
+    {
+      "value": "25 years",
+      "label": "Australian market expertise"
+    },
+    {
+      "value": "Dragon",
+      "label": "Authorised reseller"
+    },
+    {
+      "value": "Philips + Olympus",
+      "label": "Hardware specialists"
+    },
+    {
+      "value": "Healthcare, Legal, Government",
+      "label": "Industry focus"
+    }
   ],
   "steps": [
     {
@@ -77,7 +135,11 @@
       "text": "Our Australian team handles setup, training, and ongoing support. You get a working solution, not just a software licence."
     }
   ],
-  "homepageProducts": ["cloud-speech-solutions", "dragon-professional-16", "dragon-medical-one"],
+  "homepageProducts": [
+    "cloud-speech-solutions",
+    "dragon-professional-16",
+    "dragon-medical-one"
+  ],
   "products": [
     {
       "slug": "dragon-professional-16",
@@ -110,10 +172,22 @@
         "Compatible with Microsoft 365, Google Docs, and professional applications"
       ],
       "faqs": [
-        { "q": "Does Dragon Professional 16 require an internet connection?", "a": "No. After installation and activation, Dragon Professional 16 works offline. An internet connection is only required for the initial download and product activation." },
-        { "q": "How many computers can I use Dragon on?", "a": "Dragon Professional 16 can be installed on up to 2 Windows computers under a single licence." },
-        { "q": "Can I transcribe multi-speaker recordings or meetings?", "a": "Dragon Professional 16 is designed for single-speaker audio only. It will not reliably transcribe meetings, interviews, or multi-speaker conversations. Supported formats include MP3, WAV, WMA, DS2, and DSS." },
-        { "q": "Is this a subscription or permanent purchase?", "a": "This is a perpetual licence - a one-time purchase. You own it permanently with no annual renewal fees or subscription charges." }
+        {
+          "q": "Does Dragon Professional 16 require an internet connection?",
+          "a": "No. After installation and activation, Dragon Professional 16 works offline. An internet connection is only required for the initial download and product activation."
+        },
+        {
+          "q": "How many computers can I use Dragon on?",
+          "a": "Dragon Professional 16 can be installed on up to 2 Windows computers under a single licence."
+        },
+        {
+          "q": "Can I transcribe multi-speaker recordings or meetings?",
+          "a": "Dragon Professional 16 is designed for single-speaker audio only. It will not reliably transcribe meetings, interviews, or multi-speaker conversations. Supported formats include MP3, WAV, WMA, DS2, and DSS."
+        },
+        {
+          "q": "Is this a subscription or permanent purchase?",
+          "a": "This is a perpetual licence - a one-time purchase. You own it permanently with no annual renewal fees or subscription charges."
+        }
       ]
     },
     {
@@ -121,7 +195,7 @@
       "heroImageKey": "src-hero",
       "featureImageKey": "src-feature",
       "badge": "Best Free Speech Recognition",
-      "navLabel": "Cloud Speech-to-Text",
+      "navLabel": "SpeechRecognition.cloud",
       "title": "SpeechRecognition.cloud",
       "metaTitle": "Best Free Speech Recognition Software | SpeechRecognition.cloud | VRA",
       "metaDesc": "Best speech recognition software in the browser - free tier, 57 languages, no install. Professional and medical tiers for Australian businesses and healthcare teams.",
@@ -146,10 +220,22 @@
         "Team collaboration and sharing features"
       ],
       "faqs": [
-        { "q": "Do I need to install software?", "a": "No. SpeechRecognition.cloud is entirely browser-based. Just log in from any device and start dictating or uploading audio files." },
-        { "q": "Is there a free option to try?", "a": "Yes. A free tier is available with usage limits. Upgrade to Professional or Medical tier for higher usage allowances and priority support." },
-        { "q": "How many languages are supported?", "a": "57 languages are supported including major languages, regional dialects, and specialized medical and legal terminology." },
-        { "q": "Is the Medical tier suitable for clinical use?", "a": "The Medical tier includes healthcare-specific vocabulary, enhanced privacy controls, and compliance features suitable for healthcare environments. Consult the platform for specific compliance certifications." }
+        {
+          "q": "Do I need to install software?",
+          "a": "No. SpeechRecognition.cloud is entirely browser-based. Just log in from any device and start dictating or uploading audio files."
+        },
+        {
+          "q": "Is there a free option to try?",
+          "a": "Yes. A free tier is available with usage limits. Upgrade to Professional or Medical tier for higher usage allowances and priority support."
+        },
+        {
+          "q": "How many languages are supported?",
+          "a": "57 languages are supported including major languages, regional dialects, and specialized medical and legal terminology."
+        },
+        {
+          "q": "Is the Medical tier suitable for clinical use?",
+          "a": "The Medical tier includes healthcare-specific vocabulary, enhanced privacy controls, and compliance features suitable for healthcare environments. Consult the platform for specific compliance certifications."
+        }
       ]
     },
     {
@@ -182,10 +268,22 @@
         "Annual subscription model - professional and enterprise tiers"
       ],
       "faqs": [
-        { "q": "Is Dragon Medical One available in Australia?", "a": "Yes. Dragon Medical One is available through Voice Recognition Australia, an authorised Nuance/Microsoft reseller. It is a cloud-based subscription product designed specifically for healthcare documentation." },
-        { "q": "What is ambient AI and how does it work?", "a": "Ambient AI captures consultation audio and automatically generates structured clinical notes without the clinician having to actively dictate or interact with software. This reduces documentation burden and allows clinicians to focus on patient care." },
-        { "q": "Do I need local software installation?", "a": "No. Dragon Medical One is cloud-based. You access it through a web browser on any device - no desktop software installation required." },
-        { "q": "What practice management systems does it integrate with?", "a": "Dragon Medical One integrates with leading Australian practice systems. Contact Voice Recognition Australia for specific integration compatibility with your system." }
+        {
+          "q": "Is Dragon Medical One available in Australia?",
+          "a": "Yes. Dragon Medical One is available through Voice Recognition Australia, an authorised Nuance/Microsoft reseller. It is a cloud-based subscription product designed specifically for healthcare documentation."
+        },
+        {
+          "q": "What is ambient AI and how does it work?",
+          "a": "Ambient AI captures consultation audio and automatically generates structured clinical notes without the clinician having to actively dictate or interact with software. This reduces documentation burden and allows clinicians to focus on patient care."
+        },
+        {
+          "q": "Do I need local software installation?",
+          "a": "No. Dragon Medical One is cloud-based. You access it through a web browser on any device - no desktop software installation required."
+        },
+        {
+          "q": "What practice management systems does it integrate with?",
+          "a": "Dragon Medical One integrates with leading Australian practice systems. Contact Voice Recognition Australia for specific integration compatibility with your system."
+        }
       ]
     },
     {
@@ -218,47 +316,76 @@
         "Detailed audit trail and workflow reporting"
       ],
       "faqs": [
-        { "q": "What is Philips SpeechLive?", "a": "SpeechLive is a cloud-based dictation workflow platform from Philips. It lets you dictate on any device - phone, SpeechMike, or browser - and securely routes recordings to transcriptionists or speech recognition software for completion." },
-        { "q": "Does SpeechLive work with Dragon speech recognition?", "a": "Yes. Philips SpeechLive integrates directly with Nuance Dragon speech recognition, allowing organisations to route dictations for automated transcription rather than manual typing." },
-        { "q": "Is SpeechLive suitable for healthcare environments?", "a": "Yes. SpeechLive stores data on Microsoft Azure with regional options, publishes security and privacy documentation, and is widely used in medical practices for clinical documentation workflows." },
-        { "q": "Can I use SpeechLive with my existing Philips hardware?", "a": "Yes. SpeechLive is compatible with the Philips SpeechMike range, SpeechOne wireless microphone, and the DataVoice smartphone app. Existing Philips hardware users can migrate to the cloud workflow without replacing equipment." }
+        {
+          "q": "What is Philips SpeechLive?",
+          "a": "SpeechLive is a cloud-based dictation workflow platform from Philips. It lets you dictate on any device - phone, SpeechMike, or browser - and securely routes recordings to transcriptionists or speech recognition software for completion."
+        },
+        {
+          "q": "Does SpeechLive work with Dragon speech recognition?",
+          "a": "Yes. Philips SpeechLive integrates directly with Nuance Dragon speech recognition, allowing organisations to route dictations for automated transcription rather than manual typing."
+        },
+        {
+          "q": "Is SpeechLive suitable for healthcare environments?",
+          "a": "Yes. SpeechLive stores data on Microsoft Azure with regional options, publishes security and privacy documentation, and is widely used in medical practices for clinical documentation workflows."
+        },
+        {
+          "q": "Can I use SpeechLive with my existing Philips hardware?",
+          "a": "Yes. SpeechLive is compatible with the Philips SpeechMike range, SpeechOne wireless microphone, and the DataVoice smartphone app. Existing Philips hardware users can migrate to the cloud workflow without replacing equipment."
+        }
       ]
     },
     {
       "slug": "dragon-professional-anywhere",
       "heroImageKey": "dpa-hero",
       "featureImageKey": "dpa-feature",
-      "badge": "Cloud Speech Recognition",
+      "badge": "Approaching end of life",
       "navLabel": "Dragon Professional Anywhere",
       "title": "Dragon Professional Anywhere",
-      "metaTitle": "Dragon Professional Anywhere Australia | Cloud Speech Recognition | VRA",
-      "metaDesc": "Dragon Professional Anywhere - cloud-based speech recognition for Windows and Mac. Dictate from any device. No local installation. Subscription licensing. Authorised Australian reseller.",
-      "headline": "Dragon Professional Anywhere - Speech Recognition in the Cloud",
-      "subheadline": "The full power of Dragon Professional available in the cloud. Dictate from any Windows or Mac device without installing local software. Cloud-based subscription model.",
-      "price": "Enquire",
-      "priceNote": "Annual subscription - volume pricing available",
-      "licenceNote": "Cloud-based subscription. Unlimited device access. Managed via web account.",
-      "installLimit": "Unlimited devices",
-      "bestFor": "Enterprises and multi-device users",
-      "vraUrl": "https://www.voicerecognition.com.au/collections/dragon-professional",
-      "ctaText": "Enquire About Cloud Pricing",
+      "metaTitle": "Dragon Professional Anywhere End of Life | What to Use Instead | Australia",
+      "metaDesc": "Dragon Professional Anywhere is end of life and will not be sold after 31 December 2026. SpeechRecognition.cloud is the recommended replacement for Australian users — browser based, 57 languages, free tier. Talk to Voice Recognition Australia.",
+      "headline": "Dragon Professional Anywhere is approaching end of life",
+      "subheadline": "Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year. If you are looking at cloud speech recognition now, SpeechRecognition.cloud is the replacement we recommend — browser based, nothing to install, 57 languages, and a free tier so you can trial it before moving your team.",
+      "price": "From Free",
+      "priceNote": "SpeechRecognition.cloud pricing — free tier, professional and medical plans",
+      "licenceNote": "Dragon Professional Anywhere and Dragon Professional Legal are being retired by the end of the year. Existing subscriptions are honoured to their renewal date. SpeechRecognition.cloud is cloud based with no installation.",
+      "installLimit": "Browser based",
+      "bestFor": "Anyone currently on, or considering, Dragon Anywhere",
+      "vraUrl": "https://www.speechrecognition.cloud",
+      "ctaText": "Try SpeechRecognition.cloud free",
       "features": [
-        "Full Dragon Professional 16 features in the cloud",
-        "Works on Windows and Mac - no platform limitations",
-        "Install on unlimited devices under subscription",
-        "Requires internet connection for use",
-        "Custom vocabulary and user profiles in the cloud",
-        "Deep integration with Microsoft 365, Google Docs, and web applications",
-        "Enterprise deployment options available",
-        "Annual subscription with flexible renewal options",
-        "Centralised user management for team deployments"
+        "Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year",
+        "Existing subscriptions are honoured through to their renewal date",
+        "SpeechRecognition.cloud is the recommended replacement for cloud dictation",
+        "Browser based — works on Windows, Mac and any device with a browser",
+        "57 languages supported, including regional dialects",
+        "Free tier available, so you can trial it before moving your team",
+        "Professional and medical plans with specialist vocabulary",
+        "Real-time dictation plus transcription of existing audio files",
+        "Australian setup, migration and training support from Voice Recognition Australia"
       ],
       "faqs": [
-        { "q": "Do I need internet to use Dragon Professional Anywhere?", "a": "Yes. Dragon Professional Anywhere is cloud-based and requires an active internet connection to use." },
-        { "q": "Can I use it on Mac and Windows?", "a": "Yes. Dragon Professional Anywhere works on both Windows and Mac computers." },
-        { "q": "How many devices can I install on?", "a": "With the subscription, you can install on unlimited devices under your account. However, only one concurrent session is typically allowed - check your licence terms." },
-        { "q": "What's the difference between Dragon Professional 16 and Dragon Professional Anywhere?", "a": "Dragon Professional 16 is locally installed for Windows only and works offline. Dragon Professional Anywhere is cloud-based, works on Windows and Mac, requires internet, and is subscription-based." }
-      ]
+        {
+          "q": "Is Dragon Professional Anywhere being discontinued?",
+          "a": "Yes. Dragon Professional Anywhere and Dragon Professional Legal are both being retired by the end of the year. Existing subscriptions are honoured through to their renewal date."
+        },
+        {
+          "q": "What should I use instead?",
+          "a": "For cloud dictation, SpeechRecognition.cloud is the replacement we recommend. It is browser based with nothing to install, supports 57 languages, and has a free tier so you can trial it against your own workflow first. Healthcare users should look at Dragon Medical One."
+        },
+        {
+          "q": "Is it a like-for-like replacement?",
+          "a": "For dictation and transcription, yes — and it removes the installation and device-licensing overhead. If you rely on Dragon's deep Windows application control and voice macros, Dragon Professional 16 remains available as a desktop, perpetual-licence option. We can advise which fits your workflow."
+        },
+        {
+          "q": "What happens to my existing subscription?",
+          "a": "It runs to its renewal date. We recommend planning the move before renewal so there is no gap in service — Voice Recognition Australia can map the timing out with you."
+        },
+        {
+          "q": "Can you help us migrate?",
+          "a": "Yes. We handle setup, user training and migration planning for Australian teams moving off Dragon Anywhere or Dragon Legal. Get in touch and we will scope it around your renewal date."
+        }
+      ],
+      "highlight": false
     },
     {
       "slug": "dictation-hardware",
@@ -290,10 +417,22 @@
         "Local Australian stock and technical support"
       ],
       "faqs": [
-        { "q": "What dictation recorder should I use for healthcare?", "a": "Philips SpeechMike or SpeechOne devices are widely used with Dragon Medical One. Olympus DS series recorders are popular for clinicians who prefer remote dictation. The choice depends on your EMR integration and workflow." },
-        { "q": "Can I use a regular microphone with Dragon Professional?", "a": "Yes, most USB microphones work with Dragon Professional. However, dedicated dictation microphones like SpeechMike are optimised for speech recognition and typically offer better accuracy." },
-        { "q": "What is a foot pedal used for?", "a": "A foot pedal provides hands-free control of audio playback during transcription - play, pause, rewind, and fast-forward. This allows typists and transcriptionists to keep both hands on the keyboard." },
-        { "q": "Do you have professional recorders with encryption?", "a": "Yes. Philips DS series and Olympus professional models include 256-bit AES encryption for healthcare and legal environments requiring data security." }
+        {
+          "q": "What dictation recorder should I use for healthcare?",
+          "a": "Philips SpeechMike or SpeechOne devices are widely used with Dragon Medical One. Olympus DS series recorders are popular for clinicians who prefer remote dictation. The choice depends on your EMR integration and workflow."
+        },
+        {
+          "q": "Can I use a regular microphone with Dragon Professional?",
+          "a": "Yes, most USB microphones work with Dragon Professional. However, dedicated dictation microphones like SpeechMike are optimised for speech recognition and typically offer better accuracy."
+        },
+        {
+          "q": "What is a foot pedal used for?",
+          "a": "A foot pedal provides hands-free control of audio playback during transcription - play, pause, rewind, and fast-forward. This allows typists and transcriptionists to keep both hands on the keyboard."
+        },
+        {
+          "q": "Do you have professional recorders with encryption?",
+          "a": "Yes. Philips DS series and Olympus professional models include 256-bit AES encryption for healthcare and legal environments requiring data security."
+        }
       ]
     },
     {
@@ -326,18 +465,42 @@
         "Flexible pricing - per-minute, per-project, or volume-based"
       ],
       "faqs": [
-        { "q": "How long does transcription take?", "a": "Standard turnaround is 2-3 business days. Rush transcription is available for same-day or next-day delivery at premium rates." },
-        { "q": "Are transcripts confidential?", "a": "Yes. All transcription work is covered by confidentiality agreements. We handle healthcare, legal, and business-sensitive content securely." },
-        { "q": "What file formats do you accept?", "a": "We accept MP3, WAV, WMA, M4A, and most common audio formats. Video files can also be processed. Contact us with your specific format." },
-        { "q": "Do you provide specialist medical or legal transcription?", "a": "Yes. We employ transcriptionists with medical and legal industry experience. Healthcare and legal terminology is standard for our specialists." }
+        {
+          "q": "How long does transcription take?",
+          "a": "Standard turnaround is 2-3 business days. Rush transcription is available for same-day or next-day delivery at premium rates."
+        },
+        {
+          "q": "Are transcripts confidential?",
+          "a": "Yes. All transcription work is covered by confidentiality agreements. We handle healthcare, legal, and business-sensitive content securely."
+        },
+        {
+          "q": "What file formats do you accept?",
+          "a": "We accept MP3, WAV, WMA, M4A, and most common audio formats. Video files can also be processed. Contact us with your specific format."
+        },
+        {
+          "q": "Do you provide specialist medical or legal transcription?",
+          "a": "Yes. We employ transcriptionists with medical and legal industry experience. Healthcare and legal terminology is standard for our specialists."
+        }
       ]
     }
   ],
   "benefits": [
-    { "title": "Hardware and software expertise", "body": "We cover the full dictation workflow - from Philips and Olympus voice recorders through to Dragon speech recognition software and cloud AI transcription. One contact, complete solution." },
-    { "title": "Healthcare and legal focus", "body": "Most of our clients work in healthcare, legal or government. Our team understands medical documentation requirements, legal confidentiality, and secure enterprise dictation environments." },
-    { "title": "Modern and traditional workflows", "body": "Not everyone is ready to move to cloud AI. We support traditional dictation recorder workflows alongside modern Dragon and cloud speech solutions - whichever works for your team." },
-    { "title": "Australian support", "body": "Local deployment support from Voice Recognition Australia. Real people who understand your workflow, not a support ticket queue in another timezone." }
+    {
+      "title": "Hardware and software expertise",
+      "body": "We cover the full dictation workflow - from Philips and Olympus voice recorders through to Dragon speech recognition software and cloud AI transcription. One contact, complete solution."
+    },
+    {
+      "title": "Healthcare and legal focus",
+      "body": "Most of our clients work in healthcare, legal or government. Our team understands medical documentation requirements, legal confidentiality, and secure enterprise dictation environments."
+    },
+    {
+      "title": "Modern and traditional workflows",
+      "body": "Not everyone is ready to move to cloud AI. We support traditional dictation recorder workflows alongside modern Dragon and cloud speech solutions - whichever works for your team."
+    },
+    {
+      "title": "Australian support",
+      "body": "Local deployment support from Voice Recognition Australia. Real people who understand your workflow, not a support ticket queue in another timezone."
+    }
   ],
   "proofPoints": [
     "25 years of Australian dictation and speech recognition expertise",
@@ -346,18 +509,51 @@
     "Healthcare, legal and government deployment experience"
   ],
   "faqs": [
-    { "q": "What is the difference between Dragon and a dictation recorder?", "a": "Dragon software converts your speech to text in real time as you dictate into a computer or microphone. A digital dictation recorder captures your voice as an audio file, which is then transcribed later - either manually by a typist or via software. Many professionals use both: a recorder in the field, Dragon at the desk." },
-    { "q": "Do I need Dragon software or is cloud speech recognition enough?", "a": "It depends on your workflow. Dragon Professional works offline, has deep Windows application integration, and can automate complex tasks by voice. <a href=\"https://www.speechrecognition.cloud\" style=\"color:#16a34a;font-weight:600\">speech to text software</a> from SpeechRecognition.cloud is a lightweight installed Windows app that works in any application - the base package is free and it is a cost-effective way to get started. We can help you work out which approach suits your situation." },
-    { "q": "What dictation hardware do you recommend for healthcare?", "a": "For healthcare workflows, Philips SpeechMike and SpeechOne devices are widely used with Dragon Medical One. Olympus digital recorders work well for clinicians who prefer to dictate remotely and have audio transcribed. The right choice depends on whether you are dictating directly into an EMR or using a separate transcription workflow." },
-    { "q": "Is Dragon Medical One available in Australia?", "a": "Yes. <a href=\"https://www.voicerecognition.com.au/pages/dragon-medical-one\" style=\"color:#16a34a;font-weight:600\">Dragon Medical One</a> is available through <a href=\"https://www.voicerecognition.com.au\" style=\"color:#16a34a;font-weight:600\">Voice Recognition Australia</a>, Australia's number one Nuance/Microsoft reseller for speech recognition and Dragon software. VRA's founder and CEO Russell Bewsell has 28 years of experience in the speech recognition industry and is one of Australia's leading authorities on Dragon deployment in healthcare and enterprise. Contact Voice Recognition Australia for current Australian pricing." },
-    { "q": "What is a foot pedal used for in dictation?", "a": "A foot pedal lets a typist or transcriptionist control audio playback hands-free during transcription - play, pause, rewind and fast-forward using their feet while their hands remain on the keyboard. Philips and Olympus both make foot pedals designed for their respective dictation workflows." },
-    { "q": "What is Philips SpeechLive and who is it for?", "a": "Philips SpeechLive is a cloud-based dictation workflow platform. You dictate on any device - phone, SpeechMike, or web browser - and recordings are securely routed to a transcriptionist or to Dragon speech recognition for automated conversion. It is widely used in healthcare, legal, and professional services environments that need a managed, auditable dictation workflow." }
+    {
+      "q": "What is the difference between Dragon and a dictation recorder?",
+      "a": "Dragon software converts your speech to text in real time as you dictate into a computer or microphone. A digital dictation recorder captures your voice as an audio file, which is then transcribed later - either manually by a typist or via software. Many professionals use both: a recorder in the field, Dragon at the desk."
+    },
+    {
+      "q": "Do I need Dragon software or is cloud speech recognition enough?",
+      "a": "It depends on your workflow. Dragon Professional works offline, has deep Windows application integration, and can automate complex tasks by voice. <a href=\"https://www.speechrecognition.cloud\" style=\"color:#12151A;font-weight:600\">speech to text software</a> from SpeechRecognition.cloud is a lightweight installed Windows app that works in any application - the base package is free and it is a cost-effective way to get started. We can help you work out which approach suits your situation."
+    },
+    {
+      "q": "What dictation hardware do you recommend for healthcare?",
+      "a": "For healthcare workflows, Philips SpeechMike and SpeechOne devices are widely used with Dragon Medical One. Olympus digital recorders work well for clinicians who prefer to dictate remotely and have audio transcribed. The right choice depends on whether you are dictating directly into an EMR or using a separate transcription workflow."
+    },
+    {
+      "q": "Is Dragon Medical One available in Australia?",
+      "a": "Yes. <a href=\"https://www.voicerecognition.com.au/pages/dragon-medical-one\" style=\"color:#12151A;font-weight:600\">Dragon Medical One</a> is available through <a href=\"https://www.voicerecognition.com.au\" style=\"color:#12151A;font-weight:600\">Voice Recognition Australia</a>, Australia's number one Nuance/Microsoft reseller for speech recognition and Dragon software. VRA's founder and CEO Russell Bewsell has 28 years of experience in the speech recognition industry and is one of Australia's leading authorities on Dragon deployment in healthcare and enterprise. Contact Voice Recognition Australia for current Australian pricing."
+    },
+    {
+      "q": "What is a foot pedal used for in dictation?",
+      "a": "A foot pedal lets a typist or transcriptionist control audio playback hands-free during transcription - play, pause, rewind and fast-forward using their feet while their hands remain on the keyboard. Philips and Olympus both make foot pedals designed for their respective dictation workflows."
+    },
+    {
+      "q": "What is Philips SpeechLive and who is it for?",
+      "a": "Philips SpeechLive is a cloud-based dictation workflow platform. You dictate on any device - phone, SpeechMike, or web browser - and recordings are securely routed to a transcriptionist or to Dragon speech recognition for automated conversion. It is widely used in healthcare, legal, and professional services environments that need a managed, auditable dictation workflow."
+    }
   ],
   "footerLinks": [
-    { "label": "About", "url": "/about" },
-    { "label": "News", "url": "/news" },
-    { "label": "Privacy Policy", "url": "/privacy" },
-    { "label": "Terms", "url": "/terms" },
-    { "label": "Contact", "url": "#final-cta" }
+    {
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "label": "News",
+      "url": "/news"
+    },
+    {
+      "label": "Privacy Policy",
+      "url": "/privacy"
+    },
+    {
+      "label": "Terms",
+      "url": "/terms"
+    },
+    {
+      "label": "Contact",
+      "url": "#final-cta"
+    }
   ]
 }

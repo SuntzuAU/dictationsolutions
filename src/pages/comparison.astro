@@ -1,4 +1,6 @@
 ---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
 import site from "../site.config.json";
 
 const c = site.colours;
@@ -22,17 +24,13 @@ const year = new Date().getFullYear();
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content="en_AU" />
 
-    <style is:inline define:vars={{
-      bg: c.background,
-      text: c.text,
-      primary: c.primary,
-      accent: c.accent,
-      accentHover: c.accentHover,
-      muted: c.muted,
-      neutral: c.neutral,
-    }}>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" />
+    <style is:inline>
+:root{--bg:#ffffff;--text:#12151A;--primary:#12151A;--accent:#12151A;--accentHover:#2A3038;--muted:#5A6473;--neutral:#F7F8FA;--line:#E5E8ED;--soft:#F7F8FA;--ink:#12151A;--ink-2:#2A3038;--v:#12151A;--v-mid:#2A3038;--v-tint:#F7F8FA;--v-tint-2:#E5E8ED;--font:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif;--container:1180px;--gutter:44px}
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      body{margin:0;font-family:var(--font);line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
       header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid #e2e8f0;z-index:100}
@@ -52,14 +50,14 @@ const year = new Date().getFullYear();
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
       section{padding:32px 0}
       .hero{padding:36px 0;text-align:center}
-      .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-0.025em}
+      .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-.038em}
       .hero p{font-size:15px;color:var(--muted);margin:0 0 20px;max-width:720px;line-height:1.7;margin-left:auto;margin-right:auto}
       .compare-table{width:100%;border-collapse:collapse;margin-top:20px}
       .compare-table th,.compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid #e5e7eb}
       .compare-table th{background:#f9fafb;font-weight:700;color:var(--text);font-size:14px}
       .compare-table td{font-size:13px;color:var(--muted)}
       .compare-table tr:last-child td{border-bottom:none}
-      .check{color:#16a34a;font-weight:700}
+      .check{color:var(--accent);font-weight:700}
       .x{color:#9ca3af}
       .compare-highlight{background:#f0fdf4}
       .src-row{background:#eff6ff}
@@ -91,29 +89,7 @@ const year = new Date().getFullYear();
   </head>
   <body>
 
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo">
-            <a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a>
-          </div>
-          <nav class="nav-links" aria-label="Primary">
-            {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-secondary" href="/#final-cta">Contact Us</a>
-            <a class="btn btn-primary" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
-        </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          {site.navItems?.map((item) => <a href={item.url}>{item.label}</a>)}
-          <a href="/#final-cta" style="color:var(--accent);font-weight:700">Contact Us</a>
-        </nav>
-      </div>
-    </header>
+    <SiteNav />
 
     <main>
 
@@ -265,17 +241,7 @@ const year = new Date().getFullYear();
 
     </main>
 
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">
-            {site.footerLinks?.map((l) => <a href={l.url}>{l.label}</a>)}
-          </div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <Footer />
 
   </body>
 </html>

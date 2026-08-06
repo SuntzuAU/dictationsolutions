@@ -1,4 +1,6 @@
 ---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
 import site from "../site.config.json";
 import manifest from "../data/image-manifest.json";
 import ACForm from "../components/ACForm.astro";
@@ -30,9 +32,13 @@ const featureKey = "feature-dictation";
     <title>Dragon Software Australia | Speech Recognition | Dictation Solutions</title>
     <meta name="description" content="Dragon speech recognition software for Australian professionals. Dragon Professional 16, Dragon Medical One, Dragon Professional Anywhere. Authorised reseller." />
     <link rel="canonical" href={`${site.domain}/dragon-software`} />
-    <style is:inline define:vars={{ bg: c.background, text: c.text, primary: c.primary, accent: c.accent, accentHover: c.accentHover, muted: c.muted, neutral: c.neutral }}>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" />
+    <style is:inline>
+:root{--bg:#ffffff;--text:#12151A;--primary:#12151A;--accent:#12151A;--accentHover:#2A3038;--muted:#5A6473;--neutral:#F7F8FA;--line:#E5E8ED;--soft:#F7F8FA;--ink:#12151A;--ink-2:#2A3038;--v:#12151A;--v-mid:#2A3038;--v-tint:#F7F8FA;--v-tint-2:#E5E8ED;--font:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif;--container:1180px;--gutter:44px}
       *,*::before,*::after{box-sizing:border-box}
-      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
+      body{margin:0;font-family:var(--font);line-height:1.6;background:var(--bg);color:var(--text)}
       a{color:inherit;text-decoration:none}
       img{max-width:100%;display:block}
       .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
@@ -65,13 +71,13 @@ const featureKey = "feature-dictation";
       .mobile-nav a{display:block;padding:10px 4px;font-size:15px;font-weight:600;color:#374151;border-bottom:1px solid #f3f4f6}
       .mobile-nav a.sub{padding-left:16px;font-weight:500;font-size:14px;color:#6b7280}
       section{padding:22px 0}
-      .page-hero{padding:36px 0 32px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,#16a34a 100%);color:white}
-      .page-hero h1{font-size:36px;line-height:1.1;margin:0 0 12px;letter-spacing:-0.03em;font-weight:800;color:white}
+      .page-hero{padding:36px 0 32px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,var(--accent) 100%);color:white}
+      .page-hero h1{font-size:36px;line-height:1.1;margin:0 0 12px;letter-spacing:-.038em;font-weight:800;color:white}
       .page-hero p{font-size:16px;color:rgba(255,255,255,.8);margin:0 0 24px;line-height:1.65;max-width:560px}
       .page-hero-btns{display:flex;gap:12px;flex-wrap:wrap}
       .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
       .sh{margin-bottom:20px}
-      .sh h2{font-size:26px;letter-spacing:-0.02em;margin:0 0 6px;font-weight:800}
+      .sh h2{font-size:26px;letter-spacing:-.035em;margin:0 0 6px;font-weight:800}
       .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c3{grid-column:span 3}.c12{grid-column:span 12}
@@ -96,36 +102,7 @@ const featureKey = "feature-dictation";
     </style>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <div class="nav">
-          <div class="logo"><a href="/"><img src="/logo.png" alt={site.siteName} onerror="this.style.display='none'" width="160" height="40" /></a></div>
-          <nav class="nav-links" aria-label="Primary">
-            {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-            {site.navDropdown && (
-              <div class="dropdown">
-                <span class="dropdown-toggle">{site.navDropdown.label}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-                <div class="dropdown-menu">
-                  {site.navDropdown.items?.map((item) => <a href={item.url}>{item.label}</a>)}
-                  <a href="/comparison">Compare Solutions</a>
-                </div>
-              </div>
-            )}
-            <a href="/news">News</a>
-          </nav>
-          <div class="nav-ctas">
-            <a class="btn btn-primary" href="/#final-cta">{site.primaryCTA.text}</a>
-            <button class="hamburger" aria-label="Open menu" onclick="var mn=this.closest('header').querySelector('.mobile-nav');mn.style.display=mn.style.display==='block'?'none':'block'"><span></span><span></span><span></span></button>
-          </div>
-        </div>
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          <a href="/">Home</a>
-          {site.navDropdown?.items?.map((item) => <a class="sub" href={item.url}>{item.label}</a>)}
-          {site.navItems?.map((item) => <a href={homeUrl(item.url)}>{item.label}</a>)}
-          <a href="/news">News</a><a href="/comparison">Compare Solutions</a>
-        </nav>
-      </div>
-    </header>
+    <SiteNav active="dragon" />
     <main>
       <section class="page-hero">
         <div class="wrap">
@@ -167,14 +144,6 @@ const featureKey = "feature-dictation";
         </div>
       </section>
     </main>
-    <footer>
-      <div class="wrap">
-        <div class="footer-inner">
-          <div>&copy; {year} {site.siteName}</div>
-          <div class="footer-links">{site.footerLinks?.map((l) => <a href={homeUrl(l.url)}>{l.label}</a>)}</div>
-        </div>
-        <div class="footer-disclaimer">{site.branding.footerDisclaimer}</div>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

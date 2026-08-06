@@ -1,0 +1,182 @@
+---
+import ProductLayout from "../layouts/ProductLayout.astro";
+import Hero from "../components/Hero.astro";
+import DocMock from "../components/DocMock.astro";
+import Pain from "../components/Pain.astro";
+import Steps from "../components/Steps.astro";
+import FeatureCards from "../components/FeatureCards.astro";
+import DocTypes from "../components/DocTypes.astro";
+import Scope from "../components/Scope.astro";
+import DeepBand from "../components/DeepBand.astro";
+import Security from "../components/Security.astro";
+import FAQ from "../components/FAQ.astro";
+import LeadSection from "../components/LeadSection.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+---
+<ProductLayout
+  vertical="legal"
+  title="Philips SpeechLive Legal AI Assistant | Australia & NZ | Dictation Solutions"
+  description="SpeechLive Legal AI turns your dictation and attached files into a structured legal document in your firm's own template. Australian data residency, ISO 27001. Register for early access with Voice Recognition Australia."
+>
+  <Hero
+    slot="hero"
+    eyebrow="SpeechLive Legal · Australia & NZ · 2026"
+    headline="From dictation to a"
+    emphasis="finished legal draft."
+    lead="Dictate the matter and attach up to five files. SpeechLive Legal returns a structured document in your own template — facts under the right headings, ready for your review. Nothing is finalised without your approval."
+    primaryCta={{ text: "Register for early access", href: "#register" }}
+    secondaryCta={{ text: "Book a demonstration", href: "#register" }}
+    partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
+  >
+    <DocMock
+      file="Attendance note · Draft"
+      heading="Attendance Note — Henderson"
+      from="Drafted from 1 recording + 2 attached files"
+      sections={[
+        { title: "§1 · Parties",      body: "Henderson & Coastal Freight Pty Ltd." },
+        { title: "§2 · Advice given", body: "Prospects assessed; limitation period diarised." },
+        { title: "§3 · Next steps",   body: "Letter of demand to issue within 14 days." },
+      ]}
+    />
+  </Hero>
+
+  <Pain
+    kicker="The documentation drain"
+    heading="You didn't train in law to format documents."
+    body={[
+      "You became a solicitor to advise clients, run matters and do meaningful legal work — not to spend your evenings turning consultations into documents.",
+      "Between dictating, waiting on transcription, reviewing the draft and reformatting it, the path from a conversation to a finished document is long, and most of it isn't legal work. SpeechLive Legal shortens that path without taking you, or your support staff, out of control of the result.",
+    ]}
+  />
+
+  <Steps
+    kicker="How SpeechLive Legal works"
+    heading="Three steps from spoken words to a document you'd sign off."
+    steps={[
+      { title: "Dictate or upload",
+        body: "Record the consultation, client meeting or case notes on your SpeechMike, recorder or phone. Attach documents, PDFs and images so the draft reflects the whole matter, not just the audio." },
+      { title: "The AI drafts into your template",
+        body: "SpeechLive Legal maps your dictation and every attached source to your chosen template, extracts the key facts, and structures them under the correct headings and clauses." },
+      { title: "Review, refine, approve",
+        body: "Edit by hand or in plain language — \"shorten section 3\", \"add a clause on liability\". Then export to Word or PDF, or send it to your typist inside the SpeechLive workflow." },
+    ]}
+  />
+
+  <FeatureCards
+    kicker="More than an AI note-taker"
+    heading="Built for legal documents, not generic summaries."
+    cards={[
+      { title: "Speech Recognition Legal",
+        body: "A dedicated engine tuned for legal terminology, case citations and phrasing that general speech engines routinely mis-transcribe. Included, not a separate purchase." },
+      { title: "Up to five supporting files",
+        body: "Attach .pdf, .docx, .txt, .jpeg, .png, .bmp and .heif. The Assistant takes only what your chosen template actually needs." },
+      { title: "Templates from a sentence",
+        body: "\"Create a template for an attendance note.\" It builds the structure with the right sections and placeholders, ready to refine and save for reuse." },
+      { title: "Natural-language editing",
+        body: "Tell the Assistant to shorten a section or add a clause. No manual reformatting, and the meaning is preserved." },
+      { title: "Human review, always",
+        body: "Every output is prepared for a person to check. It supports your professional judgement — it does not replace it, and nothing is finalised automatically." },
+      { title: "Connected to SpeechLive",
+        body: "Your dictation, transcription and typist worklist stay intact. The Legal AI Assistant works on top of them rather than replacing them." },
+    ]}
+  />
+
+  <DocTypes
+    kicker="One recording, many documents"
+    heading="The same dictation, whichever document you need."
+    lead="A single dictation can hold instructions, client history, advice and next steps. Choose the template and the Assistant structures the facts to match."
+    items={[
+      "Attendance notes","File notes","Client consultation summaries","Witness statements",
+      "Letters of advice","Routine correspondence","Internal memos","Client emails",
+      "Case summaries","Template-based drafting",
+    ]}
+  />
+
+  <Scope
+    kicker="Being straight with you"
+    heading="What it's built for — and what it isn't."
+    forTitle="Well suited to"
+    forItems={[
+      "Attendance and file notes",
+      "Client consultation summaries",
+      "Witness statements and routine correspondence",
+      "Template-based drafting",
+      "Any matter that needs a structured document",
+    ]}
+    notTitle="Not designed for"
+    notItems={[
+      "Mergers and acquisitions",
+      "Court documents and filings",
+      "High finance work",
+      "Debt collection workflows",
+      "Long contracts with deep multi-level clauses",
+    ]}
+    note="Philips is explicit about the scope, and so are we. If your work sits mostly in the right-hand column, tell us during the demonstration and we will say so rather than sell you a licence you won't use."
+  />
+
+  <DeepBand
+    heading="The documentation drain, in numbers."
+    lead="Over half a legal workday goes to administration rather than practising law. That's the gap this closes."
+    stats={[
+      { value: ">50%",    label: "Of a legal workday spent on administrative and document tasks" },
+      { value: "2–5 hrs", label: "Daily admin reported by nearly half of global law firms" },
+      { value: "100,000", label: "Registered lawyers in Australia; 18,018 in New Zealand" },
+      { value: "26 yrs",  label: "Australian deployment experience behind your implementation" },
+    ]}
+  />
+
+  <Security
+    kicker="Security and confidentiality"
+    heading="Client confidentiality, engineered in."
+    lead="Built for the standards legal work demands, so the answers are ready before your IT provider or risk committee asks the questions."
+    items={[
+      { title: "Australian data residency",
+        body: "Your dictations and attachments are hosted on Microsoft Azure and stored in-region. Data is not moved outside your designated storage location." },
+      { title: "Isolated AI processing",
+        body: "AI processing runs in a secure, isolated Azure environment and is deleted once complete. Your material is not shared with public AI services and is never used to train AI models." },
+      { title: "Certified platform",
+        body: "The SpeechLive platform is certified to ISO 27001, ISO 9001 and ISO 14001, is GDPR compliant, and is built to meet EU AI Act requirements." },
+      { title: "Reliable and recoverable",
+        body: "A 99.9% uptime guarantee, with administrators able to recover accidentally deleted dictations for up to 30 days." },
+    ]}
+  />
+
+  <FAQ
+    heading="SpeechLive Legal AI Assistant — questions answered."
+    items={[
+      { q: "When is SpeechLive Legal launching in Australia?",
+        a: "SpeechLive Legal AI Assistant is arriving in Australia and New Zealand in 2026. Register your interest and Voice Recognition Australia will arrange a demonstration and an obligation-free trial as soon as it is available to your firm." },
+      { q: "Does it replace my typist or legal assistant?",
+        a: "No. SpeechLive Legal keeps the author and typist workflow you already use. The AI prepares a first draft; your assistant, PA or typist reviews, corrects and finalises it. The audio, transcript and draft stay together as one job, so nothing is lost in the handover. For a sole practitioner who has never had a typist, it removes the reason to engage one — for firms with staff, their work shifts from typing to checking." },
+      { q: "Where is my data stored, and is it used to train AI?",
+        a: "Your data is hosted on Microsoft Azure and stored within your region — it is not moved outside your designated storage location. AI processing happens in a secure, isolated environment and is deleted once complete. Your data is not shared with public AI services and is not used to train AI models." },
+      { q: "Do I stay in control of the final document?",
+        a: "Always. Every output is drafted for your review and nothing is finalised or sent without your approval. SpeechLive Legal is built to support your professional judgement, not to make decisions for you." },
+      { q: "What file types can I attach?",
+        a: "Up to five files per dictation: .txt, .docx, .pdf, .jpeg, .png, .bmp and .heif. Only the information relevant to your selected template is used when generating the document." },
+      { q: "Does it work on mobile?",
+        a: "Yes. The SpeechLive Legal iOS app lets you start recordings, browse your standard and custom templates, generate drafts from dictations, and manage past work — useful between locations or at client meetings. You can switch back to the classic dictation workflow at any time." },
+      { q: "What does it cost?",
+        a: "SpeechLive Legal is an add-on to a SpeechLive subscription, priced per author and typist. Contact us for Australian pricing and we will quote against your firm's actual user numbers." },
+      { q: "Why buy through Voice Recognition Australia?",
+        a: "Local consultation, setup and training, implementation tailored to your document types and hardware, and support from an Australian team in your timezone. We have been deploying dictation and speech recognition across Australian healthcare, legal and government environments for 26 years." },
+    ]}
+  />
+
+  <LeadSection
+    heading="Be first to put SpeechLive Legal to work."
+    lead="Register now for pre-launch updates, priority early access, and a demonstration mapped to your firm's own document types and workflow."
+    bullets={[
+      "A demonstration using your templates and matter types",
+      "An obligation-free trial when it launches in Australia",
+      "Local setup, training and support from the VRA team",
+      "An honest view on whether it fits your practice",
+    ]}
+    formTitle="Register your interest"
+    formNote="Tell us a little about your firm and we'll be in touch before launch."
+  />
+
+  <div class="sec-sm">
+    <Disclaimer text="The Philips SpeechLive Legal AI Assistant is designed to support legal professionals by assisting with documentation drafting and information synthesis. Outputs are intended to complement, not replace, professional legal judgement, and should be reviewed by qualified legal professionals before use. Please verify the information. Philips and SpeechLive are trademarks of their respective owners. Voice Recognition Australia is an authorised Australian reseller." />
+  </div>
+</ProductLayout>
