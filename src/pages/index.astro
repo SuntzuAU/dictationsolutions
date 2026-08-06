@@ -34,10 +34,10 @@ const recentPosts = (await getCollection('blog'))
   .slice(0, 3);
 
 const benefitIcons = [
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><path d="M10 16l4 4 8-8" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><path d="M16 10v6l4 2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="16" r="6" stroke="#059669" stroke-width="2"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><rect x="9" y="11" width="14" height="11" rx="2" stroke="#059669" stroke-width="2.5"/><path d="M13 11V9a3 3 0 0 1 6 0v2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg>`,
-  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#d1fae5"/><circle cx="16" cy="16" r="5" stroke="#059669" stroke-width="2.5"/><path d="M16 8v2M16 22v2M8 16h2M22 16h2" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#DBEAFE"/><path d="M10 16l4 4 8-8" stroke="#0B5ED7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#DBEAFE"/><path d="M16 10v6l4 2" stroke="#0B5ED7" stroke-width="2.5" stroke-linecap="round"/><circle cx="16" cy="16" r="6" stroke="#0B5ED7" stroke-width="2"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#DBEAFE"/><rect x="9" y="11" width="14" height="11" rx="2" stroke="#0B5ED7" stroke-width="2.5"/><path d="M13 11V9a3 3 0 0 1 6 0v2" stroke="#0B5ED7" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  `<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#DBEAFE"/><circle cx="16" cy="16" r="5" stroke="#0B5ED7" stroke-width="2.5"/><path d="M16 8v2M16 22v2M8 16h2M22 16h2" stroke="#0B5ED7" stroke-width="2.5" stroke-linecap="round"/></svg>`,
 ];
 ---
 
@@ -87,7 +87,7 @@ const benefitIcons = [
       .dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-top:3px solid var(--accent);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:240px;padding:8px 0;z-index:200}
       .dropdown:hover .dropdown-menu{display:block}
       .dropdown-menu a{display:block;padding:10px 16px;font-size:14px;font-weight:500;color:#334155;transition:background .1s}
-      .dropdown-menu a:hover{background:#f0fdf4;color:var(--accent)}
+      .dropdown-menu a:hover{background:#F2F7FE;color:var(--accent)}
       .nav-ctas{display:flex;gap:10px;align-items:center;flex-shrink:0}
       .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
       .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -102,13 +102,16 @@ const benefitIcons = [
       .mobile-nav{display:none;padding:12px 0 8px;border-top:1px solid #e2e8f0}
       .mobile-nav a{display:block;padding:10px 0;font-size:15px;font-weight:500;color:#334155;border-bottom:1px solid #f1f5f9}
       section{padding:36px 0}
-      .hero{padding:40px 0 24px;background:linear-gradient(135deg,#f0fdf4 0%,#ffffff 60%)}
+      .hero{padding:40px 0 24px;background:linear-gradient(135deg,#F2F7FE 0%,#ffffff 60%)}
       .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-      .hero-pill{display:inline-flex;align-items:center;background:#dcfce7;border:1px solid #86efac;color:#14532d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
+      .hero-pill{display:inline-flex;align-items:center;background:#DBEAFE;border:1px solid #93C5FD;color:#0B3A87;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
       .hero h1{font-size:42px;line-height:1.1;margin:0 0 12px;letter-spacing:-.038em;font-weight:800;color:#111827}
       .hero p{font-size:17px;margin:0 0 22px;line-height:1.65;color:#4b5563;max-width:480px}
       .hero-btns{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-      .hero-img{border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#e5e7eb;box-shadow:0 20px 60px rgba(0,0,0,.15)}
+      .hero-alt{margin:16px 0 0;font-size:13.5px;color:var(--muted)}
+      .hero-alt a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+      .hero-alt b{color:var(--ink)}
+      .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#e5e7eb;box-shadow:0 2px 4px rgba(11,58,135,.06),0 12px 24px rgba(11,58,135,.10),0 28px 64px rgba(11,58,135,.16);outline:1px solid rgba(11,58,135,.08);outline-offset:-1px}
       .hero-img img{width:100%;height:100%;object-fit:cover}
       .stats-bar{background:var(--primary);border-top:3px solid var(--accent)}
       .stats-inner{display:flex;align-items:stretch}
@@ -206,9 +209,9 @@ const benefitIcons = [
       }
 
       /* --- SpeechLive AI band: the two lead-gen products --- */
-      .ai-band{padding:52px 0 56px;border-bottom:1px solid var(--line)}
+      .ai-band{padding:54px 0 58px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#F7FAFF 0%,#fff 70%)}
       .ai-head{max-width:44ch;margin-bottom:26px}
-      .ai-head .k{font-size:11.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+      .ai-head .k{font-size:11.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#0B5ED7;margin-bottom:10px}
       .ai-head h2{font-size:34px;line-height:1.12;letter-spacing:-.035em;font-weight:800;margin:0 0 8px}
       .ai-head p{font-size:16px;color:var(--muted);margin:0;line-height:1.6;max-width:56ch}
       .ai-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -241,9 +244,9 @@ const benefitIcons = [
               <p>{site.branding.subheadline}</p>
               <div class="hero-btns">
                 <a class="btn btn-primary btn-lg" href={site.primaryCTA.url} target="_blank" rel="noopener">{site.primaryCTA.text}</a>
-                <a class="btn btn-navy btn-lg" href="#final-cta">Contact Us</a>
                 <a class="btn btn-secondary btn-lg" href={site.secondaryCTA.url}>{site.secondaryCTA.text}</a>
               </div>
+              <p class="hero-alt">Need to talk to someone? <a href="#final-cta">Contact us</a> or call <b>1300&nbsp;255&nbsp;900</b></p>
             </div>
             <div class="hero-img">
               {heroSrc
@@ -384,7 +387,7 @@ const benefitIcons = [
               </p>
               <div style="display:flex;flex-wrap:wrap;gap:8px">
                 {site.proofPoints?.map((p) => (
-                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;color:#166534">&#10003; {p}</div>
+                  <div style="background:#F2F7FE;border:1px solid #BFDBFE;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;color:#0B3A87">&#10003; {p}</div>
                 ))}
               </div>
             </div>

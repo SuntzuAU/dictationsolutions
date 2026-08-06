@@ -31,12 +31,7 @@ export const navCss = `
     font-weight:800; font-size:16px; letter-spacing:-.03em;
     color:var(--ink, #12151A);
   }
-  .sn-mark{
-    width:27px; height:27px; border-radius:7px; flex:0 0 auto;
-    background:var(--ink, #12151A);
-    display:flex; align-items:flex-end; justify-content:center; gap:2px; padding-bottom:7px;
-  }
-  .sn-mark i{ width:2.5px; background:#fff; border-radius:2px; display:block }
+  .sn-logo{ height:38px; width:auto; display:block }
 
   .sn-links{ display:flex; gap:20px; align-items:stretch }
 
@@ -138,12 +133,7 @@ export const footerCss = `
     display:flex; align-items:center; gap:10px;
     font-weight:800; font-size:15.5px; letter-spacing:-.03em; color:#fff; margin-bottom:12px;
   }
-  .sf-mark{
-    width:26px; height:26px; border-radius:7px; flex:0 0 auto;
-    background:rgba(255,255,255,.14);
-    display:flex; align-items:flex-end; justify-content:center; gap:2px; padding-bottom:7px;
-  }
-  .sf-mark i{ width:2.5px; background:#fff; border-radius:2px; display:block }
+  .sf-logo{ height:36px; width:auto; display:block; filter:brightness(0) invert(1); opacity:.92 }
   .sf-blurb{ margin:0 0 14px; max-width:30ch; font-size:13.5px }
   .sf-phone{ font-weight:700; color:#fff !important; font-size:15px; letter-spacing:-.01em }
 

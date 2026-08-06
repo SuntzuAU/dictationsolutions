@@ -73,7 +73,7 @@ The practical meaning of that list is that when a client, an insurer or your own
 
 Software that sits inside a legal workflow eventually needs someone to call: a template that is not mapping correctly, a new starter to set up, a question from your IT provider about data handling.
 
-Buying through an Australian partner rather than an offshore portal means that call goes to **a team in your timezone** that knows both the product and the workflow around it. Voice Recognition Australia has been deploying dictation and speech recognition across Australian healthcare, legal and government environments for **26 years**, and the implementation questions — which templates, which hardware, how it fits the practice management system — are the ones that determine whether a tool like this actually gets used after month one.
+Buying through an Australian partner rather than an offshore portal means that call goes to **a team in your timezone** that knows both the product and the workflow around it. Voice Recognition Australia has been deploying dictation and speech recognition across Australian healthcare, legal and government environments for **25 years**, and the implementation questions — which templates, which hardware, how it fits the practice management system — are the ones that determine whether a tool like this actually gets used after month one.
 
 ## Where to start
 
