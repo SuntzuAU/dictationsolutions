@@ -31,7 +31,22 @@ export const navCss = `
     font-weight:800; font-size:16px; letter-spacing:-.03em;
     color:var(--ink, #12151A);
   }
-  .sn-logo{ height:38px; width:auto; display:block }
+  .sn-mark{
+    display:flex; align-items:center; gap:2.5px; height:24px; flex:0 0 auto;
+  }
+  .sn-mark i{
+    width:2.5px; border-radius:2px; display:block;
+    background:var(--ink, #12151A);
+  }
+  .sn-word{
+    display:flex; flex-direction:column; line-height:1;
+    font-weight:800; font-size:16px; letter-spacing:-.035em; color:var(--ink, #12151A);
+  }
+  .sn-word em{
+    font-style:normal; font-size:8.5px; font-weight:700;
+    letter-spacing:.26em; text-transform:uppercase;
+    color:var(--muted, #5A6473); margin-top:3px;
+  }
 
   .sn-links{ display:flex; gap:20px; align-items:stretch }
 
@@ -133,7 +148,17 @@ export const footerCss = `
     display:flex; align-items:center; gap:10px;
     font-weight:800; font-size:15.5px; letter-spacing:-.03em; color:#fff; margin-bottom:12px;
   }
-  .sf-logo{ height:36px; width:auto; display:block; filter:brightness(0) invert(1); opacity:.92 }
+  .sf-mark{ display:flex; align-items:center; gap:2.5px; height:22px; flex:0 0 auto }
+  .sf-mark i{ width:2.5px; border-radius:2px; display:block; background:#fff; opacity:.9 }
+  .sf-word{
+    display:flex; flex-direction:column; line-height:1;
+    font-weight:800; font-size:15.5px; letter-spacing:-.035em; color:#fff;
+  }
+  .sf-word em{
+    font-style:normal; font-size:8px; font-weight:700;
+    letter-spacing:.26em; text-transform:uppercase;
+    color:rgba(255,255,255,.5); margin-top:3px;
+  }
   .sf-blurb{ margin:0 0 14px; max-width:30ch; font-size:13.5px }
   .sf-phone{ font-weight:700; color:#fff !important; font-size:15px; letter-spacing:-.01em }
 
