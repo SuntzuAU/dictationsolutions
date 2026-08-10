@@ -230,16 +230,19 @@ const benefitIcons = [
       .ai-head h2{font-size:34px;line-height:1.12;letter-spacing:-.035em;font-weight:800;margin:0 0 8px}
       .ai-head p{font-size:16px;color:var(--muted);margin:0;line-height:1.6;max-width:56ch}
       .ai-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-      .ai-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;padding:26px 24px;background:#fff;text-decoration:none;color:inherit;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+      .ai-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;padding:26px 24px;background:#fff;transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease}
       .ai-card:hover{border-color:var(--c);box-shadow:0 12px 34px rgba(18,21,26,.10);transform:translateY(-2px)}
+      .ai-card-link{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
       .ai-tag{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cm);background:var(--ct);padding:5px 11px;border-radius:5px;margin-bottom:15px}
       .ai-tag i{width:6px;height:6px;border-radius:50%;background:var(--c);display:block}
       .ai-card h3{font-size:22px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px;line-height:1.15}
-      .ai-card > p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 16px}
+      .ai-card-link > p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 16px}
       .ai-list{list-style:none;margin:0 0 20px;padding:0}
       .ai-list li{font-size:13.5px;font-weight:600;color:var(--ink-2);padding:7px 0;border-top:1px solid var(--line)}
       .ai-go{margin-top:auto;font-size:14px;font-weight:700;color:var(--cm);display:inline-flex;align-items:center;gap:6px}
       .ai-card:hover .ai-go{gap:10px}
+      .ai-vra-link{display:block;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--muted);text-decoration:none}
+      .ai-vra-link:hover{color:var(--cm);text-decoration:underline}
       .ai-note{margin-top:20px;font-size:13px;color:var(--muted)}
       @media(max-width:900px){.ai-cards{grid-template-columns:1fr}.ai-head h2{font-size:27px}}
     </style>
@@ -293,17 +296,20 @@ const benefitIcons = [
             <p>The SpeechLive AI Assistants turn your dictation and the files you attach into a finished, templated document — reviewed and approved by you. Two versions, built for different work.</p>
           </div>
           <div class="ai-cards">
-            <a class="ai-card" href="/legal/" style="--c:#A80DF1;--cm:#7A0BB5;--ct:#EEDCFB">
-              <span class="ai-tag"><i></i>SpeechLive Legal</span>
-              <h3>Legal AI Assistant</h3>
-              <p>For solicitors, barristers, legal executives and in-house counsel. Speech Recognition Legal understands case citations and legal phrasing before the Assistant drafts anything.</p>
-              <ul class="ai-list">
-                <li>Attendance notes &amp; file notes</li>
-                <li>Client consultation summaries</li>
-                <li>Witness statements &amp; correspondence</li>
-              </ul>
-              <span class="ai-go">Explore Legal AI &rarr;</span>
-            </a>
+            <div class="ai-card" style="--c:#A80DF1;--cm:#7A0BB5;--ct:#EEDCFB">
+              <a href="/legal/" class="ai-card-link">
+                <span class="ai-tag"><i></i>SpeechLive Legal</span>
+                <h3>Legal AI Assistant</h3>
+                <p>For solicitors, barristers, legal executives and in-house counsel. Speech Recognition Legal understands case citations and legal phrasing before the Assistant drafts anything.</p>
+                <ul class="ai-list">
+                  <li>Attendance notes &amp; file notes</li>
+                  <li>Client consultation summaries</li>
+                  <li>Witness statements &amp; correspondence</li>
+                </ul>
+                <span class="ai-go">Explore Legal AI &rarr;</span>
+              </a>
+              <a class="ai-vra-link" href="https://www.voicerecognition.com.au/pages/philips-speech-live-legal-ai">Register for SpeechLive Legal AI early access at Voice Recognition Australia &rarr;</a>
+            </div>
             <a class="ai-card" href="/professional/" style="--c:#1B3BC4;--cm:#0A2394;--ct:#DAE2F6">
               <span class="ai-tag"><i></i>SpeechLive Professional</span>
               <h3>Professional AI Assistant</h3>
@@ -316,7 +322,7 @@ const benefitIcons = [
               <span class="ai-go">Explore Professional AI &rarr;</span>
             </a>
           </div>
-          <p class="ai-note">Both are add-ons to the <a href="/philips-speechlive/" style="color:var(--ink);font-weight:700">Philips SpeechLive</a> platform. Delivered and supported in Australia by Voice Recognition Australia.</p>
+          <p class="ai-note">Both are add-ons to the <a href="/philips-speechlive/" style="color:var(--ink);font-weight:700">Philips SpeechLive</a> platform. Delivered and supported in Australia by <a href="https://www.voicerecognition.com.au/pages/philips-speech-live-legal-ai" style="color:var(--ink);font-weight:700;text-decoration:underline">Voice Recognition Australia, official SpeechLive Legal AI partner</a>.</p>
         </div>
       </section>
 

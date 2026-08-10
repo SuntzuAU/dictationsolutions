@@ -27,7 +27,7 @@ import Disclaimer from "../components/Disclaimer.astro";
     lead="Dictate the matter and attach up to five files. SpeechLive Legal returns a structured document in your own template — facts under the right headings, ready for your review. Nothing is finalised without your approval."
     primaryCta={{ text: "Register for early access", href: "#register" }}
     secondaryCta={{ text: "Book a demonstration", href: "#register" }}
-    partner="Delivered and supported in Australia by <b>Voice Recognition Australia</b> — official Philips SpeechLive partner."
+    partner={`Delivered and supported in Australia by <a href="https://www.voicerecognition.com.au/pages/philips-speech-live-legal-ai" style="color:inherit;font-weight:700;text-decoration:underline">Voice Recognition Australia — official SpeechLive Legal AI partner</a>.`}
   >
     <div class="hero-media">
       <HeroImage imageKey="dictationsolutions/2026/08/06/speechlive-legal-ai-australian-solicitor-dictating-hero-48963821.jpg" alt="Australian solicitor dictating an attendance note into a handheld dictation microphone at her desk" />
@@ -163,7 +163,7 @@ import Disclaimer from "../components/Disclaimer.astro";
       { q: "What does it cost?",
         a: "SpeechLive Legal is an add-on to a SpeechLive subscription, priced per author and typist. Contact us for Australian pricing and we will quote against your firm's actual user numbers." },
       { q: "Why buy through Voice Recognition Australia?",
-        a: "Local consultation, setup and training, implementation tailored to your document types and hardware, and support from an Australian team in your timezone. We have been deploying dictation and speech recognition across Australian healthcare, legal and government environments for 25 years." },
+        a: `Local consultation, setup and training, implementation tailored to your document types and hardware, and support from an Australian team in your timezone. We have been deploying dictation and speech recognition across Australian healthcare, legal and government environments for 25 years. See the <a href="https://www.voicerecognition.com.au/pages/philips-speech-live-legal-ai" style="text-decoration:underline">SpeechLive Legal AI Assistant page on Voice Recognition Australia</a> for the full early-access offer.` },
     ]}
   />
 
