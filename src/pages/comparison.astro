@@ -52,15 +52,88 @@ const year = new Date().getFullYear();
       .hero{padding:36px 0;text-align:center}
       .hero h1{font-size:32px;margin:0 0 12px;letter-spacing:-.038em}
       .hero p{font-size:15px;color:var(--muted);margin:0 0 20px;max-width:720px;line-height:1.7;margin-left:auto;margin-right:auto}
-      .compare-table{width:100%;border-collapse:collapse;margin-top:20px}
-      .compare-table th,.compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid #e5e7eb}
-      .compare-table th{background:#f9fafb;font-weight:700;color:var(--text);font-size:14px}
-      .compare-table td{font-size:13px;color:var(--muted)}
-      .compare-table tr:last-child td{border-bottom:none}
-      .check{color:var(--accent);font-weight:700}
-      .x{color:#9ca3af}
-      .compare-highlight{background:#F2F7FE}
-      .src-row{background:#eff6ff}
+      /* ---- comparison table ---- */
+      .ctable-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:22px;padding-bottom:4px}
+      .compare-table{width:100%;min-width:940px;border-collapse:separate;border-spacing:0}
+      .compare-table thead th{
+        position:sticky;top:0;z-index:2;
+        background:var(--ink);color:#fff;font-weight:700;font-size:11.5px;
+        letter-spacing:.07em;text-transform:uppercase;
+        padding:13px 16px;text-align:left;white-space:nowrap;vertical-align:middle;
+      }
+      .compare-table thead th:first-child{border-radius:10px 0 0 0}
+      .compare-table thead th:last-child{border-radius:0 10px 0 0}
+      .compare-table thead th.col-ai{background:linear-gradient(135deg,#A80DF1 0%,#1B3BC4 100%);color:#fff}
+      .compare-table tbody td{
+        padding:15px 16px;text-align:left;vertical-align:middle;
+        border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);
+        background:#fff;transition:background .15s ease;
+      }
+      .compare-table tbody tr:last-child td{border-bottom:none}
+      .compare-table tbody tr:hover td{background:#FBFCFE}
+      .compare-table tbody tr:last-child td:first-child{border-radius:0 0 0 10px}
+      .compare-table tbody tr:last-child td:last-child{border-radius:0 0 10px 0}
+
+      /* product name cell — carries the vertical colour */
+      .p-cell{position:relative;padding-left:22px !important}
+      .p-cell::before{
+        content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);
+        width:4px;height:26px;border-radius:3px;background:var(--rc,var(--line));
+      }
+      .p-name{display:block;font-size:14px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.3}
+      a.p-name{text-decoration:none}
+      a.p-name:hover{color:var(--rc,var(--ink));text-decoration:underline}
+      .p-badge{
+        display:inline-block;margin-top:5px;font-size:9.5px;font-weight:800;
+        letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border-radius:4px;
+        background:var(--rc,var(--ink));color:#fff;
+      }
+
+      /* AI rows get a tinted band and a stronger presence */
+      tr.row-ai td{background:var(--rt,#F7F8FA)}
+      tr.row-ai:hover td{background:var(--rt2,#F1F3F7)}
+      tr.row-ai td.ai-cell{font-weight:600;color:var(--ink-2)}
+
+      /* SRC — the featured row. Outlined band, stronger than the AI tints. */
+      tr.row-src td{
+        background:#F0F6FF;
+        border-top:2px solid #0B5ED7;border-bottom:2px solid #0B5ED7;
+        color:var(--ink-2);
+      }
+      tr.row-src:hover td{background:#E4EEFE}
+      tr.row-src td:first-child{border-left:2px solid #0B5ED7;border-radius:10px 0 0 10px}
+      tr.row-src td:last-child{border-right:2px solid #0B5ED7;border-radius:0 10px 10px 0}
+      tr.row-src .p-cell::before{width:5px;height:32px;box-shadow:0 0 0 3px rgba(11,94,215,.14)}
+      tr.row-src .p-name{font-size:15px}
+      tr.row-src .p-badge{background:#0B5ED7}
+      tr.row-src .price-link{
+        display:inline-block;background:#0B5ED7;color:#fff;padding:7px 13px;
+        border-radius:7px;font-size:12.5px;box-shadow:0 3px 12px rgba(11,94,215,.30);
+      }
+      tr.row-src .price-link:hover{background:#0B3A87;text-decoration:none}
+      .p-note{display:block;margin-top:4px;font-size:11.5px;font-weight:600;color:#0B5ED7}
+
+      /* yes / no markers */
+      .mk{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink-2)}
+      .mk i{
+        flex:none;width:19px;height:19px;border-radius:50%;
+        display:inline-flex;align-items:center;justify-content:center;
+      }
+      .mk-y i{background:var(--rc,var(--ink))}
+      .mk-y i::after{
+        content:"";width:5px;height:9px;margin-top:-2px;
+        border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);
+      }
+      .mk-n{color:#9AA3AF;font-weight:500}
+      .mk-n i{background:#EDF0F4}
+      .mk-n i::after{content:"";width:7px;height:2px;border-radius:1px;background:#B6BDC7}
+      .mk-na{color:#B6BDC7;font-weight:500;font-size:12.5px}
+
+      .price-link{color:var(--rc,var(--ink));font-weight:700;text-decoration:none;font-size:13px;white-space:nowrap}
+      .price-link:hover{text-decoration:underline}
+      .ctable-note{margin-top:12px;font-size:12px;color:var(--muted)}
+      .ctable-hint{display:none;font-size:11.5px;color:var(--muted);margin-top:8px}
+      @media(max-width:980px){.ctable-hint{display:block}}
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
       .card h3{margin:0 0 8px;font-size:15px;font-weight:700}
       .card p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
@@ -102,93 +175,96 @@ const year = new Date().getFullYear();
 
       <section>
         <div class="wrap">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th>Solution</th>
-                <th>Best for</th>
-                <th>Custom vocabulary</th>
-                <th>Cloud-based</th>
-                <th>AI document drafting</th>
-                <th>Macros / automation</th>
-                <th>Approx. cost (AUD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Dragon Professional 16</strong></td>
-                <td>Heavy daily dictation, complex documents</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td class="x">No</td>
-                <td class="check">Yes</td>
-                <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="product-link">From $994 &rarr;</a></td>
-              </tr>
-              <tr class="compare-highlight">
-                <td><strong>Dragon Medical One</strong></td>
-                <td>Healthcare professionals, clinical documentation</td>
-                <td class="check">Yes (medical vocab)</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td class="x">No</td>
-                <td><a href="https://www.voicerecognition.com.au/products/dragon-medical-one" target="_blank" rel="noopener" class="product-link">Enquire &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><strong>Dragon Professional Anywhere</strong></td>
-                <td>Teams, hybrid work, any device</td>
-                <td class="check">Yes</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td class="check">Yes</td>
-                <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="product-link">Enquire &rarr;</a></td>
-              </tr>
-              <tr class="src-row">
-                <td><strong>Speech Recognition Cloud</strong></td>
-                <td>Cloud-first users, 57+ languages, free to start</td>
-                <td class="x">AI-assisted</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td class="check">20+ AI commands</td>
-                <td><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="product-link">Try speech-to-text free &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><strong>Philips SpeechLive</strong></td>
-                <td>Shared transcription workflows, dictation to transcription</td>
-                <td class="check">Yes</td>
-                <td class="check">Yes</td>
-                <td class="x">No</td>
-                <td class="x">No</td>
-                <td>Enquire for pricing</td>
-              </tr>
-              <tr class="compare-highlight">
-                <td><strong><a href="/legal/" class="product-link">SpeechLive Legal AI</a></strong></td>
-                <td>Solicitors, barristers, legal executives — drafting file notes, letters and case documents</td>
-                <td class="check">Yes (legal terminology)</td>
-                <td class="check">Yes</td>
-                <td class="check">Yes — dictation + attachments drafted straight into your firm's templates</td>
-                <td>N/A</td>
-                <td><a href="/legal/#register" class="product-link">Register for early access &rarr;</a></td>
-              </tr>
-              <tr class="compare-highlight">
-                <td><strong><a href="/professional/" class="product-link">SpeechLive Professional AI</a></strong></td>
-                <td>Finance, insurance, construction and real estate — templated reports and correspondence</td>
-                <td class="check">Yes</td>
-                <td class="check">Yes</td>
-                <td class="check">Yes — drafts your dictation and attachments into your own document templates</td>
-                <td>N/A</td>
-                <td><a href="/professional/#register" class="product-link">Register for early access &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><strong>Dictation hardware (Philips, OM System)</strong></td>
-                <td>Secure, offline, high-sensitivity environments</td>
-                <td>N/A</td>
-                <td class="x">No</td>
-                <td class="x">No</td>
-                <td>N/A</td>
-                <td><a href="https://www.voicerecognition.com.au/collections/voice-recorder" target="_blank" rel="noopener" class="product-link">Browse hardware &rarr;</a></td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="ctable-scroll">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Solution</th>
+                  <th>Best for</th>
+                  <th>Custom vocabulary</th>
+                  <th>Cloud-based</th>
+                  <th class="col-ai">AI document drafting</th>
+                  <th>Macros / automation</th>
+                  <th>Cost (AUD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="row-src" style="--rc:#0B5ED7">
+                  <td class="p-cell"><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="p-name">Speech Recognition Cloud</a><span class="p-badge">Most popular</span><span class="p-note">Free tier &middot; no credit card</span></td>
+                  <td>Cloud-first users who want fast, accurate dictation in any Windows app — 57+ languages</td>
+                  <td><span class="mk mk-y"><i></i>AI-assisted</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-y"><i></i>20+ AI commands</span></td>
+                  <td><a href="https://www.speechrecognition.cloud" target="_blank" rel="noopener" class="price-link">Try free &rarr;</a></td>
+                </tr>
+                <tr style="--rc:#12151A">
+                  <td class="p-cell"><span class="p-name">Dragon Professional 16</span></td>
+                  <td>Heavy daily dictation, complex documents</td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="price-link">From $994 &rarr;</a></td>
+                </tr>
+                <tr style="--rc:#12151A">
+                  <td class="p-cell"><span class="p-name">Dragon Medical One</span></td>
+                  <td>Healthcare professionals, clinical documentation</td>
+                  <td><span class="mk mk-y"><i></i>Medical vocab</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><a href="https://www.voicerecognition.com.au/products/dragon-medical-one" target="_blank" rel="noopener" class="price-link">Enquire &rarr;</a></td>
+                </tr>
+                <tr style="--rc:#12151A">
+                  <td class="p-cell"><span class="p-name">Dragon Professional Anywhere</span></td>
+                  <td>Teams, hybrid work, any device</td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><a href="https://www.voicerecognition.com.au/collections/dragon-professional" target="_blank" rel="noopener" class="price-link">Enquire &rarr;</a></td>
+                </tr>
+                <tr style="--rc:#0B5ED7">
+                  <td class="p-cell"><a href="/philips-speechlive/" class="p-name">Philips SpeechLive</a></td>
+                  <td>Shared transcription workflows, author to typist</td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk-na">Enquire</span></td>
+                </tr>
+                <tr class="row-ai" style="--rc:#A80DF1;--rt:#FBF4FE;--rt2:#F6E9FD">
+                  <td class="p-cell"><a href="/legal/" class="p-name">SpeechLive Legal AI</a><span class="p-badge">New &middot; 2026</span></td>
+                  <td>Solicitors, barristers and legal executives drafting file notes, letters and case documents</td>
+                  <td><span class="mk mk-y"><i></i>Legal terminology</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td class="ai-cell"><span class="mk mk-y"><i></i>Drafts into your firm&rsquo;s templates</span></td>
+                  <td><span class="mk-na">Not applicable</span></td>
+                  <td><a href="/legal/#register" class="price-link">Early access &rarr;</a></td>
+                </tr>
+                <tr class="row-ai" style="--rc:#1B3BC4;--rt:#F4F7FD;--rt2:#E9EFFA">
+                  <td class="p-cell"><a href="/professional/" class="p-name">SpeechLive Professional AI</a><span class="p-badge">New &middot; 2026</span></td>
+                  <td>Finance, insurance, construction and real estate — templated reports and correspondence</td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td><span class="mk mk-y"><i></i>Yes</span></td>
+                  <td class="ai-cell"><span class="mk mk-y"><i></i>Drafts into your own templates</span></td>
+                  <td><span class="mk-na">Not applicable</span></td>
+                  <td><a href="/professional/#register" class="price-link">Early access &rarr;</a></td>
+                </tr>
+                <tr style="--rc:#12151A">
+                  <td class="p-cell"><span class="p-name">Dictation hardware</span></td>
+                  <td>Philips and OM System recorders for secure, offline capture</td>
+                  <td><span class="mk-na">Not applicable</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk mk-n"><i></i>No</span></td>
+                  <td><span class="mk-na">Not applicable</span></td>
+                  <td><a href="https://www.voicerecognition.com.au/collections/voice-recorder" target="_blank" rel="noopener" class="price-link">Browse &rarr;</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ctable-hint">Scroll the table sideways to see every column.</p>
         </div>
       </section>
 
