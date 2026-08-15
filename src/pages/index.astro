@@ -354,11 +354,9 @@ const benefitIcons = [
           <div class="grid">
             {homepageProducts.map((p) => {
               const isSRC = p.slug === 'cloud-speech-solutions';
-              const isDMO = p.slug === 'dragon-medical-one';
               const isAI  = p.slug === 'speechlive-legal' || p.slug === 'speechlive-professional';
               const href = p.homepageOnly ? p.vraUrl
                          : isSRC ? 'https://www.speechrecognition.cloud'
-                         : isDMO ? 'https://dragonmedicalone.au'
                          : `/${p.slug}/`;
               const vertical = p.slug === 'speechlive-legal' ? 'legal'
                             : p.slug === 'speechlive-professional' ? 'prof' : '';
@@ -367,13 +365,13 @@ const benefitIcons = [
                 <div class={cardClass}>
                   <div class={`product-badge${isSRC ? ' badge-blue' : ''}${vertical ? ' badge-' + vertical : ''}`}>{p.badge}</div>
                   <h3 class="compare-title">
-                    <a href={href} class="compare-link" target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined}>{p.title}</a>
+                    <a href={href} class="compare-link" target={isSRC ? '_blank' : undefined} rel={isSRC ? 'noopener' : undefined}>{p.title}</a>
                   </h3>
                   <div class="compare-for">{p.bestFor}</div>
                   <div class={`compare-price${isSRC ? ' price-blue' : ''}${vertical ? ' price-' + vertical : ''}`}>{p.price}</div>
                   <div class="compare-pricenote">{p.priceNote}</div>
                   {isSRC && <div style="font-size:12px;color:#2563eb;font-weight:600;margin-bottom:12px">Free tier available &bull; 57 languages</div>}
-                  <a href={href} class="compare-btn" target={isSRC || isDMO ? '_blank' : undefined} rel={isSRC || isDMO ? 'noopener' : undefined} aria-label={isSRC ? 'Try speech-to-text software free' : `View ${p.title} details`}>{p.ctaText ? p.ctaText + ' \u2192' : isSRC ? 'Try speech-to-text software free \u2192' : 'View details \u2192'}</a>
+                  <a href={href} class="compare-btn" target={isSRC ? '_blank' : undefined} rel={isSRC ? 'noopener' : undefined} aria-label={isSRC ? 'Try speech-to-text software free' : `View ${p.title} details`}>{p.ctaText ? p.ctaText + ' \u2192' : isSRC ? 'Try speech-to-text software free \u2192' : 'View details \u2192'}</a>
                 </div>
               );
             })}
@@ -425,7 +423,7 @@ const benefitIcons = [
               {darkBoxProducts?.map((p) => {
                 const isSRC = p.slug === 'cloud-speech-solutions';
                 const isDMO = p.slug === 'dragon-medical-one';
-                const href = isSRC ? 'https://www.speechrecognition.cloud' : isDMO ? 'https://dragonmedicalone.au' : `/${p.slug}`;
+                const href = isSRC ? 'https://www.speechrecognition.cloud' : `/${p.slug}`;
                 return isSRC ? (
                   <a href={href} target="_blank" rel="noopener" class="src-row" aria-label="Speech-to-text software — free tier available">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px">
@@ -438,7 +436,7 @@ const benefitIcons = [
                     </div>
                   </a>
                 ) : (
-                  <a href={href} class="product-row" target={isDMO ? '_blank' : undefined} rel={isDMO ? 'noopener' : undefined}>
+                  <a href={href} class="product-row">
                     <div class="product-row-title">{isDMO ? 'Dragon Medical One for clinicians' : p.title}</div>
                     <div style="display:flex;justify-content:space-between;align-items:center">
                       <span style="font-size:13px;color:rgba(255,255,255,.5)">{p.bestFor}</span>
