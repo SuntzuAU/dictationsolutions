@@ -1,0 +1,177 @@
+---
+import SiteNav from "../components/SiteNav.astro";
+import Footer from "../components/Footer.astro";
+import ACForm from "../components/ACForm.astro";
+import site from "../site.config.json";
+
+const VRA_COPILOT_URL = "https://www.voicerecognition.com.au/pages/dragon-copilot";
+const domain = site.domain;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dragon Copilot Australia | AI Clinical Documentation Assistant | Dictation Solutions</title>
+    <meta name="description" content="Dragon Copilot is Microsoft and Nuance's ambient AI assistant for clinicians — it listens to the consultation and drafts the clinical note. Coming to Australia and New Zealand in 2026. Register your interest." />
+    <link rel="canonical" href={`${domain}/dragon-copilot`} />
+    {site.googleAnalyticsId && (<script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAnalyticsId}`}></script><script define:vars={{ gaId: site.googleAnalyticsId }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId);</script>)}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" />
+    <style is:inline>
+:root{--bg:#ffffff;--text:#12151A;--primary:#12151A;--accent:#12151A;--accentHover:#2A3038;--muted:#5A6473;--neutral:#F7F8FA;--line:#E5E8ED;--soft:#F7F8FA;--font:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif}
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:var(--font);line-height:1.6;background:var(--bg);color:var(--text)}
+      a{color:inherit;text-decoration:none}
+      img{max-width:100%;display:block}
+      .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+      section{padding:22px 0}
+      .product-hero{padding:24px 0 28px;background:linear-gradient(135deg,#1a2f5e 0%,#1e3a5f 60%,var(--accent) 100%);color:#fff}
+      .breadcrumb{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;font-weight:500}
+      .breadcrumb a{color:rgba(255,255,255,.85);font-weight:600}
+      .breadcrumb a:hover{color:#fff}
+      .breadcrumb-sep{margin:0 6px;color:rgba(255,255,255,.4)}
+      .product-hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+      .licence-badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;background:var(--accent);color:#fff}
+      .product-hero h1{font-size:32px;line-height:1.1;margin:0 0 10px;letter-spacing:-.038em;font-weight:800;color:#fff}
+      .product-hero .subhead{font-size:15px;line-height:1.65;margin:0 0 18px;color:rgba(255,255,255,.8)}
+      .status-note{font-size:13px;color:rgba(255,255,255,.85);margin:0 0 20px;padding:10px 14px;background:rgba(255,255,255,.1);border-radius:8px;border-left:3px solid var(--accent)}
+      .buy-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+      .btn{display:inline-block;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;border:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap;text-align:center}
+      .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+      .btn-primary:hover{background:var(--accentHover);border-color:var(--accentHover);transform:translateY(-1px)}
+      .btn-lg{padding:14px 28px;font-size:16px;border-radius:10px}
+      .btn-dark{background:#1f2937;border-color:#1f2937;color:#fff}
+      .btn-dark:hover{background:#374151;border-color:#374151;transform:translateY(-1px)}
+      .video-frame{border-radius:14px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 20px 50px rgba(0,0,0,.3);background:#000}
+      .video-frame iframe{width:100%;height:100%;border:0;display:block}
+      .sh{margin-bottom:14px}
+      .sh h2{font-size:24px;letter-spacing:-.035em;margin:0 0 5px;font-weight:800}
+      .sh p{font-size:15px;margin:0;color:var(--muted)}
+      .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+      .c6{grid-column:span 6}.c4{grid-column:span 4}.c12{grid-column:span 12}
+      .section-white{background:#fff}.section-neutral{background:var(--neutral)}
+      .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px}
+      .feature-list{list-style:none;padding:0;margin:0}
+      .feature-list li{padding:8px 0;border-bottom:1px solid #f3f4f6;font-size:14px;display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+      .feature-list li:last-child{border-bottom:none}
+      .feature-check{color:var(--accent);font-weight:700;flex-shrink:0}
+      .faq-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;border-left:4px solid var(--accent)}
+      .faq-card h3{margin:0 0 5px;font-size:14px;font-weight:700;color:var(--primary)}
+      .faq-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.55}
+      .section-divider{height:4px;background:linear-gradient(90deg,var(--accent),var(--primary))}
+      .also-section{background:var(--neutral);padding:20px 0}
+      .other-versions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+      .other-version-link{padding:8px 16px;border-radius:8px;border:2px solid #e5e7eb;font-size:13px;font-weight:600;color:#374151;transition:all .15s}
+      .other-version-link:hover{border-color:var(--accent);color:var(--accent)}
+      @media(max-width:900px){.product-hero-inner{grid-template-columns:1fr}.product-hero h1{font-size:26px}.c6,.c4{grid-column:span 12}.sh h2{font-size:20px}}
+      @media(max-width:600px){section{padding:14px 0}.product-hero{padding:16px 0 18px}.card,.faq-card{padding:14px}.buy-actions{flex-direction:column}.buy-actions .btn-lg{width:100%;text-align:center}}
+    </style>
+  </head>
+  <body>
+    <SiteNav active="dmo" />
+    <main>
+      <section class="product-hero">
+        <div class="wrap">
+          <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">&rsaquo;</span><a href="/#products">Products</a><span class="breadcrumb-sep">&rsaquo;</span>Dragon Copilot</div>
+          <div class="product-hero-inner">
+            <div>
+              <div class="licence-badge">Coming to Australia in 2026</div>
+              <h1>Dragon Copilot — ambient AI for clinical documentation</h1>
+              <p class="subhead">Dragon Copilot is Microsoft and Nuance's next-generation AI assistant for healthcare. It listens to the natural conversation between clinician and patient and drafts a structured clinical note automatically — going beyond dictation into ambient listening, task automation and clinical summarisation.</p>
+              <div class="status-note">Launching first in the US from March 2025. Voice Recognition Australia — an authorised Nuance/Microsoft partner — is taking early-access registrations ahead of the Australian and New Zealand rollout in 2026.</div>
+              <div class="buy-actions">
+                <a href={VRA_COPILOT_URL} class="btn btn-primary btn-lg" target="_blank" rel="noopener">Register for early access &rarr;</a>
+                <a href="#final-cta" class="btn btn-dark btn-lg">Ask our team a question</a>
+              </div>
+            </div>
+            <div>
+              <div class="video-frame">
+                <iframe src="https://www.youtube.com/embed/VYNz_VUoMZQ" title="Introducing Dragon Copilot" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <section class="section-neutral">
+        <div class="wrap">
+          <div class="sh"><h2>What Dragon Copilot does</h2><p>An ambient AI layer built on top of the Dragon speech platform Australian clinicians already trust.</p></div>
+          <div class="grid">
+            <div class="c6">
+              <div class="card">
+                <ul class="feature-list">
+                  <li><span class="feature-check">&#10003;</span>Ambient listening — captures the natural consultation conversation, no active dictation required</li>
+                  <li><span class="feature-check">&#10003;</span>Drafts structured clinical notes automatically after the visit</li>
+                  <li><span class="feature-check">&#10003;</span>Retrieves patient data and surfaces relevant history during the consult</li>
+                  <li><span class="feature-check">&#10003;</span>Automates routine tasks — order entry, referral letters, follow-up actions</li>
+                  <li><span class="feature-check">&#10003;</span>Integrates with major EHR and practice management systems</li>
+                </ul>
+              </div>
+            </div>
+            <div class="c6">
+              <div class="card">
+                <ul class="feature-list">
+                  <li><span class="feature-check">&#10003;</span>Built on Microsoft's secure cloud, aligned to healthcare data-security standards</li>
+                  <li><span class="feature-check">&#10003;</span>Real-time sharing of visit summaries with the wider care team</li>
+                  <li><span class="feature-check">&#10003;</span>Works alongside Dragon Medical One rather than replacing your dictation workflow</li>
+                  <li><span class="feature-check">&#10003;</span>Mobile-friendly, so notes can be reviewed and signed off anywhere</li>
+                  <li><span class="feature-check">&#10003;</span>Every draft is prepared for clinician review — nothing is finalised automatically</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-white">
+        <div class="wrap">
+          <div class="sh"><h2>Frequently asked questions</h2></div>
+          <div class="grid">
+            <div class="faq-card c6"><h3>Is Dragon Copilot available in Australia yet?</h3><p>Not yet. It launched in select US regions from March 2025, with Australia and New Zealand availability expected in 2026. Register your interest and Voice Recognition Australia will contact you when local access opens.</p></div>
+            <div class="faq-card c6"><h3>How is this different from Dragon Medical One?</h3><p>Dragon Medical One is speech-to-text — you dictate and it transcribes. Dragon Copilot adds an ambient AI layer on top: it listens to the consultation itself and drafts the note, retrieves patient data and automates routine tasks.</p></div>
+            <div class="faq-card c6"><h3>Do I need Dragon Medical One first?</h3><p>Dragon Copilot builds on the same Nuance/Microsoft healthcare AI platform. Contact our team to confirm the right setup and licensing path for your practice.</p></div>
+            <div class="faq-card c6"><h3>Who do I talk to about pricing and rollout?</h3><p>Voice Recognition Australia is an authorised Nuance/Microsoft partner and is coordinating Australian early access. Register your interest below or call 1300 255 900.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" style="background:#12151A;padding:48px 0">
+        <div class="wrap">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+            <div>
+              <h2 style="font-size:26px;font-weight:800;margin:0 0 10px;color:#fff;line-height:1.2">Want to know more about Dragon Copilot?</h2>
+              <p style="font-size:14px;color:rgba(255,255,255,.75);margin:0 0 16px;line-height:1.65">Our team has been helping Australian healthcare practices choose dictation and speech recognition solutions for 25 years. Register your interest and we'll keep you updated as the Australian rollout approaches.</p>
+              <ul style="color:rgba(255,255,255,.7);margin:0 0 24px;padding-left:18px;font-size:14px;line-height:2">
+                <li>Practice size and specialty</li>
+                <li>Current dictation or EHR setup</li>
+                <li>Whether you already use Dragon Medical One</li>
+                <li>Timing — planning ahead or ready now</li>
+              </ul>
+              <a href={VRA_COPILOT_URL} style="display:inline-block;padding:12px 24px;background:#2A3038;color:#fff;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none" target="_blank" rel="noopener">Register for early access &rarr;</a>
+            </div>
+            <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,.2)">
+              <div style="font-size:18px;font-weight:800;color:#12151A;margin:0 0 4px">Get in touch</div>
+              <div style="font-size:13px;color:#6b7280;margin:0 0 18px">Local Australian support. Fast response.</div>
+              <ACForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="also-section">
+        <div class="wrap">
+          <div class="sh"><h2>Also in our range</h2></div>
+          <div class="other-versions">
+            <a href="/dragon-medical-one" class="other-version-link">Dragon Medical One — clinical dictation</a>
+            <a href="/dragon-professional-16" class="other-version-link">Dragon Professional 16</a>
+            <a href="/dragon-software" class="other-version-link">All Dragon software</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
