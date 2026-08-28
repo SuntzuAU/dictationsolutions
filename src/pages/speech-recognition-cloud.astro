@@ -28,6 +28,7 @@ const metaTitle = "SpeechRecognition.cloud - AI Speech-to-Text Software for Wind
 const metaDesc = "SpeechRecognition.cloud is a Windows speech recognition app with no voice training required. Free edition available. Professional and Medical Ultra editions for Australian businesses and healthcare. Download and start dictating in minutes.";
 const downloadUrl = "https://download.speechrecognition.cloud/src/SpeechRecognitionCloudInstaller.exe";
 const buyUrl = "https://www.voicerecognition.com.au/collections/speech-to-text-software";
+const studentBuyUrl = "https://www.voicerecognition.com.au/products/speech-recognition-cloud-student-academic";
 const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-professional";
 ---
 <!doctype html>
@@ -102,6 +103,10 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
       .sh h2{font-size:26px;letter-spacing:-.035em;margin:0 0 6px;font-weight:800}
       .sh p{font-size:15px;margin:0;color:var(--muted)}
       .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+      .plans-5{grid-template-columns:repeat(5,1fr)}
+      @media(max-width:1100px){.plans-5{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:600px){.plans-5{grid-template-columns:1fr}}
+      .plans-5>.c3{grid-column:auto}
       .c6{grid-column:span 6}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c12{grid-column:span 12}.c3{grid-column:span 3}
       .section-white{background:#fff}.section-neutral{background:var(--neutral)}
       .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:22px}
@@ -253,7 +258,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
             <h2>Editions and pricing</h2>
             <p>Start free and upgrade to the edition that suits your usage. All prices AUD inc GST.</p>
           </div>
-          <div class="grid">
+          <div class="grid plans-5">
             <div class="c3">
               <div class="plan-card">
                 <div class="plan-name">Starter</div>
@@ -271,10 +276,25 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
             </div>
             <div class="c3">
               <div class="plan-card">
-                <div class="plan-name">Personal / Educational</div>
-                <div class="plan-price">$119</div>
+                <div class="plan-name">Student / Academic</div>
+                <div class="plan-price">$149</div>
                 <div class="plan-period">AUD inc GST per year</div>
-                <div class="plan-tag">Students &amp; individuals</div>
+                <div class="plan-tag">Students &amp; schools</div>
+                <ul class="plan-features">
+                  <li><span class="ck">&#10003;</span>Same features as Personal</li>
+                  <li><span class="ck">&#10003;</span>Proof of student status required</li>
+                  <li><span class="ck">&#10003;</span>Anonymous activation for schools</li>
+                  <li><span class="ck">&#10003;</span>5, 25 and 100 user packs available</li>
+                </ul>
+                <a href={studentBuyUrl} class="btn btn-dark" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box;display:block;text-align:center">Buy via VRA &rarr;</a>
+              </div>
+            </div>
+            <div class="c3">
+              <div class="plan-card">
+                <div class="plan-name">Personal / Educational</div>
+                <div class="plan-price">$159</div>
+                <div class="plan-period">AUD inc GST per year</div>
+                <div class="plan-tag">Individuals</div>
                 <ul class="plan-features">
                   <li><span class="ck">&#10003;</span>Unlimited usage</li>
                   <li><span class="ck">&#10003;</span>Custom vocabulary</li>
@@ -467,7 +487,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
                 </tr>
                 <tr>
                   <td>Paid pricing</td>
-                  <td class="src-col yes-cell">From $119 AUD/yr</td>
+                  <td class="src-col yes-cell">From $149 AUD/yr</td>
                   <td>From $495 AUD one-time</td>
                   <td style="color:#6b7280">Free (included)</td>
                   <td style="color:#6b7280">Free / low cost</td>
@@ -496,7 +516,7 @@ const dragonBuyUrl = "https://www.voicerecognition.com.au/collections/dragon-pro
           <div class="grid">
             <div class="faq-card c6"><h3>Is this a Windows app or browser-based?</h3><p>It is a Windows application. You download and install it on your Windows PC. Once installed, it dictates directly into any Windows application - Word, Outlook, Teams, Chrome, EMRs - wherever your cursor is.</p></div>
             <div class="faq-card c6"><h3>Do I need to train my voice before using it?</h3><p>No. SpeechRecognition.cloud uses AI-powered speech recognition that works immediately without any voice profile training. You install it and start dictating.</p></div>
-            <div class="faq-card c6"><h3>What is the difference between the editions?</h3><p>Starter is free with 20 minutes per month. Personal/Educational adds unlimited usage and custom vocabulary at $119 AUD inc GST per year. Professional adds AI voice commands and advanced features at $239 AUD inc GST per year. Medical Ultra is the healthcare edition with medical vocabulary at $659 AUD inc GST per year.</p></div>
+            <div class="faq-card c6"><h3>What is the difference between the editions?</h3><p>Starter is free with 20 minutes per month. Student / Academic is $149 AUD inc GST per year for verified students and schools. Personal/Educational adds unlimited usage and custom vocabulary at $159 AUD inc GST per year. Professional adds AI voice commands and advanced features at $239 AUD inc GST per year. Medical Ultra is the healthcare edition with medical vocabulary at $659 AUD inc GST per year.</p></div>
             <div class="faq-card c6"><h3>Does it work with my EMR or practice management system?</h3><p>Yes. Because it dictates directly at the cursor into any Windows application, it works with any software that accepts typed text input - including healthcare practice management systems, EMRs, and clinical documentation tools.</p></div>
             <div class="faq-card c6"><h3>How does it compare to Dragon for medical use?</h3><p>For ambient AI consultation capture and structured clinical note generation, Dragon Medical One is the more comprehensive solution. SpeechRecognition.cloud Medical Ultra suits clinicians who want straightforward Windows dictation with medical vocabulary at a lower price point.</p></div>
             <div class="faq-card c6"><h3>Can I try it before buying?</h3><p>Yes. The free Starter edition includes 20 minutes per month with no credit card required. Download it, use it in your real workflow, and upgrade if you need more usage.</p></div>
