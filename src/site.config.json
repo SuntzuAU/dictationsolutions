@@ -18,8 +18,8 @@
     "industry": "Dictation & Speech Recognition",
     "region": "Australia",
     "headline": "Dictation and Speech Recognition Solutions",
-    "subheadline": "From traditional digital dictation hardware to modern cloud speech workflows, find the right solution for your practice, business or team. 25 years of Australian deployment experience.",
-    "statsMessage": "25 years of Australian dictation and speech recognition expertise",
+    "subheadline": "From traditional digital dictation hardware to modern cloud speech workflows, find the right solution for your practice, business or team. Australian deployment experience since 2003.",
+    "statsMessage": "Australian dictation and speech recognition expertise since 2003",
     "aboutHeading": "Voice Recognition Australia - 25 Years of Deployment Experience",
     "aboutBody": "Dictation Solutions Australia is the specialist dictation and speech recognition channel of Voice Recognition Australia, an authorised Dragon reseller since the product launched in Australia. We deploy hardware and software solutions across healthcare, legal, and government - and we understand the workflows that matter in each environment.",
     "benefitsHeading": "Why professionals choose dictation and speech recognition solutions",
@@ -105,7 +105,7 @@
   },
   "stats": [
     {
-      "value": "25 years",
+      "value": "Since 2003",
       "label": "Australian market expertise"
     },
     {
@@ -527,7 +527,7 @@
     }
   ],
   "proofPoints": [
-    "25 years of Australian dictation and speech recognition expertise",
+    "Australian dictation and speech recognition expertise since 2003",
     "Dragon authorised reseller since product launch in Australia",
     "Philips and Olympus hardware specialists",
     "Healthcare, legal and government deployment experience"

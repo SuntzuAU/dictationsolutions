@@ -68,7 +68,7 @@ There are practical bits too. A quiet-ish spot and a decent microphone make a re
 
 ## Why we keep saying "it depends on the student"
 
-Voice Recognition Australia has been supplying speech recognition to Australian schools, universities, students and families since 1999, working alongside the teachers, learning support staff and occupational therapists who put it into practice. Russell Bewsell, who founded the business, has 28 years in the speech recognition industry, and a substantial share of that has gone into one question: which student needs which tool, and when is dictation not the answer at all.
+Voice Recognition Australia has been supplying speech recognition to Australian schools, universities, students and families since 2003, working alongside the teachers, learning support staff and occupational therapists who put it into practice. Russell Bewsell, who founded the business, has 28 years in the speech recognition industry, and a substantial share of that has gone into one question: which student needs which tool, and when is dictation not the answer at all.
 
 That is where the caution in this article comes from. Dictation is not a universal fix, and a student set up with the wrong tool — or the right tool with no instruction behind it — will usually conclude that speech recognition "did not work for them", when what actually failed was the fit. Getting that judgement right the first time is most of the job.
 
