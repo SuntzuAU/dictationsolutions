@@ -126,7 +126,7 @@ Schools should also check assessment rules early. Australian exam authorities pe
 
 **Parents and individual students** — start with the free edition and find out whether dictation actually helps before spending anything. You can [download free speech-to-text software for students](https://www.speechrecognition.cloud).
 
-**Schools, universities and disability teams** — we have been deploying speech recognition in Australian education for 25 years. Tell us the number of students, the environment and the constraints, and we will tell you honestly whether Speech Recognition Cloud, Dragon, or a mix of both is the right answer.
+**Schools, universities and disability teams** — we have been deploying speech recognition in Australian education since 2003. Tell us the number of students, the environment and the constraints, and we will tell you honestly whether Speech Recognition Cloud, Dragon, or a mix of both is the right answer.
 
 ## Frequently asked questions
 

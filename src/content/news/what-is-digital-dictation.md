@@ -67,4 +67,4 @@ For a sole practitioner dictating a handful of letters a week, a USB microphone 
 
 If you are building out your broader productivity workflow, it is worth reading about [the productivity stack professionals need before starting their AI journey](/news/productivity-stack-before-ai) -- voice input is just one piece of a well-structured setup.
 
-[Speech recognition software Australia](https://www.voicerecognition.com.au) -- Voice Recognition Australia has been helping Australian professionals choose and implement dictation solutions for 25 years. If you are unsure which approach suits your practice or business, the team can advise based on your specific workflow.
+[Speech recognition software Australia](https://www.voicerecognition.com.au) -- Voice Recognition Australia has been helping Australian professionals choose and implement dictation solutions since 2003. If you are unsure which approach suits your practice or business, the team can advise based on your specific workflow.
